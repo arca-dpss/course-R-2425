@@ -4,6 +4,8 @@ format: revealjs
 editor: visual
 ---
 
+da preparare
+
 ## `aggregate`
 
 Immaginate di avere una lista di vettori, e di voler applicare la stessa funzione/i ad ogni elemento della lista:
@@ -24,12 +26,14 @@ my_list=list(
 ```
 
 ## `tidyr`
+
 summarise
 
 ## `dplyr`
-pivot longer _wider
 
-# %>% o |>
+pivot longer \_wider
+
+# %\>% o \|\>
 
 ## `ggplot`
 
@@ -38,13 +42,9 @@ https://ggplot2-book.org/
 ## `tidyverse`
 
 ## creare tabelle
+
 flextable(), kableExtra() o anche sjPlot().
 
-broom
-ha un approccio diverso (quello che preferisco) creando dei dataframe da modelli statistici e
- poi lasciando all'utente la creazione della tabella con flextable o kableExtra:
- 
- 
- come approfondire
- https://r4ds.had.co.nz/
- https://adv-r.hadley.nz/
+broom ha un approccio diverso (quello che preferisco) creando dei dataframe da modelli statistici e poi lasciando all'utente la creazione della tabella con flextable o kableExtra:
+
+come approfondire https://r4ds.had.co.nz/ https://adv-r.hadley.nz/
