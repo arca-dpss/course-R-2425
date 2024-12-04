@@ -1,0 +1,143 @@
+---
+title: "0_getStarted"
+format: 
+   revealjs:
+     margin: 0.1
+editor: visual
+---
+
+## Introduzione a R {style="text-align: center;"}
+
+### Presentazione del corso {style="text-align: center;"}
+
+![](images/arca_logo.svg){fig-align="center" width="80"}
+
+#### Margherita Calderan - Filippo Gambarota -- Enrico Toffalini {style="text-align: center;"}
+
+## Gli obiettivi principali
+
+-   Impareremo tutti gli **elementi principali** che compongono il linguaggio R
+-   Imparare la **logica generale della programmazione** spendibile con qualsiasi linguaggio
+-   Migliorare il modo di affrontare i problemi e **rendere più efficiente il lavoro quotidiano**
+
+## Il materiale principale
+
+-   Libro [**Introduction2R**](https://psicostat.github.io/Introduction2R/) disponibile online su Github
+
+-   [**Repository**](https://github.com/arca-dpss/course-R-2425) Github del corso
+
+## Organizzazione delle lezioni
+
+-   Comprensione teorico-logica degli argomenti
+
+-   Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari)
+
+-   Applicazione direttamente scrivendo codice e risolvendo problemi
+
+## Esame 😱
+
+-   Consiste in **20 domande** a scelta multipla con una sola risposta corretta
+-   **45 minuti** a disposizione
+-   I punteggi sono assegnati con la seguente modalità:
+    -   **1 punto** per ogni **risposta corretta**
+    -   **-0.33 punti** per ogni **risposta sbagliata**
+    -   **0 punti** per ogni **risposta non data**
+-   Per superare l'esame è necessario ottenere **almeno 15 punti (75%) sul totale di 20 punti**.
+
+## Che cos'è ![R](images/R_logo.png){fig-align="center" width="80"}
+
+[**R**](https://www.r-project.org/) è un linguaggio di programmazione fortemente votato alla statistica, gestione di dati e visualizzazione.
+
+E' nato nel 1993 da **Ross Ihaka** e **Robert Gentleman**.
+
+E' un software completamente **open-source** e **gratuito** in continua evoluzione e cambiamento.
+
+## Perchè ![R](images/R_logo.png){fig-align="center" width="80"}
+
+### Un cenno all'open-source
+
+Un software si definisce open-source quando il **codice sorgente è disponibile** a tutti per essere **modificato**, **aggiornato** e **controllato**.
+
+R è **sia open-source che gratuito** e vanta una community estremamente attiva, come spesso accade con tutti i progetti open-source e in generale i linguaggi di programmazione.
+
+## Quale è la concorrenza?
+
+Il principale "concorrente" di R è sicuramente **Python** che offre un ambiente altrettanto potente, sviluppato e attivo.
+
+Non è facile (e forse non è possibile) capire quale sia il migliore.
+
+In ogni caso, una volta imparato R, imparare Python sarà molto semplice.
+
+## Quale NON è la concorrenza?
+
+Nell'ambito della statistica ci sono vari software non open-source ed a pagamento come:
+
+-   Statistica
+-   SPSS
+-   STATA
+-   SAS
+
+## Quale NON è la concorrenza?
+
+Sono degli ottimi software ma:
+
+-   Non forniscono conoscenze trasversali
+-   Siete legati ad uno specifico ambiente
+-   Le licenze possono costare molto
+-   La community non è altrettanto attiva (non open-source)
+
+## Quali sono delle alternative?
+
+Ci sono degli ottimo software open-source basati su R come:
+
+-   [Jamovi](https://www.jamovi.org/)
+    -   **pros**: si può accedere al codice R sottostante
+    -   **cons**: le funzioni sono comunque limitate, grafici, modelli complessi
+-   [Jasp](https://jasp-stats.org/)
+    -   **pros**: molti modelli anche avanzati
+    -   **cons**: non si può vedere il codice R
+
+## Imparare un linguaggio come investimento
+
+Imparare in linguaggio come R vi permette di conoscere uno strumento molto potente ma anche di imparare:
+
+-   Ragionare e risolvere problemi con il codice
+-   Trasferire quello che avete imparato ad altri linguaggi
+-   Essere sempre autonomi e non legati ad uno specifico ambiente
+-   Avere una skill realmente di valore
+
+# Imparare R è difficile...MA ne vale la pena!
+
+## Installare R e R-Studio
+
+R ed R-studio sono due software distinti.
+
+![](images/R_cons.png){fig-align="center" width="400"}
+
+## R-Studio
+
+R-studio è un'interfaccia user-friendly che permette di utilizzare R.
+
+![](images/R_studio.png){fig-align="center"}
+
+## Installare R e R-Studio
+
+Entrambi vanno installati separatamente e la procedura varia a seconda del proprio sistema operativo.
+
+Se non l'avete già installato, seguite la procedura spiegata a questo link: https://psicostat.github.io/Introduction2R/install.html
+
+## Interfaccia R-Studio
+
+Questa è la mia disposizione. Attraverso questo menu potete scegliere la disposizione che preferite.
+
+![](images/R_studio_pane.png){fig-align="center" width="500"}
+
+## Interfaccia R-Studio
+
+Attraverso questo menu potete scegliere colore/font che preferite.
+
+RStudio \> Preferenze \> Appearence (MacOS)
+
+Tools \> Options \> Appearence (Windows)
+
+![](images/R_studio_pane1.png){fig-align="center" width="400"}

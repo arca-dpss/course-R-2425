@@ -1,0 +1,308 @@
+---
+title: "2.1_vettori"
+format: 
+   revealjs:
+     margin: 0.1
+editor: visual
+---
+
+## Strutture Dati
+
+-   ***`vettori`***
+
+-   fattori
+
+-   liste
+
+-   matrici
+
+-   array
+
+-   dataframe
+
+## Vettori
+
+I vettori sono una struttura dati unidimensionale e sono la più semplice presente in R.
+
+![](images/vettore.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Caratteristiche di un vettore
+
+-   **la lunghezza**: il numero di elementi da cui è formato il vettore
+
+-   **la tipologia**: la tipologia di dati da cui è formato il vettore. Un vettore infatti deve esssere formato da **elementi tutti dello stesso tipo**!
+
+## Caratteristiche degli elementi di un vettore
+
+-   **un valore**: il valore dell'elemento che può essere di qualsiasi tipo ad esempio un numero o una serie di caratteri
+
+-   **un indice di posizione**: un numero intero positivo che identifica la sua posizione all'interno del vettore.
+
+![](images/vettore.png){fig-align="center"}
+
+## Creare un vettore
+
+I vettori si possono creare attraverso il comando **`c()`**, indicando tra le parentesi i valori degli elementi nella sucessione desiderata e separati da una virgola.
+
+```{r, echo=TRUE}
+num_vect = c(1,2,3,4)
+# è possibile anche utilizzare la funzione seq()
+num_vect_seq = seq(from = 1,to = 4, by = 1)
+num_vect;num_vect_seq
+
+char_vect = c("R","R","R","ok")
+# è possibile anche utilizzare la funzione rep()
+char_vect_rep = c(rep("R", 3), "ok")
+char_vect;char_vect_rep
+```
+
+## Tiplogia di vettore
+
+La tipologia di dati da cui è formato il vettore.
+
+```{r, echo=TRUE}
+class(num_vect)
+class(char_vect)
+```
+
+## Tiplogia di vettore
+
+Un vettore deve esssere formato da **elementi tutti dello stesso tipo**!
+
+```{r, echo=TRUE}
+wrong = c(1,2,3,"non so", 4)
+class(wrong) 
+wrong
+```
+
+Altrimenti si "rischia" che tutto venga trasformato a carattere.
+
+```{r, echo=TRUE}
+correct = c(1,2,3,NA, 4)
+class(correct) 
+correct
+```
+
+## is.\* & as.\*
+
+Possiamo testare o convertire (quando possibile) la tipologia del vettore attraverso queste funzioni **`is.`** & **`as.`**
+
+```{r, echo = TRUE}
+is.character(char_vect)
+as.numeric(char_vect) #!!
+
+is.numeric(num_vect)
+as.character(num_vect) #!!
+
+logi_vect = c(TRUE,FALSE,TRUE)
+is.logical(logi_vect)
+
+as.numeric(logi_vect) 
+```
+
+## Attributi del vettore
+
+Ogni elemento del vettore può essere associato ad un nome.
+
+```{r, echo=TRUE}
+names(num_vect) #nessun nome associato
+
+names(num_vect) = letters[1:4]
+
+num_vect
+```
+
+------------------------------------------------------------------------
+
+Ogni vettore è caraterizzato da una dimensione (**`dim()`**), in realtà essendo il vettore unidimensionale usiamo il comando **`length()`** per ottenere la lunghezza del vettore
+
+```{r, echo=TRUE}
+dim(num_vect)
+
+length(num_vect)
+```
+
+## Indicizzazione
+
+Possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'indice di posizione tramite le parentesi quadre vettore\[pos\]
+
+```{r, echo=TRUE}
+# Creo un vettore formato da 20 numeri casuali pescati da 1 a 100
+my_vect = round(runif(20,1,100))
+my_vect
+
+my_vect[1] # estraggo il primo elemento
+
+my_vect[1:5] # estraggo i primi 5 elementi
+
+my_vect[c(1,4,2,9)] # estraggo elementi a scelta
+
+my_vect[length(my_vect)] #ultimo elemento (perchè?)
+```
+
+## Inidicizzazione negativa
+
+Allo stesso modo possiamo decidere di estrarre tutti gli elementi del vettore eccetto alcuni
+
+```{r, echo=TRUE}
+
+my_vect[-c(1)] #tutti tranne il primo elemento
+
+my_vect[-c(1:10)] #tutti tranne i primi 10
+```
+
+------------------------------------------------------------------------
+
+Se assegnamo nomi agli elementi del vettore, possiamo indicizzare questi "chiamandoli per nome" (meno comune)
+
+```{r, echo=TRUE}
+
+names(my_vect) = letters[1:length(my_vect)]
+
+names(my_vect)
+my_vect
+
+my_vect["a"]
+
+my_vect[1]
+
+```
+
+## Indicizzazione Logica
+
+Indicizzare con la posizione è l'aspetto più semplice e intuitivo. E' possibile anche selezionare tramite valori **`TRUE`** e **`FALSE`**: possiamo estrarre elementi dal vettore basandoci su specifiche condizioni logiche
+
+```{r, echo=TRUE}
+
+numeri = 1:7
+numeri
+numeri[numeri<2]
+
+```
+
+------------------------------------------------------------------------
+
+L'idea è che se abbiamo un vettore di lunghezza **n** e un'altro vettore logico di lunghezza **n**, tutti gli elementi **`TRUE`** saranno selezionati:
+
+```{r, echo=TRUE}
+
+numeri<2 # vettore logico
+
+# verrà quindi estratto il primo elemento 
+# perchè è l'unico che risulta TRUE
+numeri[numeri<2]
+
+# non vale solo per elementi del vettore numeri ma per qualsiasi vettore 
+lettere = letters[1:6]
+lettere
+lettere[numeri<2]
+
+```
+
+## Indicizzazione Interna
+
+Attraverso la funzione **`which()`** possiamo ottenere la posizione associata ad una selezione logica:
+
+```{r, echo=T}
+
+lettere
+which(lettere == "a")
+
+my_vect
+which(my_vect > 20)
+my_vect[which(my_vect > 20)] # Cosa cambia tra questi 2 comandi?
+
+```
+
+## Indicizzazione e assegnazione
+
+Indicizzare può essere utile anche per assegnare un valore ad un determinato elemento del vettore
+
+```{r, echo=TRUE}
+
+lettere
+
+lettere[1] = "z"
+lettere
+
+lettere[9] = "?"
+lettere
+
+# Possiamo anche modificare l'elemento
+lettere[2] = paste(lettere[2], sep = "", "o")
+lettere
+```
+
+## Operazioni sui vettori
+
+Possiamo eseguire operazioni sui vettori, ed applicare la stessa operazione a tutti gli elementi del vettore (element-wise)
+
+```{r, echo=TRUE}
+
+new_vect = rep(2:4, each = 2)
+new_vect
+
+# potete svolgere qualsiasi operazione
+new_vect/2
+log(new_vect)
+exp(new_vect)
+
+```
+
+## Summary Statistics
+
+Le operazioni più comuni sono per esempio la media **`mean()`**, la deviazione standard **`sd()`**, la mediana **`median()`**, il valore massimo **`max()`** e minimo **`min()`** .
+
+```{r, echo=TRUE}
+# creo un vettore campionando 1000 da una distribuzione normale 
+new_vect = rnorm(1000, mean = 1, sd = 4)
+
+mean(new_vect)
+sd(new_vect)
+
+median(new_vect)
+
+summary(new_vect)
+
+```
+
+## Valori NA
+
+A volte (molto spesso) può capitare di avere dati mancanti
+
+```{r, echo=TRUE}
+
+new_vect[1] = NA # Assegnamo NA al primo elemento del vettore
+
+mean(new_vect) # è impossibile calcolare la media!
+
+mean(new_vect, na.rm = T) # soluzione!
+
+```
+
+## Frequenze
+
+Un altra operazione comune che viene svolta sui vettori (e sulle altre strutture dati), è il conteggio delle frequeze
+
+```{r, echo = TRUE}
+
+# riprendiamo il vettore creato all'inizio della lezione
+char_vect
+
+# attraverso la funzione table possiamo calcolare la frequenze
+table(char_vect)
+
+# ricordatevi che R è case-sensitive!
+char_vect[1] = "r";char_vect
+
+table(char_vect)
+
+```
+
+## Facciamo un po' di pratica! {style="text-align: center;"}
+
+<br/> Aprite e tenete aperto questo link:
+
+https://etherpad.wikimedia.org/p/arca-corsoR

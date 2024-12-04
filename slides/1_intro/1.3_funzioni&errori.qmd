@@ -1,0 +1,129 @@
+---
+title: "1.3_funzioni&errori"
+format: 
+   revealjs:
+     margin: 0.1
+editor: visual
+---
+
+## Funzioni
+
+Le funzioni sono un argomento relativamente complesso ed avanzato. Lo tratteremo più avanti. Siccome le usiamo fin da subito (**es., mean**) è importante avere chiari alcuni aspetti:
+
+-   Funzioni come oggetti
+-   Argomenti obbligatori, opzionali e default
+-   Ordine degli argomenti
+-   Documentazione
+
+## Funzioni
+
+Possiamo pensare alle funzioni in R in modo analogo alle classiche funzioni matematiche. Dati dei valori in **input**, le funzioni eseguono dei specifici calcoli e restituiscono in **output** il risultato ottenuto.
+
+![](images/fun1.png){fig-align="center"}
+
+## Funzioni come oggetti
+
+Abbiamo già visto che ogni cosa in R è un oggetto. Anche le funzioni seppur molto diverse da altri elementi sono creati e trattati in R come oggetti. In questo esempio, creiamo una funzione che ha come input **x**, e che svolge l'operazione di **sommare** ad **x** il valore **3**.
+
+L'output dipenderà dal valore di x.
+
+```{r, echo=TRUE}
+myfun = function(x) {
+  return(x + 3)
+}
+
+myfun(2)
+
+myfun(7)
+```
+
+## Funzioni come oggetti
+
+Possiamo crearle, eliminarle o sovrascriverle come un normale oggetto. Vedremo più avanti come crearle ma tenete in considerazione che tutte le funzioni che usiamo sono create come oggetti e salvati nell'ambiente.
+
+## Argomenti
+
+Gli argomenti delle funzioni sono quelli che da *utenti* dobbiamo conoscere ed impostare nel modo corretto per fare in modo che la funzioni faccia quello per cui è stata pensata. Nell'esempio precedente l'unico argomento era x. Vediamo invece l'`help` della funzione `mean().`
+
+## Argomenti
+
+Per impostare questi argomenti ci sono 2 regole:
+
+-   l'ordine non conta SE DEFINISCO NOME DELL'ARGOMENTO con `x = vettore`, `na.rm = TRUE`, etc.
+-   l'ordine conta SE NON DEFINISCO IL NOME DELL'ARGOMENTO. Posso quindi omettere `argomento = valore` ma devo rispettare l'ordine con cui è stata scritta la funzione
+
+## Argomenti
+
+In questo caso proviamo ad usare la funzione `mean()`:
+
+```{r, error = TRUE, echo=TRUE}
+#creo un vettore campionando 100 elementi da una distribuzione normale con media 10 e sd 5
+myvec = rnorm(100, 10, 5)
+mean(myvec) # x definito, trim non definito, na.rm non definito
+mean(myvec, trim = 0.10) # x definito, trim definito, na.rm non definito
+mean(myvec, na.rm = TRUE) # x definito trim non definito, na.rm definito
+mean(myvec, TRUE) # cosa succede?
+```
+
+## Packages
+
+In R è possibile installare e caricare pacchetti aggiuntivi che non fanno altro che rendere disponibili librerie di funzioni create da altri utenti. Per utilizzare un pacchetto:
+
+-   Installare il pacchetto con **`install.packages("nomepacchetto")`**
+
+-   Caricare il pacchetto con **`library(nomepacchetto)`**
+
+-   Accedere ad una funzione senza caricare il pachetto **`nomepacchetto::nomefunzione()`**. Utile se serve solo una funzione o ci sono conflitti)
+
+## Packages
+
+![](images/pack.png){fig-align="center" width="600"}
+
+## Come risolvere i problemi in R
+
+In R gli errori sono:
+
+-   inevitabili
+-   parte del codice stesso
+-   educativi
+
+## R ed errori
+
+Ci sono diversi livelli di **allerta** quando scriviamo codice:
+
+-   **`messaggi`**: la funzione ci restituisce qualcosa che è utile sapere, ma tutto liscio
+
+-   **`warnings`**: la funzione ci informa di qualcosa di *potenzialmente* problematico, ma (circa) tutto liscio
+
+-   **`error`**: la funzione non solo ci informa di un **errore** ma le operazioni richieste non sono state eseguite
+
+## Come risolvere?
+
+-   Capire il messaggio
+-   Leggere la documentazione della funzione
+-   Cercare il messaggio su internet
+-   Chiedere aiuto nei forum dedicati
+
+## La documentazione della funzione
+
+-   Ogni funzione ha una pagina di documentazione accessibile con `?nomefunzione`, `??nomefunzione` oppure `help(nomefunzione)`
+
+-   Possiamo cercare anche la documentazione del pacchetto
+
+-   Possiamo cercare su internet il nome della funzione o l'eventuale messaggio che riceviamo
+
+## Stack overflow
+
+[**Stack overflow**](https://stackoverflow.com/) è un forum di discussione riguardo qualsiasi cosa coinvolga codice (statistica, programmazione, etc.). E' pieno di errori comuni, *How to do ...* e di risposte/soluzioni estremamente utili. Nel 90% dei casi il problema che avete è comune ed è già presente una soluzione.
+
+![](images/stackOver.png){fig-align="center" width="800"}
+
+## ChatGPT
+
+**Attentenzione**
+
+-   Ponete bene la domanda
+
+-   Sinceratevi di aver capito la risposta
+
+-   Controllate!

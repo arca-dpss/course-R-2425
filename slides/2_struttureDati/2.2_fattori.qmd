@@ -1,0 +1,150 @@
+---
+title: "2.2_fattori"
+format: 
+   revealjs:
+     margin: 0.1
+editor: visual
+---
+
+## Strutture Dati
+
+-   vettori
+
+-   ***`fattori`***
+
+-   liste
+
+-   matrici
+
+-   array
+
+-   dataframe
+
+## Fattori
+
+I fattori sono una tipologia di dato peculiare e per quanto simile a semplici **`characters`** in realtà sono un tipo di vettore **`integer`** con delle proprietà aggiuntive.
+
+## Creare un fattore
+
+I fattori si possono creare sia convertendo un vettore character attraverso il comando **`as.factor()`** che creando esplicitamente un fattore attraverso il comando **`factor()`**
+
+```{r, echo=TRUE}
+
+char_vect = rep(c("hello","ciao", "hola"), each = 2)
+as.factor(char_vect)
+
+```
+
+```{r, echo=TRUE}
+
+my_fact = factor(char_vect)
+my_fact
+
+```
+
+## Caratteristiche dei fattori
+
+In pratica assegnano un'etichetta ad un valore numerico intero:
+
+```{r, echo = TRUE}
+typeof(my_fact)
+```
+
+```{r, echo=TRUE, warning=TRUE}
+as.integer(my_fact); my_fact
+```
+
+Questo non vale per i vettori character!
+
+```{r, echo = TRUE}
+as.integer(char_vect)
+```
+
+------------------------------------------------------------------------
+
+I fattori permettono di avere dei livelli **`levels()`** come metadati, a prescindere da quali siano effettivamente presenti nel vettore
+
+```{r, echo = TRUE}
+levels(my_fact)
+
+my_fact2 = my_fact[my_fact!="ciao"]
+my_fact2
+```
+
+E' possibile però eslcudere i livelli non più utili attraverso il comando **`droplevels()`**
+
+```{r, echo = TRUE}
+droplevels(my_fact2) 
+```
+
+------------------------------------------------------------------------
+
+E' possibile anche rinominare i livelli del fattore
+
+```{r, echo=TRUE}
+# il fattore che ho creato 
+my_fact
+
+# creo un altro fattore "my_fact_lev" identico a "my_fact"
+my_fact_lev = my_fact
+my_fact_lev == my_fact
+
+# rinomino i livelli del fattore
+levels(my_fact_lev) = c("italiano","inglese","spagnolo")
+
+my_fact_lev
+
+my_fact
+
+```
+
+------------------------------------------------------------------------
+
+E' possibile sia riordinare che rinominare i livelli di un fattore attraverso la funzione **`factor()`**
+
+```{r, echo=TRUE}
+my_fact
+# di default l'ordine di assegnazione è alfabetico 
+as.integer(my_fact)
+
+new_fact = factor(my_fact, levels = c("hello","ciao","hola"))
+new_fact
+as.integer(new_fact)
+
+new_fact2 = factor(my_fact, levels = c("hello","ciao","hola"),
+                   labels = c("inglese","italiano","spagnolo"))
+new_fact2
+```
+
+------------------------------------------------------------------------
+
+**Ricordate**: l'argomento ***`levels`*** dentro la funzione **`factor()`** serve a **riordinare** i livelli del fattore, mentre la funzione **`levels()`** li **rinomina** non riordina!
+
+```{r, echo=TRUE}
+# il fattore che ho creato 
+my_fact
+as.integer(my_fact)
+levels(my_fact) = c("hello","ciao","hola")
+
+# Cosa notate rispetto al vettore my_fact visualizzato sopra?
+my_fact
+as.integer(my_fact)
+```
+
+## Fattori Ordinali
+
+Un sottotipo di fattori sono gli ***ordered factors*** che corrispondo alle variabili ordinali, ovvero dove i livelli sono ordinati in modo crescente:
+
+```{r, echo=TRUE}
+my_ord_fac = as.ordered(my_fact)
+
+my_ord_fac # odine alfabetico
+
+attributes(my_ord_fac)
+```
+
+## Facciamo un po' di pratica! {style="text-align: center;"}
+
+<br/> Aprite e tenete aperto questo link:
+
+https://etherpad.wikimedia.org/p/arca-corsoR

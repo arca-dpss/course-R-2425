@@ -1,0 +1,94 @@
+---
+title: "1.1_intro"
+format: 
+   revealjs:
+     margin: 0.1
+editor: visual
+---
+
+## Ambiente di Lavoro {style="text-align: center;"}
+
+![](images/R_studio.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+***Environment.*** Il working environment è la vostra scrivania quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
+
+<br/> ***Working Directory.*** La working directory è la posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.
+
+<br/> ***Script.*** Lo script è un file di testo dove il codice viene salvato e puo essere lanciato in successione. Nello script è possibile combinare codice e commenti (#)
+
+```{r, echo = TRUE}
+# assegno ad x il valore 30
+x = 30
+```
+
+# Come lavorare in R
+
+## R Projects
+
+Gli ***R projects*** sono una feature implementata in R Studio per organizzare una cartella di lavoro.
+
+-   permettono di impostare la working directory in automatico
+-   permettono di usare ***relative path*** invece che ***absolute path***
+-   permettono un veloce accesso ad un determinato progetto
+
+## Working Directory
+
+Dove sta lavorando R ?
+
+<br/>
+
+```{r, echo = TRUE}
+getwd()
+```
+
+## Path Assoluto
+
+PC
+
+    |- Users
+        | 
+        |- tita (il mio soprannome :) )
+            |
+            |- Desktop
+                |
+                |- R
+                    |
+                    |- IntroR
+                         |
+                         |- slides
+                              |
+                              |- 1_intro
+
+<br/> Stiamo lavorando dentro la cartella 1_intro.
+
+## Path Relativo (alla working directory)
+
+Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra ' ' .
+
+<br/>
+
+```{r, echo=TRUE, warning=FALSE}
+read.table('prova')
+```
+
+## Come cambiare la working directory?
+
+Se però vogliamo caricare un file che si trova in un'altra posizione dobbiamo chiamarlo attraverso il path assoluto, oppure cambiare la working directory.
+
+</b> Con il comando setwd possiamo cambiare la cartella di lavoro.
+
+```{r, echo = TRUE}
+# setwd('/Users/tita/Desktop')
+```
+
+## La soluzione migliore?
+
+Creare un R project!
+
+-   permettono di impostare la working directory in automatico
+-   permettono di usare ***relative path*** invece che ***absolute path***
+-   permettono un veloce accesso ad un determinato progetto
+
+# Creiamone uno!
