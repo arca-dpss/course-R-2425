@@ -6,6 +6,7 @@ I corsi ARCA sono dei corsi avanzati e fortemente applicativi riguardo gli strum
 
 # ARCA - Introduzione a R
 
-Questa è la repository principale del corso dove ci saranno tutte le informazioni, slides, link e materiale. 
+Questa è la repository principale del corso (2024/25) dove ci saranno tutte le informazioni, slides, link e materiale. 
+Il materiale è stato adattato dal corso tenuto da [Filippo Gambarota](https://github.com/arca-dpss/course-R) negli scorsi anni.
 
 Il principale materiale di riferimento è il libro: [Introduzione a R](https://psicostat.github.io/Introduction2R/). Il libro, in costante aggiornamento e miglioramento, è disponibile online ed è interamente open-source.
