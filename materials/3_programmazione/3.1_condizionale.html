@@ -501,11 +501,11 @@ x_z = \frac{x - \mu_x}{\sigma_x}
 <span id="cb8-3"><a href="#cb8-3"></a></span>
 <span id="cb8-4"><a href="#cb8-4"></a><span class="fu">mean</span>(vect) <span class="co"># media</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.3131</code></pre>
+<pre><code>[1] 5.561663</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">sd</span>(vect)   <span class="co"># deviazione standard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.535873</code></pre>
+<pre><code>[1] 2.716857</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># centro</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>vec0 <span class="ot">=</span> <span class="fu">z_score</span>(vect) <span class="co"># di default na.rm =  è impostato TRUE </span></span>
@@ -535,7 +535,7 @@ x_z = \frac{x - \mu_x}{\sigma_x}
 <span id="cb16-4"><a href="#cb16-4"></a>}</span>
 <span id="cb16-5"><a href="#cb16-5"></a><span class="fu">z_score1</span>(vect[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1.283650136 -1.345388383 -0.483909625 -0.009255929  0.554903802</code></pre>
+<pre><code>[1]  0.7859818 -0.3287435 -0.2812747  1.1728837 -1.3488472</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:58%;">
@@ -543,7 +543,7 @@ x_z = \frac{x - \mu_x}{\sigma_x}
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>z_score2 <span class="ot">=</span> <span class="cf">function</span>(x) (x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="fu">z_score2</span>(vect[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1.283650136 -1.345388383 -0.483909625 -0.009255929  0.554903802</code></pre>
+<pre><code>[1]  0.7859818 -0.3287435 -0.2812747  1.1728837 -1.3488472</code></pre>
 </div>
 </div>
 </div>
@@ -760,15 +760,15 @@ A B C
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>age <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">80</span>)) <span class="co"># campiono da una distribuzione uniforme da 3 a 80</span></span>
 <span id="cb51-2"><a href="#cb51-2"></a>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 30 78 28 51 76  9 25 42 44 79</code></pre>
+<pre><code> [1] 31 26 31 27 38 48 78 32 35 23</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>age_ifelse <span class="ot">=</span> <span class="fu">ifelse</span>(age <span class="sc">&lt;</span> <span class="dv">18</span>, </span>
 <span id="cb53-2"><a href="#cb53-2"></a>                    <span class="at">yes =</span> <span class="st">"bambino"</span>,</span>
 <span id="cb53-3"><a href="#cb53-3"></a>                    <span class="at">no =</span> <span class="fu">ifelse</span>( age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="dv">60</span>, <span class="st">"adulto"</span>, <span class="st">"anziano"</span>))</span>
 <span id="cb53-4"><a href="#cb53-4"></a>age_ifelse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "adulto"  "anziano" "adulto"  "adulto"  "anziano" "bambino" "adulto" 
- [8] "adulto"  "adulto"  "anziano"</code></pre>
+<pre><code> [1] "adulto"  "adulto"  "adulto"  "adulto"  "adulto"  "adulto"  "anziano"
+ [8] "adulto"  "adulto"  "adulto" </code></pre>
 </div>
 </div>
 </section>
@@ -796,7 +796,7 @@ A B C
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>item <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="co"># simuliamo 20 risposte ad un item</span></span>
 <span id="cb58-2"><a href="#cb58-2"></a>item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 5 2 2 5 2 3 4 3 4 4 4 5 4 2 3 1 5 2 4 2</code></pre>
+<pre><code> [1] 4 1 1 2 4 4 4 2 2 4 4 1 3 2 2 4 2 1 2 2</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -810,7 +810,7 @@ A B C
 <span id="cb60-8"><a href="#cb60-8"></a>    item <span class="sc">==</span> <span class="dv">5</span> <span class="sc">~</span> <span class="dv">1</span> )</span>
 <span id="cb60-9"><a href="#cb60-9"></a>item_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 4 4 1 4 3 2 3 2 2 2 1 2 4 3 5 1 4 2 4</code></pre>
+<pre><code> [1] 2 5 5 4 2 2 2 4 4 2 2 5 3 4 4 2 4 5 4 4</code></pre>
 </div>
 </div>
 </section>
@@ -834,8 +834,8 @@ A B C
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   30 obs. of  3 variables:
  $ id     : Factor w/ 30 levels "1","2","3","4",..: 1 2 3 4 5 6 7 8 9 10 ...
- $ age    : int  40 15 14 35 32 30 41 38 21 19 ...
- $ age_cat: Factor w/ 3 levels "adolescente",..: 2 1 1 2 2 3 2 2 3 1 ...</code></pre>
+ $ age    : int  27 28 42 46 23 18 33 19 37 40 ...
+ $ age_cat: Factor w/ 3 levels "adolescente",..: 3 3 2 2 3 1 2 1 2 2 ...</code></pre>
 </div>
 </div>
 </section>
@@ -884,19 +884,19 @@ A B C
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   30 obs. of  2 variables:
  $ id : num  1 2 3 4 5 6 7 8 9 10 ...
- $ age: num  40 15 14 35 32 30 41 38 21 19 ...</code></pre>
+ $ age: num  27 28 42 46 23 18 33 19 37 40 ...</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="co"># applico la funzione mydf_fun</span></span>
 <span id="cb68-2"><a href="#cb68-2"></a>mydf_2 <span class="ot">=</span> <span class="fu">mydf_fun</span>(mydf_1)</span>
 <span id="cb68-3"><a href="#cb68-3"></a><span class="fu">head</span>(mydf_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id age     age_cat       age_z
-1  1  40      adulto  0.72458278
-2  2  15 adolescente -1.70147564
-3  3  14 adolescente -1.79851797
-4  4  35      adulto  0.23937110
-5  5  32      adulto -0.05175591
-6  6  30     giovane -0.24584059</code></pre>
+<pre><code>  id age     age_cat      age_z
+1  1  27     giovane -0.5070907
+2  2  28     giovane -0.4170746
+3  3  42      adulto  0.8431508
+4  4  46      adulto  1.2032151
+5  5  23     giovane -0.8671551
+6  6  18 adolescente -1.3172355</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(mydf_2, <span class="at">file =</span> <span class="st">"data/mydf_2.csv"</span>) <span class="co"># lo salvo per dopo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

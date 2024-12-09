@@ -160,6 +160,7 @@ z_score1 = function(x){
 z_score1(vect[1:5])
 ```
 :::
+
 ::: {.column width="58%"}
 ```{r, echo=TRUE}
 z_score2 = function(x) (x - mean(x)) / sd(x)
@@ -281,7 +282,7 @@ Per poter capire quale struttura condizionale utilizzare è importante capire be
 
 ## Programmazione condizionale
 
- Scriviamo una funzione che restituisca la media quando il vettore è numerico e la tabella di frequenza.
+Scriviamo una funzione che restituisca la media quando il vettore è numerico e la tabella di frequenza.
 
 ```{r, echo=TRUE}
 my_summary =  function(x){
@@ -447,10 +448,10 @@ source("utl/myfun.R")
 ls()
 ```
 
-
 ## Importare e utilizzare una funzione
 
 Ora avrò le mie funzioni disponibili come oggetti nel mio enviroment e potrò utilizzarle:
+
 ```{r, echo=TRUE, message=FALSE}
 # carico il dataframe salvato in precedenza
 mydf_1 = data.frame(readr::read_csv("data/mydf.csv"))

@@ -443,15 +443,15 @@
 <span id="cb5-2"><a href="#cb5-2"></a>myvec <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="fu">mean</span>(myvec) <span class="co"># x definito, trim non definito, na.rm non definito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 9.892863</code></pre>
+<pre><code>[1] 10.50809</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">mean</span>(myvec, <span class="at">trim =</span> <span class="fl">0.10</span>) <span class="co"># x definito, trim definito, na.rm non definito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 9.782248</code></pre>
+<pre><code>[1] 10.44124</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">mean</span>(myvec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># x definito trim non definito, na.rm definito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 9.892863</code></pre>
+<pre><code>[1] 10.50809</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">mean</span>(myvec, <span class="cn">TRUE</span>) <span class="co"># cosa succede?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
