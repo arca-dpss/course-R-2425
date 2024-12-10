@@ -32,6 +32,7 @@ sumxy%%2 == 0
 TRUE | FALSE
 # Risultato è TRUE
 
+
 # ESEMPIO con &
 4 + 3 & 5 * 2 > 10
 # operatori matematici prima quindi

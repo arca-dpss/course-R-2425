@@ -231,7 +231,7 @@ In pratica abbiamo:
 somma = 0 # inizializziamo la somma a 0
 x = 1:10 #vettore x 
 
-for(i in seq_along(x)){ # per tutta la lunghezza di x = 1:10 
+for(i in 1:length(x)){ # per tutta la lunghezza di x = 1:10 
   somma = somma + x[i]
 }
 ```
@@ -243,8 +243,8 @@ Mettiamo tutto dentro una funzione (i.e., creo una funzione che replichi quello 
 ```{r, echo=TRUE}
 my_sum = function(x){
   somma = 0 # inizializziamo la somma a 0
-  for(i in seq_along(x)){ 
-    somma <- somma + x[i]
+  for(i in seq_along(x)){  # equivalente a 1:length(x)
+    somma = somma + x[i]
   }
   return(somma)
 }
@@ -258,13 +258,13 @@ sum(x)
 
 ## Iterazione, applicazioni
 
-Il ciclo **`for`** è anche utile per simulare dei dati per esempio, supponiamo che in media (tra i nostri 30 partecipanti) ci aspettiamo un'effetto dell'età **b_mu** uguale a **.25**, e con poca variabilità tra i soggetti (**.1**)
+Il ciclo **`for`** è anche utile per simulare dei dati per esempio, supponiamo che in media (tra i nostri 30 partecipanti) ci aspettiamo un'effetto dell'età **b_mu** uguale a **.2**, e con poca variabilità tra i soggetti (**.1**)
 
 ```{r, echo=TRUE}
 mydf = read.csv(file = "data/mydf_2.csv") #carico il dataset 
 str(mydf)
 
-group_mean = .25 #effetto medio atteso
+group_mean = .2 #effetto medio atteso
 var_mean = .1   #variabilità nell'effetto atteso
 n_subj = max(mydf$id) #numero soggetti
 ```
@@ -279,7 +279,6 @@ set.seed(111) # x replicabilità della simulazione
 niter = 1000 # numero di iterazioni
 res1 = rep(NA, niter) # vettore di risultati
 age_z = mydf$age_z
-residui = rnorm(n_subj, 0, .5)
 
 for(i in 1:niter) {
   
@@ -287,7 +286,7 @@ for(i in 1:niter) {
   b_mu = rnorm(n_subj, mean = group_mean, sd = var_mean)
   # Simulo un vettore y per ogni iterazione,
   # che avrà tanti elementi quanti soggetti
-  y = 0 + b_mu * age_z + residui
+  y = 0 + b_mu * age_z
   # Modello lineare
   mod = lm(y ~ 1 + age_z)
   res1[i] = mod$coefficients[[2]] # Estraggo l'effetto dell'età
@@ -323,7 +322,7 @@ for(i in 1:niter) {
   
   # Simulo un vettore y per ogni iterazione,
   # che avrà tanti elementi quanti soggetti
-  y = 0 + b_mu * age_z + residui
+  y = 0 + b_mu * age_z 
   
   # Modello lineare
   mod = lm(y ~ 1 + age_z)
@@ -387,9 +386,9 @@ for (gruppo in gruppi) {
     
     # Simulare un tempo di reazione 
     RT=ifelse(gruppo == "Controllo", 
-                             rnorm(1, mean = 500, sd = 50),  
+                             rlnorm(1, mean = .500, sd = .050),  
               # Media diversa per il gruppo Trattamento
-                             rnorm(1, mean = 450, sd = 50))
+                             rlnorm(1, mean = .450, sd = .050))
     
     # Aggiungere i dati al dataframe, aggiungendo una riga 
     res=rbind(res, 
@@ -406,6 +405,41 @@ head(res)
 mean(res$RT[res$Gruppo == "Controllo"])
 mean(res$RT[res$Gruppo == "Trattamento"])
 ```
+
+------------------------------------------------------------------------
+
+Equivalente (e forse più intuitivo)
+
+```{r, echo=TRUE}
+num_soggetti = 10
+gruppo = character()
+res2 =data.frame(Gruppo = character(num_soggetti), 
+                  Partecipante = integer(num_soggetti), RT = numeric(num_soggetti))
+
+for (i in 1:num_soggetti) {
+  
+    gruppo[i] = ifelse(i < 5, "Controllo","Trattamento")
+    
+    RT = ifelse(gruppo[i] == "Controllo", 
+                rlnorm(1, .500, .050), rlnorm(1, .450, .050))
+    
+    res2$Gruppo[i] = gruppo[i] 
+    
+    res2$Partecipante[i] = i
+    
+    res2$RT[i] = RT                 
+}
+```
+
+
+-------------------------------------------------------
+```{r, echo=TRUE}
+str(res2)
+head(res2)
+mean(res2$RT[res2$Gruppo == "Controllo"])
+mean(res2$RT[res2$Gruppo == "Trattamento"])
+```
+
 
 ## Ora facciamo un po' di pratica! {style="text-align: center;"}
 

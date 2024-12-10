@@ -278,7 +278,7 @@ myfun_ifelse(1.4)
 
 ## Programmazione condizionale
 
-Per poter capire quale struttura condizionale utilizzare è importante capire bene il problema che dobbiamo risolvere. Facciamo un esempio, immaginiamo di avere 2 tipi di dati in R: stringhe e numeri. In questo caso è sufficiente avere un **`if statement`** che controlla se l'elemento è una stringa/numero e per tutto il resto applicare l'opposto.
+Per poter capire quale struttura condizionale utilizzare è importante capire bene il problema che dobbiamo risolvere. Facciamo un esempio, immaginiamo di avere 2 tipi di dati in R: stringhe e numeri. In questo caso è sufficiente avere un **`if statement`** che controlla se l'elemento è una stringa/numero e fa una determinata operazione.
 
 ## Programmazione condizionale
 

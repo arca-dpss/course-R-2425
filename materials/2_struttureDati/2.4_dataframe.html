@@ -414,11 +414,11 @@
 <span id="cb1-3"><a href="#cb1-3"></a>                    <span class="at">col3 =</span> <span class="fu">rnorm</span>(<span class="dv">4</span>)) </span>
 <span id="cb1-4"><a href="#cb1-4"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2      col3
-1    1    a -0.390406
-2    2    b -1.621301
-3    3    c -1.271605
-4    4    d -1.060575</code></pre>
+<pre><code>  col1 col2       col3
+1    1    a -0.7643168
+2    2    b -0.9250629
+3    3    c  2.4530594
+4    4    d -0.9047478</code></pre>
 </div>
 </div>
 </section>
@@ -495,15 +495,15 @@ $row.names
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># includo solo le righe in cui alla colonna1 i valori sono maggiori di 2</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a>my_df[my_df<span class="sc">$</span>col1 <span class="sc">&gt;</span> <span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2      col3
-3    3    c -1.271605
-4    4    d -1.060575</code></pre>
+<pre><code>  col1 col2       col3
+3    3    c  2.4530594
+4    4    d -0.9047478</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>my_df[my_df[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">2</span>, ] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2      col3
-3    3    c -1.271605
-4    4    d -1.060575</code></pre>
+<pre><code>  col1 col2       col3
+3    3    c  2.4530594
+4    4    d -0.9047478</code></pre>
 </div>
 </div>
 </section>
@@ -511,11 +511,11 @@ $row.names
 <h2>Esempi</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2      col3
-1    1    a -0.390406
-2    2    b -1.621301
-3    3    c -1.271605
-4    4    d -1.060575</code></pre>
+<pre><code>  col1 col2       col3
+1    1    a -0.7643168
+2    2    b -0.9250629
+3    3    c  2.4530594
+4    4    d -0.9047478</code></pre>
 </div>
 </div>
 <div>
@@ -745,17 +745,17 @@ $row.names
 <pre><code>'data.frame':   800 obs. of  3 variables:
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.316 0.274 0.387 0.291 0.473 ...</code></pre>
+ $ rt  : num  0.246 0.332 0.371 0.346 0.383 ...</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">head</span>(df_rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  subj cond        rt
-1 caio easy 0.3156796
-2 caio easy 0.2741456
-3 caio easy 0.3866417
-4 caio easy 0.2912082
-5 caio easy 0.4734367
-6 caio easy 0.3910026</code></pre>
+1 caio easy 0.2461750
+2 caio easy 0.3324239
+3 caio easy 0.3709496
+4 caio easy 0.3460079
+5 caio easy 0.3834675
+6 caio easy 0.4517216</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">str</span>(df_age) <span class="co"># struttura dataframe età</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -781,7 +781,7 @@ $row.names
 <pre><code>'data.frame':   800 obs. of  4 variables:
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.316 0.274 0.387 0.291 0.473 ...
+ $ rt  : num  0.246 0.332 0.371 0.346 0.383 ...
  $ age : num  20 20 20 20 20 20 20 20 20 20 ...</code></pre>
 </div>
 </div>
@@ -794,7 +794,7 @@ $row.names
 <pre><code>'data.frame':   800 obs. of  4 variables:
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.316 0.274 0.387 0.291 0.473 ...
+ $ rt  : num  0.246 0.332 0.371 0.346 0.383 ...
  $ age : num  20 20 20 20 20 20 20 20 20 20 ...</code></pre>
 </div>
 </div>
@@ -811,15 +811,15 @@ $row.names
 <div class="cell-output cell-output-stdout">
 <pre><code>
  caio tizio 
-  378   396 </code></pre>
+  375   393 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># quanti trial x ogni soggetto x condizione</span></span>
 <span id="cb70-2"><a href="#cb70-2"></a><span class="fu">table</span>(df_rt_clean<span class="sc">$</span>subj,df_rt_clean<span class="sc">$</span>cond) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       
         easy hard
-  caio   187  191
-  tizio  198  198</code></pre>
+  caio   187  188
+  tizio  194  199</code></pre>
 </div>
 </div>
 </section>
@@ -854,14 +854,14 @@ $row.names
 <pre><code>'data.frame':   800 obs. of  3 variables:
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.316 0.274 0.387 0.291 0.473 ...</code></pre>
+ $ rt  : num  0.246 0.332 0.371 0.346 0.383 ...</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">str</span>(df_rt_impo) <span class="co"># Data frame caricato </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [800 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ subj: chr [1:800] "caio" "caio" "caio" "caio" ...
  $ cond: chr [1:800] "easy" "easy" "easy" "easy" ...
- $ rt  : num [1:800] 0.316 0.274 0.387 0.291 0.473 ...
+ $ rt  : num [1:800] 0.246 0.332 0.371 0.346 0.383 ...
  - attr(*, "spec")=
   .. cols(
   ..   subj = col_character(),
@@ -885,7 +885,7 @@ $row.names
 <pre><code>spc_tbl_ [800 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ subj: num [1:800] NA NA NA NA NA NA NA NA NA NA ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : Factor w/ 800 levels "0.315679646426554",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ rt  : Factor w/ 800 levels "0.246175033345716",..: 1 2 3 4 5 6 7 8 9 10 ...
  - attr(*, "spec")=
   .. cols(
   ..   subj = col_double(),
@@ -907,7 +907,7 @@ $row.names
 <pre><code>spc_tbl_ [800 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num [1:800] 0.316 0.274 0.387 0.291 0.473 ...
+ $ rt  : num [1:800] 0.246 0.332 0.371 0.346 0.383 ...
  - attr(*, "spec")=
   .. cols(
   ..   subj = col_character(),
@@ -930,7 +930,7 @@ $row.names
 <pre><code>tibble [800 × 3] (S3: tbl_df/tbl/data.frame)
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num [1:800] 0.316 0.274 0.387 0.291 0.473 ...</code></pre>
+ $ rt  : num [1:800] 0.246 0.332 0.371 0.346 0.383 ...</code></pre>
 </div>
 </div>
 <p>(solo per farvi vedere come in <strong><em>R</em></strong>, si possa risolvere un problema in differenti modi)</p>
