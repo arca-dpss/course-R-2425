@@ -87,17 +87,6 @@ medians
 stds
 ```
 
-## `*apply` family
-
-Prima di introdurre l'**`*apply`** family un piccolo bonus. Sfruttando il fatto che in R tutto è un oggetto possiamo scrivere in modo ancora più conciso:
-
-```{r,echo=TRUE}
-# lista di funzioni
-my_funs=list(median = median, mean = mean, sd = sd)
-
-# applico ai vettori della mia lista le funzioni nella lista my_fun
-lapply(my_list, function(vec) sapply(my_funs, function(fun) fun(vec)))
-```
 
 ## `*apply` family
 

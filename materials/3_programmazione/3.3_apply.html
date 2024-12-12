@@ -429,15 +429,15 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>means </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.128529699  0.495316069  0.122400405  0.007952732</code></pre>
+<pre><code>[1] -0.06244243  0.52132264  0.05718438 -0.02769332</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>medians</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.0529248  0.4621598  0.1522610 -0.1695774</code></pre>
+<pre><code>[1] -0.04877713  0.52255677  0.09084072  0.07004321</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>stds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.0059772 0.2720942 0.9990584 0.9774053</code></pre>
+<pre><code>[1] 0.9455751 0.2614234 1.1453929 1.0212599</code></pre>
 </div>
 </div>
 </div>
@@ -462,50 +462,22 @@
 <span id="cb9-4"><a href="#cb9-4"></a></span>
 <span id="cb9-5"><a href="#cb9-5"></a>means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        vec1         vec2         vec3         vec4 
--0.128529699  0.495316069  0.122400405  0.007952732 </code></pre>
+<pre><code>       vec1        vec2        vec3        vec4 
+-0.06244243  0.52132264  0.05718438 -0.02769332 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>medians</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      vec1       vec2       vec3       vec4 
--0.0529248  0.4621598  0.1522610 -0.1695774 </code></pre>
+<pre><code>       vec1        vec2        vec3        vec4 
+-0.04877713  0.52255677  0.09084072  0.07004321 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>stds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     vec1      vec2      vec3      vec4 
-1.0059772 0.2720942 0.9990584 0.9774053 </code></pre>
+0.9455751 0.2614234 1.1453929 1.0212599 </code></pre>
 </div>
 </div>
 </section>
 <section id="apply-family-4" class="slide level2">
-<h2><code>*apply</code> family</h2>
-<p>Prima di introdurre l’<strong><code>*apply</code></strong> family un piccolo bonus. Sfruttando il fatto che in R tutto è un oggetto possiamo scrivere in modo ancora più conciso:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># lista di funzioni</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>my_funs<span class="ot">=</span><span class="fu">list</span>(<span class="at">median =</span> median, <span class="at">mean =</span> mean, <span class="at">sd =</span> sd)</span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># applico ai vettori della mia lista le funzioni nella lista my_fun</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">lapply</span>(my_list, <span class="cf">function</span>(vec) <span class="fu">sapply</span>(my_funs, <span class="cf">function</span>(fun) <span class="fu">fun</span>(vec)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$vec1
-    median       mean         sd 
--0.0529248 -0.1285297  1.0059772 
-
-$vec2
-   median      mean        sd 
-0.4621598 0.4953161 0.2720942 
-
-$vec3
-   median      mean        sd 
-0.1522610 0.1224004 0.9990584 
-
-$vec4
-      median         mean           sd 
--0.169577372  0.007952732  0.977405276 </code></pre>
-</div>
-</div>
-</section>
-<section id="apply-family-5" class="slide level2">
 <h2><code>*apply</code> family</h2>
 <p><strong>apply( &lt; lista &gt; , &lt; funzione &gt; )</strong></p>
 <ul>
@@ -523,16 +495,16 @@ $vec4
 </ul></li>
 </ul>
 </section>
-<section id="apply-family-6" class="slide level2">
+<section id="apply-family-5" class="slide level2">
 <h2><code>*apply</code> family</h2>
 <p>Prima di analizzare l’<strong><code>*apply</code></strong> family, credo sia utile un ulteriore parallelismo con il ciclo for che abbiamo visto. <strong><code>apply</code></strong> non è altro che un ciclo <strong><code>for</code></strong>, leggermente semplificato.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Ciclo <strong><code>for</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>vec <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="cf">for</span>(i <span class="cf">in</span> vec){</span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">print</span>(i)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>vec <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="cf">for</span>(i <span class="cf">in</span> vec){</span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">print</span>(i)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -544,8 +516,8 @@ $vec4
 </div><div class="column" style="width:50%;">
 <p><strong><code>sapply</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>vec <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>res <span class="ot">=</span> <span class="fu">sapply</span>(vec, print)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>vec <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>res <span class="ot">=</span> <span class="fu">sapply</span>(vec, print)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -561,27 +533,27 @@ $vec4
 <h2><code>*apply</code> family - funzione custom</h2>
 <p>Possiamo utlizzare anche funzioni create da noi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>center_var <span class="ot">=</span> <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb21-2"><a href="#cb21-2"></a></span>
-<span id="cb21-3"><a href="#cb21-3"></a>my_list <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb21-4"><a href="#cb21-4"></a>    <span class="at">vec1 =</span> <span class="fu">runif</span>(<span class="dv">10</span>),</span>
-<span id="cb21-5"><a href="#cb21-5"></a>    <span class="at">vec2 =</span> <span class="fu">runif</span>(<span class="dv">10</span>),</span>
-<span id="cb21-6"><a href="#cb21-6"></a>    <span class="at">vec3 =</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
-<span id="cb21-7"><a href="#cb21-7"></a>)</span>
-<span id="cb21-8"><a href="#cb21-8"></a></span>
-<span id="cb21-9"><a href="#cb21-9"></a><span class="fu">lapply</span>(my_list, center_var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>center_var <span class="ot">=</span> <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb19-2"><a href="#cb19-2"></a></span>
+<span id="cb19-3"><a href="#cb19-3"></a>my_list <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb19-4"><a href="#cb19-4"></a>    <span class="at">vec1 =</span> <span class="fu">runif</span>(<span class="dv">10</span>),</span>
+<span id="cb19-5"><a href="#cb19-5"></a>    <span class="at">vec2 =</span> <span class="fu">runif</span>(<span class="dv">10</span>),</span>
+<span id="cb19-6"><a href="#cb19-6"></a>    <span class="at">vec3 =</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
+<span id="cb19-7"><a href="#cb19-7"></a>)</span>
+<span id="cb19-8"><a href="#cb19-8"></a></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="fu">lapply</span>(my_list, center_var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vec1
- [1] -0.25316054 -0.12448609 -0.28867871 -0.23084011 -0.42329234  0.28199159
- [7]  0.24561858  0.38549950  0.37065756  0.03669055
+ [1] -0.0869647245 -0.2413591818  0.3104610218 -0.1848986781 -0.0006296035
+ [6]  0.4223377566 -0.0869682684  0.2025990224 -0.0119473644 -0.3226299802
 
 $vec2
- [1]  0.205941637  0.001943035 -0.051154863 -0.218376739  0.314510873
- [6] -0.152319605  0.497838579  0.063465268 -0.300237316 -0.361610870
+ [1] -0.37761481  0.44598750  0.22337399 -0.34515876 -0.02681381  0.07327309
+ [7]  0.04524927 -0.33909030  0.52355547 -0.22276163
 
 $vec3
- [1] -0.38274728 -0.04131644  0.14867418 -0.20965653  0.25502829 -0.10610675
- [7] -0.18126103 -0.07377529  0.20025981  0.39090104</code></pre>
+ [1]  0.27791786 -0.25086747 -0.24096777 -0.24830888  0.03075864 -0.25943905
+ [7]  0.07306628  0.15212384  0.24749477  0.21822178</code></pre>
 </div>
 </div>
 </section>
@@ -592,8 +564,8 @@ $vec3
 <div class="column" style="width:40%;">
 <p><strong><code>sapply</code></strong> implicito</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>vec <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>res <span class="ot">=</span> <span class="fu">sapply</span>(vec, print)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>vec <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>res <span class="ot">=</span> <span class="fu">sapply</span>(vec, print)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -605,8 +577,8 @@ $vec3
 </div><div class="column" style="width:60%;">
 <p><strong><code>sapply</code></strong> esplicito</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>vec <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>res <span class="ot">=</span> <span class="fu">sapply</span>(vec, <span class="cf">function</span>(i) <span class="fu">print</span>(i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>vec <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>res <span class="ot">=</span> <span class="fu">sapply</span>(vec, <span class="cf">function</span>(i) <span class="fu">print</span>(i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -622,19 +594,19 @@ $vec3
 <h2><code>*apply</code> family - funzione anonima</h2>
 <p>Una funzione anonima è una funzione non salvata in un oggetto ma scritta per essere <strong>eseguita direttamente</strong>, all’interno di altre funzioni che lo permettono:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">lapply</span>(my_list, <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">lapply</span>(my_list, <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vec1
- [1] -0.25316054 -0.12448609 -0.28867871 -0.23084011 -0.42329234  0.28199159
- [7]  0.24561858  0.38549950  0.37065756  0.03669055
+ [1] -0.0869647245 -0.2413591818  0.3104610218 -0.1848986781 -0.0006296035
+ [6]  0.4223377566 -0.0869682684  0.2025990224 -0.0119473644 -0.3226299802
 
 $vec2
- [1]  0.205941637  0.001943035 -0.051154863 -0.218376739  0.314510873
- [6] -0.152319605  0.497838579  0.063465268 -0.300237316 -0.361610870
+ [1] -0.37761481  0.44598750  0.22337399 -0.34515876 -0.02681381  0.07327309
+ [7]  0.04524927 -0.33909030  0.52355547 -0.22276163
 
 $vec3
- [1] -0.38274728 -0.04131644  0.14867418 -0.20965653  0.25502829 -0.10610675
- [7] -0.18126103 -0.07377529  0.20025981  0.39090104</code></pre>
+ [1]  0.27791786 -0.25086747 -0.24096777 -0.24830888  0.03075864 -0.25943905
+ [7]  0.07306628  0.15212384  0.24749477  0.21822178</code></pre>
 </div>
 </div>
 <p><strong><code>x</code></strong> è solo un <strong>placeholder</strong> (analogo di i) e può essere qualsiasi lettera o nome!</p>
@@ -654,19 +626,19 @@ $vec3
 <h2><code>lapply</code></h2>
 <p><strong><code>lapply</code></strong> sta per list-apply e restituisce sempre una lista, applicando la funzione ad ogni elemento della lista in input:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>res<span class="ot">=</span><span class="fu">lapply</span>(my_list, mean)</span>
-<span id="cb29-2"><a href="#cb29-2"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>res<span class="ot">=</span><span class="fu">lapply</span>(my_list, mean)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vec1
-[1] 0.5478854
+[1] 0.355799
 
 $vec2
-[1] 0.4964002
+[1] 0.4039008
 
 $vec3
-[1] 0.5837265</code></pre>
+[1] 0.4435136</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">class</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">class</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
@@ -676,13 +648,13 @@ $vec3
 <h2><code>sapply</code></h2>
 <p><strong><code>sapply</code></strong> sta per simplified-apply e (cerca) di restituire una versione più semplice di una lista, applicando la funzione ad ogni elemento della lista in input:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>res<span class="ot">=</span><span class="fu">sapply</span>(my_list, mean)</span>
-<span id="cb33-2"><a href="#cb33-2"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>res<span class="ot">=</span><span class="fu">sapply</span>(my_list, mean)</span>
+<span id="cb31-2"><a href="#cb31-2"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     vec1      vec2      vec3 
-0.5478854 0.4964002 0.5837265 </code></pre>
+0.3557990 0.4039008 0.4435136 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">class</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">class</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
@@ -692,15 +664,15 @@ $vec3
 <h2><code>apply</code></h2>
 <p><strong><code>apply</code></strong> funziona in modo specifico per dataframe o matrici, applicando una funzione alle righe o alle colonne:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>my_df <span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">x1 =</span> <span class="fu">runif</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">10</span>), <span class="at">x2 =</span> <span class="fu">runif</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb37-2"><a href="#cb37-2"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>my_df <span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">x1 =</span> <span class="fu">runif</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">10</span>), <span class="at">x2 =</span> <span class="fu">runif</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb35-2"><a href="#cb35-2"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        x1       x2
-1 2.226692 3.910184
-2 9.760877 3.911140
-3 1.037286 3.562642
-4 2.227523 3.508360
-5 2.923148 3.699508</code></pre>
+1 8.056291 3.009874
+2 6.782558 3.776416
+3 3.007746 3.832786
+4 8.077636 3.666191
+5 9.784749 3.227990</code></pre>
 </div>
 </div>
 </section>
@@ -708,17 +680,17 @@ $vec3
 <h2><code>apply</code></h2>
 <p>Applico a tutte le righe (1) la funzione mean:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">apply</span>(my_df, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">apply</span>(my_df, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.068438 6.836008 2.299964 2.867942 3.311328</code></pre>
+<pre><code>[1] 5.533083 5.279487 3.420266 5.871914 6.506370</code></pre>
 </div>
 </div>
 <p>Applico a tutte le colonne (2) la funzione mean:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">apply</span>(my_df, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">apply</span>(my_df, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      x1       x2 
-3.635105 3.718367 </code></pre>
+7.141796 3.502651 </code></pre>
 </div>
 </div>
 </section>
@@ -726,14 +698,14 @@ $vec3
 <h2><code>tapply</code></h2>
 <p><strong><code>tapply</code></strong> permette di applicare una funzione ad un vettore, dividendo questo vettore in base ad una variabile categoriale:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>vec<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">75</span>)</span>
-<span id="cb43-2"><a href="#cb43-2"></a></span>
-<span id="cb43-3"><a href="#cb43-3"></a>index<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="at">each =</span> <span class="dv">25</span>)</span>
-<span id="cb43-4"><a href="#cb43-4"></a></span>
-<span id="cb43-5"><a href="#cb43-5"></a><span class="fu">tapply</span>(vec, <span class="at">INDEX =</span> index, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>vec<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">75</span>)</span>
+<span id="cb41-2"><a href="#cb41-2"></a></span>
+<span id="cb41-3"><a href="#cb41-3"></a>index<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="at">each =</span> <span class="dv">25</span>)</span>
+<span id="cb41-4"><a href="#cb41-4"></a></span>
+<span id="cb41-5"><a href="#cb41-5"></a><span class="fu">tapply</span>(vec, <span class="at">INDEX =</span> index, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         a          b          c 
--0.1307892 -0.2045587 -0.2853245 </code></pre>
+0.07363169 0.17311330 0.02408607 </code></pre>
 </div>
 </div>
 <p>Qui dove <em><code>INDEX</code></em> è un vettore stringa o un fattore.</p>
@@ -742,23 +714,23 @@ $vec3
 <h2><code>tapply</code></h2>
 <p>In questo caso calcoliamo la media per ogni categoria d’età:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>my_df <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/mydf_2.csv"</span>)</span>
-<span id="cb45-2"><a href="#cb45-2"></a><span class="fu">head</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>my_df <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/mydf_2.csv"</span>)</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">head</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
      id   age age_cat       age_z
   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;
-1     1    40 adulto       0.725 
-2     2    15 adolescente -1.70  
-3     3    14 adolescente -1.80  
-4     4    35 adulto       0.239 
-5     5    32 adulto      -0.0518
-6     6    30 giovane     -0.246 </code></pre>
+1     1    44 adulto       1.15  
+2     2    18 adolescente -1.19  
+3     3    32 adulto       0.0721
+4     4    25 giovane     -0.559 
+5     5    45 adulto       1.24  
+6     6    33 adulto       0.162 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">tapply</span>(my_df<span class="sc">$</span>age, my_df<span class="sc">$</span>age_cat, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">tapply</span>(my_df<span class="sc">$</span>age, my_df<span class="sc">$</span>age_cat, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>adolescente      adulto     giovane 
-   16.00000    39.94118    24.90000 </code></pre>
+   16.50000    40.73333    25.11111 </code></pre>
 </div>
 </div>
 </section>
@@ -766,10 +738,10 @@ $vec3
 <h2><code>vapply</code></h2>
 <p><strong><code>vapply</code></strong> è una versione più solida delle precedenti dal punto di vista di programmazione. In pratica permette (e richiede) di specificare in anticipo la tipologia di dato che ci aspettiamo come risultato:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">vapply</span>(my_list, <span class="at">FUN =</span> mean, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="at">length =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">vapply</span>(my_list, <span class="at">FUN =</span> mean, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="at">length =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     vec1      vec2      vec3 
-0.5478854 0.4964002 0.5837265 </code></pre>
+0.3557990 0.4039008 0.4435136 </code></pre>
 </div>
 </div>
 <p><em><code>FUN.VALUE = numeric(length = 1)</code></em>: indica che ogni risultato è un singolo valore numerico.</p>
@@ -778,21 +750,21 @@ $vec3
 <h2><code>mapply</code></h2>
 <p><strong><code>mapply</code></strong> permette di gestire <strong>più liste contemporaneamente</strong> per scenari più complessi. Ad esempio vogliamo usare la funzione <strong><code>rnorm()</code></strong> e generare 4 con diverse medie e deviazioni stardard in combinazione:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>medie<span class="ot">=</span><span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb51-2"><a href="#cb51-2"></a>stds<span class="ot">=</span><span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb51-3"><a href="#cb51-3"></a><span class="fu">mapply</span>(<span class="cf">function</span>(x,y) <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> x, <span class="at">sd =</span> y), medie, stds, <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>medie<span class="ot">=</span><span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb49-2"><a href="#cb49-2"></a>stds<span class="ot">=</span><span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="fu">mapply</span>(<span class="cf">function</span>(x,y) <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> x, <span class="at">sd =</span> y), medie, stds, <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 10.826449  8.959037 10.875223 11.987235  9.982475
+[1] 10.23285 11.63268 10.06450 11.19754 11.41108
 
 [[2]]
-[1] 21.21998 18.61132 21.62333 21.50720 19.17973
+[1] 22.70248 18.05308 20.48019 22.12845 22.07240
 
 [[3]]
-[1] 31.89766 31.10035 27.41191 26.83203 37.80864
+[1] 33.17335 32.46833 25.14690 25.13352 33.61143
 
 [[4]]
-[1] 43.55759 37.59010 39.26600 40.98921 34.26420</code></pre>
+[1] 37.29529 41.58475 42.75991 47.85355 41.24995</code></pre>
 </div>
 </div>
 <p><strong>IMPORTANTE</strong>, tutte le liste incluse devono avere la stessa dimensione!</p>
@@ -811,23 +783,23 @@ $vec3
 <h2><code>mapply</code> come <code>for</code></h2>
 <p>Lo stesso risultato (in modo più verboso) si ottiene con un <strong><code>for</code></strong> usando più volte l’iteratore i:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>medie<span class="ot">=</span><span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
-<span id="cb53-2"><a href="#cb53-2"></a>stds<span class="ot">=</span><span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb53-3"><a href="#cb53-3"></a>res<span class="ot">=</span><span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">length</span>(medie)) <span class="co"># lista vuota</span></span>
-<span id="cb53-4"><a href="#cb53-4"></a></span>
-<span id="cb53-5"><a href="#cb53-5"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(medie)){</span>
-<span id="cb53-6"><a href="#cb53-6"></a>  res[[i]] <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">6</span>, <span class="at">mean =</span> medie[[i]], <span class="at">sd =</span> stds[[i]])</span>
-<span id="cb53-7"><a href="#cb53-7"></a>} </span>
-<span id="cb53-8"><a href="#cb53-8"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>medie<span class="ot">=</span><span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
+<span id="cb51-2"><a href="#cb51-2"></a>stds<span class="ot">=</span><span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb51-3"><a href="#cb51-3"></a>res<span class="ot">=</span><span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">length</span>(medie)) <span class="co"># lista vuota</span></span>
+<span id="cb51-4"><a href="#cb51-4"></a></span>
+<span id="cb51-5"><a href="#cb51-5"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(medie)){</span>
+<span id="cb51-6"><a href="#cb51-6"></a>  res[[i]] <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">6</span>, <span class="at">mean =</span> medie[[i]], <span class="at">sd =</span> stds[[i]])</span>
+<span id="cb51-7"><a href="#cb51-7"></a>} </span>
+<span id="cb51-8"><a href="#cb51-8"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1]  8.539646  9.463136  9.064800 10.400413  9.480565  8.240795
+[1] 10.371779 10.216703  8.472698 11.663369  8.420294 10.753599
 
 [[2]]
-[1] 24.43222 20.14991 20.63186 18.94143 20.73819 18.53196
+[1] 17.86660 20.17946 17.63329 20.26231 16.86248 20.23591
 
 [[3]]
-[1] 36.08281 29.16968 27.09859 27.87979 27.73650 30.68962</code></pre>
+[1] 31.45917 29.89232 31.99641 24.74793 23.14769 28.89921</code></pre>
 </div>
 </div>
 </section>
@@ -846,25 +818,25 @@ $vec3
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>nrep<span class="ot">=</span><span class="dv">1000</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a></span>
-<span id="cb55-3"><a href="#cb55-3"></a>nsample<span class="ot">=</span><span class="dv">30</span></span>
-<span id="cb55-4"><a href="#cb55-4"></a></span>
-<span id="cb55-5"><a href="#cb55-5"></a>media<span class="ot">=</span><span class="dv">100</span></span>
-<span id="cb55-6"><a href="#cb55-6"></a></span>
-<span id="cb55-7"><a href="#cb55-7"></a>sd<span class="ot">=</span><span class="dv">30</span></span>
-<span id="cb55-8"><a href="#cb55-8"></a></span>
-<span id="cb55-9"><a href="#cb55-9"></a>means<span class="ot">=</span></span>
-<span id="cb55-10"><a href="#cb55-10"></a>  <span class="fu">replicate</span>(</span>
-<span id="cb55-11"><a href="#cb55-11"></a>    <span class="at">n =</span> nrep, </span>
-<span id="cb55-12"><a href="#cb55-12"></a>    <span class="at">expr =</span> {<span class="fu">mean</span>(</span>
-<span id="cb55-13"><a href="#cb55-13"></a>      <span class="fu">rnorm</span>(nsample, media, sd))}</span>
-<span id="cb55-14"><a href="#cb55-14"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>nrep<span class="ot">=</span><span class="dv">1000</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a></span>
+<span id="cb53-3"><a href="#cb53-3"></a>nsample<span class="ot">=</span><span class="dv">30</span></span>
+<span id="cb53-4"><a href="#cb53-4"></a></span>
+<span id="cb53-5"><a href="#cb53-5"></a>media<span class="ot">=</span><span class="dv">100</span></span>
+<span id="cb53-6"><a href="#cb53-6"></a></span>
+<span id="cb53-7"><a href="#cb53-7"></a>sd<span class="ot">=</span><span class="dv">30</span></span>
+<span id="cb53-8"><a href="#cb53-8"></a></span>
+<span id="cb53-9"><a href="#cb53-9"></a>means<span class="ot">=</span></span>
+<span id="cb53-10"><a href="#cb53-10"></a>  <span class="fu">replicate</span>(</span>
+<span id="cb53-11"><a href="#cb53-11"></a>    <span class="at">n =</span> nrep, </span>
+<span id="cb53-12"><a href="#cb53-12"></a>    <span class="at">expr =</span> {<span class="fu">mean</span>(</span>
+<span id="cb53-13"><a href="#cb53-13"></a>      <span class="fu">rnorm</span>(nsample, media, sd))}</span>
+<span id="cb53-14"><a href="#cb53-14"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="3.3_apply_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+<p><img data-src="3.3_apply_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </div>
 </div>
 </div>
