@@ -55,7 +55,7 @@ for (i in 1:10) {
 # 4. Usa un ciclo for per stampare la frase "R è fantastico!" 5 volte.
 
 for (i in 1:5) {
-  print("R è fantastico!")
+  print("R è bello!")
 }
 
 # 5. Usa un ciclo while per contare fino a 10, iniziando da 1.
@@ -104,7 +104,7 @@ for (i in 1:3){
 }
 
 # 9. Simula 10 valori da una distribuzione normale con media 5 e 
-# deviazione standard 2 usando un ciclo for
+# deviazione standard 2 usando un ciclo for (?rnorm)
 set.seed(123)
 valori=numeric(10)
 
@@ -125,7 +125,7 @@ for (gruppo in gruppi) {
   for (partecipante in 1:partecipanti) {
     print(gruppo)
     print(partecipante)
-    RT1 = ifelse(gruppo == "A", rnorm(1, 500, 50), rnorm(1, 450, 50))
+    RT1 = ifelse(gruppo == "A", rnorm(1, .500, .050), rnorm(1, .450, .050))
     dati1 = rbind(dati1, data.frame(Gruppo = gruppo, 
                                    Partecipante = partecipante, 
                                    RT = RT1))
@@ -141,7 +141,7 @@ dati2 =data.frame(Gruppo = character(N_subj),
 
 for (i in 1:N_subj) {
     gruppo[i] = ifelse(i < 5, "A","B")
-    RT2 = ifelse(gruppo[i] == "A", rlnorm(1, 500, 50), rlnorm(1, 450, 50))
+    RT2 = ifelse(gruppo[i] == "A", rlnorm(1, .500, .050), rlnorm(1, .450, .050))
     dati2$Gruppo[i] = gruppo[i] 
     dati2$Partecipante[i] = i
     dati2$RT[i] = RT2                 

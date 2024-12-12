@@ -258,14 +258,14 @@ sum(x)
 
 ## Iterazione, applicazioni
 
-Il ciclo **`for`** è anche utile per simulare dei dati per esempio, supponiamo che in media (tra i nostri 30 partecipanti) ci aspettiamo un'effetto dell'età **b_mu** uguale a **.2**, e con poca variabilità tra i soggetti (**.1**)
+Il ciclo **`for`** è anche utile per simulare dei dati per esempio, supponiamo che in media (tra i nostri 30 partecipanti) ci aspettiamo un'effetto dell'età **b_mu** uguale a **.2**
 
 ```{r, echo=TRUE}
 mydf = read.csv(file = "data/mydf_2.csv") #carico il dataset 
 str(mydf)
 
-group_mean = .2 #effetto medio atteso
-var_mean = .1   #variabilità nell'effetto atteso
+group_mean = .2 # effetto medio atteso
+var_mean = .1   # rumore 
 n_subj = max(mydf$id) #numero soggetti
 ```
 
@@ -306,10 +306,10 @@ hist(res1)
 
 ------------------------------------------------------------------------
 
-Aumentiamo la variabilità individuale:
+Aumentiamo il rumore:
 
 ```{r, echo=TRUE}
-var_mean = .8  #variabilità nell'effetto atteso
+var_mean = .8  
 ```
 
 ```{r, echo=FALSE}
@@ -431,15 +431,14 @@ for (i in 1:num_soggetti) {
 }
 ```
 
+------------------------------------------------------------------------
 
--------------------------------------------------------
 ```{r, echo=TRUE}
 str(res2)
 head(res2)
 mean(res2$RT[res2$Gruppo == "Controllo"])
 mean(res2$RT[res2$Gruppo == "Trattamento"])
 ```
-
 
 ## Ora facciamo un po' di pratica! {style="text-align: center;"}
 

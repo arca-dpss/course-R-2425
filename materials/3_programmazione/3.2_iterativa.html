@@ -594,10 +594,7 @@ while (x &lt; 15) {
 <span id="cb25-4"><a href="#cb25-4"></a>  <span class="cf">if</span>(lancia_dado <span class="sc">==</span> <span class="dv">6</span>) <span class="cf">break</span></span>
 <span id="cb25-5"><a href="#cb25-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2
-[1] 3
-[1] 5
-[1] 6</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 </div>
 </section>
@@ -678,17 +675,17 @@ while (x &lt; 15) {
 <span id="cb32-9"><a href="#cb32-9"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb32-10"><a href="#cb32-10"></a><span class="fu">my_sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -3.039192</code></pre>
+<pre><code>[1] 12.32882</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -3.039192</code></pre>
+<pre><code>[1] 12.32882</code></pre>
 </div>
 </div>
 </section>
 <section id="iterazione-applicazioni" class="slide level2">
 <h2>Iterazione, applicazioni</h2>
-<p>Il ciclo <strong><code>for</code></strong> è anche utile per simulare dei dati per esempio, supponiamo che in media (tra i nostri 30 partecipanti) ci aspettiamo un’effetto dell’età <strong>b_mu</strong> uguale a <strong>.2</strong>, e con poca variabilità tra i soggetti (<strong>.1</strong>)</p>
+<p>Il ciclo <strong><code>for</code></strong> è anche utile per simulare dei dati per esempio, supponiamo che in media (tra i nostri 30 partecipanti) ci aspettiamo un’effetto dell’età <strong>b_mu</strong> uguale a <strong>.2</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>mydf <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/mydf_2.csv"</span>) <span class="co">#carico il dataset </span></span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="fu">str</span>(mydf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -699,8 +696,8 @@ while (x &lt; 15) {
  $ age_cat: chr  "adulto" "adolescente" "adulto" "giovane" ...
  $ age_z  : num  1.1542 -1.1902 0.0721 -0.5591 1.2443 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>group_mean <span class="ot">=</span> .<span class="dv">2</span> <span class="co">#effetto medio atteso</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>var_mean <span class="ot">=</span> .<span class="dv">1</span>   <span class="co">#variabilità nell'effetto atteso</span></span>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>group_mean <span class="ot">=</span> .<span class="dv">2</span> <span class="co"># effetto medio atteso</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>var_mean <span class="ot">=</span> .<span class="dv">1</span>   <span class="co"># rumore </span></span>
 <span id="cb38-3"><a href="#cb38-3"></a>n_subj <span class="ot">=</span> <span class="fu">max</span>(mydf<span class="sc">$</span>id) <span class="co">#numero soggetti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -743,9 +740,9 @@ while (x &lt; 15) {
 <img data-src="3.2_iterativa_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
-<p>Aumentiamo la variabilità individuale:</p>
+<p>Aumentiamo il rumore:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>var_mean <span class="ot">=</span> .<span class="dv">8</span>  <span class="co">#variabilità nell'effetto atteso</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>var_mean <span class="ot">=</span> .<span class="dv">8</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 
