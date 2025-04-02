@@ -1,0 +1,47 @@
+---
+title: "Start"
+format: 
+   revealjs:
+     margin: 0.1
+editor: visual
+---
+
+## Introduzione a R {style="text-align: center;"}
+
+### Presentazione del corso {style="text-align: center;"}
+
+![](arca_logo.svg){fig-align="center" width="80"}
+
+#### Margherita Calderan - Filippo Gambarota -- Enrico Toffalini {style="text-align: center;"}
+
+## Gli obiettivi principali
+
+-   Impareremo tutti gli **elementi principali** che compongono il linguaggio R
+-   Imparare la **logica generale della programmazione** spendibile con qualsiasi linguaggio
+-   Migliorare il modo di affrontare i problemi e **rendere più efficiente il lavoro quotidiano**
+
+## Il materiale principale
+
+-   Libro [**Introduction2R**](https://psicostat.github.io/Introduction2R/) disponibile online su Github
+
+-   [**Repository**](https://github.com/arca-dpss/course-R-2425) Github del corso
+
+## Organizzazione delle lezioni
+
+-   Comprensione teorico-logica degli argomenti
+
+-   Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari)
+
+-   Applicazione direttamente scrivendo codice e risolvendo problemi
+
+## Esame 😱
+
+-   **Formato**: L'esame consisterà in diversi esercizi.
+-   **Argomenti**: Gli esercizi copriranno gli argomenti trattati durante il corso.
+-   **Materiale consentito**:È permesso utilizzare il materiale fornito a lezione. Non è consentito l'uso di altro materiale online (o chatGPT) durante l'esame.
+-   **Durata**: 1 ora
+-   **Modalità**: in classe
+
+
+
+
