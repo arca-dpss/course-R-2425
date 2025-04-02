@@ -1,14 +1,13 @@
 ---
-title: "Start"
+title: "Introduzione a R"
 ---
 
-## Introduzione a R {style="text-align: center;"}
 
 ### Presentazione del corso {style="text-align: center;"}
 
 ![](arca_logo.svg){fig-align="center" width="80"}
 
-#### Margherita Calderan - Filippo Gambarota -- Enrico Toffalini {style="text-align: center;"}
+#### Margherita Calderan (Filippo Gambarota, Enrico Toffalini) {style="text-align: center;"}
 
 ## Gli obiettivi principali
 
@@ -39,5 +38,27 @@ title: "Start"
 -   **Modalità**: in classe
 
 
+## Aule e Orari (2024-2025) {style="text-align: center;"}
 
+| Data        | Ora           | Aula         |
+|-------------|---------------|--------------|
+| 07/04/2025  | 9:00 - 13:00 | Psico 2 - 4R |
+| 08/04/2025  | 9:00 - 13:00  | Psico 2 - 4R |
+| 09/04/2025  | 9:00 - 13:00  | Psico 2 - 4R |
+| 10/04/2025  | 9:00 - 13:00  | Psico 2 - 4M |
+| 11/04/2025  | 9:00 - 13:00  | Psico 2 - 4R |
+
+
+# Materiale
+
+## Lezioni
+
+Questi sono i link al materiale principale del corso:
+
+- **Introduzione al corso** - [Slides](slides/1_intro_generale/1_intro_generale.html) - [PDF](slides/1_intro_generale/1_intro_generale.pdf)
+- **Introduzione a R** - [Slides](slides/2_intro_a_R/2_intro_a_R.html) - [PDF](slides/2_intro_a_R/2_intro_a_R.pdf)
+- **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
+- **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
+- **Problem Solving in R** - [Link](extra/R_problem_solving.html)
+- **R and beyond** - [Slides](slides/5_R_and_beyond/5_R_and_beyond.html) - [PDF](slides/5_R_and_beyond/5_R_and_beyond.pdf)
 
