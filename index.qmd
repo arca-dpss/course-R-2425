@@ -1,9 +1,5 @@
 ---
 title: "Start"
-format: 
-   revealjs:
-     margin: 0.1
-editor: visual
 ---
 
 ## Introduzione a R {style="text-align: center;"}

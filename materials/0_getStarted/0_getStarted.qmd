@@ -6,44 +6,6 @@ format:
 editor: visual
 ---
 
-## Introduzione a R {style="text-align: center;"}
-
-### Presentazione del corso {style="text-align: center;"}
-
-![](images/arca_logo.svg){fig-align="center" width="80"}
-
-#### Margherita Calderan - Filippo Gambarota -- Enrico Toffalini {style="text-align: center;"}
-
-## Gli obiettivi principali
-
--   Impareremo tutti gli **elementi principali** che compongono il linguaggio R
--   Imparare la **logica generale della programmazione** spendibile con qualsiasi linguaggio
--   Migliorare il modo di affrontare i problemi e **rendere più efficiente il lavoro quotidiano**
-
-## Il materiale principale
-
--   Libro [**Introduction2R**](https://psicostat.github.io/Introduction2R/) disponibile online su Github
-
--   [**Repository**](https://github.com/arca-dpss/course-R-2425) Github del corso
-
-## Organizzazione delle lezioni
-
--   Comprensione teorico-logica degli argomenti
-
--   Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari)
-
--   Applicazione direttamente scrivendo codice e risolvendo problemi
-
-## Esame 😱
-
--   Consiste in **20 domande** a scelta multipla con una sola risposta corretta
--   **45 minuti** a disposizione
--   I punteggi sono assegnati con la seguente modalità:
-    -   **1 punto** per ogni **risposta corretta**
-    -   **-0.33 punti** per ogni **risposta sbagliata**
-    -   **0 punti** per ogni **risposta non data**
--   Per superare l'esame è necessario ottenere **almeno 15 punti (75%) sul totale di 20 punti**.
-
 ## Che cos'è ![R](images/R_logo.png){fig-align="center" width="80"}
 
 [**R**](https://www.r-project.org/) è un linguaggio di programmazione fortemente votato alla statistica, gestione di dati e visualizzazione.
