@@ -37,7 +37,6 @@ Credits: Filippo Gambarota e Enrico Toffalini
 
 
 ## Aule e Orari (2024-2025) {style="text-align: center;"}
-
 | Data        | Ora           | Aula         |
 |-------------|---------------|--------------|
 | 07/04/2025  | 9:00 - 13:00 | Psico 2 - 4R |
@@ -67,11 +66,16 @@ Questi sono i link al materiale principale del corso:
 - **DataFrame** - [Slides](materials/2_struttureDati/2.4_dataframe.html) - [PDF](materials/2_struttureDati/2.4_dataframe.pdf)
 
 ### Programmazione
-- **Condizionale** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
-- **Iterativa** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
-- **Apply family** - [Link](extra/R_problem_solving.html)
+- **Condizionale** - [Slides](materials/3_programmazione/3.1_condizionale.html) - [PDF](materials/3_programmazione/3.1_condizionale.pdf)
+- **Iterativa** - [Slides](materials/3_programmazione/3.2_iterativa.html) - [PDF](materials/3_programmazione/3.2_iterativa.pdf)
+- **Apply family** - [Link](materials/3_programmazione/3.3_apply.html) - [PDF](materials/2_struttureDati/3.3_apply.pdf)
 
 
 ### Extra
-- **ReCap** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
-- **Extra, caricare file, visualizzare dati, salvare** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
+- **ReCap** - [Slides](materials/4_extra/recap.html) - [PDF](materials/4_extra/recap.pdf)
+- **Extra, caricare file, visualizzare dati, salvare** - [Slides](materials/4_extra/EXTRA.html) - [PDF](materials/4_extra/EXTRA.pdf)
+
+
+### Esercizi
+Qui troverete esercizi con e senza soluzioni:
+

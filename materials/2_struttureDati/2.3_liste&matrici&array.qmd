@@ -130,7 +130,7 @@ Sono flessibili, permettono di conservare/organizzare dati/informazioni compless
 
 ```{r, echo=TRUE}
 N = 30; b0 = 0; b1 = 0.3; sigma = 1
-x = rnorm(N, 0, 1); y = b0 + b1*x + rnorm(N, 0, sigma)
+x = rnorm(N, 0, 1); y = b0 + b1*x + rnorm(n = N, mean = 0, sd = sigma)
 mod = lm(y ~ x)
 str(mod)
 ```
@@ -323,4 +323,4 @@ my_array[1,2,1] # prima riga, seconda colonna, prima "fetta"
 
 <br/> Aprite e tenete aperto questo link:
 
-https://etherpad.wikimedia.org/p/arca-corsoR
+<https://etherpad.wikimedia.org/p/arca-corsoR>

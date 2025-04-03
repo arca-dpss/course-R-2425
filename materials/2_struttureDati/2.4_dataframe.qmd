@@ -64,10 +64,10 @@ str(iris) # iris è un dataset presente di default in R (?iris)
 Si posso utlizzare sia le parentesi quadre **`[]`** che il simbolo del dollaro **`$`**
 
 ```{r, echo = TRUE}
-my_df[1] # estraggo un data.frame 5x1
-my_df[[1]]# estraggo la prima colonna del data.frame
-my_df$col1# estraggo la prima colonna del data.frame
-my_df[1,1]#  estraggo il primo elemento della prima colonna del data.frame
+my_df[1]  # estraggo un data.frame 5x1
+my_df[[1]] # estraggo la prima colonna del data.frame
+my_df$col1 # estraggo la prima colonna del data.frame
+my_df[1,1] #  estraggo il primo elemento della prima colonna del data.frame
 ```
 
 ## Indicizzazione - Operatori relazionali
@@ -130,7 +130,7 @@ head(subset(iris, Species == "setosa" & Sepal.Length > 4,
              c(Sepal.Length, Species)), n = 3)
 ```
 
-equivalente a:
+... equivalente a:
 
 ```{r,echo=TRUE}
 
@@ -234,7 +234,7 @@ Dataframe contente i tempi di reazione:
 df_rt = data.frame(subj = factor(rep(c("caio","tizio"),each = 400)),
                    cond = factor(rep(c("easy","hard"), 
                                      each = 200, times = 2)),
-                      rt = c(rlnorm(400, -1, .25), rlnorm(400, -.7, .3)))
+                      rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25), rlnorm(n = 400, meanlog = -.7, sdlog =.3)))
 ```
 
 Dataframe contente l'età:
@@ -381,4 +381,4 @@ Se avanzerà del tempo andremo a vedere anche questo tipo di formato, il materia
 
 <br/> Aprite e tenete aperto questo link:
 
-https://etherpad.wikimedia.org/p/arca-corsoR
+<https://etherpad.wikimedia.org/p/arca-corsoR>
