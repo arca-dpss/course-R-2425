@@ -44,7 +44,7 @@ Le funzioni ci permettono di **creare** e **modificare** oggetti.
 ```{r, echo = TRUE}
 matrice[1,2] = vettore[1]
 matrice
-meanM = mean(matrice)
+meanM = mean(x = matrice)
 meanM
 ```
 
@@ -271,6 +271,6 @@ In caso di dubbi riguardanti l'ordine di esecuzione delle operazioni, la cosa mi
 
 ## Facciamo un po' di pratica! {style="text-align: center;"}
 
-<br/> Aprite e tenete aperto questo link: https://etherpad.wikimedia.org/p/arca-corsoR
+<br/> Aprite e tenete aperto questo link: <https://etherpad.wikimedia.org/p/arca-corsoR>
 
 ![](images/pad_condiviso.png){fig-align="center" width="800"}

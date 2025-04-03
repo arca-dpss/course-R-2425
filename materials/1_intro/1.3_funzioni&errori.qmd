@@ -58,11 +58,11 @@ In questo caso proviamo ad usare la funzione `mean()`:
 
 ```{r, error = TRUE, echo=TRUE}
 #creo un vettore campionando 100 elementi da una distribuzione normale con media 10 e sd 5
-myvec = rnorm(100, 10, 5)
-mean(myvec) # x definito, trim non definito, na.rm non definito
-mean(myvec, trim = 0.10) # x definito, trim definito, na.rm non definito
-mean(myvec, na.rm = TRUE) # x definito trim non definito, na.rm definito
-mean(myvec, TRUE) # cosa succede?
+myvec = rnorm(n = 100, mean = 10, sd = 5)
+mean(x = myvec) # x definito, trim non definito, na.rm non definito
+mean(x = myvec, trim = 0.10) # x definito, trim definito, na.rm non definito
+mean(x = myvec, na.rm = TRUE) # x definito trim non definito, na.rm definito
+mean(x = myvec, TRUE) # cosa succede?
 ```
 
 ## Packages

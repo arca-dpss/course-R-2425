@@ -130,7 +130,7 @@ Possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'indice
 
 ```{r, echo=TRUE}
 # Creo un vettore formato da 20 numeri casuali pescati da 1 a 100
-my_vect = round(runif(20,1,100))
+my_vect = round(runif(n = 20,min = 1, max = 100))
 my_vect
 
 my_vect[1] # estraggo il primo elemento
@@ -257,7 +257,7 @@ Le operazioni più comuni sono per esempio la media **`mean()`**, la deviazione 
 
 ```{r, echo=TRUE}
 # creo un vettore campionando 1000 da una distribuzione normale 
-new_vect = rnorm(1000, mean = 1, sd = 4)
+new_vect = rnorm(n = 1000, mean = 1, sd = 4)
 
 mean(new_vect)
 sd(new_vect)
@@ -305,4 +305,4 @@ table(char_vect)
 
 <br/> Aprite e tenete aperto questo link:
 
-https://etherpad.wikimedia.org/p/arca-corsoR
+<https://etherpad.wikimedia.org/p/arca-corsoR>

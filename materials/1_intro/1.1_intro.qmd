@@ -47,19 +47,21 @@ getwd()
 
 PC
 
-    |- Users
-        | 
-        |- tita (il mio soprannome :) )
+```         
+|- Users
+    | 
+    |- tita (il mio soprannome :) )
+        |
+        |- Desktop
             |
-            |- Desktop
+            |- R
                 |
-                |- R
-                    |
-                    |- IntroR
-                         |
-                         |- slides
-                              |
-                              |- 1_intro
+                |- IntroR
+                     |
+                     |- slides
+                          |
+                          |- 1_intro
+```
 
 <br/> Stiamo lavorando dentro la cartella 1_intro.
 

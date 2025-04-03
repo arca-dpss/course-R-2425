@@ -86,7 +86,7 @@ R-studio è un'interfaccia user-friendly che permette di utilizzare R.
 
 Entrambi vanno installati separatamente e la procedura varia a seconda del proprio sistema operativo.
 
-Se non l'avete già installato, seguite la procedura spiegata a questo link: https://psicostat.github.io/Introduction2R/install.html
+Se non l'avete già installato, seguite la procedura spiegata a questo link: <https://psicostat.github.io/Introduction2R/install.html>
 
 ## Interfaccia R-Studio
 

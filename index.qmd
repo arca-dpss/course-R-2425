@@ -4,7 +4,8 @@ title: "Introduzione a R"
 
 ![](arca_logo.svg){fig-align="center" width="80"}
 
-#### Margherita Calderan (Filippo Gambarota, Enrico Toffalini) {style="text-align: center;"}
+#### Margherita Calderan {style="text-align: center;"}
+Credits: Filippo Gambarota e Enrico Toffalini
 
 ## Gli obiettivi principali
 
@@ -52,15 +53,18 @@ title: "Introduzione a R"
 
 Questi sono i link al materiale principale del corso:
 
-- **Introduzione al corso 1** - [Slides](slides/1_intro_generale/1_intro_generale.html) - [PDF](slides/1_intro_generale/1_intro_generale.pdf)
-- **Introduzione a R 1** - [Slides](slides/1_intro_generale/1_intro_generale.html) - [PDF](slides/1_intro_generale/1_intro_generale.pdf)
-- **Introduzione a R 2** - [Slides](slides/1_intro_generale/1_intro_generale.html) - [PDF](slides/1_intro_generale/1_intro_generale.pdf)
+### Introduzione 
+
+- **Introduzione a R (1)** - [Slides](materials/0_getStarted/0_getStarted.htlm) - [PDF](materials/0_getStarted/0_getStarted.pdf)
+- **Come lavorare in R - Path e R Projects** - [Slides](materials/1_intro/1.1_intro.htlm) - [PDF](materials/1_intro/1.1_intro.pdf)
+- **Introduzione a R (2)** - [Slides](materials/1_intro/1.2_intro.htlm) - [PDF](materials/1_intro/1.2_intro.pdf)
+- **Introduzione a R (3)** - [Slides](materials/1_intro/1.3_funzioni&errori.htlm) - [PDF](materials/1_intro/1.3_funzioni&errori.pdf)
 
 ### Strutture dati 
-- **Vettori** - [Slides](slides/2_intro_a_R/2_intro_a_R.html) - [PDF](slides/2_intro_a_R/2_intro_a_R.pdf)
-- **Fattori** - [Slides](slides/2_intro_a_R/2_intro_a_R.html) - [PDF](slides/2_intro_a_R/2_intro_a_R.pdf)
-- **Liste, Matrici e Array** - [Slides](slides/2_intro_a_R/2_intro_a_R.html) - [PDF](slides/2_intro_a_R/2_intro_a_R.pdf)
-- **DataFrame** - [Slides](slides/2_intro_a_R/2_intro_a_R.html) - [PDF](slides/2_intro_a_R/2_intro_a_R.pdf)
+- **Vettori** - [Slides](materials/2_struttureDati/2.1_vettori.html) - [PDF](materials/2_struttureDati/2.1_vettori.pdf)
+- **Fattori** - [Slides](materials/2_struttureDati/2.2_fattori.html) - [PDF](materials/2_struttureDati/2.2_fattori.pdf)
+- **Liste, Matrici e Array** - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html) - [PDF](materials/2_struttureDati/2.3_liste&matrici&array.pdf)
+- **DataFrame** - [Slides](materials/2_struttureDati/2.4_dataframe.htlm) - [PDF](materials/2_struttureDati/2.4_dataframe.pdf)
 
 ### Programmazione
 - **Condizionale** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
