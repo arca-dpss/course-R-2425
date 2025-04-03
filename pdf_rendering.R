@@ -10,6 +10,6 @@ renderthis::to_pdf("materials/2_struttureDati/2.4_dataframe.html")
 renderthis::to_pdf("materials/3_programmazione/3.1_condizionale.html")
 renderthis::to_pdf("materials/3_programmazione/3.2_iterativa.html")
 renderthis::to_pdf("materials/3_programmazione/3.3_apply.html")
-renderthis::to_pdf("materials/4_extra/EXTRA.html")
+renderthis::to_pdf("materials/4_extra/Extra.html")
 renderthis::to_pdf("materials/4_extra/recap.html")
 
