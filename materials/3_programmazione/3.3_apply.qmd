@@ -18,16 +18,16 @@ Immaginate di avere una lista di vettori, e di voler applicare la stessa funzion
 
 ```{r, echo=TRUE}
 my_list=list(
-    vec1=rnorm(100),
-    vec2=runif(100),
-    vec3=rnorm(100),
-    vec4=rnorm(100)
+    vec1=rnorm(n = 100, mean = 0, sd = 1),
+    vec2=runif(n = 100, min = 0, max = 1),
+    vec3=rnorm(n = 100, mean = 0, sd = 1),
+    vec4=rnorm(n = 100, mean = 0, sd = 1)
 )
 ```
 
 ## `*apply` family
 
-::: columns
+::::: columns
 ::: {.column width="60%"}
 Applichiamo media, mediana e std
 
@@ -43,9 +43,9 @@ stds=vector(mode = "numeric",
 # Loop
 for(i in 1:length(my_list)){
   
-  means[i] <- mean(my_list[[i]]) 
-  medians[i] <- median(my_list[[i]]) 
-  stds[i] <- sd(my_list[[i]])
+  means[i] = mean(my_list[[i]]) 
+  medians[i] = median(my_list[[i]]) 
+  stds[i] = sd(my_list[[i]])
 }
 ```
 :::
@@ -61,7 +61,7 @@ medians
 stds
 ```
 :::
-:::
+:::::
 
 ## `*apply` family
 
@@ -87,7 +87,6 @@ medians
 stds
 ```
 
-
 ## `*apply` family
 
 **apply( \< lista \> , \< funzione \> )**
@@ -109,7 +108,7 @@ stds
 
 Prima di analizzare l'**`*apply`** family, credo sia utile un ulteriore parallelismo con il ciclo for che abbiamo visto. **`apply`** non è altro che un ciclo **`for`**, leggermente semplificato.
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 Ciclo **`for`**
 
@@ -128,7 +127,7 @@ vec = 1:5
 res = sapply(vec, print)
 ```
 :::
-:::
+:::::
 
 ## `*apply` family - funzione custom
 
@@ -138,9 +137,9 @@ Possiamo utlizzare anche funzioni create da noi:
 center_var = function(x) x - mean(x)
 
 my_list = list(
-    vec1 = runif(10),
-    vec2 = runif(10),
-    vec3 = runif(10)
+    vec1 = runif(n = 10, min  = 0, max = 1),
+    vec2 = runif(n = 10, min  = 0, max = 1),
+    vec3 = runif(n = 10, min  = 0, max = 1)
 )
 
 lapply(my_list, center_var)
@@ -150,7 +149,7 @@ lapply(my_list, center_var)
 
 Quindi come il ciclo **`for`** scritto come **i** in **vec** assegna al valore **i** un **elemento** per volta dell'oggetto **vec**, internamente le funzioni **`*apply`** prendono il **primo elemento** dell'oggetto in **input** (lista) e **applicano** direttamente la funzione che abbiamo scelto.
 
-::: columns
+::::: columns
 ::: {.column width="40%"}
 **`sapply`** implicito
 
@@ -168,7 +167,7 @@ vec = 1:5
 res = sapply(vec, function(i) print(i))
 ```
 :::
-:::
+:::::
 
 ## `*apply` family - funzione anonima
 
@@ -219,7 +218,8 @@ class(res)
 **`apply`** funziona in modo specifico per dataframe o matrici, applicando una funzione alle righe o alle colonne:
 
 ```{r, echo=TRUE}
-my_df =data.frame(x1 = runif(5,1,10), x2 = runif(5,3,4))
+my_df =data.frame(x1 = runif(n = 5,min = 1,max = 10), 
+                  x2 = runif(n = 5,min = 3,max = 4))
 my_df
 ```
 
@@ -305,7 +305,7 @@ stds=list(1,2,3)
 res=vector(mode = "list", length = length(medie)) # lista vuota
 
 for(i in 1:length(medie)){
-  res[[i]] = rnorm(6, mean = medie[[i]], sd = stds[[i]])
+  res[[i]] = rnorm(n = 6, mean = medie[[i]], sd = stds[[i]])
 } 
 res
 ```
@@ -324,7 +324,7 @@ Questa funzione permette di ripetere un operazione n volte, senza però utilizza
 
 Campioniamo 1000 volte da una normale e facciamo la media AKA distribuzione campionaria della media
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ```{r, echo=TRUE}
 nrep=1000
@@ -351,10 +351,10 @@ abline(v = mean(means), col = "blue", lwd = 3, lty = 2)  # Media stimata
 abline(v = c(mean(means) - sd(means), mean(means) + sd(means)), col = "red", lwd = 3, lty = 3)  # Errore standard
 ```
 :::
-:::
+:::::
 
 ## Ora facciamo un po' di pratica! {style="text-align: center;"}
 
 <br/> Aprite e tenete aperto questo link:
 
-https://etherpad.wikimedia.org/p/arca-corsoR
+<https://etherpad.wikimedia.org/p/arca-corsoR>

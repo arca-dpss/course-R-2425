@@ -68,7 +68,7 @@ Questi sono i link al materiale principale del corso:
 ### Programmazione
 - **Condizionale** - [Slides](materials/3_programmazione/3.1_condizionale.html) - [PDF](materials/3_programmazione/3.1_condizionale.pdf)
 - **Iterativa** - [Slides](materials/3_programmazione/3.2_iterativa.html) - [PDF](materials/3_programmazione/3.2_iterativa.pdf)
-- **Apply family** - [Link](materials/3_programmazione/3.3_apply.html) - [PDF](materials/2_struttureDati/3.3_apply.pdf)
+- **Apply family** - [Link](materials/3_programmazione/3.3_apply.html) - [PDF](materials/3_programmazione/3.3_apply.pdf)
 
 
 ### Extra

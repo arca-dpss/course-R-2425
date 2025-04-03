@@ -130,7 +130,7 @@ Abbiamo quindi creato questa funzione, che diventa un oggetto nel nostro ***envi
 
 ```{r, echo=TRUE}
 # creo un vettore x
-vect = runif(100, min = 1, max = 10)
+vect = runif(n = 100, min = 1, max = 10)
 
 mean(vect) # media
 
@@ -150,7 +150,7 @@ sd(vec0) # deviazione standard 1
 -   Le parentesi grafe **`{}`** possono essere omesse nel caso in cui il codice sia tutto in una stessa riga
 -   **`return()`** può essere omesso se l'ultima riga rappresenta l'output desiderato
 
-::: columns
+::::: columns
 ::: {.column width="42%"}
 ```{r, echo=TRUE}
 z_score1 = function(x){ 
@@ -167,7 +167,7 @@ z_score2 = function(x) (x - mean(x)) / sd(x)
 z_score2(vect[1:5])
 ```
 :::
-:::
+:::::
 
 ## Programmazione condizionale - **`if`**
 
@@ -379,7 +379,7 @@ all.equal(age_case_when, age_ifelse)
 Ricodificare i valori di una variabile come ad esempio invertire gli item di un questionario è un operazione facilmente eseguibile in con **`dplyr::case_when()`**:
 
 ```{r, echo=TRUE}
-item = sample(1:5, 20, replace = TRUE) # simuliamo 20 risposte ad un item
+item = sample(1:5, size = 20, replace = TRUE) # simuliamo 20 risposte ad un item
 item
 ```
 
@@ -467,4 +467,4 @@ readr::write_csv(mydf_2, file = "data/mydf_2.csv") # lo salvo per dopo
 
 <br/> Aprite e tenete aperto questo link:
 
-https://etherpad.wikimedia.org/p/arca-corsoR
+<https://etherpad.wikimedia.org/p/arca-corsoR>

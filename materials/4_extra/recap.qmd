@@ -105,7 +105,7 @@ Possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'indice
 
 ```{r, echo=TRUE}
 # Creo un vettore formato da 20 numeri casuali pescati da 1 a 100
-my_vect = round(runif(20,1,100))
+my_vect = round(runif(n = 20,min = 1,max = 100))
 my_vect
 
 my_vect[1] # estraggo il primo elemento
@@ -293,7 +293,7 @@ my_list_nam
 
 ## Liste
 
-ed accerdervi chiamandoli per "nome" attraverso l'operatore **`$`**
+... ed accerdervi chiamandoli per "nome" attraverso l'operatore **`$`**
 
 ```{r, echo=TRUE}
 my_list_nam$parola
@@ -510,7 +510,7 @@ my_df
 
 ::: incremental
 -   `my_df[my_df$col1 > 1 & my_df$col1 < 4, ]`
-    -   2 b -0.5630882 
+    -   2 b -0.5630882
     -   3 c -0.5672335
 -   `my_df[my_df$col1== 1,  "col3"]`
     -   -1.481937
@@ -572,8 +572,6 @@ iris$somma = iris$Sepal.Length + iris$Sepal.Width
 str(iris)
 ```
 
-
 # ESAME
 
-https://etherpad.wikimedia.org/p/arca-corsoR
-
+<https://etherpad.wikimedia.org/p/arca-corsoR>

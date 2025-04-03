@@ -97,7 +97,7 @@ for(i in 1:10){
 
 ## **`For`** con iteratore vs senza
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 **`i`** rappresenta l'indice degli elementi del vettore vec
 
@@ -125,7 +125,7 @@ for(i in vec){
 }
 ```
 :::
-:::
+:::::
 
 ## Ciclo **`while`**
 
@@ -137,13 +137,15 @@ Il ciclo **`while`** utilizza una condizione logica e non un iteratore e un rang
 
 Provate a scrivere questo ciclo **`while`** e vedere cosa succede e capire perchè accade
 
-    x = 10
+```         
+x = 10
 
-    while (x < 15) { 
+while (x < 15) { 
 
-      print(x)
+  print(x)
 
-    }
+}
+```
 
 ------------------------------------------------------------------------
 
@@ -182,7 +184,7 @@ repeat{
 
 **`repeat`** valuta la condizione una volta **finita** l'iterazione, mentre **`while`** all'**inizio**. Se la condizione non è **`TRUE`** all'inizio, il while non parte mentre repeat si:
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ```{r, echo=TRUE}
 i=1
@@ -203,7 +205,7 @@ while (i < 4) {
   }
 ```
 :::
-:::
+:::::
 
 ## Esempio funzione **`sum()`**
 
@@ -265,7 +267,7 @@ mydf = read.csv(file = "data/mydf_2.csv") #carico il dataset
 str(mydf)
 
 group_mean = .2 # effetto medio atteso
-var_mean = .1   # rumore 
+var_mean = .1   # variabilità
 n_subj = max(mydf$id) #numero soggetti
 ```
 
@@ -306,7 +308,7 @@ hist(res1)
 
 ------------------------------------------------------------------------
 
-Aumentiamo il rumore:
+Aumentiamo la variabilità:
 
 ```{r, echo=TRUE}
 var_mean = .8  
@@ -386,9 +388,9 @@ for (gruppo in gruppi) {
     
     # Simulare un tempo di reazione 
     RT=ifelse(gruppo == "Controllo", 
-                             rlnorm(1, mean = .500, sd = .050),  
+                             rlnorm(1, mean = log(.500), sd = .050),  
               # Media diversa per il gruppo Trattamento
-                             rlnorm(1, mean = .450, sd = .050))
+                             rlnorm(1, mean = log(.450), sd = .050))
     
     # Aggiungere i dati al dataframe, aggiungendo una riga 
     res=rbind(res, 
@@ -421,7 +423,7 @@ for (i in 1:num_soggetti) {
     gruppo[i] = ifelse(i < 5, "Controllo","Trattamento")
     
     RT = ifelse(gruppo[i] == "Controllo", 
-                rlnorm(1, .500, .050), rlnorm(1, .450, .050))
+                rlnorm(1, log(.500), .050), rlnorm(1, log(.450), .050))
     
     res2$Gruppo[i] = gruppo[i] 
     
@@ -444,4 +446,4 @@ mean(res2$RT[res2$Gruppo == "Trattamento"])
 
 <br/> Aprite e tenete aperto questo link:
 
-https://etherpad.wikimedia.org/p/arca-corsoR
+<https://etherpad.wikimedia.org/p/arca-corsoR>

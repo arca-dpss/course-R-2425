@@ -127,7 +127,7 @@ str(dat)
 Quando ho la risposta ed il trial era Go allora giusto (1), se risposta e trial NoGo allora sbagliato (0)...
 
 ```{r, echo =TRUE}
-dat$acc= case_when(dat$target == "nogo.png" & dat$resp == "space" ~ 0,
+dat$acc = case_when(dat$target == "nogo.png" & dat$resp == "space" ~ 0,
                     dat$target == "nogo.png" &  is.na(dat$resp) ~ 1,
                     dat$target == "go.png" & dat$resp == "space" ~ 1,
                     dat$target == "go.png" & is.na(dat$resp) ~ 0,
@@ -350,7 +350,7 @@ ggsave("plot/my_plot.jpg", my_plot,dpi = 600, width = 18,
 
 Un'altra cosa che potrebbe esservi utile è quella di creare delle tabelle con per esempio le statistiche descrittive oppure l'ouput di un modello statistico. Per queste operazioni sono molto utili i pacchetti **flextable** o **kableExtra**:
 
-::: columns
+::::: columns
 ::: {.column width="55%"}
 ```{r, echo=TRUE, message=FALSE}
 library(flextable);library(kableExtra)
@@ -369,11 +369,11 @@ descr = dat_clean2%>%
 descr
 ```
 :::
-:::
+:::::
 
 ## Tabelle
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ```{r, echo=TRUE, message=FALSE}
 tab = descr |>
@@ -389,7 +389,7 @@ tab = descr |>
 tab
 ```
 :::
-:::
+:::::
 
 ## Salvo in file word
 
@@ -401,4 +401,4 @@ doc=body_add_flextable(doc, value = tab) # Aggiungi la flextable
 print(doc, target = "tabella.docx") # Salva il file
 ```
 
-# Fine
+# 
