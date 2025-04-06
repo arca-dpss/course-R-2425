@@ -23,15 +23,15 @@ Credits: Filippo Gambarota e Enrico Toffalini
 
 -   Comprensione teorico-logica degli argomenti
 
--   Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari)
+-   Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari
 
--   Applicazione direttamente scrivendo codice e risolvendo problemi
+-   Applicazione direttamente scrivendo codice e risolvendo esercizi
 
 ## Esame 😱
 
 -   **Formato**: L'esame consisterà in diversi esercizi.
 -   **Argomenti**: Gli esercizi copriranno gli argomenti trattati durante il corso.
--   **Materiale consentito**:È permesso utilizzare il materiale fornito a lezione. Non è consentito l'uso di altro materiale online (o chatGPT) durante l'esame.
+-   **Materiale consentito**: È permesso utilizzare il materiale fornito a lezione. Non è consentito l'uso di altro materiale online (o chatGPT) durante l'esame.
 -   **Durata**: 1 ora
 -   **Modalità**: in classe
 
