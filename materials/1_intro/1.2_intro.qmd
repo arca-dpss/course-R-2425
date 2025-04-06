@@ -256,6 +256,7 @@ FALSE == 0
 FALSE == 1
 
 esempio = c(rep("casa",4),rep("bottega",2))
+esempio
 sum(esempio == "casa"); sum(esempio == "bottega")
 ```
 
