@@ -5,6 +5,7 @@ title: "Introduzione a R"
 ![](arca_logo.svg){fig-align="center" width="80"}
 
 #### Margherita Calderan {style="text-align: center;"}
+
 Credits: Filippo Gambarota e Enrico Toffalini
 
 ## Gli obiettivi principali
@@ -35,16 +36,15 @@ Credits: Filippo Gambarota e Enrico Toffalini
 -   **Durata**: 1 ora
 -   **Modalità**: in classe
 
-
 ## Aule e Orari (2024-2025) {style="text-align: center;"}
-| Data        | Ora           | Aula         |
-|-------------|---------------|--------------|
-| 07/04/2025  | 9:00 - 13:00 | Psico 2 - 4R |
-| 08/04/2025  | 9:00 - 13:00  | Psico 2 - 4R |
-| 09/04/2025  | 9:00 - 13:00  | Psico 2 - 4R |
-| 10/04/2025  | 9:00 - 13:00  | Psico 2 - 4M |
-| 11/04/2025  | 9:00 - 13:00  | Psico 2 - 4R |
 
+| Data       | Ora          | Aula         |
+|------------|--------------|--------------|
+| 07/04/2025 | 9:00 - 13:00 | Psico 2 - 4R |
+| 08/04/2025 | 9:00 - 13:00 | Psico 2 - 4R |
+| 09/04/2025 | 9:00 - 13:00 | Psico 2 - 4R |
+| 10/04/2025 | 9:00 - 13:00 | Psico 2 - 4M |
+| 11/04/2025 | 9:00 - 13:00 | Psico 2 - 4R |
 
 # Materiale
 
@@ -52,32 +52,35 @@ Credits: Filippo Gambarota e Enrico Toffalini
 
 Questi sono i link al materiale principale del corso:
 
-### Introduzione 
+### Introduzione
 
-- *Introduzione a R (1)* - [Slides](materials/0_getStarted/0_getStarted.html) - [PDF](materials/0_getStarted/0_getStarted.pdf)
-- *Come lavorare in R - Path e R Projects* - [Slides](materials/1_intro/1.1_intro.html) - [PDF](materials/1_intro/1.1_intro.pdf)
-- *Introduzione a R (2)* - [Slides](materials/1_intro/1.2_intro.html) - [PDF](materials/1_intro/1.2_intro.pdf)
-- *Introduzione a R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html) - [PDF](materials/1_intro/1.3_funzioni&errori.pdf)
+-   *Introduzione a R (1)* - [Slides](materials/0_getStarted/0_getStarted.html) - [PDF](materials/0_getStarted/0_getStarted.pdf)
+-   *Come lavorare in R - Path e R Projects* - [Slides](materials/1_intro/1.1_intro.html) - [PDF](materials/1_intro/1.1_intro.pdf)
+-   *Introduzione a R (2)* - [Slides](materials/1_intro/1.2_intro.html) - [PDF](materials/1_intro/1.2_intro.pdf)
+-   *Introduzione a R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html) - [PDF](materials/1_intro/1.3_funzioni&errori.pdf)
 
-### Strutture dati 
-- *Vettori* - [Slides](materials/2_struttureDati/2.1_vettori.html) - [PDF](materials/2_struttureDati/2.1_vettori.pdf)
-- *Fattori* - [Slides](materials/2_struttureDati/2.2_fattori.html) - [PDF](materials/2_struttureDati/2.2_fattori.pdf)
-- *Liste, Matrici e Array* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html) - [PDF](materials/2_struttureDati/2.3_liste&matrici&array.pdf)
-- *Dataframe* - [Slides](materials/2_struttureDati/2.4_dataframe.html) - [PDF](materials/2_struttureDati/2.4_dataframe.pdf)
+### Strutture dati
+
+-   *Vettori* - [Slides](materials/2_struttureDati/2.1_vettori.html) - [PDF](materials/2_struttureDati/2.1_vettori.pdf)
+-   *Fattori* - [Slides](materials/2_struttureDati/2.2_fattori.html) - [PDF](materials/2_struttureDati/2.2_fattori.pdf)
+-   *Liste, Matrici e Array* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html) - [PDF](materials/2_struttureDati/2.3_liste&matrici&array.pdf)
+-   *Dataframe* - [Slides](materials/2_struttureDati/2.4_dataframe.html) - [PDF](materials/2_struttureDati/2.4_dataframe.pdf)
 
 ### Programmazione
-- *Condizionale* - [Slides](materials/3_programmazione/3.1_condizionale.html) - [PDF](materials/3_programmazione/3.1_condizionale.pdf)
-- *Iterativa* - [Slides](materials/3_programmazione/3.2_iterativa.html) - [PDF](materials/3_programmazione/3.2_iterativa.pdf)
-- *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html) - [PDF](materials/3_programmazione/3.3_apply.pdf)
 
+-   *Condizionale* - [Slides](materials/3_programmazione/3.1_condizionale.html) - [PDF](materials/3_programmazione/3.1_condizionale.pdf)
+-   *Iterativa* - [Slides](materials/3_programmazione/3.2_iterativa.html) - [PDF](materials/3_programmazione/3.2_iterativa.pdf)
+-   *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html) - [PDF](materials/3_programmazione/3.3_apply.pdf)
 
 ### Extra
-- *ReCap* - [Slides](materials/4_extra/recap.html) - [PDF](materials/4_extra/recap.pdf)
-- *Extra, caricare file, visualizzare dati, salvare* - [Slides](materials/4_extra/EXTRA.html) - [PDF](materials/4_extra/EXTRA.pdf)
 
+-   *ReCap* - [Slides](materials/4_extra/recap.html) - [PDF](materials/4_extra/recap.pdf)
+-   *Extra, caricare file, visualizzare dati, salvare* - [Slides](materials/4_extra/EXTRA.html) - [PDF](materials/4_extra/EXTRA.pdf)
 
 ### Esercizi
-Qui troverete esercizi con e senza soluzioni:
--   Intro [Script](materials/1_intro/1.2_esericizi.R)
--   Vettori [Script](materials/1_intro/2.1_esercizi.R)
 
+Qui troverete esercizi con e senza soluzioni:
+
+-   **Intro** - [Script](materials/1_intro/1.2_esericizi.R)
+
+-   **Vettori -** [Script](materials/2_struttureDati/2.1_esercizi.R)
