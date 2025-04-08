@@ -83,6 +83,8 @@ Questi sono i link al materiale principale del corso:
 
 Qui troverete esercizi con e senza soluzioni:
 
--   **Intro** - [Script](materials/1_intro/1.2_esericizi.R)
+-   **Intro** - [Script](materials/1_intro/1.2_esercizi.R)
 
--   **Vettori -** [Script](materials/2_struttureDati/2.1_esercizi.R)
+-   **Vettori** -  [Script](materials/2_struttureDati/2.1_esercizi.R)
+
+-   **Fattori** - [Script](materials/2_struttureDati/2.2_soluzioni.R)
