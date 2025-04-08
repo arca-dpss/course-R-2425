@@ -77,6 +77,8 @@ Questi sono i link al materiale principale del corso:
 -   *ReCap* - [Slides](materials/4_extra/recap.html) - [PDF](materials/4_extra/recap.pdf)
 -   *Extra, caricare file, visualizzare dati, salvare* - [Slides](materials/4_extra/EXTRA.html) - [PDF](materials/4_extra/EXTRA.pdf)
 
+[Esercizi in classe](https://etherpad.wikimedia.org/p/arca-corsoR)
+
 ### Esercizi
 
 Qui troverete esercizi con e senza soluzioni:
