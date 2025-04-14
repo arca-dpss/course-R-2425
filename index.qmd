@@ -97,5 +97,5 @@ Qui troverete esercizi con e senza soluzioni:
 
 -   **Condizionale** - [Script](materials/3_programmazione/3.1_esericizi.R)
 
--   **Iterativa** -
+-   **Iterativa** - [Script](materials/3_programmazione/3.2_esericizi.R)
 
