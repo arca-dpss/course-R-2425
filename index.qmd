@@ -35,6 +35,8 @@ Credits: Filippo Gambarota e Enrico Toffalini
 -   **Materiale consentito**: È permesso utilizzare il materiale fornito a lezione. Non è consentito l'uso di altro materiale online (o chatGPT) durante l'esame.
 -   **Durata**: 1 ora
 -   **Modalità**: in classe
+-   **Soluzioni** - [Script](materials/ESAME_aprile.R)
+
 
 ## Aule e Orari (2024-2025) {style="text-align: center;"}
 
@@ -99,8 +101,4 @@ Qui troverete esercizi con e senza soluzioni:
 
 -   **Iterativa** - [Script](materials/3_programmazione/3.2_esericizi.R)
 
-
-### Esame
-
-- **Esame** - [Script](materials/ESAME_aprile.R)
 
