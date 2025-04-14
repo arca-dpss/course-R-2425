@@ -46,8 +46,9 @@ z = c(4:19, NA, 3:8)
 #    usando sprintf() o paste().
 
 max_min = function(x, na.rm = TRUE){
+  
   minx = min(x, na.rm = na.rm)
-  maxx = max(x, na.rm=na.rm)
+  maxx = max(x, na.rm = na.rm)
   
   frase=sprintf("Il valore massimo del vettore è %i e il valore minimo è %i", 
                 minx, maxx)
