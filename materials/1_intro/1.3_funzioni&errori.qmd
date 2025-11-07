@@ -3,8 +3,8 @@ title: "Funzioni ed Errori"
 format: 
    revealjs:
      margin: .05
-     fontsize: 2.2em
-     linestretch: 1.5
+     fontsize: 1.9em
+     linestretch: 1.4
      mainfont: Helvetica Neue
 editor: visual
 ---

@@ -1,8 +1,11 @@
 ---
-title: "2.3_ListeMatriciArray"
+title: "Liste, Matrici e Array"
 format: 
    revealjs:
-     margin: 0.1
+     margin: .05
+     fontsize: 1.9em
+     linestretch: 1.4
+     mainfont: Helvetica Neue
 editor: visual
 ---
 
@@ -129,9 +132,23 @@ my_list_nam[[4]][[2]]
 Sono flessibili, permettono di conservare/organizzare dati/informazioni complesse e varie. Per esempio la funzione **`lm()`** fornisce in output una lista contentente varie informazioni e risultati sul modello testato.
 
 ```{r, echo=TRUE}
-N = 30; b0 = 0; b1 = 0.3; sigma = 1
-x = rnorm(N, 0, 1); y = b0 + b1*x + rnorm(n = N, mean = 0, sd = sigma)
-mod = lm(y ~ x)
+# Simulo 30 osservazioni, assumendo che l'effetto di x = 0.3
+N = 30; b1 = 0.3; sigma = 1
+x = rnorm(N, 0, 1); # variabile indipedente
+y = b1*x + rnorm(n = N, mean = 0, sd = sigma) # effetto più errore
+```
+
+::: {.fragment}
+```{r, echo=TRUE}
+# modello lineare
+mod = lm(y ~ x) 
+summary(mod)
+```
+:::
+
+## Liste - Perchè?
+```{r, echo=TRUE}
+# cos'è l'oggetto mod?
 str(mod)
 ```
 

@@ -3,8 +3,8 @@ title: "Introduzione 1"
 format: 
    revealjs:
      margin: .05
-     fontsize: 2.2em
-     linestretch: 1.5
+     fontsize: 1.9em
+     linestretch: 1.4
      mainfont: Helvetica Neue
 editor: visual
 ---
@@ -78,7 +78,7 @@ PC
 
 Scarica il file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv).
 
-::: {.fragment}
+::: fragment
 Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra virgolette, ed utilizzare per esempio la funzione `read.csv`:
 
 ```{r, echo=TRUE, warning=FALSE}
@@ -86,7 +86,6 @@ data = read.csv("prova.csv")
 
 head(data, n = 4) #mostra le prime righe del dataset
 ```
-
 :::
 
 ## Come cambiare la working directory?

@@ -3,8 +3,8 @@ title: "Vettori"
 format: 
    revealjs:
      margin: .05
-     fontsize: 2.2em
-     linestretch: 1.5
+     fontsize: 1.9em
+     linestretch: 1.4
      mainfont: Helvetica Neue
 editor: visual
 ---
@@ -102,8 +102,9 @@ correct
 
 Possiamo testare o convertire (quando possibile) la tipologia del vettore attraverso queste funzioni **`is.`** & **`as.`**
 
-:::{.fragment}
+::: fragment
 Vettore di tipo `character`
+
 ```{r, echo = TRUE}
 char_vect
 is.character(char_vect)
@@ -114,23 +115,27 @@ as.numeric(char_vect) #!!
 ## is.\* & as.\*
 
 Vettore di tipo `numeric`
+
 ```{r, echo = TRUE}
 num_vect
 is.numeric(num_vect)
 as.character(num_vect) #!!
 ```
 
-:::{.fragment}
+::: fragment
 Vettore di tipo `logical`
+
 ```{r, echo = TRUE}
 logi_vect = c(TRUE,FALSE,TRUE)
 is.logical(logi_vect)
 ```
+
 ```{r, echo = TRUE, eval=FALSE}
 as.numeric(logi_vect)
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r}
 as.numeric(logi_vect)
 ```
@@ -165,7 +170,7 @@ length(num_vect)
 
 ## Indicizzazione
 
-Possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'indice di posizione tramite le parentesi quadre vettore\[pos\] . 
+Possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'indice di posizione tramite le parentesi quadre vettore\[pos\] .
 
 ```{r, echo=TRUE}
 # Creo un vettore formato da 10 numeri casuali pescati da 1 a 100
@@ -173,22 +178,25 @@ my_vect = round(runif(n = 10,min = 1, max = 100))
 my_vect
 ```
 
-:::{.fragment}
+::: fragment
 ```{r, echo=TRUE}
 my_vect[1] # estraggo il primo elemento
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 my_vect[1:5] # estraggo i primi 5 elementi
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 my_vect[c(1,4,2,9)] # estraggo elementi a scelta
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 my_vect[length(my_vect)] #ultimo elemento (perchè?)
 ```
@@ -213,22 +221,26 @@ Se assegnamo nomi agli elementi del vettore, possiamo indicizzare questi "chiama
 letters[1:length(my_vect)]
 names(my_vect) = letters[1:length(my_vect)]
 ```
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 names(my_vect) # Che nomi hanno gli elementi di my_vec?
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 my_vect 
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 my_vect["a"] # voglio l'elemento di my_vec chiamato "a"
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 my_vect[1] # voglio il primo elemento di my_vec
 ```
@@ -243,22 +255,26 @@ Indicizzare con la posizione è l'aspetto più semplice e intuitivo. E' possibil
 numeri = 1:7
 numeri
 ```
-:::{.fragment}
+
+::: fragment
 ```{r,echo=TRUE}
 numeri>2 & numeri<5
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r,echo=TRUE}
 as.numeric(numeri>2 & numeri<5)
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE, eval=FALSE}
 numeri[numeri>2 & numeri<5]
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r}
 numeri[numeri>2 & numeri<5]
 ```
@@ -269,22 +285,25 @@ numeri[numeri>2 & numeri<5]
 L'idea è che se abbiamo un vettore di lunghezza **n** e un'altro vettore logico di lunghezza **n**, tutti gli elementi **`TRUE`** saranno selezionati:
 
 Non vale solo per elementi del vettore numeri ma per qualsiasi vettore!
+
 ```{r, echo=TRUE}
 lettere = letters[1:7]
 lettere
 ```
 
-:::{.fragment}
+::: fragment
 ```{r, echo=TRUE}
 numeri>2 & numeri<5
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE, eval=FALSE}
 lettere[numeri>2 & numeri<5]
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r,echo=FALSE}
 lettere[numeri>2 & numeri<5]
 ```
@@ -327,42 +346,47 @@ Indicizzare può essere utile anche per assegnare un valore ad un determinato el
 lettere
 ```
 
-:::{.fragment}
+::: fragment
 ```{r, echo=TRUE}
 lettere[1] = "z"
 lettere
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ```{r, echo=TRUE}
 lettere[9] = "i"
 lettere
 ```
 :::
 
-
 ## Indicizzazione e Assegnazione
+
 Sostituisco il valore NA con la lettera mancante
+
 ```{r, echo=TRUE}
 lettere
 ```
+
 ```{r, echo=TRUE}
 is.na(lettere) # ci sono elementi di lettere = NA?
 ```
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 which(is.na(lettere)) # in che posizioni sono questi elementi?
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 # effettivamente se guardo nella posizione indicata
 lettere[is.na(lettere)]
 lettere[which(is.na(lettere))]  # equivalente
 ```
 :::
-:::{.fragment}
+
+::: fragment
 ```{r, echo=TRUE}
 lettere[is.na(lettere)] = "h" # sostituisco NA con la lettera mancante
 lettere
@@ -400,10 +424,10 @@ median(new_vect)
 summary(new_vect)
 ```
 
-
 ## Summary Statistics
 
 Si può anche utilizzare la funzione `describe` del pacchetto `psych`:
+
 ```{r, echo=TRUE}
 psych::describe(new_vect)
 ```

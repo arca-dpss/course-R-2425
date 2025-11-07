@@ -3,8 +3,8 @@ title: "Introduzione 2"
 format: 
    revealjs:
      margin: .05
-     fontsize: 2.2em
-     linestretch: 1.5
+     fontsize: 1.9em
+     linestretch: 1.4
      mainfont: Helvetica Neue
 editor: visual
 ---
@@ -23,6 +23,7 @@ editor: visual
 # Oggetti
 
 ## Oggetti
+
 Tutto quello che possiamo creare in R viene definito oggetto (e.g., numeri, vettori, matrici, funzioni). <br/>
 
 ```{r, echo = TRUE}
@@ -63,7 +64,6 @@ numero
 ## Creare/nominare oggetti
 
 Gli oggetti si possono creare e tramite il comando **`<-`** oppure **`=`**
-
 
 ```{r, echo = TRUE}
 x1 = 3 # nome = oggetto
@@ -187,13 +187,13 @@ E' possibile anche pulire completamente/svuotare il nostro enrivoment attraverso
 | `abs`    | valore assoluto        | `abs(-8)`         | `8`       |
 | `sqrt`   | radice quadrata        | `sqrt(225)`       | `15`      |
 | `exp`    | funzione esponenziale  | `exp(0)`          | `1`       |
-| `log`    | logaritmo naturale    | `log(1)`          | `0`       |
+| `log`    | logaritmo naturale     | `log(1)`          | `0`       |
 | `round`  | arrotondamento, intero | `round(1.738)`    | `2`       |
 | `round`  | arrotondamento         | `round(1.738, 2)` | `1.74`    |
 
 ## Operazioni Matematiche
 
-L'ordine delle operazioni in R segue le regole della matematica. 
+L'ordine delle operazioni in R segue le regole della matematica.
 
 **Esempi**
 
@@ -259,45 +259,49 @@ x = 30 #Assegnamo a x il valore 30.
 | `|`      | Disgiunzione Inclusiva | `x>25 | x>60` | `TRUE`   |
 | `!`      | Negazione              | `!(x<18)`     | `TRUE`   |
 
-
 ## Operatori Logici
-
 
 ```{r,echo = TRUE}
 x = 30 #Assegnamo a x il valore 30.
 x
 ```
 
-::: {.fragment}
+::: fragment
 ```{r, echo=TRUE, eval=FALSE}
 x>25 & x<60
 ```
 :::
-::: {.fragment}
+
+::: fragment
 ```{r}
 x>25 & x<60
 ```
 :::
-::: {.fragment}
+
+::: fragment
 ```{r, echo=TRUE, eval=FALSE}
 x>25 | x>60
 ```
 :::
-::: {.fragment}
+
+::: fragment
 ```{r}
 x>25 | x>60
 ```
 :::
-::: {.fragment}
+
+::: fragment
 ```{r, echo=TRUE, eval=FALSE}
 !(x<18)
 ```
 :::
-::: {.fragment}
+
+::: fragment
 ```{r}
 !(x<18)
 ```
 :::
+
 ------------------------------------------------------------------------
 
 **TRUE equivale a 1 e FALSE a 0**
@@ -308,24 +312,28 @@ TRUE == 2
 FALSE == 0
 FALSE == 1
 ```
-::: {.fragment}
+
+::: fragment
 ```{r,echo = TRUE}
 # Creo un vettore esempio in cui ci sono dentro le parole casa e bottega
 esempio = c(rep("casa",4),rep("bottega",2)) #?rep
 esempio
 ```
 :::
-::: {.fragment}
+
+::: fragment
 ```{r,echo = TRUE}
 # Quante parole dentro esempio sono uguali a casa?
 esempio == "casa"
 ```
 :::
-::: {.fragment}
+
+::: fragment
 ```{r,echo = TRUE}
 sum(esempio == "casa")
 ```
 :::
+
 ## Ordine Valutazione Relazioni
 
 Nel valutare le veridicità delle proposizioni R esegue le operazioni nel seguente ordine:

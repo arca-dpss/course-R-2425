@@ -3,8 +3,8 @@ title: "Fattori"
 format: 
    revealjs:
      margin: .05
-     fontsize: 2.2em
-     linestretch: 1.5
+     fontsize: 1.9em
+     linestretch: 1.4
      mainfont: Helvetica Neue
 editor: visual
 ---
@@ -31,7 +31,6 @@ I fattori sono una tipologia di dato peculiare e per quanto simile a semplici **
 
 I fattori si possono creare sia convertendo un vettore character attraverso il comando **`as.factor()`** ...
 
-
 ```{r, echo=TRUE}
 char_vect = rep(c("hello","ciao", "hola"), each = 2)
 char_vect
@@ -40,7 +39,8 @@ my_fact = as.factor(char_vect)
 my_fact
 ```
 
-... che creando esplicitamente un fattore attraverso il comando **`factor()`**: 
+... che creando esplicitamente un fattore attraverso il comando **`factor()`**:
+
 ```{r, echo=TRUE}
 
 my_fact = factor(x = char_vect)
@@ -61,9 +61,9 @@ as.integer(my_fact)
 my_fact
 ```
 
-:::{.fragment}
-
+::: fragment
 Questo non vale per i vettori character!
+
 ```{r, echo = TRUE}
 typeof(char_vect) #typeof determines the type or storage mode of any object
 ```
@@ -82,17 +82,19 @@ I fattori permettono di avere dei livelli **`levels()`** come metadati,
 ```{r, echo = TRUE}
 levels(my_fact)
 ```
+
 a prescindere da quali siano effettivamente presenti nel vettore. Per esempio se creo un fattore composto solo dagli elementi di my_fact diversi da ciao:
+
 ```{r, echo = TRUE}
 my_fact2 = my_fact[my_fact!="ciao"]
 ```
 
 I livelli di my_fact2 saranno gli stessi di my_fact (ciao incluso) anche se ciao non è presente come osservazione
+
 ```{r, echo = TRUE}
 my_fact2
 levels(my_fact2)
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -103,14 +105,13 @@ E' possibile però eslcudere i livelli non più utili attraverso il comando `dro
 droplevels(my_fact2) 
 ```
 
-::: {.fragment}
+::: fragment
 ```{r, echo = TRUE}
 # modifico my_fact2 eliminando i livelli inutili
 my_fact2 = droplevels(my_fact2) 
 my_fact2
 ```
 :::
-
 
 ------------------------------------------------------------------------
 
@@ -121,8 +122,9 @@ my_fact # il fattore che ho creato
 my_fact_lev = my_fact # creo un altro fattore "my_fact_lev" identico 
 ```
 
-:::{.fragment}
+::: fragment
 accedendo attraverso il comando `levels`:
+
 ```{r, echo=TRUE}
 levels(my_fact_lev)
 # rinomino i livelli del fattore
@@ -130,14 +132,14 @@ levels(my_fact_lev) = c("italiano","inglese","spagnolo")
 ```
 :::
 
-:::{.fragment}
+::: fragment
 Ora i due fattori saranno:
+
 ```{r, echo=TRUE}
 my_fact_lev
 my_fact
 ```
 :::
-
 
 ------------------------------------------------------------------------
 
@@ -149,8 +151,9 @@ my_fact
 as.integer(my_fact)
 ```
 
-:::{.fragment}
+::: fragment
 Noi possiamo decidere che il primo livello sia hello:
+
 ```{r, echo=TRUE}
 new_fact = factor(my_fact, levels = c("hello","ciao","hola"))
 new_fact
@@ -169,12 +172,12 @@ new_fact2
 ```
 
 Versioni precedenti:
+
 ```{r, echo=TRUE}
 new_fact
 
 my_fact
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -186,8 +189,10 @@ my_fact
 levels(my_fact)
 levels(my_fact) = c("hello","ciao","hola")
 ```
-:::{.fragment}
+
+::: fragment
 Cosa notate rispetto al vettore my_fact visualizzato sopra?
+
 ```{r, echo=TRUE}
 my_fact
 as.integer(my_fact)
