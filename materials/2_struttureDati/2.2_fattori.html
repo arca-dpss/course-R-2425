@@ -10,7 +10,7 @@
 <link href="2.2_fattori_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <title>2.2_fattori</title>
+  <title>Fattori</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,7 +390,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">2.2_fattori</h1>
+  <h1 class="title">Fattori</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -413,18 +413,24 @@
 </section>
 <section id="creare-un-fattore" class="slide level2">
 <h2>Creare un fattore</h2>
-<p>I fattori si possono creare sia convertendo un vettore character attraverso il comando <strong><code>as.factor()</code></strong> che creando esplicitamente un fattore attraverso il comando <strong><code>factor()</code></strong></p>
+<p>I fattori si possono creare sia convertendo un vettore character attraverso il comando <strong><code>as.factor()</code></strong> …</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>char_vect <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>, <span class="st">"hola"</span>), <span class="at">each =</span> <span class="dv">2</span>)</span>
-<span id="cb1-2"><a href=""></a><span class="fu">as.factor</span>(char_vect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href=""></a>char_vect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello" "hello" "ciao"  "ciao"  "hola"  "hola" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>my_fact <span class="ot">=</span> <span class="fu">as.factor</span>(char_vect)</span>
+<span id="cb3-2"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: ciao hello hola</code></pre>
 </div>
 </div>
+<p>… che creando esplicitamente un fattore attraverso il comando <strong><code>factor()</code></strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>my_fact <span class="ot">=</span> <span class="fu">factor</span>(char_vect)</span>
-<span id="cb3-2"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>my_fact <span class="ot">=</span> <span class="fu">factor</span>(<span class="at">x =</span> char_vect)</span>
+<span id="cb5-2"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: ciao hello hola</code></pre>
@@ -435,142 +441,214 @@ Levels: ciao hello hola</code></pre>
 <h2>Caratteristiche dei fattori</h2>
 <p>In pratica assegnano un’etichetta ad un valore numerico intero:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">typeof</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">typeof</span>(my_fact) <span class="co">#typeof determines the type or storage mode of any object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">as.integer</span>(my_fact); my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">as.integer</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 2 1 1 3 3</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: ciao hello hola</code></pre>
 </div>
 </div>
+<div class="fragment">
 <p>Questo non vale per i vettori character!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">as.integer</span>(char_vect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">typeof</span>(char_vect) <span class="co">#typeof determines the type or storage mode of any object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">as.integer</span>(char_vect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA NA NA NA NA NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>char_vect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello" "hello" "ciao"  "ciao"  "hola"  "hola" </code></pre>
+</div>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<p>I fattori permettono di avere dei livelli <strong><code>levels()</code></strong> come metadati, a prescindere da quali siano effettivamente presenti nel vettore</p>
+<p>I fattori permettono di avere dei livelli <strong><code>levels()</code></strong> come metadati,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">levels</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">levels</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ciao"  "hello" "hola" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>my_fact2 <span class="ot">=</span> my_fact[my_fact<span class="sc">!=</span><span class="st">"ciao"</span>]</span>
-<span id="cb14-2"><a href=""></a>my_fact2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>a prescindere da quali siano effettivamente presenti nel vettore. Per esempio se creo un fattore composto solo dagli elementi di my_fact diversi da ciao:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>my_fact2 <span class="ot">=</span> my_fact[my_fact<span class="sc">!=</span><span class="st">"ciao"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I livelli di my_fact2 saranno gli stessi di my_fact (ciao incluso) anche se ciao non è presente come osservazione</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>my_fact2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello hola  hola 
 Levels: ciao hello hola</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">levels</span>(my_fact2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ciao"  "hello" "hola" </code></pre>
 </div>
-<p>E’ possibile però eslcudere i livelli non più utili attraverso il comando <strong><code>droplevels()</code></strong></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p>E’ possibile però eslcudere i livelli non più utili attraverso il comando <code>droplevels()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">droplevels</span>(my_fact2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="co"># come sarebbe my_fact2 se droppassi i livelli per cui non ci sono osservazioni?</span></span>
+<span id="cb26-2"><a href=""></a><span class="fu">droplevels</span>(my_fact2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello hola  hola 
 Levels: hello hola</code></pre>
 </div>
 </div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="co"># modifico my_fact2 eliminando i livelli inutili</span></span>
+<span id="cb28-2"><a href=""></a>my_fact2 <span class="ot">=</span> <span class="fu">droplevels</span>(my_fact2) </span>
+<span id="cb28-3"><a href=""></a>my_fact2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] hello hello hola  hola 
+Levels: hello hola</code></pre>
+</div>
+</div>
+</div>
 </section>
 <section class="slide level2">
 
-<p>E’ possibile anche rinominare i livelli del fattore</p>
+<p>E’ possibile anche rinominare i livelli del fattore…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="co"># il fattore che ho creato </span></span>
-<span id="cb18-2"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a>my_fact <span class="co"># il fattore che ho creato </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: ciao hello hola</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="co"># creo un altro fattore "my_fact_lev" identico a "my_fact"</span></span>
-<span id="cb20-2"><a href=""></a>my_fact_lev <span class="ot">=</span> my_fact</span>
-<span id="cb20-3"><a href=""></a>my_fact_lev <span class="sc">==</span> my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a>my_fact_lev <span class="ot">=</span> my_fact <span class="co"># creo un altro fattore "my_fact_lev" identico </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="co"># rinomino i livelli del fattore</span></span>
-<span id="cb22-2"><a href=""></a><span class="fu">levels</span>(my_fact_lev) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"italiano"</span>,<span class="st">"inglese"</span>,<span class="st">"spagnolo"</span>)</span>
-<span id="cb22-3"><a href=""></a></span>
-<span id="cb22-4"><a href=""></a>my_fact_lev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>accedendo attraverso il comando <code>levels</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="fu">levels</span>(my_fact_lev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ciao"  "hello" "hola" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="co"># rinomino i livelli del fattore</span></span>
+<span id="cb35-2"><a href=""></a><span class="fu">levels</span>(my_fact_lev) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"italiano"</span>,<span class="st">"inglese"</span>,<span class="st">"spagnolo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>Ora i due fattori saranno:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>my_fact_lev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] inglese  inglese  italiano italiano spagnolo spagnolo
 Levels: italiano inglese spagnolo</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: ciao hello hola</code></pre>
+</div>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<p>E’ possibile sia riordinare che rinominare i livelli di un fattore attraverso la funzione <strong><code>factor()</code></strong></p>
+<p>E’ possibile <strong>sia riordinare</strong> che <strong>rinominare</strong> i livelli di un fattore attraverso la funzione <code>factor()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: ciao hello hola</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="co"># di default l'ordine di assegnazione è alfabetico </span></span>
-<span id="cb28-2"><a href=""></a><span class="fu">as.integer</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="co"># di default l'ordine di assegnazione è alfabetico </span></span>
+<span id="cb42-2"><a href=""></a><span class="fu">as.integer</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 2 1 1 3 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a>new_fact <span class="ot">=</span> <span class="fu">factor</span>(my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>))</span>
-<span id="cb30-2"><a href=""></a>new_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>Noi possiamo decidere che il primo livello sia hello:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>new_fact <span class="ot">=</span> <span class="fu">factor</span>(my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>))</span>
+<span id="cb44-2"><a href=""></a>new_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: hello ciao hola</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="fu">as.integer</span>(new_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="fu">as.integer</span>(new_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 1 2 2 3 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a>new_fact2 <span class="ot">=</span> <span class="fu">factor</span>(my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>),</span>
-<span id="cb34-2"><a href=""></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"inglese"</span>,<span class="st">"italiano"</span>,<span class="st">"spagnolo"</span>))</span>
-<span id="cb34-3"><a href=""></a>new_fact2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Possiamo poi decidere di rinominare i livelli sempre attraverso la funzione <code>factor()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a>new_fact2 <span class="ot">=</span> <span class="fu">factor</span>(my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>),</span>
+<span id="cb48-2"><a href=""></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"inglese"</span>,<span class="st">"italiano"</span>,<span class="st">"spagnolo"</span>))</span>
+<span id="cb48-3"><a href=""></a>new_fact2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] inglese  inglese  italiano italiano spagnolo spagnolo
 Levels: inglese italiano spagnolo</code></pre>
 </div>
 </div>
-</section>
-<section class="slide level2">
-
-<p><strong>Ricordate</strong>: l’argomento <strong><em><code>levels</code></em></strong> dentro la funzione <strong><code>factor()</code></strong> serve a <strong>riordinare</strong> i livelli del fattore, mentre la funzione <strong><code>levels()</code></strong> li <strong>rinomina</strong> non riordina!</p>
+<p>Versioni precedenti:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="co"># il fattore che ho creato </span></span>
-<span id="cb36-2"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a>new_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] hello hello ciao  ciao  hola  hola 
+Levels: hello ciao hola</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: ciao hello hola</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="fu">as.integer</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 2 1 1 3 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a><span class="fu">levels</span>(my_fact) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>)</span>
-<span id="cb40-2"><a href=""></a></span>
-<span id="cb40-3"><a href=""></a><span class="co"># Cosa notate rispetto al vettore my_fact visualizzato sopra?</span></span>
-<span id="cb40-4"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<p><strong>Ricordate</strong>: l’argomento <strong><em><code>levels</code></em></strong> dentro la funzione <strong><code>factor()</code></strong> serve a <strong>riordinare</strong> i livelli del fattore, mentre la funzione <strong><code>levels()</code></strong> serve ad accedere ai nomi dei livelli ed eventualmente <strong>rinominarli</strong>!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a><span class="co"># il fattore che ho creato </span></span>
+<span id="cb54-2"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] hello hello ciao  ciao  hola  hola 
+Levels: ciao hello hola</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a><span class="fu">levels</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ciao"  "hello" "hola" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a><span class="fu">levels</span>(my_fact) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>Cosa notate rispetto al vettore my_fact visualizzato sopra?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a>my_fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] ciao  ciao  hello hello hola  hola 
 Levels: hello ciao hola</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="fu">as.integer</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a><span class="fu">as.integer</span>(my_fact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 2 1 1 3 3</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -578,14 +656,14 @@ Levels: hello ciao hola</code></pre>
 <h2>Fattori Ordinali</h2>
 <p>Un sottotipo di fattori sono gli <strong><em>ordered factors</em></strong> che corrispondo alle variabili ordinali, ovvero dove i livelli sono ordinati in modo crescente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>my_ord_fac <span class="ot">=</span> <span class="fu">as.ordered</span>(my_fact)</span>
-<span id="cb44-2"><a href=""></a></span>
-<span id="cb44-3"><a href=""></a>my_ord_fac <span class="co"># odine alfabetico</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href=""></a>my_ord_fac <span class="ot">=</span> <span class="fu">as.ordered</span>(my_fact)</span>
+<span id="cb63-2"><a href=""></a></span>
+<span id="cb63-3"><a href=""></a>my_ord_fac <span class="co"># odine alfabetico</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] ciao  ciao  hello hello hola  hola 
 Levels: hello &lt; ciao &lt; hola</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="fu">attributes</span>(my_ord_fac)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="fu">attributes</span>(my_ord_fac)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$levels
 [1] "hello" "ciao"  "hola" 
@@ -786,7 +864,7 @@ $class
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 5.0e-2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
