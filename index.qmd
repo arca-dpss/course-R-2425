@@ -60,32 +60,33 @@ Credits: Filippo Gambarota e Enrico Toffalini
 
 ## Lezioni
 
-Questi sono i link al materiale principale del corso:
+Qui sotto trovate i link al materiale principale del corso; di seguito il link al padlet che utilizziamo per gli esercizi in classe:  [Esercizi in classe](https://etherpad.wikimedia.org/p/arca-corsoR){target="_blank"}. 
+
 
 ### Introduzione
 
--   *Introduzione a R (1)* - [Slides](materials/0_getStarted/0_getStarted.html) - [PDF](materials/0_getStarted/0_getStarted.pdf)
--   *Come lavorare in R - Path e R Projects* - [Slides](materials/1_intro/1.1_intro.html) - [PDF](materials/1_intro/1.1_intro.pdf)
--   *Introduzione a R (2)* - [Slides](materials/1_intro/1.2_intro.html) - [PDF](materials/1_intro/1.2_intro.pdf)
--   *Introduzione a R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html) - [PDF](materials/1_intro/1.3_funzioni&errori.pdf)
+-   *Introduzione a R (1)* - [Slides](materials/0_getStarted/0_getStarted.html){target="_blank"} - [PDF](materials/0_getStarted/0_getStarted.pdf){target="_blank"}
+-   *Come lavorare in R - Path e R Projects* - [Slides](materials/1_intro/1.1_intro.html){target="_blank"} - [PDF](materials/1_intro/1.1_intro.pdf){target="_blank"}
+-   *Introduzione a R (2)* - [Slides](materials/1_intro/1.2_intro.html){target="_blank"} - [PDF](materials/1_intro/1.2_intro.pdf){target="_blank"}
+-   *Introduzione a R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"} - [PDF](materials/1_intro/1.3_funzioni&errori.pdf){target="_blank"}
 
 ### Strutture dati
 
--   *Vettori* - [Slides](materials/2_struttureDati/2.1_vettori.html) - [PDF](materials/2_struttureDati/2.1_vettori.pdf)
--   *Fattori* - [Slides](materials/2_struttureDati/2.2_fattori.html) - [PDF](materials/2_struttureDati/2.2_fattori.pdf)
--   *Liste, Matrici e Array* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html) - [PDF](materials/2_struttureDati/2.3_liste&matrici&array.pdf)
--   *Dataframe* - [Slides](materials/2_struttureDati/2.4_dataframe.html) - [PDF](materials/2_struttureDati/2.4_dataframe.pdf)
+-   *Vettori* - [Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"} - [PDF](materials/2_struttureDati/2.1_vettori.pdf){target="_blank"}
+-   *Fattori* - [Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"} - [PDF](materials/2_struttureDati/2.2_fattori.pdf){target="_blank"}
+-   *Liste, Matrici e Array* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"} - [PDF](materials/2_struttureDati/2.3_liste&matrici&array.pdf){target="_blank"}
+-   *Dataframe* - [Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"} - [PDF](materials/2_struttureDati/2.4_dataframe.pdf){target="_blank"}
 
 ### Programmazione
 
--   *Condizionale* - [Slides](materials/3_programmazione/3.1_condizionale.html) - [PDF](materials/3_programmazione/3.1_condizionale.pdf)
--   *Iterativa* - [Slides](materials/3_programmazione/3.2_iterativa.html) - [PDF](materials/3_programmazione/3.2_iterativa.pdf)
--   *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html) - [PDF](materials/3_programmazione/3.3_apply.pdf)
+-   *Condizionale* - [Slides](materials/3_programmazione/3.1_condizionale.html){target="_blank"} - [PDF](materials/3_programmazione/3.1_condizionale.pdf){target="_blank"}
+-   *Iterativa* - [Slides](materials/3_programmazione/3.2_iterativa.html){target="_blank"} - [PDF](materials/3_programmazione/3.2_iterativa.pdf){target="_blank"}
+-   *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html){target="_blank"} - [PDF](materials/3_programmazione/3.3_apply.pdf){target="_blank"}
 
 ### Extra
 
--   *ReCap* - [Slides](materials/4_extra/recap.html) - [PDF](materials/4_extra/recap.pdf)
--   *Extra, caricare file, visualizzare dati, salvare* - [Slides](materials/4_extra/EXTRA.html) - [PDF](materials/4_extra/EXTRA.pdf)
+-   *ReCap* - [Slides](materials/4_extra/recap.html){target="_blank"} - [PDF](materials/4_extra/recap.pdf){target="_blank"}
+-   *Extra, caricare file, visualizzare dati, salvare* - [Slides](materials/4_extra/EXTRA.html){target="_blank"} - [PDF](materials/4_extra/EXTRA.pdf){target="_blank"}
 
 [Esercizi in classe](https://etherpad.wikimedia.org/p/arca-corsoR)
 
@@ -93,20 +94,20 @@ Questi sono i link al materiale principale del corso:
 
 Qui troverete esercizi con e senza soluzioni:
 
--   **Intro** - [Script](materials/1_intro/1.2_esercizi.R)
+-   **Intro** - [Script](materials/1_intro/1.2_esercizi.R){target="_blank"}
 
--   **Vettori** -  [Script](materials/2_struttureDati/2.1_esercizi.R)
+-   **Vettori** -  [Script](materials/2_struttureDati/2.1_esercizi.R){target="_blank"}
 
--   **Fattori** - [Script](materials/2_struttureDati/2.2_soluzioni.R)
+-   **Fattori** - [Script](materials/2_struttureDati/2.2_soluzioni.R){target="_blank"}
 
--   **Liste, Matrici & Array** - [Script](materials/2_struttureDati/2.3_soluzioni.R)
+-   **Liste, Matrici & Array** - [Script](materials/2_struttureDati/2.3_soluzioni.R){target="_blank"}
 
--   **Dataframe** - [Script](materials/2_struttureDati/2.4_soluzioni.R)
+-   **Dataframe** - [Script](materials/2_struttureDati/2.4_soluzioni.R){target="_blank"}
 
 ### Programmazione
 
--   **Condizionale** - [Script](materials/3_programmazione/3.1_esericizi.R)
+-   **Condizionale** - [Script](materials/3_programmazione/3.1_esericizi.R){target="_blank"}
 
--   **Iterativa** - [Script](materials/3_programmazione/3.2_esericizi.R)
+-   **Iterativa** - [Script](materials/3_programmazione/3.2_esericizi.R){target="_blank"}
 
 
