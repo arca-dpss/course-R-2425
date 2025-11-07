@@ -398,7 +398,7 @@
 </section>
 <section id="funzioni" class="slide level2">
 <h2>Funzioni</h2>
-<p>Le funzioni sono un argomento relativamente complesso ed avanzato. Lo tratteremo più avanti. Siccome le usiamo fin da subito (<strong>es., mean</strong>) è importante avere chiari alcuni aspetti:</p>
+<p>Le funzioni sono un argomento relativamente complesso ed avanzato. Lo tratteremo più avanti. Siccome le usiamo fin da subito (es. funzione <code>mean</code> per calcolare la media) è importante avere chiari alcuni aspetti:</p>
 <ul>
 <li>Funzioni come oggetti</li>
 <li>Argomenti obbligatori, opzionali e default</li>
@@ -424,9 +424,13 @@
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">myfun</span>(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># myfun(7)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -436,37 +440,39 @@
 </section>
 <section id="argomenti" class="slide level2">
 <h2>Argomenti</h2>
-<p>Gli argomenti delle funzioni sono quelli che da <em>utenti</em> dobbiamo conoscere ed impostare nel modo corretto per fare in modo che la funzioni faccia quello per cui è stata pensata. Nell’esempio precedente l’unico argomento era x. Vediamo invece l’<code>help</code> della funzione <code>mean().</code></p>
+<p>Gli argomenti delle funzioni sono quelli che da <em>utenti</em> dobbiamo conoscere ed impostare nel modo corretto per fare in modo che la funzioni faccia quello per cui è stata pensata. Nell’esempio precedente l’unico argomento era x. Vediamo invece l’<code>help</code> della funzione <code>mean()</code>.</p>
 </section>
 <section id="argomenti-1" class="slide level2">
 <h2>Argomenti</h2>
 <p>Per impostare questi argomenti ci sono 2 regole:</p>
 <ul>
 <li>l’ordine non conta SE DEFINISCO NOME DELL’ARGOMENTO con <code>x = vettore</code>, <code>na.rm = TRUE</code>, etc.</li>
-<li>l’ordine conta SE NON DEFINISCO IL NOME DELL’ARGOMENTO. Posso quindi omettere <code>argomento = valore</code> ma devo rispettare l’ordine con cui è stata scritta la funzione</li>
+<li>l’ordine conta SE NON DEFINISCO IL NOME DELL’ARGOMENTO. Posso quindi omettere <code>argomento = valore</code> ma devo rispettare l’ordine con cui è stata scritta la funzione.</li>
 </ul>
 </section>
 <section id="argomenti-2" class="slide level2">
 <h2>Argomenti</h2>
 <p>In questo caso proviamo ad usare la funzione <code>mean()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co">#creo un vettore campionando 100 elementi da una distribuzione normale con media 10 e sd 5</span></span>
-<span id="cb5-2"><a href=""></a>myvec <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
-<span id="cb5-3"><a href=""></a><span class="fu">mean</span>(<span class="at">x =</span> myvec) <span class="co"># x definito, trim non definito, na.rm non definito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co">#creo un vettore campionando 1000 elementi </span></span>
+<span id="cb5-2"><a href=""></a><span class="co"># da una distribuzione normale con media 0 e sd 1</span></span>
+<span id="cb5-3"><a href=""></a>myvec <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb5-4"><a href=""></a></span>
+<span id="cb5-5"><a href=""></a><span class="fu">mean</span>(<span class="at">x =</span> myvec) <span class="co"># x definito,trim e na.rm non definito, quindi uguali a?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.69628</code></pre>
+<pre><code>[1] 1.02543</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">mean</span>(<span class="at">x =</span> myvec, <span class="at">trim =</span> <span class="fl">0.10</span>) <span class="co"># x definito, trim definito, na.rm non definito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>?mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">mean</span>(<span class="at">x =</span> myvec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># x definito, na.rm definito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.58379</code></pre>
+<pre><code>[1] 1.02543</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">mean</span>(<span class="at">x =</span> myvec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># x definito trim non definito, na.rm definito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.69628</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">mean</span>(<span class="at">x =</span> myvec, <span class="cn">TRUE</span>) <span class="co"># cosa succede?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in mean.default(x = myvec, TRUE): 'trim' must be numeric of length one</code></pre>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="co"># mean(myvec, TRUE) # cosa succede?</span></span>
+<span id="cb10-2"><a href=""></a><span class="co"># Error in `mean.default()`:</span></span>
+<span id="cb10-3"><a href=""></a><span class="co"># ! 'trim' must be numeric of length one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>

@@ -8,7 +8,7 @@ editor: visual
 
 ## Funzioni
 
-Le funzioni sono un argomento relativamente complesso ed avanzato. Lo tratteremo più avanti. Siccome le usiamo fin da subito (**es., mean**) è importante avere chiari alcuni aspetti:
+Le funzioni sono un argomento relativamente complesso ed avanzato. Lo tratteremo più avanti. Siccome le usiamo fin da subito (es. funzione `mean` per calcolare la media) è importante avere chiari alcuni aspetti:
 
 -   Funzioni come oggetti
 -   Argomenti obbligatori, opzionali e default
@@ -34,8 +34,14 @@ myfun = function(x) {
 
 myfun(2)
 
+# myfun(7)
+```
+
+::: {.fragment}
+```{r}
 myfun(7)
 ```
+:::
 
 ## Funzioni come oggetti
 
@@ -43,27 +49,37 @@ Possiamo crearle, eliminarle o sovrascriverle come un normale oggetto. Vedremo p
 
 ## Argomenti
 
-Gli argomenti delle funzioni sono quelli che da *utenti* dobbiamo conoscere ed impostare nel modo corretto per fare in modo che la funzioni faccia quello per cui è stata pensata. Nell'esempio precedente l'unico argomento era x. Vediamo invece l'`help` della funzione `mean().`
+Gli argomenti delle funzioni sono quelli che da *utenti* dobbiamo conoscere ed impostare nel modo corretto per fare in modo che la funzioni faccia quello per cui è stata pensata. Nell'esempio precedente l'unico argomento era x. Vediamo invece l'`help` della funzione `mean()`.
 
 ## Argomenti
 
 Per impostare questi argomenti ci sono 2 regole:
 
 -   l'ordine non conta SE DEFINISCO NOME DELL'ARGOMENTO con `x = vettore`, `na.rm = TRUE`, etc.
--   l'ordine conta SE NON DEFINISCO IL NOME DELL'ARGOMENTO. Posso quindi omettere `argomento = valore` ma devo rispettare l'ordine con cui è stata scritta la funzione
+-   l'ordine conta SE NON DEFINISCO IL NOME DELL'ARGOMENTO. Posso quindi omettere `argomento = valore` ma devo rispettare l'ordine con cui è stata scritta la funzione.
 
 ## Argomenti
 
 In questo caso proviamo ad usare la funzione `mean()`:
 
 ```{r, error = TRUE, echo=TRUE}
-#creo un vettore campionando 100 elementi da una distribuzione normale con media 10 e sd 5
-myvec = rnorm(n = 100, mean = 10, sd = 5)
-mean(x = myvec) # x definito, trim non definito, na.rm non definito
-mean(x = myvec, trim = 0.10) # x definito, trim definito, na.rm non definito
-mean(x = myvec, na.rm = TRUE) # x definito trim non definito, na.rm definito
-mean(x = myvec, TRUE) # cosa succede?
+#creo un vettore campionando 1000 elementi 
+# da una distribuzione normale con media 0 e sd 1
+myvec = rnorm(n = 1000, mean = 1, sd = 1)
+
+mean(x = myvec) # x definito,trim e na.rm non definito, quindi uguali a?
+?mean
 ```
+::: {.fragment}
+```{r, echo=TRUE}
+mean(x = myvec, na.rm = TRUE) # x definito, na.rm definito
+
+# mean(myvec, TRUE) # cosa succede?
+# Error in `mean.default()`:
+# ! 'trim' must be numeric of length one
+```
+:::
+
 
 ## Packages
 
