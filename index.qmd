@@ -4,7 +4,7 @@ format:
   html: 
     theme: cosmo
     fontsize: 1.12em
-    linestretch: 1.7
+    linestretch: 1.5
     mainfont: Helvetica Neue
     toc: true
     toc-location: right
