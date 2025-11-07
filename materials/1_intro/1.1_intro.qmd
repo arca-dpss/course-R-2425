@@ -76,22 +76,26 @@ PC
 
 ## Path Relativo (alla working directory)
 
-1.  Scarica il file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova).
+Scarica il file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv).
 
-Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra "prova".
-
-<br/>
+::: {.fragment}
+Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra virgolette, ed utilizzare per esempio la funzione `read.csv`:
 
 ```{r, echo=TRUE, warning=FALSE}
-read.csv("prova.csv")
+data = read.csv("prova.csv")
+
+head(data, n = 4) #mostra le prime righe del dataset
 ```
+
+:::
 
 ## Come cambiare la working directory?
 
 Se però vogliamo caricare un file che si trova in un'altra posizione dobbiamo chiamarlo attraverso il path assoluto:
 
 ```{r, echo=TRUE, warning=FALSE}
-read.csv("/Users/tita/course-R-2425/materials/1_intro/prova.csv")
+data = read.csv("/Users/tita/course-R-2425/materials/1_intro/prova.csv")
+head(data, n = 4) #mostra le prime righe del dataset
 ```
 
 <br/>
@@ -99,7 +103,7 @@ read.csv("/Users/tita/course-R-2425/materials/1_intro/prova.csv")
 Oppure, prima cambiare la working directory attraverso il comando `setwd` e poi caricare il file:
 
 ```{r, echo = TRUE}
-# setwd('/Users/tita/Desktop')
+setwd('/Users/tita/Desktop')
 ```
 
 ## La soluzione migliore?
