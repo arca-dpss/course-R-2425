@@ -1,8 +1,11 @@
 ---
-title: "1.3_funzioni&errori"
+title: "Funzioni ed Errori"
 format: 
    revealjs:
-     margin: 0.1
+     margin: .05
+     fontsize: 2.2em
+     linestretch: 1.5
+     mainfont: Helvetica Neue
 editor: visual
 ---
 

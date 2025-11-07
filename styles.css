@@ -1,0 +1,27 @@
+/* Base typography for the deck */
+.reveal {
+  /* scales all text in the deck */
+  --r-main-font-size: 2.2em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Line spacing for slide content */
+.reveal .slides,
+.reveal .slides section {
+  line-height: 1.5;
+}
+
+/* Code blocks (source code) */
+.reveal pre.sourceCode code {
+  font-size: 2em;
+  line-height: 1.4;
+}
+
+/* Printed output from chunks (stdout/text) */
+.reveal .cell-output pre,
+.reveal .cell-output code,
+.reveal div.cell-output-stdout {
+  font-size: 2em;
+  line-height: 1.4;
+}
+

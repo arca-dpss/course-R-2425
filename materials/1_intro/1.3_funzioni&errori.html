@@ -10,7 +10,7 @@
 <link href="1.3_funzioni&amp;errori_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <title>1.3_funzioni&amp;errori</title>
+  <title>Funzioni ed Errori</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,7 +390,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">1.3_funzioni&amp;errori</h1>
+  <h1 class="title">Funzioni ed Errori</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -460,7 +460,7 @@
 <span id="cb5-4"><a href=""></a></span>
 <span id="cb5-5"><a href=""></a><span class="fu">mean</span>(<span class="at">x =</span> myvec) <span class="co"># x definito,trim e na.rm non definito, quindi uguali a?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.02543</code></pre>
+<pre><code>[1] 0.9537994</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>?mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -468,7 +468,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">mean</span>(<span class="at">x =</span> myvec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># x definito, na.rm definito</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.02543</code></pre>
+<pre><code>[1] 0.9537994</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="co"># mean(myvec, TRUE) # cosa succede?</span></span>
 <span id="cb10-2"><a href=""></a><span class="co"># Error in `mean.default()`:</span></span>
@@ -724,7 +724,7 @@
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 5.0e-2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',

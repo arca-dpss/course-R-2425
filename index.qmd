@@ -1,5 +1,13 @@
 ---
 title: "Introduzione a R"
+format:
+  html: 
+    theme: cosmo
+    fontsize: 1.12em
+    linestretch: 1.7
+    mainfont: Helvetica Neue
+    toc: true
+    toc-location: right
 ---
 
 ![](arca_logo.svg){fig-align="center" width="80"}

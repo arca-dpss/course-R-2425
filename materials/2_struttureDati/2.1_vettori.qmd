@@ -1,8 +1,11 @@
 ---
-title: "2.1_vettori"
+title: "Vettori"
 format: 
    revealjs:
-     margin: 0.1
+     margin: .05
+     fontsize: 2.2em
+     linestretch: 1.5
+     mainfont: Helvetica Neue
 editor: visual
 ---
 
@@ -50,13 +53,20 @@ I vettori si possono creare attraverso il comando **`c()`**, indicando tra le pa
 num_vect = c(1,2,3,4)
 # è possibile anche utilizzare la funzione seq()
 num_vect_seq = seq(from = 1,to = 4, by = 1)
-num_vect;num_vect_seq
+num_vect
+num_vect_seq
+```
 
+::: {.fragment}
+```{r,echo=TRUE}
 char_vect = c("R","R","R","ok")
 # è possibile anche utilizzare la funzione rep()
 char_vect_rep = c(rep("R", 3), "ok")
-char_vect;char_vect_rep
+char_vect
+char_vect_rep
 ```
+:::
+
 
 ## Tiplogia di vettore
 

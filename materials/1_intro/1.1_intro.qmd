@@ -1,8 +1,11 @@
 ---
-title: "1.1_intro"
+title: "Introduzione 1"
 format: 
    revealjs:
-     margin: 0.1
+     margin: .05
+     fontsize: 2.2em
+     linestretch: 1.5
+     mainfont: Helvetica Neue
 editor: visual
 ---
 
@@ -12,29 +15,32 @@ editor: visual
 
 ------------------------------------------------------------------------
 
-***Environment.*** La vostra scrivania quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
+**Environment.** La vostra scrivania quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
 
-***Working Directory.*** La posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.
-```{r, echo = TRUE}
-getwd()
-```
-
-***Script.*** File di testo dove il codice viene salvato e puo essere lanciato in successione. Nello script è possibile combinare codice e commenti (#)
+::: fragment
+**Script.** File di testo dove il codice viene salvato e puo essere lanciato in successione. Nello script è possibile combinare codice e commenti (#)
 
 ```{r, echo = TRUE}
 # assegno ad x il valore 30
 x = 30
 ```
+:::
 
-# Come lavorare in R
+::: fragment
+**Working Directory.** La posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.
+:::
 
-## R Projects
+## Come lavorare in R
 
-Gli ***R projects*** sono una feature implementata in R Studio per organizzare una cartella di lavoro.
+Creiamo uno script:
 
--   permettono di impostare la working directory in automatico
--   permettono di usare ***relative path*** invece che ***absolute path***
--   permettono un veloce accesso ad un determinato progetto
+![](images/script.png){fig-align="center"}
+
+## Come lavorare in R
+
+Salviamo:
+
+![](images/save.png){fig-align="center"}
 
 ## Working Directory
 
@@ -53,7 +59,7 @@ PC
 ```         
 |- Users
     | 
-    |- tita (il mio soprannome :) )
+    |- tita 
         |
         |- Desktop
             |
@@ -70,23 +76,25 @@ PC
 
 ## Path Relativo (alla working directory)
 
+1.  Scarica il file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova).
+
 Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra "prova".
 
 <br/>
-```{r, echo=TRUE, warning=FALSE}
-read.table("prova")
-```
 
+```{r, echo=TRUE, warning=FALSE}
+read.csv("prova.csv")
+```
 
 ## Come cambiare la working directory?
 
 Se però vogliamo caricare un file che si trova in un'altra posizione dobbiamo chiamarlo attraverso il path assoluto:
 
 ```{r, echo=TRUE, warning=FALSE}
-read.table("/Users/tita/course-R-2425/materials/1_intro/prova")
+read.csv("/Users/tita/course-R-2425/materials/1_intro/prova.csv")
 ```
-<br/>
 
+<br/>
 
 Oppure, prima cambiare la working directory attraverso il comando `setwd` e poi caricare il file:
 
