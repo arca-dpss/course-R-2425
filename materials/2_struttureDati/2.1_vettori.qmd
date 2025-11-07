@@ -9,6 +9,10 @@ format:
 editor: visual
 ---
 
+```{r}
+set.seed(1111)
+```
+
 ## Strutture Dati
 
 -   ***`vettori`***
@@ -57,7 +61,7 @@ num_vect
 num_vect_seq
 ```
 
-::: {.fragment}
+::: fragment
 ```{r,echo=TRUE}
 char_vect = c("R","R","R","ok")
 # è possibile anche utilizzare la funzione rep()
@@ -66,7 +70,6 @@ char_vect
 char_vect_rep
 ```
 :::
-
 
 ## Tiplogia di vettore
 
@@ -99,26 +102,50 @@ correct
 
 Possiamo testare o convertire (quando possibile) la tipologia del vettore attraverso queste funzioni **`is.`** & **`as.`**
 
+:::{.fragment}
+Vettore di tipo `character`
 ```{r, echo = TRUE}
+char_vect
 is.character(char_vect)
 as.numeric(char_vect) #!!
+```
+:::
 
+## is.\* & as.\*
+
+Vettore di tipo `numeric`
+```{r, echo = TRUE}
+num_vect
 is.numeric(num_vect)
 as.character(num_vect) #!!
+```
 
+:::{.fragment}
+Vettore di tipo `logical`
+```{r, echo = TRUE}
 logi_vect = c(TRUE,FALSE,TRUE)
 is.logical(logi_vect)
-
-as.numeric(logi_vect) 
 ```
+```{r, echo = TRUE, eval=FALSE}
+as.numeric(logi_vect)
+```
+:::
+:::{.fragment}
+```{r}
+as.numeric(logi_vect)
+```
+:::
 
 ## Attributi del vettore
 
 Ogni elemento del vettore può essere associato ad un nome.
 
 ```{r, echo=TRUE}
+num_vect
+
 names(num_vect) #nessun nome associato
 
+letters[1:4]
 names(num_vect) = letters[1:4]
 
 num_vect
@@ -129,6 +156,8 @@ num_vect
 Ogni vettore è caraterizzato da una dimensione (**`dim()`**), in realtà essendo il vettore unidimensionale usiamo il comando **`length()`** per ottenere la lunghezza del vettore
 
 ```{r, echo=TRUE}
+num_vect
+
 dim(num_vect)
 
 length(num_vect)
@@ -136,23 +165,36 @@ length(num_vect)
 
 ## Indicizzazione
 
-Possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'indice di posizione tramite le parentesi quadre vettore\[pos\]
+Possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'indice di posizione tramite le parentesi quadre vettore\[pos\] . 
 
 ```{r, echo=TRUE}
-# Creo un vettore formato da 20 numeri casuali pescati da 1 a 100
-my_vect = round(runif(n = 20,min = 1, max = 100))
+# Creo un vettore formato da 10 numeri casuali pescati da 1 a 100
+my_vect = round(runif(n = 10,min = 1, max = 100))
 my_vect
-
-my_vect[1] # estraggo il primo elemento
-
-my_vect[1:5] # estraggo i primi 5 elementi
-
-my_vect[c(1,4,2,9)] # estraggo elementi a scelta
-
-my_vect[length(my_vect)] #ultimo elemento (perchè?)
 ```
 
-## Inidicizzazione negativa
+:::{.fragment}
+```{r, echo=TRUE}
+my_vect[1] # estraggo il primo elemento
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE}
+my_vect[1:5] # estraggo i primi 5 elementi
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE}
+my_vect[c(1,4,2,9)] # estraggo elementi a scelta
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE}
+my_vect[length(my_vect)] #ultimo elemento (perchè?)
+```
+:::
+
+## Inidicizzazione Negativa
 
 Allo stesso modo possiamo decidere di estrarre tutti gli elementi del vettore eccetto alcuni
 
@@ -160,7 +202,7 @@ Allo stesso modo possiamo decidere di estrarre tutti gli elementi del vettore ec
 
 my_vect[-c(1)] #tutti tranne il primo elemento
 
-my_vect[-c(1:10)] #tutti tranne i primi 10
+my_vect[-c(1:9)] #tutti tranne i primi 10
 ```
 
 ------------------------------------------------------------------------
@@ -168,17 +210,29 @@ my_vect[-c(1:10)] #tutti tranne i primi 10
 Se assegnamo nomi agli elementi del vettore, possiamo indicizzare questi "chiamandoli per nome" (meno comune)
 
 ```{r, echo=TRUE}
-
+letters[1:length(my_vect)]
 names(my_vect) = letters[1:length(my_vect)]
-
-names(my_vect)
-my_vect
-
-my_vect["a"]
-
-my_vect[1]
-
 ```
+:::{.fragment}
+```{r, echo=TRUE}
+names(my_vect) # Che nomi hanno gli elementi di my_vec?
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE}
+my_vect 
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE}
+my_vect["a"] # voglio l'elemento di my_vec chiamato "a"
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE}
+my_vect[1] # voglio il primo elemento di my_vec
+```
+:::
 
 ## Indicizzazione Logica
 
@@ -188,64 +242,136 @@ Indicizzare con la posizione è l'aspetto più semplice e intuitivo. E' possibil
 
 numeri = 1:7
 numeri
-numeri[numeri<2]
-
 ```
+:::{.fragment}
+```{r,echo=TRUE}
+numeri>2 & numeri<5
+```
+:::
+:::{.fragment}
+```{r,echo=TRUE}
+as.numeric(numeri>2 & numeri<5)
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE, eval=FALSE}
+numeri[numeri>2 & numeri<5]
+```
+:::
+:::{.fragment}
+```{r}
+numeri[numeri>2 & numeri<5]
+```
+:::
 
 ------------------------------------------------------------------------
 
 L'idea è che se abbiamo un vettore di lunghezza **n** e un'altro vettore logico di lunghezza **n**, tutti gli elementi **`TRUE`** saranno selezionati:
 
+Non vale solo per elementi del vettore numeri ma per qualsiasi vettore!
 ```{r, echo=TRUE}
-
-numeri<2 # vettore logico
-
-# verrà quindi estratto il primo elemento 
-# perchè è l'unico che risulta TRUE
-numeri[numeri<2]
-
-# non vale solo per elementi del vettore numeri ma per qualsiasi vettore 
-lettere = letters[1:6]
+lettere = letters[1:7]
 lettere
-lettere[numeri<2]
+```
 
+:::{.fragment}
+```{r, echo=TRUE}
+numeri>2 & numeri<5
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE, eval=FALSE}
+lettere[numeri>2 & numeri<5]
+```
+:::
+:::{.fragment}
+```{r,echo=FALSE}
+lettere[numeri>2 & numeri<5]
+```
+:::
+
+## Indicizzazione Interna
+
+Attraverso la funzione `which()` possiamo ottenere la posizione associata ad una selezione logica:
+
+```{r, echo=TRUE}
+lettere
+which(lettere == "a")
 ```
 
 ## Indicizzazione Interna
 
-Attraverso la funzione **`which()`** possiamo ottenere la posizione associata ad una selezione logica:
-
-```{r, echo=T}
-
-lettere
-which(lettere == "a")
-
-my_vect
-which(my_vect > 20)
-my_vect[which(my_vect > 20)] # Cosa cambia tra questi 2 comandi?
-
-```
-
-## Indicizzazione e assegnazione
-
-Indicizzare può essere utile anche per assegnare un valore ad un determinato elemento del vettore
+Esempio:
 
 ```{r, echo=TRUE}
+# creo un vettore di 10 numeri interi casuali tra 1 e 40
+my_vect = round(runif(10, min = 1, max = 40))
+my_vect
+```
 
-lettere
+Cosa cambia tra questi 2 comandi?
 
-lettere[1] = "z"
-lettere
+```{r, echo=TRUE}
+which(my_vect > 20)
+```
 
-lettere[9] = "?"
-lettere
+```{r, echo=TRUE}
+my_vect[which(my_vect > 20)]
+```
 
-# Possiamo anche modificare l'elemento
-lettere[2] = paste(lettere[2], sep = "", "o")
+## Indicizzazione e Assegnazione
+
+Indicizzare può essere utile anche per assegnare un valore ad un determinato elemento del vettore:
+
+```{r, echo=TRUE}
 lettere
 ```
 
-## Operazioni sui vettori
+:::{.fragment}
+```{r, echo=TRUE}
+lettere[1] = "z"
+lettere
+```
+:::
+
+:::{.fragment}
+```{r, echo=TRUE}
+lettere[9] = "i"
+lettere
+```
+:::
+
+
+## Indicizzazione e Assegnazione
+Sostituisco il valore NA con la lettera mancante
+```{r, echo=TRUE}
+lettere
+```
+```{r, echo=TRUE}
+is.na(lettere) # ci sono elementi di lettere = NA?
+```
+:::{.fragment}
+```{r, echo=TRUE}
+which(is.na(lettere)) # in che posizioni sono questi elementi?
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE}
+# effettivamente se guardo nella posizione indicata
+lettere[is.na(lettere)]
+lettere[which(is.na(lettere))]  # equivalente
+```
+:::
+:::{.fragment}
+```{r, echo=TRUE}
+lettere[is.na(lettere)] = "h" # sostituisco NA con la lettera mancante
+lettere
+```
+:::
+
+# Operazioni matematiche sui vettori
+
+## Operazioni matematiche sui vettori
 
 Possiamo eseguire operazioni sui vettori, ed applicare la stessa operazione a tutti gli elementi del vettore (element-wise)
 
@@ -263,19 +389,23 @@ exp(new_vect)
 
 ## Summary Statistics
 
-Le operazioni più comuni sono per esempio la media **`mean()`**, la deviazione standard **`sd()`**, la mediana **`median()`**, il valore massimo **`max()`** e minimo **`min()`** .
+Le operazioni più comuni sono per esempio la media `mean()`, la deviazione standard `sd()`, la mediana `median()`, il valore massimo `max()` e minimo `min()` .
 
 ```{r, echo=TRUE}
 # creo un vettore campionando 1000 da una distribuzione normale 
 new_vect = rnorm(n = 1000, mean = 1, sd = 4)
-
 mean(new_vect)
 sd(new_vect)
-
 median(new_vect)
-
 summary(new_vect)
+```
 
+
+## Summary Statistics
+
+Si può anche utilizzare la funzione `describe` del pacchetto `psych`:
+```{r, echo=TRUE}
+psych::describe(new_vect)
 ```
 
 ## Valori NA
@@ -288,13 +418,13 @@ new_vect[1] = NA # Assegnamo NA al primo elemento del vettore
 
 mean(new_vect) # è impossibile calcolare la media!
 
-mean(new_vect, na.rm = T) # soluzione!
+mean(new_vect, na.rm = TRUE) # soluzione!
 
 ```
 
 ## Frequenze
 
-Un altra operazione comune che viene svolta sui vettori (e sulle altre strutture dati), è il conteggio delle frequeze
+Un'altra operazione comune che viene svolta sui vettori (e sulle altre strutture dati), è il conteggio delle frequeze
 
 ```{r, echo = TRUE}
 
@@ -305,7 +435,8 @@ char_vect
 table(char_vect)
 
 # ricordatevi che R è case-sensitive!
-char_vect[1] = "r";char_vect
+char_vect[1] = "r"
+char_vect
 
 table(char_vect)
 
