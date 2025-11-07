@@ -35,18 +35,18 @@ Credits: Filippo Gambarota e Enrico Toffalini
 -   **Materiale consentito**: È permesso utilizzare il materiale fornito a lezione. Non è consentito l'uso di altro materiale online (o chatGPT) durante l'esame.
 -   **Durata**: 1 ora
 -   **Modalità**: in classe
--   **Soluzioni** - [Script](materials/ESAME_aprile.R)
+-   **Soluzioni**: [Script](materials/ESAME_aprile.R)
 
 
-## Aule e Orari (2024-2025) {style="text-align: center;"}
+## Aule e Orari (2025-2026) {style="text-align: center;"}
 
-| Data       | Ora          | Aula         |
-|------------|--------------|--------------|
-| 07/04/2025 | 9:00 - 13:00 | Psico 2 - 4R |
-| 08/04/2025 | 9:00 - 13:00 | Psico 2 - 4R |
-| 09/04/2025 | 9:00 - 13:00 | Psico 2 - 4R |
-| 10/04/2025 | 9:00 - 13:00 | Psico 2 - 4M |
-| 11/04/2025 | 9:00 - 13:00 | Psico 2 - 4R |
+| Data       | Ora          | Aula                |
+|------------|--------------|---------------------|
+| 10/10/2025 | 13:00 - 17:00| Psico 1 - Aula ARCA |
+| 11/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 12/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 13/10/2025 | 9:00 - 12:30 | Psico 1 - Aula ARCA |
+| 14/10/2025 | 9:00 - 13:30 | Psico 1 - Aula ARCA |
 
 # Materiale
 
