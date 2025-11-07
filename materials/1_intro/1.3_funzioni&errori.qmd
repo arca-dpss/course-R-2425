@@ -40,7 +40,7 @@ myfun(2)
 # myfun(7)
 ```
 
-::: {.fragment}
+::: fragment
 ```{r}
 myfun(7)
 ```
@@ -73,16 +73,14 @@ myvec = rnorm(n = 1000, mean = 1, sd = 1)
 mean(x = myvec) # x definito,trim e na.rm non definito, quindi uguali a?
 ?mean
 ```
-::: {.fragment}
-```{r, echo=TRUE}
+
+::: fragment
+```{r, echo = TRUE, warning=TRUE, error=TRUE}
 mean(x = myvec, na.rm = TRUE) # x definito, na.rm definito
 
-# mean(myvec, TRUE) # cosa succede?
-# Error in `mean.default()`:
-# ! 'trim' must be numeric of length one
+mean(myvec, TRUE) # cosa succede?
 ```
 :::
-
 
 ## Packages
 
