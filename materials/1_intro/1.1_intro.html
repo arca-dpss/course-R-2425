@@ -402,12 +402,18 @@
 <img data-src="images/R_studio.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section class="slide level2">
 
-<p><strong><em>Environment.</em></strong> Il working environment è la vostra scrivania quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.</p>
-<p><br> <strong><em>Working Directory.</em></strong> La working directory è la posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.</p>
-<p><br> <strong><em>Script.</em></strong> Lo script è un file di testo dove il codice viene salvato e puo essere lanciato in successione. Nello script è possibile combinare codice e commenti (#)</p>
+<p><strong><em>Environment.</em></strong> La vostra scrivania quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.</p>
+<p><strong><em>Working Directory.</em></strong> La posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># assegno ad x il valore 30</span></span>
-<span id="cb1-2"><a href=""></a>x <span class="ot">=</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/tita/course-R-2425/materials/1_intro"</code></pre>
+</div>
+</div>
+<p><strong><em>Script.</em></strong> File di testo dove il codice viene salvato e puo essere lanciato in successione. Nello script è possibile combinare codice e commenti (#)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># assegno ad x il valore 30</span></span>
+<span id="cb3-2"><a href=""></a>x <span class="ot">=</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section>
@@ -429,7 +435,7 @@
 <p>Dove sta lavorando R ?</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/tita/course-R-2425/materials/1_intro"</code></pre>
 </div>
@@ -451,14 +457,14 @@
                      |- slides
                           |
                           |- 1_intro</code></pre>
-<p><br> Stiamo lavorando dentro la cartella 1_intro.</p>
+<p><br> Io sto lavorando dentro la cartella 1_intro.</p>
 </section>
 <section id="path-relativo-alla-working-directory" class="slide level2">
 <h2>Path Relativo (alla working directory)</h2>
-<p>Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra ’ ’ .</p>
+<p>Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra “prova”.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">read.table</span>(<span class="st">'prova'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">read.table</span>(<span class="st">"prova"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     V1 V2
 1 prova  1</code></pre>
@@ -467,10 +473,18 @@
 </section>
 <section id="come-cambiare-la-working-directory" class="slide level2">
 <h2>Come cambiare la working directory?</h2>
-<p>Se però vogliamo caricare un file che si trova in un’altra posizione dobbiamo chiamarlo attraverso il path assoluto, oppure cambiare la working directory.</p>
-<p> Con il comando setwd possiamo cambiare la cartella di lavoro.</p>
+<p>Se però vogliamo caricare un file che si trova in un’altra posizione dobbiamo chiamarlo attraverso il path assoluto:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># setwd('/Users/tita/Desktop')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">read.table</span>(<span class="st">"/Users/tita/course-R-2425/materials/1_intro/prova"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     V1 V2
+1 prova  1</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>Oppure, prima cambiare la working directory attraverso il comando <code>setwd</code> e poi caricare il file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># setwd('/Users/tita/Desktop')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="la-soluzione-migliore" class="slide level2">

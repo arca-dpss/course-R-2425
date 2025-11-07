@@ -12,11 +12,14 @@ editor: visual
 
 ------------------------------------------------------------------------
 
-***Environment.*** Il working environment è la vostra scrivania quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
+***Environment.*** La vostra scrivania quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
 
-<br/> ***Working Directory.*** La working directory è la posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.
+***Working Directory.*** La posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.
+```{r, echo = TRUE}
+getwd()
+```
 
-<br/> ***Script.*** Lo script è un file di testo dove il codice viene salvato e puo essere lanciato in successione. Nello script è possibile combinare codice e commenti (#)
+***Script.*** File di testo dove il codice viene salvato e puo essere lanciato in successione. Nello script è possibile combinare codice e commenti (#)
 
 ```{r, echo = TRUE}
 # assegno ad x il valore 30
@@ -63,23 +66,29 @@ PC
                           |- 1_intro
 ```
 
-<br/> Stiamo lavorando dentro la cartella 1_intro.
+<br/> Io sto lavorando dentro la cartella 1_intro.
 
 ## Path Relativo (alla working directory)
 
-Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra ' ' .
+Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra "prova".
 
 <br/>
-
 ```{r, echo=TRUE, warning=FALSE}
-read.table('prova')
+read.table("prova")
 ```
+
 
 ## Come cambiare la working directory?
 
-Se però vogliamo caricare un file che si trova in un'altra posizione dobbiamo chiamarlo attraverso il path assoluto, oppure cambiare la working directory.
+Se però vogliamo caricare un file che si trova in un'altra posizione dobbiamo chiamarlo attraverso il path assoluto:
 
-</b> Con il comando setwd possiamo cambiare la cartella di lavoro.
+```{r, echo=TRUE, warning=FALSE}
+read.table("/Users/tita/course-R-2425/materials/1_intro/prova")
+```
+<br/>
+
+
+Oppure, prima cambiare la working directory attraverso il comando `setwd` e poi caricare il file:
 
 ```{r, echo = TRUE}
 # setwd('/Users/tita/Desktop')
