@@ -868,13 +868,13 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a>x<span class="sc">&gt;</span><span class="dv">25</span> <span class="sc">&amp;</span> x<span class="sc">&lt;</span><span class="dv">60</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a>x<span class="sc">&gt;</span><span class="dv">25</span> <span class="sc">&amp;</span> x<span class="sc">&gt;</span><span class="dv">60</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
+<pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 </div>
@@ -892,13 +892,13 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href=""></a><span class="sc">!</span>(x<span class="sc">&lt;</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href=""></a><span class="sc">!</span>(x<span class="sc">&gt;</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
+<pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 </div>
@@ -925,10 +925,10 @@
 </div>
 </div>
 <div class="fragment">
+<p>Creo un vettore esempio in cui ci sono dentro le parole casa (ripetuta 4 volte) e bottega (ripetuta 2 volte):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href=""></a><span class="co"># Creo un vettore esempio in cui ci sono dentro le parole casa e bottega</span></span>
-<span id="cb73-2"><a href=""></a>esempio <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"casa"</span>,<span class="dv">4</span>),<span class="fu">rep</span>(<span class="st">"bottega"</span>,<span class="dv">2</span>)) <span class="co">#?rep</span></span>
-<span id="cb73-3"><a href=""></a>esempio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href=""></a>esempio <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"casa"</span>,<span class="dv">4</span>),<span class="fu">rep</span>(<span class="st">"bottega"</span>,<span class="dv">2</span>)) <span class="co">#?rep</span></span>
+<span id="cb73-2"><a href=""></a>esempio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "casa"    "casa"    "casa"    "casa"    "bottega" "bottega"</code></pre>
 </div>
@@ -945,7 +945,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href=""></a><span class="fu">sum</span>(esempio <span class="sc">==</span> <span class="st">"casa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href=""></a><span class="fu">sum</span>(esempio <span class="sc">==</span> <span class="st">"casa"</span>) <span class="co"># perchè?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -960,7 +960,7 @@
 <li>Operatori relazionali (e.g., &lt;, &gt;, &lt;=, &gt;=, ==, !=)</li>
 <li>Operatori logici (e.g., !, &amp;, |)</li>
 </ol>
-<p>In caso di dubbi riguardanti l’ordine di esecuzione delle operazioni, la cosa migliore è utilizzare le parentesi tonde () per disambiguare ogni possibile fraintendimento.</p>
+<p>In caso di dubbi riguardanti l’ordine di esecuzione delle operazioni, la cosa migliore è utilizzare le parentesi tonde ( ) per disambiguare ogni possibile fraintendimento.</p>
 </section>
 <section id="facciamo-un-po-di-pratica" class="slide level2" style="text-align: center;">
 <h2>Facciamo un po’ di pratica!</h2>

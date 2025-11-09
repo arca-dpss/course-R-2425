@@ -268,13 +268,13 @@ x
 
 ::: fragment
 ```{r, echo=TRUE, eval=FALSE}
-x>25 & x<60
+x>25 & x>60
 ```
 :::
 
 ::: fragment
 ```{r}
-x>25 & x<60
+x>25 & x>60
 ```
 :::
 
@@ -292,13 +292,13 @@ x>25 | x>60
 
 ::: fragment
 ```{r, echo=TRUE, eval=FALSE}
-!(x<18)
+!(x>18)
 ```
 :::
 
 ::: fragment
 ```{r}
-!(x<18)
+!(x>18)
 ```
 :::
 
@@ -314,8 +314,8 @@ FALSE == 1
 ```
 
 ::: fragment
+Creo un vettore esempio in cui ci sono dentro le parole casa (ripetuta 4 volte) e bottega (ripetuta 2 volte):
 ```{r,echo = TRUE}
-# Creo un vettore esempio in cui ci sono dentro le parole casa e bottega
 esempio = c(rep("casa",4),rep("bottega",2)) #?rep
 esempio
 ```
@@ -330,7 +330,7 @@ esempio == "casa"
 
 ::: fragment
 ```{r,echo = TRUE}
-sum(esempio == "casa")
+sum(esempio == "casa") # perchè?
 ```
 :::
 
@@ -342,7 +342,7 @@ Nel valutare le veridicità delle proposizioni R esegue le operazioni nel seguen
 2.  Operatori relazionali (e.g., \<, \>, \<=, \>=, ==, !=)
 3.  Operatori logici (e.g., !, &, \|)
 
-In caso di dubbi riguardanti l'ordine di esecuzione delle operazioni, la cosa migliore è utilizzare le parentesi tonde () per disambiguare ogni possibile fraintendimento.
+In caso di dubbi riguardanti l'ordine di esecuzione delle operazioni, la cosa migliore è utilizzare le parentesi tonde ( ) per disambiguare ogni possibile fraintendimento.
 
 ## Facciamo un po' di pratica! {style="text-align: center;"}
 
