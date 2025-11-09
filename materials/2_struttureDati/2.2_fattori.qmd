@@ -83,19 +83,23 @@ I fattori permettono di avere dei livelli **`levels()`** come metadati,
 levels(my_fact)
 ```
 
+::: {.fragment}
 a prescindere da quali siano effettivamente presenti nel vettore. Per esempio se creo un fattore composto solo dagli elementi di my_fact diversi da ciao:
 
 ```{r, echo = TRUE}
 my_fact2 = my_fact[my_fact!="ciao"]
 ```
 
-I livelli di my_fact2 saranno gli stessi di my_fact (ciao incluso) anche se ciao non è presente come osservazione
+:::
+
+::: {.fragment}
+I livelli di my_fact2 saranno gli stessi di my_fact (ciao incluso) anche se ciao non è presente come osservazione:
 
 ```{r, echo = TRUE}
 my_fact2
 levels(my_fact2)
 ```
-
+:::
 ------------------------------------------------------------------------
 
 E' possibile però eslcudere i livelli non più utili attraverso il comando `droplevels()`:
@@ -115,7 +119,7 @@ my_fact2
 
 ------------------------------------------------------------------------
 
-E' possibile anche rinominare i livelli del fattore...
+E' possibile anche **rinominare** i livelli del fattore...
 
 ```{r, echo=TRUE}
 my_fact # il fattore che ho creato 
@@ -155,7 +159,7 @@ as.integer(my_fact)
 Noi possiamo decidere che il primo livello sia hello:
 
 ```{r, echo=TRUE}
-new_fact = factor(my_fact, levels = c("hello","ciao","hola"))
+new_fact = factor(x = my_fact, levels = c("hello","ciao","hola"))
 new_fact
 as.integer(new_fact)
 ```
@@ -163,13 +167,17 @@ as.integer(new_fact)
 
 ------------------------------------------------------------------------
 
-Possiamo poi decidere di rinominare i livelli sempre attraverso la funzione `factor()`:
+Possiamo anche rinominare i livelli sempre attraverso la funzione `factor()`:
 
 ```{r, echo=TRUE}
-new_fact2 = factor(my_fact, levels = c("hello","ciao","hola"),
+my_fact
+
+new_fact2 = factor(x = my_fact, levels = c("hello","ciao","hola"),
                    labels = c("inglese","italiano","spagnolo"))
 new_fact2
 ```
+
+::: {.fragment}
 
 Versioni precedenti:
 
@@ -178,6 +186,7 @@ new_fact
 
 my_fact
 ```
+:::
 
 ------------------------------------------------------------------------
 

@@ -25,7 +25,7 @@ editor: visual
 
 ## Liste
 
-Le liste sono strutture flessibili che possono contenere oggetti di tipo differente e di differenti dimensioni (ogni elemento può essere a sua volta una lista)
+Le liste sono strutture flessibili che possono contenere oggetti di tipo differente e di differenti dimensioni (ogni elemento può essere a sua volta una lista), e si creano attraverso il comando `list()`
 
 ```{r, echo=TRUE}
 my_list = list("ciao!", 1:3, c(TRUE,FALSE), 
@@ -46,19 +46,19 @@ str(my_list)
 ***Primo Livello***: lista
 
 ```{r, echo=TRUE}
-str(my_list[2]) 
+str(my_list[2]) # una parentesi []
 ```
 
 ***Secondo Livello***: vettore numerico
 
 ```{r, echo=TRUE}
-str(my_list[[2]]) 
+str(my_list[[2]]) # doppia parentesi []
 ```
 
 ***Terzo Livello***: numero intero
 
 ```{r, echo=TRUE}
-str(my_list[[2]][1])# numero intero 
+str(my_list[[2]][1]) # doppia parentesi [] e concatenazione
 ```
 
 ## Liste
@@ -66,9 +66,10 @@ str(my_list[[2]][1])# numero intero
 E' possibile assegnare dei nomi agli elementi della lista...
 
 ```{r, echo=TRUE}
-my_list_nam = list(parola = "ciao!",numeri =  1:3, 
+my_list_nam = list(parola = "ciao!",
+                   numeri =  1:3, 
                    logico = c(TRUE,FALSE), 
-               lista = list("ciao!", 1:3, c(TRUE,FALSE)))
+                   lista = list("ciao!", 1:3, c(TRUE,FALSE)))
 my_list_nam
 ```
 
@@ -84,14 +85,22 @@ my_list_nam$lista #lista creata come elemento della lista
 
 ## Liste - Attributi
 
-Come per i vettori anche le liste hanno una lunghezza (**`lenght()`**) ed eventualmente dei nomi (**`names()`**). Il comando **`str()`** (struttura) è molto utile per le liste perchè fornisce una visione sulla struttura:
+Come per i vettori anche le liste hanno una lunghezza (**`lenght()`**) ed eventualmente dei nomi (**`names()`**).
 
 ```{r, echo=TRUE}
 
-length(my_list_nam); names(my_list_nam)
+length(my_list_nam)
 
+names(my_list_nam)
+```
+
+::: fragment
+Il comando **`str()`** (struttura) è molto utile per le liste perchè fornisce una visione sulla struttura:
+
+```{r, echo=TRUE}
 str(my_list_nam)
 ```
+:::
 
 ## Liste - Indicizzazione
 
@@ -105,12 +114,12 @@ my_list_nam[[1]] # accedo all'elemento interno
 
 ## Liste - Indicizzazione
 
-Se vogliamo selezionare più elementi (quindi fare un vero e proprio subset della lista) dobbiamo sempre usare le parentesi quadre singole:
+Se vogliamo fare un vero e proprio subset della lista) dobbiamo sempre usare le parentesi quadre singole:
 
 ```{r, echo=TRUE}
-
 #lista composta dai primi due elementi della my_list_nam 
-my_list_nam[1:2] 
+my_list2 = my_list_nam[1:2] 
+str(my_list2)
 ```
 
 ## Liste - Indicizzazione Nested
@@ -118,12 +127,11 @@ my_list_nam[1:2]
 Le liste hanno una struttura unidimensionale ma che si può sviluppare in profondità. Per selezionare elementi nested si possono concatenare più parentesi:
 
 ```{r, echo=TRUE}
+my_list_nam[2]
 
-my_list_nam[[4]]
+my_list_nam[2][1] # errore!
 
-my_list_nam[[4]][[1]]
-
-my_list_nam[[4]][[2]]
+my_list_nam[[2]][1]
 
 ```
 
@@ -138,7 +146,7 @@ x = rnorm(N, 0, 1); # variabile indipedente
 y = b1*x + rnorm(n = N, mean = 0, sd = sigma) # effetto più errore
 ```
 
-::: {.fragment}
+::: fragment
 ```{r, echo=TRUE}
 # modello lineare
 mod = lm(y ~ x) 
@@ -147,6 +155,7 @@ summary(mod)
 :::
 
 ## Liste - Perchè?
+
 ```{r, echo=TRUE}
 # cos'è l'oggetto mod?
 str(mod)
@@ -225,7 +234,7 @@ matrix(data = 1:2, ncol = 3, nrow = 3)
 
 ## Matrici - Indicizzazione
 
-Per identificare uno o più elementi nella matrice abbiamo bisogno di indici/e di riga e/o colonna separati da virgola, sempre con le parentesi quadre: matrice\[riga, colonna\]
+Per identificare uno o più elementi nella matrice abbiamo bisogno di indici/e di riga e/o colonna separati da virgola, sempre con le parentesi quadre: **matrice\[riga, colonna\]**
 
 ```{r, echo=TRUE}
 
@@ -253,6 +262,8 @@ Come per i vettori, anche in questo caso possiamo applicare l'indicizzazione log
 ```{r, echo=TRUE}
 my_mat>2
 
+my_mat
+
 # Tutti gli elementi maggiori di due
 my_mat[my_mat>2]
 
@@ -263,30 +274,47 @@ my_mat[my_mat>2]
 I vettori si creano attraverso la funzione **`c()`** e possono essere concatenati tra loro sempre attraverso la stessa funzione:
 
 ```{r, echo=TRUE}
-my_vect1 = c(1:4); my_vect2 = c(5:10)
+my_vect1 = c(1:4)
+my_vect2 = c(5:10)
+
 my_vect12 = c(my_vect1,my_vect2)
 my_vect12
 ```
 
 ## Matrici
 
-Similarmente, le matrici possono essere unite tra loro attraverso i comandi **`cbind()`** e **`rowbind()`** :
+Le matrici possono essere unite tra loro attraverso i comandi 
+```{r, echo=TRUE}
+
+my_mat1 = matrix(data = 1:4,nrow = 2, ncol = 2)
+my_mat2 = matrix(data = letters[1:4],nrow = 2, ncol = 2)
+
+```
+
+**`cbind()`**
+
+```{r, echo=TRUE}
+cbind(my_mat1, my_mat2)
+
+```
+
+**`rowbind()`** 
 
 ```{r, echo=TRUE}
 
-my_mat = matrix(1:4,2,2)
-
-cbind(my_mat, my_mat)
-
-rbind(my_mat, my_mat)
+rbind(my_mat1, my_mat2)
 
 ```
+
+Cosa notate di "strano"?
 
 ## Operazioni con le matrici
 
 Come per i vettori, anche alle matrici si possono applicare operazioni matematiche:
 
 ```{r, echo=TRUE}
+
+my_mat = matrix(data = 1:4,nrow = 2, ncol = 2)
 
 # elemet-wise
 my_mat*my_mat
@@ -313,11 +341,11 @@ my_mat%*%my_mat
 
 ## Array
 
-Gli array sono degli oggetti n-dimensionali (es., se la matrice è un quadrato un array è un cubo). Valgono le stesse proprietà della matrice scalate alle n dimensioni
+Gli array sono degli oggetti n-dimensionali (es., se la matrice è un quadrato un array è un cubo). Valgono le stesse proprietà della matrice scalate alle n dimensioni, si creano con il comando `array`
 
 ```{r, echo=TRUE}
 
-my_array = array(1:6, dim = c(2,3,2)) # esempio tridimensionale
+my_array = array(data = 1:6, dim = c(2,3,2)) # esempio tridimensionale
 my_array
 
 ```
