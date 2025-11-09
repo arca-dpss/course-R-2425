@@ -61,15 +61,11 @@ PC
     | 
     |- tita 
         |
-        |- Desktop
+        |- course-R-2425
             |
-            |- R
+            |- materials
                 |
-                |- IntroR
-                     |
-                     |- slides
-                          |
-                          |- 1_intro
+                |- 1_intro
 ```
 
 <br/> Io sto lavorando dentro la cartella 1_intro.
