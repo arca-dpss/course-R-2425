@@ -72,10 +72,17 @@ PC
 
 ## Path Relativo (alla working directory)
 
-Scarica il file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv).
+1. Cambiare la working directory attraverso il comando `setwd`:
+
+```{r, echo=TRUE, eval=FALSE}
+setwd('/Users/tita/Desktop')
+```
+
+
+2. Scarica il file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv) ed inseriscilo nella cartella.
 
 ::: fragment
-Dato che stiamo lavorando dentro la cartella 1_intro, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra virgolette, ed utilizzare per esempio la funzione `read.csv`:
+3. Dato che stiamo lavorando dentro la cartella, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra virgolette, ed utilizzare per esempio la funzione `read.csv`:
 
 ```{r, echo=TRUE, warning=FALSE}
 data = read.csv("prova.csv")
@@ -95,11 +102,8 @@ head(data, n = 4) #mostra le prime righe del dataset
 
 <br/>
 
-Oppure, prima cambiare la working directory attraverso il comando `setwd` e poi caricare il file:
+Oppure, prima cambiare la working directory attraverso il comando `setwd` e poi caricare il file.
 
-```{r, echo = TRUE}
-setwd('/Users/tita/Desktop')
-```
 
 ## La soluzione migliore?
 
