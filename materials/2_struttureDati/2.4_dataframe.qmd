@@ -1,8 +1,11 @@
 ---
-title: "2.4_dataframe"
+title: "Dataframe"
 format: 
    revealjs:
-     margin: 0.1
+     margin: .05
+     fontsize: 1.9em
+     linestretch: 1.4
+     mainfont: Helvetica Neue
 editor: visual
 ---
 
@@ -22,7 +25,7 @@ editor: visual
 
 ## Dataframe
 
-Il dataframe è la struttura più "complessa", utile e potente di R. Da un punto di vista intuitivo è un foglio excel mentre da un punto di vista di R è una tipologia di lista con alcune caratteristiche/restrizioni
+Il dataframe è la struttura più "complessa", utile e potente di R. Da un punto di vista intuitivo è un foglio excel mentre da un punto di vista di R è una tipologia di **lista** con alcune caratteristiche/restrizioni
 
 -   ogni elemento della lista è un **vettore** con un **nome associato** (aka una colonna)
 -   ogni lista/colonna deve avere lo stesso numero di elementi
@@ -30,12 +33,12 @@ Il dataframe è la struttura più "complessa", utile e potente di R. Da un punto
 
 ## Creazione
 
-Nella maggior parte dei casi vi capiterà d'importare (lo vedremo più avanti) più che creare dei dataframe, ma è importante prima capire come funzionano e come crearli/manipolarli.
+Nella maggior parte dei casi vi capiterà d'importare più che creare dei dataframe, ma è importante prima capire come funzionano e come crearli/manipolarli. Si creano attraverso il comando `data.frame`
 
 ```{r, echo=TRUE}
 # Creo un dataframe con 3 colonne 
 my_df = data.frame( col1 = 1:4, col2 = letters[1:4],
-                    col3 = rnorm(4)) 
+                    col3 = rnorm(n = 4, mean = 0, sd = 1)) 
 my_df
 ```
 
@@ -61,20 +64,32 @@ str(iris) # iris è un dataset presente di default in R (?iris)
 
 ## Indicizzazione
 
-Si posso utlizzare sia le parentesi quadre **`[]`** che il simbolo del dollaro **`$`**
+Si posso utlizzare sia le parentesi quadre **`[]`**:
 
 ```{r, echo = TRUE}
 my_df[1]  # estraggo un data.frame 5x1
 my_df[[1]] # estraggo la prima colonna del data.frame
-my_df$col1 # estraggo la prima colonna del data.frame
 my_df[1,1] #  estraggo il primo elemento della prima colonna del data.frame
 ```
+
+:::{.fragment}
+
+che il simbolo del dollaro **`$`**
+```{r, echo=TRUE}
+my_df$col1 # estraggo la prima colonna del data.frame
+my_df$col1[1] #  estraggo il primo elemento della prima colonna del data.frame
+
+```
+:::
+
 
 ## Indicizzazione - Operatori relazionali
 
 Una delle operazioni più comuni che dovrete affrontare sarà sicuramente quella di estrarre/valutare un sottoinsieme di valori presenti nel vostro dataset:
 
 ```{r, echo=TRUE}
+my_df
+
 # includo solo le righe in cui alla colonna1 i valori sono maggiori di 2
 my_df[my_df$col1 > 2, ]
 my_df[my_df[1] > 2, ] 
@@ -86,14 +101,42 @@ my_df[my_df[1] > 2, ]
 my_df
 ```
 
-::: incremental
--   `my_df[my_df$col1 > 2 & my_df$col1 < 4, ]`
-    -   "3" "c" "-1.155393"
--   `my_df[my_df$col1== 2,  "col2"]`
-    -   "b"
--   `my_df[my_df$col1== 2,  2]`
-    -   "b"
+:::{.fragment}
+```{r, echo=TRUE,eval=FALSE}
+my_df[my_df$col1 > 2 & my_df$col1 < 4, ]
+```
 :::
+
+:::{.fragment}
+```{r, eval=TRUE}
+my_df[my_df$col1 > 2 & my_df$col1 < 4, ]
+```
+:::
+
+:::{.fragment}
+```{r, echo=TRUE,eval=FALSE}
+my_df[my_df$col1== 2,  2]
+```
+:::
+
+:::{.fragment}
+```{r, eval=TRUE}
+my_df[my_df$col1== 2,  2]
+```
+:::
+
+:::{.fragment}
+```{r, echo=TRUE,eval=FALSE}
+my_df[my_df$col1== 2,  "col2"]
+```
+:::
+
+:::{.fragment}
+```{r, eval=TRUE}
+my_df[my_df$col1== 2,  "col2"]
+```
+:::
+
 
 ## Indicizzazione
 
@@ -117,48 +160,43 @@ iris[iris$Species == "setosa" & iris$Petal.Length > 1.7,]
 
 E' possibile anche selezionare colonne piuttosto che righe attraverso l'argomento ***`select`***:
 
+```{r, echo=TRUE, eval=FALSE}
+subset(iris, select = c(Sepal.Length, Species))
+```
+
 ```{r, echo=TRUE}
-head(subset(iris, select = c(Sepal.Length, Species)), n = 3)
+#visualizzo le prime due righe attraverso il comando head
+head(subset(iris, select = c(Sepal.Length, Species)), n = 3) 
 ```
 
 ------------------------------------------------------------------------
 
 Possiamo anche combinare le due cose:
 
+```{r,echo=TRUE, eval=FALSE}
+subset(iris, subset = Species == "setosa" & Sepal.Length > 4, select = c(Sepal.Length, Species))
+```
+
 ```{r,echo=TRUE}
-head(subset(iris, Species == "setosa" & Sepal.Length > 4, 
-             c(Sepal.Length, Species)), n = 3)
+head(subset(iris, subset = Species == "setosa" & Sepal.Length > 4, select = c(Sepal.Length, Species)), n = 3)
 ```
 
 ... equivalente a:
 
 ```{r,echo=TRUE}
 
-head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4, 
-          c("Sepal.Length","Species")],n = 3)
+head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4, c("Sepal.Length","Species")],n = 3)
 ```
 
-------------------------------------------------------------------------
-
-La funzione **`subset()`** essenzialmente prende delle espressioni ***`Species == "setosa"`*** che vengono eseguite all'interno dell'ambiente dataframe specificato come primo argomento.
-
-Un'operazione simile viene svolta dalla funzione **`with()`**:
-
-```{r, echo=TRUE}
-Species = "bo"
-with(iris, Sepal.Length[3] + Sepal.Width[3])
-```
-
-L'espressione Sepal.Length + Sepal.Width viene eseguita all'interno (**`with()`**) del dataframe iris.
-
-------------------------------------------------------------------------
 
 ## Indicizzazione
 
 La maggiorparte delle volte vi troverete ad accedere alle variabili tramite l'operatore **`$`**. Questo comando può essere utilizzato anche per creare una nuova variabile...
 
 ```{r,echo=TRUE}
+# creo una variablie che è la somma di Length e Width
 iris$somma = iris$Sepal.Length + iris$Sepal.Width
+
 str(iris)
 ```
 
@@ -174,7 +212,7 @@ my_df
 my_df$num = my_df$num+1
 
 # Creo una terza variabile composta dalla varibile num e let
-my_df$both = paste(my_df$num,my_df$let, sep = "_")
+my_df$both = paste(my_df$num,my_df$let, sep = "_") # ?paste
 
 str(my_df)
 ```
@@ -205,21 +243,22 @@ str(my_df2)
 
 ```{r,echo=TRUE, error=TRUE}
 my_df3 = rbind(my_df,my_df2) 
+
+str(my_df)
+str(my_df2)
 ```
 
 ------------------------------------------------------------------------
 
-```{r,echo=TRUE, error=TRUE}
-str(my_df)
-str(my_df2)
-
-```
-
 **Sistemo i nomi**
 
 ```{r,echo=TRUE, error=TRUE}
+names(my_df2)
+names(my_df)
 
+# voglio che i names di my_df2 corrispondano ai names di my_df
 names(my_df2) = names(my_df)
+
 my_df3 = rbind(my_df,my_df2) 
 str(my_df3)
 ```
@@ -234,7 +273,17 @@ Dataframe contente i tempi di reazione:
 df_rt = data.frame(subj = factor(rep(c("caio","tizio"),each = 400)),
                    cond = factor(rep(c("easy","hard"), 
                                      each = 200, times = 2)),
-                      rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25), rlnorm(n = 400, meanlog = -.7, sdlog =.3)))
+                      rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25), 
+                             rlnorm(n = 400, meanlog = -.7, sdlog =.3)))
+
+# equivalente a creare prima le variabili come vettore e poi inserirle in un df
+subj = factor(rep(c("caio","tizio"),each = 400))
+cond = factor(rep(c("easy","hard"),each = 200, times = 2))
+rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25), 
+                             rlnorm(n = 400, meanlog = -.7, sdlog =.3))
+
+df_rt = data.frame(subj, cond, rt)
+
 ```
 
 Dataframe contente l'età:
@@ -259,15 +308,15 @@ head(df_age)
 In questo caso, è possibile utilizzare la funzione **`merge()`** e/o la funzione **`_join()`**:
 
 ```{r, echo=TRUE}
-dfAll1 = merge(df_rt, df_age, by="subj")
-str(dfAll1)
+df_all_1 = merge(x = df_rt, y = df_age, by="subj")
+str(df_all_1)
 ```
 
 ```{r, echo=TRUE, message=FALSE}
-library(tidyverse)
-dfAll2 = df_rt%>%
-  left_join(df_age, by = c("subj")) # esistono anche right_join; full_join 
-str(dfAll2)
+library(dplyr) # carico il pacchetto dplyr
+
+df_all_2 = left_join(x = df_rt, y = df_age, by = c("subj")) # esistono anche right_join; full_join 
+str(df_all_2)
 ```
 
 ## Tabelle di contingenza
@@ -277,13 +326,15 @@ E' possibile utilizzare le funzione **`table()`** sia per calcolare le frequenze
 ```{r, echo=TRUE}
 
 # tengo solo rt compresi tra .200 e 1.5 secondi
-df_rt_clean = df_rt[df_rt$rt > .25 & df_rt$rt < 1.5 ,] 
+# quindi le righe che rispettano questa condizione
+df_rt_clean = df_rt[df_rt$rt > .25 & df_rt$rt < 1.5, ] 
 
 # quanti trial x ogni soggetto
+table(df_rt$subj) 
 table(df_rt_clean$subj) 
 
 # quanti trial x ogni soggetto x condizione
-table(df_rt_clean$subj,df_rt_clean$cond) 
+table(df_rt_clean$subj, df_rt_clean$cond) 
 
 ```
 

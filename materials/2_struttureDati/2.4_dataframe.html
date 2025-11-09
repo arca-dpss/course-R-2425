@@ -10,7 +10,7 @@
 <link href="2.4_dataframe_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <title>2.4_dataframe</title>
+  <title>Dataframe</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,7 +390,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">2.4_dataframe</h1>
+  <h1 class="title">Dataframe</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -409,7 +409,7 @@
 </section>
 <section id="dataframe" class="slide level2">
 <h2>Dataframe</h2>
-<p>Il dataframe è la struttura più “complessa”, utile e potente di R. Da un punto di vista intuitivo è un foglio excel mentre da un punto di vista di R è una tipologia di lista con alcune caratteristiche/restrizioni</p>
+<p>Il dataframe è la struttura più “complessa”, utile e potente di R. Da un punto di vista intuitivo è un foglio excel mentre da un punto di vista di R è una tipologia di <strong>lista</strong> con alcune caratteristiche/restrizioni</p>
 <ul>
 <li>ogni elemento della lista è un <strong>vettore</strong> con un <strong>nome associato</strong> (aka una colonna)</li>
 <li>ogni lista/colonna deve avere lo stesso numero di elementi</li>
@@ -418,18 +418,18 @@
 </section>
 <section id="creazione" class="slide level2">
 <h2>Creazione</h2>
-<p>Nella maggior parte dei casi vi capiterà d’importare (lo vedremo più avanti) più che creare dei dataframe, ma è importante prima capire come funzionano e come crearli/manipolarli.</p>
+<p>Nella maggior parte dei casi vi capiterà d’importare più che creare dei dataframe, ma è importante prima capire come funzionano e come crearli/manipolarli. Si creano attraverso il comando <code>data.frame</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Creo un dataframe con 3 colonne </span></span>
 <span id="cb1-2"><a href=""></a>my_df <span class="ot">=</span> <span class="fu">data.frame</span>( <span class="at">col1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col2 =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
-<span id="cb1-3"><a href=""></a>                    <span class="at">col3 =</span> <span class="fu">rnorm</span>(<span class="dv">4</span>)) </span>
+<span id="cb1-3"><a href=""></a>                    <span class="at">col3 =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)) </span>
 <span id="cb1-4"><a href=""></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2      col3
-1    1    a 0.3239939
-2    2    b 1.0292454
-3    3    c 1.1829594
-4    4    d 2.2102664</code></pre>
+<pre><code>  col1 col2        col3
+1    1    a -1.55643426
+2    2    b -0.03366128
+3    3    c  1.13593425
+4    4    d  1.44699611</code></pre>
 </div>
 </div>
 </section>
@@ -475,7 +475,7 @@ $row.names
 </section>
 <section id="indicizzazione" class="slide level2">
 <h2>Indicizzazione</h2>
-<p>Si posso utlizzare sia le parentesi quadre <strong><code>[]</code></strong> che il simbolo del dollaro <strong><code>$</code></strong></p>
+<p>Si posso utlizzare sia le parentesi quadre <strong><code>[]</code></strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>my_df[<span class="dv">1</span>]  <span class="co"># estraggo un data.frame 5x1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -489,13 +489,22 @@ $row.names
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>my_df<span class="sc">$</span>col1 <span class="co"># estraggo la prima colonna del data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>my_df[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co">#  estraggo il primo elemento della prima colonna del data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>che il simbolo del dollaro <strong><code>$</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>my_df<span class="sc">$</span>col1 <span class="co"># estraggo la prima colonna del data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>my_df[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co">#  estraggo il primo elemento della prima colonna del data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>my_df<span class="sc">$</span>col1[<span class="dv">1</span>] <span class="co">#  estraggo il primo elemento della prima colonna del data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -503,18 +512,26 @@ $row.names
 <h2>Indicizzazione - Operatori relazionali</h2>
 <p>Una delle operazioni più comuni che dovrete affrontare sarà sicuramente quella di estrarre/valutare un sottoinsieme di valori presenti nel vostro dataset:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co"># includo solo le righe in cui alla colonna1 i valori sono maggiori di 2</span></span>
-<span id="cb19-2"><a href=""></a>my_df[my_df<span class="sc">$</span>col1 <span class="sc">&gt;</span> <span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2     col3
-3    3    c 1.182959
-4    4    d 2.210266</code></pre>
+<pre><code>  col1 col2        col3
+1    1    a -1.55643426
+2    2    b -0.03366128
+3    3    c  1.13593425
+4    4    d  1.44699611</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>my_df[my_df[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">2</span>, ] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="co"># includo solo le righe in cui alla colonna1 i valori sono maggiori di 2</span></span>
+<span id="cb23-2"><a href=""></a>my_df[my_df<span class="sc">$</span>col1 <span class="sc">&gt;</span> <span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  col1 col2     col3
-3    3    c 1.182959
-4    4    d 2.210266</code></pre>
+3    3    c 1.135934
+4    4    d 1.446996</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>my_df[my_df[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">2</span>, ] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  col1 col2     col3
+3    3    c 1.135934
+4    4    d 1.446996</code></pre>
 </div>
 </div>
 </section>
@@ -522,35 +539,56 @@ $row.names
 <h2>Esempi</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2      col3
-1    1    a 0.3239939
-2    2    b 1.0292454
-3    3    c 1.1829594
-4    4    d 2.2102664</code></pre>
+<pre><code>  col1 col2        col3
+1    1    a -1.55643426
+2    2    b -0.03366128
+3    3    c  1.13593425
+4    4    d  1.44699611</code></pre>
 </div>
 </div>
-<div>
-<ul>
-<li class="fragment"><code>my_df[my_df$col1 &gt; 2 &amp; my_df$col1 &lt; 4, ]</code>
-<ul>
-<li class="fragment">“3” “c” “-1.155393”</li>
-</ul></li>
-<li class="fragment"><code>my_df[my_df$col1== 2,  "col2"]</code>
-<ul>
-<li class="fragment">“b”</li>
-</ul></li>
-<li class="fragment"><code>my_df[my_df$col1== 2,  2]</code>
-<ul>
-<li class="fragment">“b”</li>
-</ul></li>
-</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>my_df[my_df<span class="sc">$</span>col1 <span class="sc">&gt;</span> <span class="dv">2</span> <span class="sc">&amp;</span> my_df<span class="sc">$</span>col1 <span class="sc">&lt;</span> <span class="dv">4</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  col1 col2     col3
+3    3    c 1.135934</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a>my_df[my_df<span class="sc">$</span>col1<span class="sc">==</span> <span class="dv">2</span>,  <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "b"</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a>my_df[my_df<span class="sc">$</span>col1<span class="sc">==</span> <span class="dv">2</span>,  <span class="st">"col2"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "b"</code></pre>
+</div>
+</div>
 </div>
 </section>
 <section id="indicizzazione-1" class="slide level2">
 <h2>Indicizzazione</h2>
 <p>Ci sono anche dei modi alternativi e più compatti di indicizzare. Ad esempio usando la funzione <strong><code>subset()</code></strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Petal.Length <span class="sc">&gt;</span> <span class="fl">1.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Petal.Length <span class="sc">&gt;</span> <span class="fl">1.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 25          4.8         3.4          1.9         0.2  setosa
@@ -559,7 +597,7 @@ $row.names
 </div>
 <p>equivalente a:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Petal.Length <span class="sc">&gt;</span> <span class="fl">1.7</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Petal.Length <span class="sc">&gt;</span> <span class="fl">1.7</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 25          4.8         3.4          1.9         0.2  setosa
@@ -571,7 +609,11 @@ $row.names
 
 <p>E’ possibile anche selezionare colonne piuttosto che righe attraverso l’argomento <strong><em><code>select</code></em></strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="fu">head</span>(<span class="fu">subset</span>(iris, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species)), <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="fu">subset</span>(iris, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="co">#visualizzo le prime due righe attraverso il comando head</span></span>
+<span id="cb39-2"><a href=""></a><span class="fu">head</span>(<span class="fu">subset</span>(iris, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species)), <span class="at">n =</span> <span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Species
 1          5.1  setosa
@@ -584,8 +626,10 @@ $row.names
 
 <p>Possiamo anche combinare le due cose:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="fu">head</span>(<span class="fu">subset</span>(iris, Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, </span>
-<span id="cb30-2"><a href=""></a>             <span class="fu">c</span>(Sepal.Length, Species)), <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a><span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="fu">head</span>(<span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species)), <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Species
 1          5.1  setosa
@@ -595,8 +639,7 @@ $row.names
 </div>
 <p>… equivalente a:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="fu">head</span>(iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, </span>
-<span id="cb32-2"><a href=""></a>          <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>,<span class="st">"Species"</span>)],<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a><span class="fu">head</span>(iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>,<span class="st">"Species"</span>)],<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Species
 1          5.1  setosa
@@ -605,25 +648,14 @@ $row.names
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-<p>La funzione <strong><code>subset()</code></strong> essenzialmente prende delle espressioni <strong><em><code>Species == "setosa"</code></em></strong> che vengono eseguite all’interno dell’ambiente dataframe specificato come primo argomento.</p>
-<p>Un’operazione simile viene svolta dalla funzione <strong><code>with()</code></strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a>Species <span class="ot">=</span> <span class="st">"bo"</span></span>
-<span id="cb34-2"><a href=""></a><span class="fu">with</span>(iris, Sepal.Length[<span class="dv">3</span>] <span class="sc">+</span> Sepal.Width[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.9</code></pre>
-</div>
-</div>
-<p>L’espressione Sepal.Length + Sepal.Width viene eseguita all’interno (<strong><code>with()</code></strong>) del dataframe iris.</p>
-</section>
 <section id="indicizzazione-2" class="slide level2">
 <h2>Indicizzazione</h2>
 <p>La maggiorparte delle volte vi troverete ad accedere alle variabili tramite l’operatore <strong><code>$</code></strong>. Questo comando può essere utilizzato anche per creare una nuova variabile…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>iris<span class="sc">$</span>somma <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">+</span> iris<span class="sc">$</span>Sepal.Width</span>
-<span id="cb36-2"><a href=""></a><span class="fu">str</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="co"># creo una variablie che è la somma di Length e Width</span></span>
+<span id="cb46-2"><a href=""></a>iris<span class="sc">$</span>somma <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">+</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb46-3"><a href=""></a></span>
+<span id="cb46-4"><a href=""></a><span class="fu">str</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  6 variables:
  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -639,8 +671,8 @@ $row.names
 
 <p>Si applicano gli stessi concetti che abbiamo visto per i vettori, potete quindi sia creare che modificare variabili.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>my_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">let =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
-<span id="cb38-2"><a href=""></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a>my_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">let =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb48-2"><a href=""></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  num let
 1   1   a
@@ -648,13 +680,13 @@ $row.names
 3   3   c
 4   4   d</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a><span class="co"># Modfico la variabile num aggiungendo 1</span></span>
-<span id="cb40-2"><a href=""></a>my_df<span class="sc">$</span>num <span class="ot">=</span> my_df<span class="sc">$</span>num<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb40-3"><a href=""></a></span>
-<span id="cb40-4"><a href=""></a><span class="co"># Creo una terza variabile composta dalla varibile num e let</span></span>
-<span id="cb40-5"><a href=""></a>my_df<span class="sc">$</span>both <span class="ot">=</span> <span class="fu">paste</span>(my_df<span class="sc">$</span>num,my_df<span class="sc">$</span>let, <span class="at">sep =</span> <span class="st">"_"</span>)</span>
-<span id="cb40-6"><a href=""></a></span>
-<span id="cb40-7"><a href=""></a><span class="fu">str</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="co"># Modfico la variabile num aggiungendo 1</span></span>
+<span id="cb50-2"><a href=""></a>my_df<span class="sc">$</span>num <span class="ot">=</span> my_df<span class="sc">$</span>num<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb50-3"><a href=""></a></span>
+<span id="cb50-4"><a href=""></a><span class="co"># Creo una terza variabile composta dalla varibile num e let</span></span>
+<span id="cb50-5"><a href=""></a>my_df<span class="sc">$</span>both <span class="ot">=</span> <span class="fu">paste</span>(my_df<span class="sc">$</span>num,my_df<span class="sc">$</span>let, <span class="at">sep =</span> <span class="st">"_"</span>) <span class="co"># ?paste</span></span>
+<span id="cb50-6"><a href=""></a></span>
+<span id="cb50-7"><a href=""></a><span class="fu">str</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : num  2 3 4 5
@@ -667,19 +699,19 @@ $row.names
 <h2>Combinare Dataframes</h2>
 <p>Essendo simili a delle matrici, i dataframe si possono combinare tra loro attraverso le funzioni <strong><code>rbind()</code></strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="co"># primo dataframe</span></span>
-<span id="cb42-2"><a href=""></a><span class="fu">str</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a><span class="co"># primo dataframe</span></span>
+<span id="cb52-2"><a href=""></a><span class="fu">str</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : num  2 3 4 5
  $ let : chr  "a" "b" "c" "d"
  $ both: chr  "2_a" "3_b" "4_c" "5_d"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a><span class="co"># creo un secondo dataframe</span></span>
-<span id="cb44-2"><a href=""></a>my_df2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">num =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">lett =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
-<span id="cb44-3"><a href=""></a>                    <span class="at">both =</span> <span class="fu">paste</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>,letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">sep =</span> <span class="st">"_"</span>))</span>
-<span id="cb44-4"><a href=""></a></span>
-<span id="cb44-5"><a href=""></a><span class="fu">str</span>(my_df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a><span class="co"># creo un secondo dataframe</span></span>
+<span id="cb54-2"><a href=""></a>my_df2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">num =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">lett =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
+<span id="cb54-3"><a href=""></a>                    <span class="at">both =</span> <span class="fu">paste</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>,letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">sep =</span> <span class="st">"_"</span>))</span>
+<span id="cb54-4"><a href=""></a></span>
+<span id="cb54-5"><a href=""></a><span class="fu">str</span>(my_df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : int  4 5 6 7
@@ -696,23 +728,19 @@ $row.names
 <li><p>I nomi delle colonne devono essere identici</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a>my_df3 <span class="ot">=</span> <span class="fu">rbind</span>(my_df,my_df2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a>my_df3 <span class="ot">=</span> <span class="fu">rbind</span>(my_df,my_df2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in match.names(clabs, names(xi)): names do not match previous names</code></pre>
+<pre><code>Error in `match.names()`:
+! names do not match previous names</code></pre>
 </div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a><span class="fu">str</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a><span class="fu">str</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : num  2 3 4 5
  $ let : chr  "a" "b" "c" "d"
  $ both: chr  "2_a" "3_b" "4_c" "5_d"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="fu">str</span>(my_df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a><span class="fu">str</span>(my_df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : int  4 5 6 7
@@ -720,11 +748,24 @@ $row.names
  $ both: chr  "4_a" "5_b" "6_c" "7_d"</code></pre>
 </div>
 </div>
+</section>
+<section class="slide level2">
+
 <p><strong>Sistemo i nomi</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a><span class="fu">names</span>(my_df2) <span class="ot">=</span> <span class="fu">names</span>(my_df)</span>
-<span id="cb52-2"><a href=""></a>my_df3 <span class="ot">=</span> <span class="fu">rbind</span>(my_df,my_df2) </span>
-<span id="cb52-3"><a href=""></a><span class="fu">str</span>(my_df3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="fu">names</span>(my_df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "num"  "lett" "both"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href=""></a><span class="fu">names</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "num"  "let"  "both"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a><span class="co"># voglio che i names di my_df2 corrispondano ai names di my_df</span></span>
+<span id="cb66-2"><a href=""></a><span class="fu">names</span>(my_df2) <span class="ot">=</span> <span class="fu">names</span>(my_df)</span>
+<span id="cb66-3"><a href=""></a></span>
+<span id="cb66-4"><a href=""></a>my_df3 <span class="ot">=</span> <span class="fu">rbind</span>(my_df,my_df2) </span>
+<span id="cb66-5"><a href=""></a><span class="fu">str</span>(my_df3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   8 obs. of  3 variables:
  $ num : num  2 3 4 5 4 5 6 7
@@ -738,43 +779,52 @@ $row.names
 <p>Potrebbe anche capitarvi di dover raccogliere differenti tipi di dato dallo stesso partecipante, e successivamente combinare le informazioni raccolte…</p>
 <p>Dataframe contente i tempi di reazione:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a>df_rt <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">subj =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"caio"</span>,<span class="st">"tizio"</span>),<span class="at">each =</span> <span class="dv">400</span>)),</span>
-<span id="cb54-2"><a href=""></a>                   <span class="at">cond =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"easy"</span>,<span class="st">"hard"</span>), </span>
-<span id="cb54-3"><a href=""></a>                                     <span class="at">each =</span> <span class="dv">200</span>, <span class="at">times =</span> <span class="dv">2</span>)),</span>
-<span id="cb54-4"><a href=""></a>                      <span class="at">rt =</span> <span class="fu">c</span>(<span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">sdlog =</span> .<span class="dv">25</span>), <span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span>.<span class="dv">7</span>, <span class="at">sdlog =</span>.<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href=""></a>df_rt <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">subj =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"caio"</span>,<span class="st">"tizio"</span>),<span class="at">each =</span> <span class="dv">400</span>)),</span>
+<span id="cb68-2"><a href=""></a>                   <span class="at">cond =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"easy"</span>,<span class="st">"hard"</span>), </span>
+<span id="cb68-3"><a href=""></a>                                     <span class="at">each =</span> <span class="dv">200</span>, <span class="at">times =</span> <span class="dv">2</span>)),</span>
+<span id="cb68-4"><a href=""></a>                      <span class="at">rt =</span> <span class="fu">c</span>(<span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">sdlog =</span> .<span class="dv">25</span>), </span>
+<span id="cb68-5"><a href=""></a>                             <span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span>.<span class="dv">7</span>, <span class="at">sdlog =</span>.<span class="dv">3</span>)))</span>
+<span id="cb68-6"><a href=""></a></span>
+<span id="cb68-7"><a href=""></a><span class="co"># equivalente a creare prima le variabili come vettore e poi inserirle in un df</span></span>
+<span id="cb68-8"><a href=""></a>subj <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"caio"</span>,<span class="st">"tizio"</span>),<span class="at">each =</span> <span class="dv">400</span>))</span>
+<span id="cb68-9"><a href=""></a>cond <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"easy"</span>,<span class="st">"hard"</span>),<span class="at">each =</span> <span class="dv">200</span>, <span class="at">times =</span> <span class="dv">2</span>))</span>
+<span id="cb68-10"><a href=""></a>rt <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">sdlog =</span> .<span class="dv">25</span>), </span>
+<span id="cb68-11"><a href=""></a>                             <span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span>.<span class="dv">7</span>, <span class="at">sdlog =</span>.<span class="dv">3</span>))</span>
+<span id="cb68-12"><a href=""></a></span>
+<span id="cb68-13"><a href=""></a>df_rt <span class="ot">=</span> <span class="fu">data.frame</span>(subj, cond, rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Dataframe contente l’età:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a>df_age <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">subj =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"caio"</span>,<span class="st">"tizio"</span>)), <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href=""></a>df_age <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">subj =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"caio"</span>,<span class="st">"tizio"</span>)), <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a><span class="fu">str</span>(df_rt) <span class="co"># struttura dataframe tempi di reazione</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href=""></a><span class="fu">str</span>(df_rt) <span class="co"># struttura dataframe tempi di reazione</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   800 obs. of  3 variables:
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.474 0.371 0.361 0.451 0.46 ...</code></pre>
+ $ rt  : num  0.276 0.274 0.281 0.323 0.374 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a><span class="fu">head</span>(df_rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href=""></a><span class="fu">head</span>(df_rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  subj cond        rt
-1 caio easy 0.4736846
-2 caio easy 0.3710790
-3 caio easy 0.3611667
-4 caio easy 0.4511468
-5 caio easy 0.4599530
-6 caio easy 0.2958042</code></pre>
+1 caio easy 0.2760902
+2 caio easy 0.2738203
+3 caio easy 0.2807314
+4 caio easy 0.3230613
+5 caio easy 0.3739160
+6 caio easy 0.3626198</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a><span class="fu">str</span>(df_age) <span class="co"># struttura dataframe età</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href=""></a><span class="fu">str</span>(df_age) <span class="co"># struttura dataframe età</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   2 obs. of  2 variables:
  $ subj: Factor w/ 2 levels "caio","tizio": 1 2
  $ age : num  20 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="fu">head</span>(df_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href=""></a><span class="fu">head</span>(df_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   subj age
 1  caio  20
@@ -786,26 +836,26 @@ $row.names
 
 <p>In questo caso, è possibile utilizzare la funzione <strong><code>merge()</code></strong> e/o la funzione <strong><code>_join()</code></strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href=""></a>dfAll1 <span class="ot">=</span> <span class="fu">merge</span>(df_rt, df_age, <span class="at">by=</span><span class="st">"subj"</span>)</span>
-<span id="cb64-2"><a href=""></a><span class="fu">str</span>(dfAll1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href=""></a>df_all_1 <span class="ot">=</span> <span class="fu">merge</span>(<span class="at">x =</span> df_rt, <span class="at">y =</span> df_age, <span class="at">by=</span><span class="st">"subj"</span>)</span>
+<span id="cb78-2"><a href=""></a><span class="fu">str</span>(df_all_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   800 obs. of  4 variables:
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.474 0.371 0.361 0.451 0.46 ...
+ $ rt  : num  0.276 0.274 0.281 0.323 0.374 ...
  $ age : num  20 20 20 20 20 20 20 20 20 20 ...</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb66-2"><a href=""></a>dfAll2 <span class="ot">=</span> df_rt<span class="sc">%&gt;%</span></span>
-<span id="cb66-3"><a href=""></a>  <span class="fu">left_join</span>(df_age, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"subj"</span>)) <span class="co"># esistono anche right_join; full_join </span></span>
-<span id="cb66-4"><a href=""></a><span class="fu">str</span>(dfAll2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a><span class="fu">library</span>(dplyr) <span class="co"># carico il pacchetto dplyr</span></span>
+<span id="cb80-2"><a href=""></a></span>
+<span id="cb80-3"><a href=""></a>df_all_2 <span class="ot">=</span> <span class="fu">left_join</span>(<span class="at">x =</span> df_rt, <span class="at">y =</span> df_age, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"subj"</span>)) <span class="co"># esistono anche right_join; full_join </span></span>
+<span id="cb80-4"><a href=""></a><span class="fu">str</span>(df_all_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   800 obs. of  4 variables:
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.474 0.371 0.361 0.451 0.46 ...
+ $ rt  : num  0.276 0.274 0.281 0.323 0.374 ...
  $ age : num  20 20 20 20 20 20 20 20 20 20 ...</code></pre>
 </div>
 </div>
@@ -814,23 +864,30 @@ $row.names
 <h2>Tabelle di contingenza</h2>
 <p>E’ possibile utilizzare le funzione <strong><code>table()</code></strong> sia per calcolare le frequenze che per computare delle tabelle di contigenze, per esempio per vedere quanti trial ho per ogni soggetto.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href=""></a><span class="co"># tengo solo rt compresi tra .200 e 1.5 secondi</span></span>
-<span id="cb68-2"><a href=""></a>df_rt_clean <span class="ot">=</span> df_rt[df_rt<span class="sc">$</span>rt <span class="sc">&gt;</span> .<span class="dv">25</span> <span class="sc">&amp;</span> df_rt<span class="sc">$</span>rt <span class="sc">&lt;</span> <span class="fl">1.5</span> ,] </span>
-<span id="cb68-3"><a href=""></a></span>
-<span id="cb68-4"><a href=""></a><span class="co"># quanti trial x ogni soggetto</span></span>
-<span id="cb68-5"><a href=""></a><span class="fu">table</span>(df_rt_clean<span class="sc">$</span>subj) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a><span class="co"># tengo solo rt compresi tra .200 e 1.5 secondi</span></span>
+<span id="cb82-2"><a href=""></a><span class="co"># quindi le righe che rispettano questa condizione</span></span>
+<span id="cb82-3"><a href=""></a>df_rt_clean <span class="ot">=</span> df_rt[df_rt<span class="sc">$</span>rt <span class="sc">&gt;</span> .<span class="dv">25</span> <span class="sc">&amp;</span> df_rt<span class="sc">$</span>rt <span class="sc">&lt;</span> <span class="fl">1.5</span>, ] </span>
+<span id="cb82-4"><a href=""></a></span>
+<span id="cb82-5"><a href=""></a><span class="co"># quanti trial x ogni soggetto</span></span>
+<span id="cb82-6"><a href=""></a><span class="fu">table</span>(df_rt<span class="sc">$</span>subj) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  caio tizio 
-  371   397 </code></pre>
+  400   400 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href=""></a><span class="co"># quanti trial x ogni soggetto x condizione</span></span>
-<span id="cb70-2"><a href=""></a><span class="fu">table</span>(df_rt_clean<span class="sc">$</span>subj,df_rt_clean<span class="sc">$</span>cond) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a><span class="fu">table</span>(df_rt_clean<span class="sc">$</span>subj) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ caio tizio 
+  378   396 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a><span class="co"># quanti trial x ogni soggetto x condizione</span></span>
+<span id="cb86-2"><a href=""></a><span class="fu">table</span>(df_rt_clean<span class="sc">$</span>subj, df_rt_clean<span class="sc">$</span>cond) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       
         easy hard
-  caio   181  190
-  tizio  197  200</code></pre>
+  caio   187  191
+  tizio  196  200</code></pre>
 </div>
 </div>
 </section>
@@ -839,40 +896,40 @@ $row.names
 <p>In R è possibile importare dati in molti formati differenti, più comunemente vi troverete ad importare dati <strong><em>.csv</em></strong> oppure <strong><em>.xlsx</em></strong>.</p>
 <p>Qui per esempio, esporto i dataframe in due formati differenti…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href=""></a><span class="fu">library</span>(readr) <span class="co"># carico il pacchetto readr</span></span>
-<span id="cb72-2"><a href=""></a><span class="fu">library</span>(writexl) <span class="co"># carico il pacchetto writexl</span></span>
-<span id="cb72-3"><a href=""></a></span>
-<span id="cb72-4"><a href=""></a><span class="fu">write.csv</span>(df_rt, <span class="at">file =</span> <span class="st">"DATA/df_rt.csv"</span>,<span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb72-5"><a href=""></a><span class="fu">write_xlsx</span>(df_age, <span class="at">path =</span> <span class="st">"DATA/df_age.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a><span class="fu">library</span>(readr) <span class="co"># carico il pacchetto readr</span></span>
+<span id="cb88-2"><a href=""></a><span class="fu">library</span>(writexl) <span class="co"># carico il pacchetto writexl</span></span>
+<span id="cb88-3"><a href=""></a></span>
+<span id="cb88-4"><a href=""></a><span class="fu">write.csv</span>(df_rt, <span class="at">file =</span> <span class="st">"DATA/df_rt.csv"</span>,<span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb88-5"><a href=""></a><span class="fu">write_xlsx</span>(df_age, <span class="at">path =</span> <span class="st">"DATA/df_age.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="importo" class="slide level2">
 <h2>Importo</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href=""></a><span class="fu">library</span>(readxl) <span class="co"># carico il pacchetto readxl</span></span>
-<span id="cb73-2"><a href=""></a></span>
-<span id="cb73-3"><a href=""></a>df_rt_impo <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>) <span class="co">#utilizza il pacchetto readr</span></span>
-<span id="cb73-4"><a href=""></a></span>
-<span id="cb73-5"><a href=""></a>df_age_impo <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">"DATA/df_age.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href=""></a><span class="fu">library</span>(readxl) <span class="co"># carico il pacchetto readxl</span></span>
+<span id="cb89-2"><a href=""></a></span>
+<span id="cb89-3"><a href=""></a>df_rt_impo <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>) <span class="co">#utilizza il pacchetto readr</span></span>
+<span id="cb89-4"><a href=""></a></span>
+<span id="cb89-5"><a href=""></a>df_age_impo <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">"DATA/df_age.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="controllare-la-struttura" class="slide level2">
 <h2>Controllare la struttura</h2>
 <p>Cosa notate di diverso tra i due dataframe?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href=""></a><span class="fu">str</span>(df_rt) <span class="co"># Data frame creato </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href=""></a><span class="fu">str</span>(df_rt) <span class="co"># Data frame creato </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   800 obs. of  3 variables:
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.474 0.371 0.361 0.451 0.46 ...</code></pre>
+ $ rt  : num  0.276 0.274 0.281 0.323 0.374 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href=""></a><span class="fu">str</span>(df_rt_impo) <span class="co"># Data frame caricato </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href=""></a><span class="fu">str</span>(df_rt_impo) <span class="co"># Data frame caricato </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [800 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ subj: chr [1:800] "caio" "caio" "caio" "caio" ...
  $ cond: chr [1:800] "easy" "easy" "easy" "easy" ...
- $ rt  : num [1:800] 0.474 0.371 0.361 0.451 0.46 ...
+ $ rt  : num [1:800] 0.276 0.274 0.281 0.323 0.374 ...
  - attr(*, "spec")=
   .. cols(
   ..   subj = col_character(),
@@ -887,16 +944,16 @@ $row.names
 
 <p>Il dataframe viene importato come tibble ed in questo caso le variabili <strong><em><code>factor</code></em></strong> sono state importate come <strong><em><code>character</code></em></strong>. Questo è modificabile o in importazione ( <strong><code>?read_csv</code></strong> ):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href=""></a>df_rt_impo1 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>, </span>
-<span id="cb78-2"><a href=""></a>                       <span class="at">col_types =</span></span>
-<span id="cb78-3"><a href=""></a>                         <span class="fu">list</span>(<span class="fu">col_double</span>(),<span class="fu">col_factor</span>(),</span>
-<span id="cb78-4"><a href=""></a>                              <span class="fu">col_factor</span>(),<span class="fu">col_double</span>()))</span>
-<span id="cb78-5"><a href=""></a><span class="fu">str</span>(df_rt_impo1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href=""></a>df_rt_impo1 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>, </span>
+<span id="cb94-2"><a href=""></a>                       <span class="at">col_types =</span></span>
+<span id="cb94-3"><a href=""></a>                         <span class="fu">list</span>(<span class="fu">col_double</span>(),<span class="fu">col_factor</span>(),</span>
+<span id="cb94-4"><a href=""></a>                              <span class="fu">col_factor</span>(),<span class="fu">col_double</span>()))</span>
+<span id="cb94-5"><a href=""></a><span class="fu">str</span>(df_rt_impo1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [800 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ subj: num [1:800] NA NA NA NA NA NA NA NA NA NA ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : Factor w/ 800 levels "0.473684586610704",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ rt  : Factor w/ 800 levels "0.276090211837674",..: 1 2 3 4 5 6 7 8 9 10 ...
  - attr(*, "spec")=
   .. cols(
   ..   subj = col_double(),
@@ -911,14 +968,14 @@ $row.names
 
 <p>o a posteriori attraverso il comando <strong><code>as.factor()</code></strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a>df_rt_impo<span class="sc">$</span>subj <span class="ot">=</span> <span class="fu">as.factor</span>(df_rt_impo<span class="sc">$</span>subj)</span>
-<span id="cb80-2"><a href=""></a>df_rt_impo<span class="sc">$</span>cond <span class="ot">=</span> <span class="fu">as.factor</span>(df_rt_impo<span class="sc">$</span>cond)</span>
-<span id="cb80-3"><a href=""></a><span class="fu">str</span>(df_rt_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href=""></a>df_rt_impo<span class="sc">$</span>subj <span class="ot">=</span> <span class="fu">as.factor</span>(df_rt_impo<span class="sc">$</span>subj)</span>
+<span id="cb96-2"><a href=""></a>df_rt_impo<span class="sc">$</span>cond <span class="ot">=</span> <span class="fu">as.factor</span>(df_rt_impo<span class="sc">$</span>cond)</span>
+<span id="cb96-3"><a href=""></a><span class="fu">str</span>(df_rt_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [800 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num [1:800] 0.474 0.371 0.361 0.451 0.46 ...
+ $ rt  : num [1:800] 0.276 0.274 0.281 0.323 0.374 ...
  - attr(*, "spec")=
   .. cols(
   ..   subj = col_character(),
@@ -933,15 +990,15 @@ $row.names
 
 <p>equivalente a:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a>df_rt_impo2 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>) <span class="sc">%&gt;%</span> <span class="co">#library(tidyverse)</span></span>
-<span id="cb82-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">subj =</span> <span class="fu">factor</span>(subj), </span>
-<span id="cb82-3"><a href=""></a>         <span class="at">cond =</span> <span class="fu">factor</span>(cond)) </span>
-<span id="cb82-4"><a href=""></a><span class="fu">str</span>(df_rt_impo2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href=""></a>df_rt_impo2 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>) <span class="sc">%&gt;%</span> <span class="co">#library(tidyverse)</span></span>
+<span id="cb98-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">subj =</span> <span class="fu">factor</span>(subj), </span>
+<span id="cb98-3"><a href=""></a>         <span class="at">cond =</span> <span class="fu">factor</span>(cond)) </span>
+<span id="cb98-4"><a href=""></a><span class="fu">str</span>(df_rt_impo2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [800 × 3] (S3: tbl_df/tbl/data.frame)
  $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num [1:800] 0.474 0.371 0.361 0.451 0.46 ...</code></pre>
+ $ rt  : num [1:800] 0.276 0.274 0.281 0.323 0.374 ...</code></pre>
 </div>
 </div>
 <p>(solo per farvi vedere come in <strong><em>R</em></strong>, si possa risolvere un problema in differenti modi)</p>
@@ -950,21 +1007,21 @@ $row.names
 
 <p>Gli stessi concetti si applicano alla lettura di file xlsx:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a><span class="fu">str</span>(df_age_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href=""></a><span class="fu">str</span>(df_age_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [2 × 2] (S3: tbl_df/tbl/data.frame)
  $ subj: chr [1:2] "caio" "tizio"
  $ age : num [1:2] 20 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a>df_age_impo<span class="sc">$</span>subj<span class="ot">=</span><span class="fu">as.factor</span>(df_age_impo<span class="sc">$</span>subj)</span>
-<span id="cb86-2"><a href=""></a><span class="fu">str</span>(df_age_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href=""></a>df_age_impo<span class="sc">$</span>subj<span class="ot">=</span><span class="fu">as.factor</span>(df_age_impo<span class="sc">$</span>subj)</span>
+<span id="cb102-2"><a href=""></a><span class="fu">str</span>(df_age_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [2 × 2] (S3: tbl_df/tbl/data.frame)
  $ subj: Factor w/ 2 levels "caio","tizio": 1 2
  $ age : num [1:2] 20 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a>df_age_impo<span class="sc">$</span>subj<span class="ot">=</span><span class="fu">factor</span>(df_age_impo<span class="sc">$</span>subj)</span>
-<span id="cb88-2"><a href=""></a><span class="fu">str</span>(df_age_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href=""></a>df_age_impo<span class="sc">$</span>subj<span class="ot">=</span><span class="fu">factor</span>(df_age_impo<span class="sc">$</span>subj)</span>
+<span id="cb104-2"><a href=""></a><span class="fu">str</span>(df_age_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [2 × 2] (S3: tbl_df/tbl/data.frame)
  $ subj: Factor w/ 2 levels "caio","tizio": 1 2
@@ -1170,7 +1227,7 @@ $row.names
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 5.0e-2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
