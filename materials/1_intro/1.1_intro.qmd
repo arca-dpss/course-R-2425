@@ -91,9 +91,9 @@ head(data, n = 4) #mostra le prime righe del dataset
 ```
 :::
 
-## Come cambiare la working directory?
+## 
 
-Se però vogliamo caricare un file che si trova in un'altra posizione dobbiamo chiamarlo attraverso il path assoluto:
+Se invece vogliamo caricare un file che si trova in un'altra posizione dobbiamo chiamarlo attraverso il path assoluto:
 
 ```{r, echo=TRUE, warning=FALSE}
 data = read.csv("/Users/tita/course-R-2425/materials/1_intro/prova.csv")
