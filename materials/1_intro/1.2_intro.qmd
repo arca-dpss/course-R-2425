@@ -316,7 +316,7 @@ FALSE == 1
 ::: fragment
 Creo un vettore esempio in cui ci sono dentro le parole casa (ripetuta 4 volte) e bottega (ripetuta 2 volte):
 ```{r,echo = TRUE}
-esempio = c(rep("casa",4),rep("bottega",2)) #?rep
+esempio = c(rep("casa",times = 4),rep("bottega", times = 2)) #?rep
 esempio
 ```
 :::

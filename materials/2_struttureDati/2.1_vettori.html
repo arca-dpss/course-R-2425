@@ -447,7 +447,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>char_vect <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"R"</span>,<span class="st">"R"</span>,<span class="st">"R"</span>,<span class="st">"ok"</span>)</span>
 <span id="cb5-2"><a href=""></a><span class="co"># è possibile anche utilizzare la funzione rep()</span></span>
-<span id="cb5-3"><a href=""></a>char_vect_rep <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"R"</span>, <span class="dv">3</span>), <span class="st">"ok"</span>)</span>
+<span id="cb5-3"><a href=""></a>char_vect_rep <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"R"</span>, <span class="at">times =</span> <span class="dv">3</span>), <span class="st">"ok"</span>)</span>
 <span id="cb5-4"><a href=""></a>char_vect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "R"  "R"  "R"  "ok"</code></pre>
@@ -488,6 +488,7 @@
 </div>
 </div>
 <p>Altrimenti si “rischia” che tutto venga trasformato a carattere.</p>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>correct <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>, <span class="dv">4</span>)</span>
 <span id="cb17-2"><a href=""></a><span class="fu">class</span>(correct) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -497,6 +498,7 @@
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>correct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  2  3 NA  4</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -709,7 +711,7 @@
 </section>
 <section id="indicizzazione-logica" class="slide level2">
 <h2>Indicizzazione Logica</h2>
-<p>Indicizzare con la posizione è l’aspetto più semplice e intuitivo. E’ possibile anche selezionare tramite valori <strong><code>TRUE</code></strong> e <strong><code>FALSE</code></strong>: possiamo estrarre elementi dal vettore basandoci su specifiche condizioni logiche</p>
+<p>Possiamo selezionare elementi dal vettore basandoci su specifiche condizioni logiche: <strong><code>TRUE</code></strong> e <strong><code>FALSE</code></strong>. L’idea è che se abbiamo un vettore di lunghezza <strong>n</strong> e un’altro vettore logico di lunghezza <strong>n</strong>, tutti gli elementi <strong><code>TRUE</code></strong> saranno selezionati:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href=""></a>numeri <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span></span>
 <span id="cb76-2"><a href=""></a>numeri</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -727,15 +729,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a><span class="fu">as.numeric</span>(numeri<span class="sc">&gt;</span><span class="dv">2</span> <span class="sc">&amp;</span> numeri<span class="sc">&lt;</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0 0 1 1 0 0 0</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a>numeri[numeri<span class="sc">&gt;</span><span class="dv">2</span> <span class="sc">&amp;</span> numeri<span class="sc">&lt;</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a>numeri[numeri<span class="sc">&gt;</span><span class="dv">2</span> <span class="sc">&amp;</span> numeri<span class="sc">&lt;</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -745,10 +739,17 @@
 </div>
 </div>
 </div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a><span class="fu">as.numeric</span>(numeri<span class="sc">&gt;</span><span class="dv">2</span> <span class="sc">&amp;</span> numeri<span class="sc">&lt;</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0 0 1 1 0 0 0</code></pre>
+</div>
+</div>
+</div>
 </section>
 <section class="slide level2">
 
-<p>L’idea è che se abbiamo un vettore di lunghezza <strong>n</strong> e un’altro vettore logico di lunghezza <strong>n</strong>, tutti gli elementi <strong><code>TRUE</code></strong> saranno selezionati:</p>
 <p>Non vale solo per elementi del vettore numeri ma per qualsiasi vettore!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a>lettere <span class="ot">=</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>]</span>
