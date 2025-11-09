@@ -133,7 +133,7 @@ Ci sono diversi livelli di **allerta** quando scriviamo codice:
 
 [**Stack overflow**](https://stackoverflow.com/) è un forum di discussione riguardo qualsiasi cosa coinvolga codice (statistica, programmazione, etc.). E' pieno di errori comuni, *How to do ...* e di risposte/soluzioni estremamente utili. Nel 90% dei casi il problema che avete è comune ed è già presente una soluzione.
 
-![](images/stackOver.png){fig-align="center" width="800"}
+![](images/stackOver.png){fig-align="center" width="600"}
 
 ## ChatGPT
 
