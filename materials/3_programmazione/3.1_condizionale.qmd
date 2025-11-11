@@ -1,8 +1,11 @@
 ---
-title: "3.1_condizionale"
+title: "Programmazione condizionale"
 format: 
    revealjs:
-     margin: 0.1
+     margin: .05
+     fontsize: 1.9em
+     linestretch: 1.4
+     mainfont: Helvetica Neue
 editor: visual
 ---
 
@@ -405,13 +408,11 @@ mydf = data.frame(id = factor(1:30), age = sample(14:50, 30))
 # lo salvo per dopo
 readr::write_csv(mydf, file = "data/mydf.csv")
 # creo una terza variabile con "adolescelte","giovane", "adulto 
-mydf$age_cat = with(mydf, 
-                    factor(
-                      case_when( age > 30 ~ "adulto",
-                                 age <= 30 & age >= 20 ~ "giovane",
-                                 age < 20 ~ "adolescente",
+mydf$age_cat = factor(case_when(mydf$age > 30 ~ "adulto",
+                                 mydf$age <= 30 & mydf$age >= 20 ~ "giovane",
+                                 mydf$age < 20 ~ "adolescente",
                                  TRUE ~ "errore" #  check  errori di codifica
-                                    )))
+                                    ))
 str(mydf)
 ```
 

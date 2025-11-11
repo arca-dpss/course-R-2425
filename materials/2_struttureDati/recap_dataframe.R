@@ -1,7 +1,5 @@
 # Esercizi Recap dataframe
 
-# Esercizi su data.frame in R
-
 # 1. Crea un dataframe chiamato "studenti_df" con le seguenti colonne:
 #    - Matricola (carattere) contenente 8 numeri di matricola inventati
 #    - Corso (fattore) contenente 8 nomi di corsi di laurea
