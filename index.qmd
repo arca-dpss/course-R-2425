@@ -92,7 +92,7 @@ Qui sotto trovate i link al materiale principale del corso; di seguito il link a
 
 ### Esercizi
 
-Qui troverete esercizi con e senza soluzioni:
+Qui troverete gli esercizi con soluzioni:
 
 -   **Intro** - [Script](materials/1_intro/1.2_esercizi.R){target="_blank"}
 
