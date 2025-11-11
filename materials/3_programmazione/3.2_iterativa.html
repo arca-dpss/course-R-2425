@@ -10,7 +10,7 @@
 <link href="3.2_iterativa_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <title>3.2_iterativa</title>
+  <title>Programmazione iterativa</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,7 +390,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">3.2_iterativa</h1>
+  <h1 class="title">Programmazione iterativa</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -554,13 +554,15 @@
 <section class="slide level2">
 
 <p>Provate a scrivere questo ciclo <strong><code>while</code></strong> e vedere cosa succede e capire perchè accade</p>
-<pre><code>x = 10
-
-while (x &lt; 15) { 
-
-  print(x)
-
-}</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>x <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb22-2"><a href=""></a></span>
+<span id="cb22-3"><a href=""></a><span class="cf">while</span> (x <span class="sc">&lt;</span> <span class="dv">15</span>) { </span>
+<span id="cb22-4"><a href=""></a></span>
+<span id="cb22-5"><a href=""></a>  <span class="fu">print</span>(x)</span>
+<span id="cb22-6"><a href=""></a></span>
+<span id="cb22-7"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section class="slide level2">
 
@@ -597,6 +599,7 @@ while (x &lt; 15) {
 </section>
 <section id="ciclo-repeat-1" class="slide level2">
 <h2>Ciclo <strong><code>repeat</code></strong></h2>
+<p>Lancia il dado finchè non viene fuori 6:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="cf">repeat</span>{</span>
 <span id="cb25-2"><a href=""></a>  lancia_dado <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>)</span>
@@ -604,7 +607,10 @@ while (x &lt; 15) {
 <span id="cb25-4"><a href=""></a>  <span class="cf">if</span>(lancia_dado <span class="sc">==</span> <span class="dv">6</span>) <span class="cf">break</span></span>
 <span id="cb25-5"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 2
+[1] 3
+[1] 3
+[1] 6</code></pre>
 </div>
 </div>
 </section>
@@ -681,104 +687,108 @@ while (x &lt; 15) {
 <span id="cb32-6"><a href=""></a>  <span class="fu">return</span>(somma)</span>
 <span id="cb32-7"><a href=""></a>}</span>
 <span id="cb32-8"><a href=""></a></span>
-<span id="cb32-9"><a href=""></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb32-10"><a href=""></a><span class="fu">my_sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-9"><a href=""></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb32-10"><a href=""></a></span>
+<span id="cb32-11"><a href=""></a><span class="fu">my_sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.06135222</code></pre>
+<pre><code>[1] 0.6178465</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.06135222</code></pre>
+<pre><code>[1] 0.6178465</code></pre>
 </div>
 </div>
 </section>
 <section id="iterazione-applicazioni" class="slide level2">
 <h2>Iterazione, applicazioni</h2>
-<p>Il ciclo <strong><code>for</code></strong> è anche utile per simulare dei dati per esempio, supponiamo che in media (tra i nostri 30 partecipanti) ci aspettiamo un’effetto dell’età <strong>b_mu</strong> uguale a <strong>.2</strong></p>
+<p>Il ciclo <strong><code>for</code></strong> è anche utile per simulare dei dati per esempio. Supponiamo di avere una variabile y (reddito) che dipenda dall’età:</p>
+<ol type="1">
+<li>Carico il dataset che ho creato:</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>mydf <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/mydf_2.csv"</span>) <span class="co">#carico il dataset </span></span>
-<span id="cb36-2"><a href=""></a><span class="fu">str</span>(mydf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-2"><a href=""></a></span>
+<span id="cb36-3"><a href=""></a><span class="fu">str</span>(mydf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   30 obs. of  4 variables:
  $ id     : int  1 2 3 4 5 6 7 8 9 10 ...
- $ age    : int  47 48 33 34 43 49 22 28 37 40 ...
- $ age_cat: chr  "adulto" "adulto" "adulto" "adulto" ...
- $ age_z  : num  1.429 1.524 0.107 0.201 1.051 ...</code></pre>
+ $ age    : int  14 30 26 33 45 20 47 17 21 31 ...
+ $ age_cat: chr  "adolescente" "giovane" "giovane" "adulto" ...
+ $ age_z  : num  -1.625 -0.164 -0.53 0.11 1.205 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>group_mean <span class="ot">=</span> .<span class="dv">2</span> <span class="co"># effetto medio atteso</span></span>
-<span id="cb38-2"><a href=""></a>var_mean <span class="ot">=</span> .<span class="dv">1</span>   <span class="co"># variabilità</span></span>
-<span id="cb38-3"><a href=""></a>n_subj <span class="ot">=</span> <span class="fu">max</span>(mydf<span class="sc">$</span>id) <span class="co">#numero soggetti</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
 
-<p>Ora possiamo simulare, attraverso un ciclo <strong><code>for</code></strong> , la variabile <strong>y</strong> assumendo che dipenda dall’età (<strong>age_z</strong>)</p>
+<ol start="2" type="1">
+<li>Simulo, attraverso un ciclo <strong><code>for</code></strong> , la variabile <strong>y</strong> (reddito) assumendo che dipenda da <strong>age_z</strong> (età):</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">111</span>) <span class="co"># x replicabilità della simulazione</span></span>
-<span id="cb39-2"><a href=""></a></span>
-<span id="cb39-3"><a href=""></a>niter <span class="ot">=</span> <span class="dv">1000</span> <span class="co"># numero di iterazioni</span></span>
-<span id="cb39-4"><a href=""></a>res1 <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, niter) <span class="co"># vettore di risultati</span></span>
-<span id="cb39-5"><a href=""></a>age_z <span class="ot">=</span> mydf<span class="sc">$</span>age_z</span>
-<span id="cb39-6"><a href=""></a></span>
-<span id="cb39-7"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>niter) {</span>
-<span id="cb39-8"><a href=""></a>  </span>
-<span id="cb39-9"><a href=""></a>  <span class="co"># effetto</span></span>
-<span id="cb39-10"><a href=""></a>  b_mu <span class="ot">=</span> <span class="fu">rnorm</span>(n_subj, <span class="at">mean =</span> group_mean, <span class="at">sd =</span> var_mean)</span>
-<span id="cb39-11"><a href=""></a>  <span class="co"># Simulo un vettore y per ogni iterazione,</span></span>
-<span id="cb39-12"><a href=""></a>  <span class="co"># che avrà tanti elementi quanti soggetti</span></span>
-<span id="cb39-13"><a href=""></a>  y <span class="ot">=</span> <span class="dv">0</span> <span class="sc">+</span> b_mu <span class="sc">*</span> age_z</span>
-<span id="cb39-14"><a href=""></a>  <span class="co"># Modello lineare</span></span>
-<span id="cb39-15"><a href=""></a>  mod <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> age_z)</span>
-<span id="cb39-16"><a href=""></a>  res1[i] <span class="ot">=</span> mod<span class="sc">$</span>coefficients[[<span class="dv">2</span>]] <span class="co"># Estraggo l'effetto dell'età</span></span>
-<span id="cb39-17"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">111</span>) <span class="co"># per riproducibilità</span></span>
+<span id="cb38-2"><a href=""></a></span>
+<span id="cb38-3"><a href=""></a>niter <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb38-4"><a href=""></a>res_all <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, niter)    <span class="co"># tutti gli effetti stimati</span></span>
+<span id="cb38-5"><a href=""></a>p_val <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, niter)      <span class="co"># tutti i p-value</span></span>
+<span id="cb38-6"><a href=""></a></span>
+<span id="cb38-7"><a href=""></a><span class="co"># Dati osservati</span></span>
+<span id="cb38-8"><a href=""></a>age_z <span class="ot">=</span> mydf<span class="sc">$</span>age_z</span>
+<span id="cb38-9"><a href=""></a>eff_eta <span class="ot">=</span> .<span class="dv">2</span> <span class="co">#effetto età</span></span>
+<span id="cb38-10"><a href=""></a>n_obs <span class="ot">=</span> <span class="fu">length</span>(age_z)</span>
+<span id="cb38-11"><a href=""></a></span>
+<span id="cb38-12"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>niter) {</span>
+<span id="cb38-13"><a href=""></a>  y <span class="ot">=</span> <span class="dv">0</span> <span class="sc">+</span> eff_eta <span class="sc">*</span> age_z <span class="sc">+</span> <span class="fu">rnorm</span>(n_obs, <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># aggiungo sempre un pò di rumore</span></span>
+<span id="cb38-14"><a href=""></a>  </span>
+<span id="cb38-15"><a href=""></a>  <span class="co"># modello lineare</span></span>
+<span id="cb38-16"><a href=""></a>  mod <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> age_z) </span>
+<span id="cb38-17"><a href=""></a>  </span>
+<span id="cb38-18"><a href=""></a>  <span class="co"># estraggo stima effetto</span></span>
+<span id="cb38-19"><a href=""></a>  res_all[i] <span class="ot">=</span> <span class="fu">coef</span>(mod)[<span class="dv">2</span>] </span>
+<span id="cb38-20"><a href=""></a>  </span>
+<span id="cb38-21"><a href=""></a>  <span class="co"># p-value di age_z</span></span>
+<span id="cb38-22"><a href=""></a>  p_val[i] <span class="ot">=</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">4</span>]</span>
+<span id="cb38-23"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
 
 <p>Risultato:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a><span class="co"># effetto medio stimato</span></span>
-<span id="cb40-2"><a href=""></a><span class="fu">mean</span>(res1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="co"># Filtra solo risultati significativi</span></span>
+<span id="cb39-2"><a href=""></a>res_sig <span class="ot">=</span> res_all[p_val <span class="sc">&lt;=</span> <span class="fl">0.05</span>]</span>
+<span id="cb39-3"><a href=""></a></span>
+<span id="cb39-4"><a href=""></a><span class="co"># Statistiche descrittive</span></span>
+<span id="cb39-5"><a href=""></a><span class="fu">cat</span>(<span class="st">"Proporzione significativi = Power:"</span>, <span class="fu">mean</span>(p_val <span class="sc">&lt;=</span> <span class="fl">0.05</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1993394</code></pre>
+<pre><code>Proporzione significativi = Power: 0.154 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="co"># istogramma dei risultati</span></span>
-<span id="cb42-2"><a href=""></a><span class="fu">hist</span>(res1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Media tutti gli effetti:"</span>, <span class="fu">mean</span>(res_all), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Media tutti gli effetti: 0.1875023 </code></pre>
 </div>
-<img data-src="3.2_iterativa_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Media effetti significativi:"</span>, <span class="fu">mean</span>(res_sig), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Media effetti significativi: 0.4612498 </code></pre>
+</div>
+</div>
+</section>
 <section class="slide level2">
 
-<p>Aumentiamo la variabilità:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a>var_mean <span class="ot">=</span> .<span class="dv">8</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Risultato:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a><span class="co"># effetto medio stimato</span></span>
-<span id="cb44-2"><a href=""></a><span class="fu">mean</span>(res2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.195028</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="co"># istogramma dei risultati</span></span>
-<span id="cb46-2"><a href=""></a><span class="fu">hist</span>(res2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-</div>
-<img data-src="3.2_iterativa_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
+<img data-src="3.2_iterativa_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
-<p>Lo stesso concetto si può applicare al numero di partecipanti, o alla grandezza dell’effetto atteso. Proprio grazie al for loop è possibile effetuare una <strong><em>power simulation</em></strong>.</p>
+<p>Proprio grazie al for loop è possibile effetuare una <strong><em>power simulation</em></strong>.</p>
 <p>Per saperne di più date un’occhiata a questa <a href="https://www.memoryandlearninglab.it/workshops-on-data-analysis/">pagina</a>! :)</p>
 </section>
 <section id="ciclo-for-nested" class="slide level2">
 <h2>Ciclo <code>for</code> nested</h2>
 <p>Una volta compresa la struttura iterativa, si può espandere facilmente inserendo un ciclo dentro un altro:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){ <span class="co"># livello 1</span></span>
-<span id="cb47-2"><a href=""></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){ <span class="co"># livello 2</span></span>
-<span id="cb47-3"><a href=""></a>      <span class="fu">print</span>(<span class="fu">paste</span>(i, j))</span>
-<span id="cb47-4"><a href=""></a>  }</span>
-<span id="cb47-5"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){ <span class="co"># livello 1</span></span>
+<span id="cb45-2"><a href=""></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){ <span class="co"># livello 2</span></span>
+<span id="cb45-3"><a href=""></a>      <span class="fu">print</span>(<span class="fu">paste</span>(i, j))</span>
+<span id="cb45-4"><a href=""></a>  }</span>
+<span id="cb45-5"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1 1"
 [1] "1 2"
@@ -794,124 +804,108 @@ while (x &lt; 15) {
 </section>
 <section class="slide level2">
 
-<p>Supponiamo di avere due gruppi sperimentali (ad esempio, Gruppo di controllo e Gruppo di trattamento), ciascuno con 10 partecipanti. Si vuole misurare una variabile (ad esempio, il tempo di reazione) per ogni partecipante e registrare i risultati in un dataframe:</p>
+<p>Immaginiamo di avere due gruppi sperimentali (ad esempio, Gruppo di controllo e Gruppo trattamento), ciascuno con 10 partecipanti. Vogliamo misurare una variabile (ad esempio, il tempo di reazione) per ogni partecipante e registrare i risultati in un dataframe:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a><span class="co"># Definire parametri della ricerca</span></span>
-<span id="cb49-2"><a href=""></a>gruppi<span class="ot">=</span><span class="fu">c</span>(<span class="st">"Controllo"</span>, <span class="st">"Trattamento"</span>)  <span class="co"># Nomi dei gruppi</span></span>
-<span id="cb49-3"><a href=""></a>num_soggetti<span class="ot">=</span><span class="dv">10</span>                      <span class="co"># Numero di soggetti per gruppo</span></span>
-<span id="cb49-4"><a href=""></a></span>
-<span id="cb49-5"><a href=""></a><span class="co"># Creare una matrice per memorizzare i dati</span></span>
-<span id="cb49-6"><a href=""></a>res<span class="ot">=</span><span class="fu">data.frame</span>(</span>
-<span id="cb49-7"><a href=""></a>  <span class="at">Gruppo =</span> <span class="fu">factor</span>(),</span>
-<span id="cb49-8"><a href=""></a>  <span class="at">Soggetto =</span> <span class="fu">integer</span>(),</span>
-<span id="cb49-9"><a href=""></a>  <span class="at">RT =</span> <span class="fu">numeric</span>()</span>
-<span id="cb49-10"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="co"># Definire parametri della ricerca</span></span>
+<span id="cb47-2"><a href=""></a>gruppi <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Controllo"</span>, <span class="st">"Trattamento"</span>) <span class="co"># Nomi dei gruppi</span></span>
+<span id="cb47-3"><a href=""></a>num_soggetti<span class="ot">=</span><span class="dv">10</span>                      <span class="co"># Numero di soggetti per gruppo</span></span>
+<span id="cb47-4"><a href=""></a>tot_soggetti <span class="ot">=</span> num_soggetti <span class="sc">*</span> <span class="fu">length</span>(gruppi)</span>
+<span id="cb47-5"><a href=""></a></span>
+<span id="cb47-6"><a href=""></a><span class="co"># Creare un data.frame per memorizzare i dati</span></span>
+<span id="cb47-7"><a href=""></a>res<span class="ot">=</span><span class="fu">data.frame</span>(</span>
+<span id="cb47-8"><a href=""></a>  </span>
+<span id="cb47-9"><a href=""></a>  <span class="co"># Fattore gruppo</span></span>
+<span id="cb47-10"><a href=""></a>  <span class="at">Gruppo =</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="fu">rep</span>(gruppi, <span class="at">each =</span> num_soggetti)),</span>
+<span id="cb47-11"><a href=""></a>  </span>
+<span id="cb47-12"><a href=""></a>  <span class="co"># fattore soggetto </span></span>
+<span id="cb47-13"><a href=""></a>  <span class="at">Soggetto =</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span>tot_soggetti),</span>
+<span id="cb47-14"><a href=""></a>  </span>
+<span id="cb47-15"><a href=""></a>  <span class="co"># Tempo di reazione vettore numerico con rt = 0 </span></span>
+<span id="cb47-16"><a href=""></a>  <span class="at">RT =</span> <span class="fu">numeric</span>(tot_soggetti)</span>
+<span id="cb47-17"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="co"># Ciclo nested per simulare raccolta dati</span></span>
-<span id="cb50-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)  <span class="co"># Per riproducibilità dei dati simulati</span></span>
-<span id="cb50-3"><a href=""></a></span>
-<span id="cb50-4"><a href=""></a><span class="cf">for</span> (gruppo <span class="cf">in</span> gruppi) {</span>
-<span id="cb50-5"><a href=""></a>  </span>
-<span id="cb50-6"><a href=""></a>  <span class="cf">for</span> (soggetto <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_soggetti) {</span>
-<span id="cb50-7"><a href=""></a>    </span>
-<span id="cb50-8"><a href=""></a>    <span class="co"># Simulare un tempo di reazione </span></span>
-<span id="cb50-9"><a href=""></a>    RT<span class="ot">=</span><span class="fu">ifelse</span>(gruppo <span class="sc">==</span> <span class="st">"Controllo"</span>, </span>
-<span id="cb50-10"><a href=""></a>                             <span class="fu">rlnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">log</span>(.<span class="dv">500</span>), <span class="at">sd =</span> .<span class="dv">050</span>),  </span>
-<span id="cb50-11"><a href=""></a>              <span class="co"># Media diversa per il gruppo Trattamento</span></span>
-<span id="cb50-12"><a href=""></a>                             <span class="fu">rlnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">log</span>(.<span class="dv">450</span>), <span class="at">sd =</span> .<span class="dv">050</span>))</span>
-<span id="cb50-13"><a href=""></a>    </span>
-<span id="cb50-14"><a href=""></a>    <span class="co"># Aggiungere i dati al dataframe, aggiungendo una riga </span></span>
-<span id="cb50-15"><a href=""></a>    res<span class="ot">=</span><span class="fu">rbind</span>(res, </span>
-<span id="cb50-16"><a href=""></a>        <span class="fu">data.frame</span>(<span class="at">Gruppo =</span> gruppo, <span class="at">Soggetto =</span> soggetto, <span class="at">RT =</span> RT))</span>
-<span id="cb50-17"><a href=""></a>  }</span>
-<span id="cb50-18"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a><span class="fu">head</span>(res, <span class="dv">5</span>) <span class="co"># guardo le prime osservazioni di res</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Gruppo Soggetto RT
+1 Controllo        1  0
+2 Controllo        2  0
+3 Controllo        3  0
+4 Controllo        4  0
+5 Controllo        5  0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="fu">tail</span>(res, <span class="dv">5</span>) <span class="co"># guardo le ultime osservazioni di res</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Gruppo Soggetto RT
+16 Trattamento       16  0
+17 Trattamento       17  0
+18 Trattamento       18  0
+19 Trattamento       19  0
+20 Trattamento       20  0</code></pre>
+</div>
 </div>
 </section>
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a><span class="fu">str</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a><span class="co"># Ciclo nested per simulare raccolta dati</span></span>
+<span id="cb52-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)  <span class="co"># Per riproducibilità dei dati simulati</span></span>
+<span id="cb52-3"><a href=""></a></span>
+<span id="cb52-4"><a href=""></a>k <span class="ot">=</span> <span class="dv">1</span> <span class="co">#iteratore tempi di reazione</span></span>
+<span id="cb52-5"><a href=""></a></span>
+<span id="cb52-6"><a href=""></a><span class="co"># quanti livelli ha Gruppo?</span></span>
+<span id="cb52-7"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">levels</span>(res<span class="sc">$</span>Gruppo))) {</span>
+<span id="cb52-8"><a href=""></a>  </span>
+<span id="cb52-9"><a href=""></a>  <span class="co"># inizio con il primo gruppo che è il gruppo di controllo</span></span>
+<span id="cb52-10"><a href=""></a>  gruppo <span class="ot">=</span> <span class="fu">levels</span>(res<span class="sc">$</span>Gruppo)[i] </span>
+<span id="cb52-11"><a href=""></a>  </span>
+<span id="cb52-12"><a href=""></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_soggetti) { <span class="co"># num_soggetti each gruppo</span></span>
+<span id="cb52-13"><a href=""></a>    </span>
+<span id="cb52-14"><a href=""></a>    <span class="co"># è il gruppo di controllo?</span></span>
+<span id="cb52-15"><a href=""></a>    RT <span class="ot">=</span> <span class="fu">ifelse</span>(gruppo <span class="sc">==</span> <span class="st">"Controllo"</span>, </span>
+<span id="cb52-16"><a href=""></a>               <span class="at">yes =</span> <span class="fu">rlnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">log</span>(.<span class="dv">500</span>), <span class="at">sd =</span> .<span class="dv">050</span>), </span>
+<span id="cb52-17"><a href=""></a>               <span class="at">no =</span> <span class="fu">rlnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">log</span>(.<span class="dv">450</span>), <span class="at">sd =</span> .<span class="dv">050</span>))</span>
+<span id="cb52-18"><a href=""></a>    </span>
+<span id="cb52-19"><a href=""></a>    res<span class="sc">$</span>RT[k] <span class="ot">=</span> RT</span>
+<span id="cb52-20"><a href=""></a>    k <span class="ot">=</span> k <span class="sc">+</span> <span class="dv">1</span> </span>
+<span id="cb52-21"><a href=""></a>  }</span>
+<span id="cb52-22"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a><span class="fu">str</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   20 obs. of  3 variables:
- $ Gruppo  : chr  "Controllo" "Controllo" "Controllo" "Controllo" ...
- $ Soggetto: int  1 2 3 4 5 6 7 8 9 10 ...
+ $ Gruppo  : Factor w/ 2 levels "Controllo","Trattamento": 1 1 1 1 1 1 1 1 1 1 ...
+ $ Soggetto: Factor w/ 20 levels "1","2","3","4",..: 1 2 3 4 5 6 7 8 9 10 ...
  $ RT      : num  0.535 0.486 0.509 0.516 0.51 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a><span class="fu">head</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="fu">head</span>(res, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Gruppo Soggetto        RT
 1 Controllo        1 0.5354760
 2 Controllo        2 0.4860800
-3 Controllo        3 0.5091611
-4 Controllo        4 0.5160745
-5 Controllo        5 0.5102095
-6 Controllo        6 0.4973539</code></pre>
+3 Controllo        3 0.5091611</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="fu">mean</span>(res<span class="sc">$</span>RT[res<span class="sc">$</span>Gruppo <span class="sc">==</span> <span class="st">"Controllo"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a><span class="fu">tail</span>(res, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Gruppo Soggetto        RT
+18 Trattamento       18 0.3940291
+19 Trattamento       19 0.3983075
+20 Trattamento       20 0.4807047</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a><span class="fu">mean</span>(res<span class="sc">$</span>RT[res<span class="sc">$</span>Gruppo <span class="sc">==</span> <span class="st">"Controllo"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5142776</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a><span class="fu">mean</span>(res<span class="sc">$</span>RT[res<span class="sc">$</span>Gruppo <span class="sc">==</span> <span class="st">"Trattamento"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a><span class="fu">mean</span>(res<span class="sc">$</span>RT[res<span class="sc">$</span>Gruppo <span class="sc">==</span> <span class="st">"Trattamento"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4476666</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<p>Equivalente (e forse più intuitivo)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a>num_soggetti <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb59-2"><a href=""></a>gruppo <span class="ot">=</span> <span class="fu">character</span>()</span>
-<span id="cb59-3"><a href=""></a>res2 <span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">Gruppo =</span> <span class="fu">character</span>(num_soggetti), </span>
-<span id="cb59-4"><a href=""></a>                  <span class="at">Partecipante =</span> <span class="fu">integer</span>(num_soggetti), <span class="at">RT =</span> <span class="fu">numeric</span>(num_soggetti))</span>
-<span id="cb59-5"><a href=""></a></span>
-<span id="cb59-6"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_soggetti) {</span>
-<span id="cb59-7"><a href=""></a>  </span>
-<span id="cb59-8"><a href=""></a>    gruppo[i] <span class="ot">=</span> <span class="fu">ifelse</span>(i <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">"Controllo"</span>,<span class="st">"Trattamento"</span>)</span>
-<span id="cb59-9"><a href=""></a>    </span>
-<span id="cb59-10"><a href=""></a>    RT <span class="ot">=</span> <span class="fu">ifelse</span>(gruppo[i] <span class="sc">==</span> <span class="st">"Controllo"</span>, </span>
-<span id="cb59-11"><a href=""></a>                <span class="fu">rlnorm</span>(<span class="dv">1</span>, <span class="fu">log</span>(.<span class="dv">500</span>), .<span class="dv">050</span>), <span class="fu">rlnorm</span>(<span class="dv">1</span>, <span class="fu">log</span>(.<span class="dv">450</span>), .<span class="dv">050</span>))</span>
-<span id="cb59-12"><a href=""></a>    </span>
-<span id="cb59-13"><a href=""></a>    res2<span class="sc">$</span>Gruppo[i] <span class="ot">=</span> gruppo[i] </span>
-<span id="cb59-14"><a href=""></a>    </span>
-<span id="cb59-15"><a href=""></a>    res2<span class="sc">$</span>Partecipante[i] <span class="ot">=</span> i</span>
-<span id="cb59-16"><a href=""></a>    </span>
-<span id="cb59-17"><a href=""></a>    res2<span class="sc">$</span>RT[i] <span class="ot">=</span> RT                 </span>
-<span id="cb59-18"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a><span class="fu">str</span>(res2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   10 obs. of  3 variables:
- $ Gruppo      : chr  "Controllo" "Controllo" "Controllo" "Controllo" ...
- $ Partecipante: int  1 2 3 4 5 6 7 8 9 10
- $ RT          : num  0.492 0.457 0.496 0.531 0.495 ...</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="fu">head</span>(res2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       Gruppo Partecipante        RT
-1   Controllo            1 0.4923925
-2   Controllo            2 0.4573929
-3   Controllo            3 0.4957205
-4   Controllo            4 0.5313080
-5 Trattamento            5 0.4947276
-6 Trattamento            6 0.4404179</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href=""></a><span class="fu">mean</span>(res2<span class="sc">$</span>RT[res2<span class="sc">$</span>Gruppo <span class="sc">==</span> <span class="st">"Controllo"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4942035</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a><span class="fu">mean</span>(res2<span class="sc">$</span>RT[res2<span class="sc">$</span>Gruppo <span class="sc">==</span> <span class="st">"Trattamento"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4479536</code></pre>
 </div>
 </div>
 </section>
@@ -1106,7 +1100,7 @@ while (x &lt; 15) {
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 5.0e-2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',

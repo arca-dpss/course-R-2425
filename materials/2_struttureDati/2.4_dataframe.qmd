@@ -72,16 +72,15 @@ my_df[[1]] # estraggo la prima colonna del data.frame
 my_df[1,1] #  estraggo il primo elemento della prima colonna del data.frame
 ```
 
-:::{.fragment}
-
+::: fragment
 che il simbolo del dollaro **`$`**
+
 ```{r, echo=TRUE}
 my_df$col1 # estraggo la prima colonna del data.frame
 my_df$col1[1] #  estraggo il primo elemento della prima colonna del data.frame
 
 ```
 :::
-
 
 ## Indicizzazione - Operatori relazionali
 
@@ -101,42 +100,41 @@ my_df[my_df[1] > 2, ]
 my_df
 ```
 
-:::{.fragment}
+::: fragment
 ```{r, echo=TRUE,eval=FALSE}
 my_df[my_df$col1 > 2 & my_df$col1 < 4, ]
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ```{r, eval=TRUE}
 my_df[my_df$col1 > 2 & my_df$col1 < 4, ]
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ```{r, echo=TRUE,eval=FALSE}
 my_df[my_df$col1== 2,  2]
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ```{r, eval=TRUE}
 my_df[my_df$col1== 2,  2]
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ```{r, echo=TRUE,eval=FALSE}
 my_df[my_df$col1== 2,  "col2"]
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ```{r, eval=TRUE}
 my_df[my_df$col1== 2,  "col2"]
 ```
 :::
-
 
 ## Indicizzazione
 
@@ -187,7 +185,6 @@ head(subset(iris, subset = Species == "setosa" & Sepal.Length > 4, select = c(Se
 
 head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4, c("Sepal.Length","Species")],n = 3)
 ```
-
 
 ## Indicizzazione
 

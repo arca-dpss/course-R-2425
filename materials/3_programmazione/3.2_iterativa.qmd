@@ -1,8 +1,11 @@
 ---
-title: "3.2_iterativa"
+title: "Programmazione iterativa"
 format: 
    revealjs:
-     margin: 0.1
+     margin: .05
+     fontsize: 1.9em
+     linestretch: 1.4
+     mainfont: Helvetica Neue
 editor: visual
 ---
 
@@ -137,7 +140,7 @@ Il ciclo **`while`** utilizza una condizione logica e non un iteratore e un rang
 
 Provate a scrivere questo ciclo **`while`** e vedere cosa succede e capire perchè accade
 
-```         
+```{r, echo=TRUE, eval=FALSE}
 x = 10
 
 while (x < 15) { 
@@ -146,6 +149,8 @@ while (x < 15) {
 
 }
 ```
+   
+
 
 ------------------------------------------------------------------------
 
@@ -171,6 +176,8 @@ La logica del ciclo **`repeat`** è molto simile a quella del ciclo **`while`**,
 3)  utilizza il comando **`break`** per terminare
 
 ## Ciclo **`repeat`**
+
+Lancia il dado finchè non viene fuori 6:
 
 ```{r, echo=TRUE}
 repeat{
@@ -251,8 +258,10 @@ my_sum = function(x){
   return(somma)
 }
 
-x = rnorm(100)
+x = rnorm(100, mean = 0, sd = 1)
+
 my_sum(x)
+
 sum(x)
 ```
 
@@ -260,39 +269,45 @@ sum(x)
 
 ## Iterazione, applicazioni
 
-Il ciclo **`for`** è anche utile per simulare dei dati per esempio, supponiamo che in media (tra i nostri 30 partecipanti) ci aspettiamo un'effetto dell'età **b_mu** uguale a **.2**
+Il ciclo **`for`** è anche utile per simulare dei dati per esempio. Supponiamo di avere una variabile y (reddito) che dipenda dall'età:
+
+1. Carico il dataset che ho creato:
 
 ```{r, echo=TRUE}
 mydf = read.csv(file = "data/mydf_2.csv") #carico il dataset 
+
 str(mydf)
-
-group_mean = .2 # effetto medio atteso
-var_mean = .1   # variabilità
-n_subj = max(mydf$id) #numero soggetti
 ```
 
 ------------------------------------------------------------------------
 
-Ora possiamo simulare, attraverso un ciclo **`for`** , la variabile **y** assumendo che dipenda dall'età (**age_z**)
+2. Simulo, attraverso un ciclo **`for`** , la variabile **y** (reddito) assumendo che dipenda da **age_z** (età):
 
 ```{r, echo=TRUE}
-set.seed(111) # x replicabilità della simulazione
+set.seed(111) # per riproducibilità
 
-niter = 1000 # numero di iterazioni
-res1 = rep(NA, niter) # vettore di risultati
+niter = 1000
+res_all = rep(NA, niter)    # tutti gli effetti stimati
+p_val = rep(NA, niter)      # tutti i p-value
+
+# Dati osservati
 age_z = mydf$age_z
+eff_eta = .2 #effetto età
+n_obs = length(age_z)
 
 for(i in 1:niter) {
+  y = 0 + eff_eta * age_z + rnorm(n_obs, 0, 1) # aggiungo sempre un pò di rumore
   
-  # effetto
-  b_mu = rnorm(n_subj, mean = group_mean, sd = var_mean)
-  # Simulo un vettore y per ogni iterazione,
-  # che avrà tanti elementi quanti soggetti
-  y = 0 + b_mu * age_z
-  # Modello lineare
-  mod = lm(y ~ 1 + age_z)
-  res1[i] = mod$coefficients[[2]] # Estraggo l'effetto dell'età
+  # modello lineare
+  mod = lm(y ~ 1 + age_z) 
+  
+  # estraggo stima effetto
+  res_all[i] = coef(mod)[2] 
+  
+  # p-value di age_z
+  p_val[i] = summary(mod)$coefficients[2, 4]
 }
+
 ```
 
 ------------------------------------------------------------------------
@@ -300,50 +315,46 @@ for(i in 1:niter) {
 Risultato:
 
 ```{r, echo=TRUE}
-# effetto medio stimato
-mean(res1)
-# istogramma dei risultati
-hist(res1)
+# Filtra solo risultati significativi
+res_sig = res_all[p_val <= 0.05]
+
+# Statistiche descrittive
+cat("Proporzione significativi = Power:", mean(p_val <= 0.05), "\n")
+cat("Media tutti gli effetti:", mean(res_all), "\n")
+cat("Media effetti significativi:", mean(res_sig), "\n")
 ```
+
+
 
 ------------------------------------------------------------------------
 
-Aumentiamo la variabilità:
 
-```{r, echo=TRUE}
-var_mean = .8  
+```{r}
+# Plot comparativo con par(mfrow)
+par(mfrow = c(1, 2))
+
+# Istogramma di TUTTI i risultati
+hist(res_all, 
+     main = "Tutti i risultati", 
+     xlab = "Effetto stimato",
+     col = "lightblue",
+     xlim = range(res_all))
+abline(v = eff_eta, col = "red", lwd = 2, lty = 2)  # vero effetto
+
+# Istogramma solo risultati SIGNIFICATIVI
+hist(res_sig, 
+     main = "Solo risultati significativi (p <= 0.05)", 
+     xlab = "Effetto stimato",
+     col = "lightgreen",
+     xlim = range(res_all))
+abline(v = eff_eta, col = "red", lwd = 2, lty = 2)  # vero effetto
 ```
 
-```{r, echo=FALSE}
-res2 = rep(NA, niter) # vettore di risultati
-
-for(i in 1:niter) {
-  
-  # effetto
-  b_mu = rnorm(n_subj, mean = group_mean, sd = var_mean)
-  
-  # Simulo un vettore y per ogni iterazione,
-  # che avrà tanti elementi quanti soggetti
-  y = 0 + b_mu * age_z 
-  
-  # Modello lineare
-  mod = lm(y ~ 1 + age_z)
-  res2[i] = mod$coefficients[[2]] # Estraggo l'effetto dell'età
-}
-```
-
-Risultato:
-
-```{r, echo=TRUE}
-# effetto medio stimato
-mean(res2)
-# istogramma dei risultati
-hist(res2)
-```
 
 ------------------------------------------------------------------------
 
-Lo stesso concetto si può applicare al numero di partecipanti, o alla grandezza dell'effetto atteso. Proprio grazie al for loop è possibile effetuare una ***power simulation***.
+
+Proprio grazie al for loop è possibile effetuare una ***power simulation***.
 
 Per saperne di più date un'occhiata a questa [pagina](https://www.memoryandlearninglab.it/workshops-on-data-analysis/)! :)
 
@@ -361,19 +372,32 @@ for(i in 1:3){ # livello 1
 
 ------------------------------------------------------------------------
 
-Supponiamo di avere due gruppi sperimentali (ad esempio, Gruppo di controllo e Gruppo di trattamento), ciascuno con 10 partecipanti. Si vuole misurare una variabile (ad esempio, il tempo di reazione) per ogni partecipante e registrare i risultati in un dataframe:
+Immaginiamo di avere due gruppi sperimentali (ad esempio, Gruppo di controllo e Gruppo trattamento), ciascuno con 10 partecipanti. Vogliamo misurare una variabile (ad esempio, il tempo di reazione) per ogni partecipante e registrare i risultati in un dataframe:
 
 ```{r, echo=TRUE}
 # Definire parametri della ricerca
-gruppi=c("Controllo", "Trattamento")  # Nomi dei gruppi
+gruppi = c("Controllo", "Trattamento") # Nomi dei gruppi
 num_soggetti=10                      # Numero di soggetti per gruppo
+tot_soggetti = num_soggetti * length(gruppi)
 
-# Creare una matrice per memorizzare i dati
+# Creare un data.frame per memorizzare i dati
 res=data.frame(
-  Gruppo = factor(),
-  Soggetto = integer(),
-  RT = numeric()
+  
+  # Fattore gruppo
+  Gruppo = factor(x = rep(gruppi, each = num_soggetti)),
+  
+  # fattore soggetto 
+  Soggetto = factor(x = 1:tot_soggetti),
+  
+  # Tempo di reazione vettore numerico con rt = 0 
+  RT = numeric(tot_soggetti)
 )
+```
+
+------------------------------------------------------------------------ 
+```{r, echo=TRUE}
+head(res, 5) # guardo le prime osservazioni di res
+tail(res, 5) # guardo le ultime osservazioni di res
 ```
 
 ------------------------------------------------------------------------
@@ -382,19 +406,23 @@ res=data.frame(
 # Ciclo nested per simulare raccolta dati
 set.seed(42)  # Per riproducibilità dei dati simulati
 
-for (gruppo in gruppi) {
+k = 1 #iteratore tempi di reazione
+
+# quanti livelli ha Gruppo?
+for (i in 1:length(levels(res$Gruppo))) {
   
-  for (soggetto in 1:num_soggetti) {
+  # inizio con il primo gruppo che è il gruppo di controllo
+  gruppo = levels(res$Gruppo)[i] 
+  
+  for (j in 1:num_soggetti) { # num_soggetti each gruppo
     
-    # Simulare un tempo di reazione 
-    RT=ifelse(gruppo == "Controllo", 
-                             rlnorm(1, mean = log(.500), sd = .050),  
-              # Media diversa per il gruppo Trattamento
-                             rlnorm(1, mean = log(.450), sd = .050))
+    # è il gruppo di controllo?
+    RT = ifelse(gruppo == "Controllo", 
+               yes = rlnorm(1, mean = log(.500), sd = .050), 
+               no = rlnorm(1, mean = log(.450), sd = .050))
     
-    # Aggiungere i dati al dataframe, aggiungendo una riga 
-    res=rbind(res, 
-        data.frame(Gruppo = gruppo, Soggetto = soggetto, RT = RT))
+    res$RT[k] = RT
+    k = k + 1 
   }
 }
 ```
@@ -403,44 +431,12 @@ for (gruppo in gruppi) {
 
 ```{r, echo=TRUE}
 str(res)
-head(res)
+head(res, 3)
+tail(res, 3)
 mean(res$RT[res$Gruppo == "Controllo"])
 mean(res$RT[res$Gruppo == "Trattamento"])
 ```
 
-------------------------------------------------------------------------
-
-Equivalente (e forse più intuitivo)
-
-```{r, echo=TRUE}
-num_soggetti = 10
-gruppo = character()
-res2 =data.frame(Gruppo = character(num_soggetti), 
-                  Partecipante = integer(num_soggetti), RT = numeric(num_soggetti))
-
-for (i in 1:num_soggetti) {
-  
-    gruppo[i] = ifelse(i < 5, "Controllo","Trattamento")
-    
-    RT = ifelse(gruppo[i] == "Controllo", 
-                rlnorm(1, log(.500), .050), rlnorm(1, log(.450), .050))
-    
-    res2$Gruppo[i] = gruppo[i] 
-    
-    res2$Partecipante[i] = i
-    
-    res2$RT[i] = RT                 
-}
-```
-
-------------------------------------------------------------------------
-
-```{r, echo=TRUE}
-str(res2)
-head(res2)
-mean(res2$RT[res2$Gruppo == "Controllo"])
-mean(res2$RT[res2$Gruppo == "Trattamento"])
-```
 
 ## Ora facciamo un po' di pratica! {style="text-align: center;"}
 
