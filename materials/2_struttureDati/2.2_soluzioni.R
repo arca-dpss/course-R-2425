@@ -71,7 +71,7 @@ paesi_fact_2 = factor(paesi,
                       labels = c("Italia", "Francia", "Spagna", "Germania"))
 
 # 6.4 Rinomina i livelli di paesi_fact_2 assegnando l'area geografica corrispondente (es. "EU_Ovest", ...).
-levels(paesi_fact_2) = c("EU_Sud", "EU_Ovest", "EU_Sud", "EU_Centro")
+levels(paesi_fact_2) = c("EU_Sud", "EU_Ovest", "EU_SudOvest", "EU_Centro")
 paesi_fact_2 = factor(paesi_fact_2, 
                       levels = c("Italia", "Francia", "Spagna", "Germania"),
                       labels = c("Italia", "Francia", "Spagna", "Germania"))
