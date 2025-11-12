@@ -4,7 +4,7 @@
 # registrati per sessione in palestra da 12 a 150.
 my_vect = 12:150
 
-# 1.1 Estrai il quarto e il penultimo elemento di my_vect"
+# 1.1 Estrai il quarto e il penultimo elemento di my_vect
 # ?length
 my_vect[c(4,length(my_vect)-1)]
 
