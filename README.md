@@ -15,9 +15,9 @@ Il principale materiale di riferimento è il libro: [Introduzione a R](https://p
 
 | Data       | Ora          | Aula                |
 |------------|--------------|---------------------|
-| 10/10/2025 | 13:00 - 17:00| Psico 1 - Aula ARCA |
-| 11/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 12/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 13/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 14/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 09/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 10/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 11/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 12/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 13/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
 
