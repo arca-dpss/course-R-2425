@@ -1,44 +1,53 @@
 ---
 title: "Introduzione a R"
+author: "Margherita Calderan"
+date: today
 format:
-  html: 
-    theme: cosmo
+  html:
+    include-in-header:
+      text: |
+        <style>
+        #title-block-header {
+          position: relative;
+        }
+        #title-block-header::after {
+          content: '';
+          position: absolute;
+          right: 30px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 110px;
+          height: 110px;
+          background-image: url('arca_logo.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        </style>
+    theme: Superhero
     fontsize: 1.12em
     linestretch: 1.5
     mainfont: Helvetica Neue
     toc: true
-    toc-location: right
+    toc-location: left
+    toc-title: "Contenuti"
 ---
 
-![](arca_logo.svg){fig-align="center" width="80"}
 
-#### Margherita Calderan {style="text-align: center;"}
-
-Credits: Filippo Gambarota e Enrico Toffalini
-
-## Gli obiettivi principali
+## Obiettivi
 
 -   Impareremo tutti gli **elementi principali** che compongono il linguaggio R
 -   Imparare la **logica generale della programmazione** spendibile con qualsiasi linguaggio
 -   Migliorare il modo di affrontare i problemi e **rendere più efficiente il lavoro quotidiano**
 
-## Il materiale principale
-
--   Libro [**Introduction2R**](https://psicostat.github.io/Introduction2R/) disponibile online su Github
-
--   [**Repository**](https://github.com/arca-dpss/course-R-2425) Github del corso
-
--   [**Guida**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} installazione R ed RStudio
 
 ## Organizzazione delle lezioni
 
 -   Comprensione teorico-logica degli argomenti
-
 -   Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari
-
 -   Applicazione direttamente scrivendo codice e risolvendo esercizi
 
-## Esame 😱
+## Esame 
 
 -   **Formato**: L'esame consisterà in diversi esercizi.
 -   **Argomenti**: Gli esercizi copriranno gli argomenti trattati durante il corso.
@@ -104,9 +113,18 @@ Qui troverete gli esercizi con soluzioni:
 
 -   **Dataframe** - 
 
-### Programmazione
+-  Programmazione **Condizionale** - 
 
--   **Condizionale** - 
+-   Programmazione **Iterativa** - 
 
--   **Iterativa** - 
 
+# Link utili
+
+-   [**Repository**](https://github.com/arca-dpss/course-R-2425) Github del corso
+
+-   Libro [**Introduction2R**](https://psicostat.github.io/Introduction2R/) disponibile online su Github
+
+-   [**Guida**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} installazione R ed RStudio
+
+
+**Credits**: Filippo Gambarota e Enrico Toffalini

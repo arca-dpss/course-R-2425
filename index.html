@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Margherita Calderan">
+<meta name="dcterms.date" content="2026-03-05">
 
 <title>Introduzione a R</title>
 <style>
@@ -30,26 +32,43 @@ ul.task-list li input[type="checkbox"] {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-72aaacf318e088ffdaa6bb92a016d110.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-a535522bc4ba0a0f292dc3e982f489dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<style>
+#title-block-header {
+  position: relative;
+}
+#title-block-header::after {
+  content: '';
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 110px;
+  height: 110px;
+  background-image: url('arca_logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+</style>
 
 
 </head>
 
 <body class="quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Contenuti</h2>
    
   <ul>
-  <li><a href="#gli-obiettivi-principali" id="toc-gli-obiettivi-principali" class="nav-link active" data-scroll-target="#gli-obiettivi-principali">Gli obiettivi principali</a></li>
-  <li><a href="#il-materiale-principale" id="toc-il-materiale-principale" class="nav-link" data-scroll-target="#il-materiale-principale">Il materiale principale</a></li>
+  <li><a href="#obiettivi" id="toc-obiettivi" class="nav-link active" data-scroll-target="#obiettivi">Obiettivi</a></li>
   <li><a href="#organizzazione-delle-lezioni" id="toc-organizzazione-delle-lezioni" class="nav-link" data-scroll-target="#organizzazione-delle-lezioni">Organizzazione delle lezioni</a></li>
-  <li><a href="#esame" id="toc-esame" class="nav-link" data-scroll-target="#esame">Esame 😱</a></li>
+  <li><a href="#esame" id="toc-esame" class="nav-link" data-scroll-target="#esame">Esame</a></li>
   <li><a href="#aule-e-orari" id="toc-aule-e-orari" class="nav-link" data-scroll-target="#aule-e-orari">Aule e Orari</a></li>
   <li><a href="#materiale" id="toc-materiale" class="nav-link" data-scroll-target="#materiale">Materiale</a>
   <ul class="collapse">
@@ -60,11 +79,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#programmazione" id="toc-programmazione" class="nav-link" data-scroll-target="#programmazione">Programmazione</a></li>
   <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra">Extra</a></li>
   <li><a href="#esercizi" id="toc-esercizi" class="nav-link" data-scroll-target="#esercizi">Esercizi</a></li>
-  <li><a href="#programmazione-1" id="toc-programmazione-1" class="nav-link" data-scroll-target="#programmazione-1">Programmazione</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#link-utili" id="toc-link-utili" class="nav-link" data-scroll-target="#link-utili">Link utili</a></li>
   </ul>
 </nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -77,7 +98,19 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Margherita Calderan </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 5, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -87,41 +120,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="arca_logo.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="80"></p>
-</figure>
-</div>
-<section id="margherita-calderan" class="level4" style="text-align: center;">
-<h4 style="text-align: center;" class="anchored" data-anchor-id="margherita-calderan">Margherita Calderan</h4>
-<p>Credits: Filippo Gambarota e Enrico Toffalini</p>
-</section>
-<section id="gli-obiettivi-principali" class="level2">
-<h2 class="anchored" data-anchor-id="gli-obiettivi-principali">Gli obiettivi principali</h2>
+<section id="obiettivi" class="level2">
+<h2 class="anchored" data-anchor-id="obiettivi">Obiettivi</h2>
 <ul>
 <li>Impareremo tutti gli <strong>elementi principali</strong> che compongono il linguaggio R</li>
 <li>Imparare la <strong>logica generale della programmazione</strong> spendibile con qualsiasi linguaggio</li>
 <li>Migliorare il modo di affrontare i problemi e <strong>rendere più efficiente il lavoro quotidiano</strong></li>
 </ul>
 </section>
-<section id="il-materiale-principale" class="level2">
-<h2 class="anchored" data-anchor-id="il-materiale-principale">Il materiale principale</h2>
-<ul>
-<li><p>Libro <a href="https://psicostat.github.io/Introduction2R/"><strong>Introduction2R</strong></a> disponibile online su Github</p></li>
-<li><p><a href="https://github.com/arca-dpss/course-R-2425"><strong>Repository</strong></a> Github del corso</p></li>
-<li><p><a href="https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html" target="_blank"><strong>Guida</strong></a> installazione R ed RStudio</p></li>
-</ul>
-</section>
 <section id="organizzazione-delle-lezioni" class="level2">
 <h2 class="anchored" data-anchor-id="organizzazione-delle-lezioni">Organizzazione delle lezioni</h2>
 <ul>
-<li><p>Comprensione teorico-logica degli argomenti</p></li>
-<li><p>Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari</p></li>
-<li><p>Applicazione direttamente scrivendo codice e risolvendo esercizi</p></li>
+<li>Comprensione teorico-logica degli argomenti</li>
+<li>Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari</li>
+<li>Applicazione direttamente scrivendo codice e risolvendo esercizi</li>
 </ul>
 </section>
 <section id="esame" class="level2">
-<h2 class="anchored" data-anchor-id="esame">Esame 😱</h2>
+<h2 class="anchored" data-anchor-id="esame">Esame</h2>
 <ul>
 <li><strong>Formato</strong>: L’esame consisterà in diversi esercizi.</li>
 <li><strong>Argomenti</strong>: Gli esercizi copriranno gli argomenti trattati durante il corso.</li>
@@ -217,16 +233,20 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Fattori</strong> -</p></li>
 <li><p><strong>Liste, Matrici &amp; Array</strong> -</p></li>
 <li><p><strong>Dataframe</strong> -</p></li>
+<li><p>Programmazione <strong>Condizionale</strong> -</p></li>
+<li><p>Programmazione <strong>Iterativa</strong> -</p></li>
 </ul>
 </section>
-<section id="programmazione-1" class="level3">
-<h3 class="anchored" data-anchor-id="programmazione-1">Programmazione</h3>
+</section>
+</section>
+<section id="link-utili" class="level1">
+<h1>Link utili</h1>
 <ul>
-<li><p><strong>Condizionale</strong> -</p></li>
-<li><p><strong>Iterativa</strong> -</p></li>
+<li><p><a href="https://github.com/arca-dpss/course-R-2425"><strong>Repository</strong></a> Github del corso</p></li>
+<li><p>Libro <a href="https://psicostat.github.io/Introduction2R/"><strong>Introduction2R</strong></a> disponibile online su Github</p></li>
+<li><p><a href="https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html" target="_blank"><strong>Guida</strong></a> installazione R ed RStudio</p></li>
 </ul>
-</section>
-</section>
+<p><strong>Credits</strong>: Filippo Gambarota e Enrico Toffalini</p>
 </section>
 
 </main>
