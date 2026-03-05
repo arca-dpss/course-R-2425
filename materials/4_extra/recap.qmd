@@ -1,6 +1,11 @@
 ---
 title: "Recap"
-format: revealjs
+format: 
+   revealjs:
+     margin: .05
+     fontsize: 1.9em
+     linestretch: 1.4
+     mainfont: Helvetica Neue
 editor: visual
 ---
 

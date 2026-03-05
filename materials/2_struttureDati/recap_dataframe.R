@@ -30,7 +30,7 @@ studenti_df = data.frame(
 # 6. Crea un altro dataframe ("nuovi_studenti") composto da tre righe
 #    e che abbia delle caratteristiche tali da poter
 #    essere unito a studenti_df (rbind()), unisci quindi i due dataframe 
-#   creando studenti_completo
+#    creando studenti_completo
 
 
 # 7. Supponi di avere questi due dataframe:
@@ -46,10 +46,19 @@ df_esami = data.frame(
 # Crea studenti_esami unendo i due data.frame utilizzando la colonna Matricola come chiave,
 # mantenendo tutte le righe di df_studenti (usa la funzione merge())
 
+studenti_esami = merge(x = df_studenti, y = df_esami, 
+                       by = "Matricola", all.x = TRUE ) 
+
 # 8. In "studenti_esami" crea una terza colonna "Dettagli"
 #    che unisca le informazioni Nome e Esame (usa paste())
 
+Dettagli=paste(studenti_esami$Nome, studenti_esami$Esame, sep="")
+studenti_esami$Dettagli=Dettagli
+
 # 9. Seleziona gli studenti con NA per la colonna Esame (usa is.na())
+is.na(studenti_esami$Esame)
+studenti_esami[is.na(studenti_esami$Esame), "Matricola"]
+
 
 # 10. Seleziona gli studenti che non hanno nessun NA (usa la funzione complete.cases())
 

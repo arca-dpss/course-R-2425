@@ -11,23 +11,48 @@ editor: visual
 
 ## Ambiente di Lavoro {style="text-align: center;"}
 
-![](images/R_studio.png){fig-align="center"}
+RStudio è diviso in **4 pannelli principali**:
+
+![](images/R_studio.png){fig-align="center" width="2810"}
 
 ------------------------------------------------------------------------
 
-**Environment.** La vostra scrivania quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
+**Script.** Il file di testo dove scrivi e salvi il codice. Puoi eseguire una riga alla volta (`Ctrl + Invio` / `Cmd + Enter`) oppure tutto lo script cliccando `Source`. I commenti si aggiungono con `#`.
 
-::: fragment
-**Script.** File di testo dove il codice viene salvato e puo essere lanciato in successione. Nello script è possibile combinare codice e commenti (#)
+<br/>
 
-```{r, echo = TRUE}
-# assegno ad x il valore 30
-x = 30
-```
+**Console.** Qui R esegue il codice e mostra i risultati. Puoi scrivere comandi direttamente nella console per prove rapide, ma non vengono salvati.
+
+<br/>
+
+**Environment / Scrivania temporanea.** Mostra tutti gli **oggetti** creati durante la sessione corrente.
+
+<br/>
+
+**Varie.** Pannello multifunzione con diverse tab, tra cui il file explorer
+
+------------------------------------------------------------------------
+
+::: callout-note
+## Console
+
+I comandi nella console vengono eseguiti ma **non salvati**.
+
+Per eseguire il comando → `Invio`
+
+L'output è immediato e appare nella console.
 :::
 
-::: fragment
-**Working Directory.** La posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.
+<br/>
+
+::: callout-note
+## Script
+
+È possibile salvare gli script con tutti i comandi.
+
+Per eseguire il comando → `Ctrl + Invio` (`Cmd + Enter` su Mac)
+
+L'output è restituito nella console.
 :::
 
 ## Come lavorare in R
@@ -44,7 +69,7 @@ Salviamo:
 
 ## Working Directory
 
-Dove sta lavorando R ?
+La posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.
 
 <br/>
 
@@ -72,17 +97,16 @@ PC
 
 ## Path Relativo (alla working directory)
 
-1. Cambia la working directory attraverso il comando `setwd`:
+1.  Cambia la working directory attraverso il comando `setwd`:
 
 ```{r, echo=TRUE, eval=FALSE}
 setwd('/Users/tita/Desktop')
 ```
 
-
-2. Scarica il file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv) ed inseriscilo nella cartella.
+2.  Scarica il file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv) ed inseriscilo nella cartella.
 
 ::: fragment
-3. Dato che stiamo lavorando dentro la cartella, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra virgolette, ed utilizzare per esempio la funzione `read.csv`:
+3.  Dato che stiamo lavorando dentro la cartella, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra virgolette, ed utilizzare per esempio la funzione `read.csv`:
 
 ```{r, echo=TRUE, warning=FALSE}
 data = read.csv("prova.csv")
@@ -102,8 +126,9 @@ head(data, n = 4) #mostra le prime righe del dataset
 
 <br/>
 
+::: fragment
 Oppure, prima cambiare la working directory attraverso il comando `setwd` e poi caricare il file.
-
+:::
 
 ## La soluzione migliore?
 

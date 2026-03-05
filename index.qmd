@@ -28,6 +28,8 @@ Credits: Filippo Gambarota e Enrico Toffalini
 
 -   [**Repository**](https://github.com/arca-dpss/course-R-2425) Github del corso
 
+-   [**Guida**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} installazione R ed RStudio
+
 ## Organizzazione delle lezioni
 
 -   Comprensione teorico-logica degli argomenti
@@ -43,18 +45,18 @@ Credits: Filippo Gambarota e Enrico Toffalini
 -   **Materiale consentito**: È permesso utilizzare il materiale fornito a lezione. Non è consentito l'uso di altro materiale online (o chatGPT) durante l'esame.
 -   **Durata**: 1 ora
 -   **Modalità**: in classe
--   **Soluzioni**: [Script](materials/ESAME_aprile.R)
+-   **Soluzioni**: 
 
 
-## Aule e Orari (2025-2026) {style="text-align: center;"}
+## Aule e Orari  {style="text-align: center;"}
 
 | Data       | Ora          | Aula                |
 |------------|--------------|---------------------|
-| 10/10/2025 | 13:00 - 17:00| Psico 1 - Aula ARCA |
-| 11/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 12/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 13/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 14/10/2025 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 09/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 10/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 11/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 12/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| 13/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
 
 # Materiale
 
@@ -65,23 +67,23 @@ Qui sotto trovate i link al materiale principale del corso; di seguito il link a
 
 ### Introduzione
 
--   *Introduzione a R (1)* - [Slides](materials/0_getStarted/0_getStarted.html){target="_blank"} - [PDF](materials/0_getStarted/0_getStarted.pdf){target="_blank"}
--   *Come lavorare in R - Path e R Projects* - [Slides](materials/1_intro/1.1_intro.html){target="_blank"} - [PDF](materials/1_intro/1.1_intro.pdf){target="_blank"}
--   *Introduzione a R (2)* - [Slides](materials/1_intro/1.2_intro.html){target="_blank"} - [PDF](materials/1_intro/1.2_intro.pdf){target="_blank"}
--   *Introduzione a R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"} - [PDF](materials/1_intro/1.3_funzioni&errori.pdf){target="_blank"}
+-   *Introduzione a R (1)* - [Slides](materials/0_getStarted/0_getStarted.html){target="_blank"}
+-   *Come lavorare in R - Path e R Projects* - [Slides](materials/1_intro/1.1_intro.html){target="_blank"}
+-   *Introduzione a R (2)* - [Slides](materials/1_intro/1.2_intro.html){target="_blank"}
+-   *Introduzione a R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"} 
 
 ### Strutture dati
 
--   *Vettori* - [Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"} - [PDF](materials/2_struttureDati/2.1_vettori.pdf){target="_blank"}
--   *Fattori* - [Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"} - [PDF](materials/2_struttureDati/2.2_fattori.pdf){target="_blank"}
--   *Liste, Matrici e Array* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"} - [PDF](materials/2_struttureDati/2.3_liste&matrici&array.pdf){target="_blank"}
--   *Dataframe* - [Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"} - [PDF](materials/2_struttureDati/2.4_dataframe.pdf){target="_blank"}
+-   *Vettori* - [Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"} 
+-   *Fattori* - [Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"} 
+-   *Liste, Matrici e Array* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"} 
+-   *Dataframe* - [Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"} 
 
 ### Programmazione
 
--   *Condizionale* - [Slides](materials/3_programmazione/3.1_condizionale.html){target="_blank"} - [PDF](materials/3_programmazione/3.1_condizionale.pdf){target="_blank"}
--   *Iterativa* - [Slides](materials/3_programmazione/3.2_iterativa.html){target="_blank"} - [PDF](materials/3_programmazione/3.2_iterativa.pdf){target="_blank"}
--   *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html){target="_blank"} - [PDF](materials/3_programmazione/3.3_apply.pdf){target="_blank"}
+-   *Condizionale* - [Slides](materials/3_programmazione/3.1_condizionale.html){target="_blank"} 
+-   *Iterativa* - [Slides](materials/3_programmazione/3.2_iterativa.html){target="_blank"}
+-   *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html){target="_blank"} 
 
 ### Extra
 
@@ -94,18 +96,17 @@ Qui sotto trovate i link al materiale principale del corso; di seguito il link a
 
 Qui troverete gli esercizi con soluzioni:
 
--   **Vettori** -  [Script](materials/2_struttureDati/2.1_esercizi.R){target="_blank"}
+-   **Vettori** -  
 
--   **Fattori** - [Script](materials/2_struttureDati/2.2_soluzioni.R){target="_blank"}
+-   **Fattori** - 
 
--   **Liste, Matrici & Array** - [Script](materials/2_struttureDati/2.3_soluzioni.R){target="_blank"}
+-   **Liste, Matrici & Array** - 
 
--   **Dataframe** - [Script](materials/2_struttureDati/2.4_soluzioni.R){target="_blank"}
+-   **Dataframe** - 
 
 ### Programmazione
 
--   **Condizionale** - [Script](materials/3_programmazione/3.1_esericizi.R){target="_blank"}
+-   **Condizionale** - 
 
--   **Iterativa** - [Script](materials/3_programmazione/3.2_esericizi.R){target="_blank"}
-
+-   **Iterativa** - 
 

@@ -566,23 +566,23 @@
 <span id="cb34-2"><a href=""></a>my_vect <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">20</span>,<span class="at">min =</span> <span class="dv">1</span>,<span class="at">max =</span> <span class="dv">100</span>))</span>
 <span id="cb34-3"><a href=""></a>my_vect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 40 63 34 98 62 41 76 94 37 76 66 18 82 92 82 73 69 48 15 74</code></pre>
+<pre><code> [1] 48 91 64  4  4 31 15 94 80 71 14 84 11 22  9 63 50 47 53 27</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>my_vect[<span class="dv">1</span>] <span class="co"># estraggo il primo elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 40</code></pre>
+<pre><code>[1] 48</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>my_vect[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># estraggo i primi 5 elementi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 40 63 34 98 62</code></pre>
+<pre><code>[1] 48 91 64  4  4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>my_vect[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">9</span>)] <span class="co"># estraggo elementi a scelta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 40 98 63 37</code></pre>
+<pre><code>[1] 48  4 91 80</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a>my_vect[<span class="fu">length</span>(my_vect)] <span class="co">#ultimo elemento (perchè?)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 74</code></pre>
+<pre><code>[1] 27</code></pre>
 </div>
 </div>
 </section>
@@ -592,11 +592,11 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>my_vect[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>)] <span class="co">#tutti tranne il primo elemento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 63 34 98 62 41 76 94 37 76 66 18 82 92 82 73 69 48 15 74</code></pre>
+<pre><code> [1] 91 64  4  4 31 15 94 80 71 14 84 11 22  9 63 50 47 53 27</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a>my_vect[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)] <span class="co">#tutti tranne i primi 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 66 18 82 92 82 73 69 48 15 74</code></pre>
+<pre><code> [1] 14 84 11 22  9 63 50 47 53 27</code></pre>
 </div>
 </div>
 </section>
@@ -1145,10 +1145,10 @@ sub-multiple or multiple of the number of rows [3]</code></pre>
 <span id="cb154-4"><a href=""></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  col1 col2       col3
-1    1    a  1.2726752
-2    2    b -0.5706625
-3    3    c -2.4899153
-4    4    d -2.0592201</code></pre>
+1    1    a -0.4456488
+2    2    b  0.8889884
+3    3    c  0.4996634
+4    4    d -0.7886895</code></pre>
 </div>
 </div>
 </section>
@@ -1210,15 +1210,15 @@ $row.names
 <div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href=""></a><span class="co"># includo solo le righe in cui alla colonna1 i valori sono maggiori di 2</span></span>
 <span id="cb170-2"><a href=""></a>my_df[my_df<span class="sc">$</span>col1 <span class="sc">&gt;</span> <span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2      col3
-3    3    c -2.489915
-4    4    d -2.059220</code></pre>
+<pre><code>  col1 col2       col3
+3    3    c  0.4996634
+4    4    d -0.7886895</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href=""></a>my_df[my_df[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">2</span>, ] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2      col3
-3    3    c -2.489915
-4    4    d -2.059220</code></pre>
+<pre><code>  col1 col2       col3
+3    3    c  0.4996634
+4    4    d -0.7886895</code></pre>
 </div>
 </div>
 </section>
@@ -1227,10 +1227,10 @@ $row.names
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  col1 col2       col3
-1    1    a  1.2726752
-2    2    b -0.5706625
-3    3    c -2.4899153
-4    4    d -2.0592201</code></pre>
+1    1    a -0.4456488
+2    2    b  0.8889884
+3    3    c  0.4996634
+4    4    d -0.7886895</code></pre>
 </div>
 </div>
 <div>
@@ -1517,7 +1517,7 @@ $row.names
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 5.0e-2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
