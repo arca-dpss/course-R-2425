@@ -1,3 +1,18 @@
+/* 1. Make the banner tall enough to show the white AND black parts */
+.quarto-title-banner {
+  background-size: cover !important;
+  background-position: top center !important;
+  min-height: 350px !important; /* Forces the banner to be taller */
+  padding-top: 220px !important; /* Pushes the title text down into the black area */
+}
+
+/* 2. Force ALL text in the banner to be white so it's visible on the black background */
+.quarto-title-banner h1,
+.quarto-title-banner p,
+.quarto-title-banner div {
+  color: #ffffff !important;
+}
+
 /* Base typography for the deck */
 .reveal {
   /* scales all text in the deck */

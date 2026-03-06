@@ -1,30 +1,12 @@
 ---
-title: "Introduzione a R"
+title: " "
 author: "Margherita Calderan"
+title-block-banner: "arcabanner.png"
 date: today
 format:
   html:
-    include-in-header:
-      text: |
-        <style>
-        #title-block-header {
-          position: relative;
-        }
-        #title-block-header::after {
-          content: '';
-          position: absolute;
-          right: 30px;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 110px;
-          height: 110px;
-          background-image: url('arca_logo.svg');
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-        </style>
     theme: Superhero
+    css: style.css 
     fontsize: 1.12em
     linestretch: 1.5
     mainfont: Helvetica Neue
@@ -33,15 +15,15 @@ format:
     toc-title: "Contenuti"
 ---
 
+# Introduzione a R: elementi base e applicazioni avanzate
 
-## Obiettivi
+## Obiettivi 
 
 -   Impareremo tutti gli **elementi principali** che compongono il linguaggio R
 -   Imparare la **logica generale della programmazione** spendibile con qualsiasi linguaggio
 -   Migliorare il modo di affrontare i problemi e **rendere più efficiente il lavoro quotidiano**
 
-
-## Organizzazione delle lezioni
+## Organizzazione delle lezioni 
 
 -   Comprensione teorico-logica degli argomenti
 -   Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari
@@ -54,10 +36,9 @@ format:
 -   **Materiale consentito**: È permesso utilizzare il materiale fornito a lezione. Non è consentito l'uso di altro materiale online (o chatGPT) durante l'esame.
 -   **Durata**: 1 ora
 -   **Modalità**: in classe
--   **Soluzioni**: 
+-   **Soluzioni**:
 
-
-## Aule e Orari  {style="text-align: center;"}
+## Aule e Orari {style="text-align: center;"}
 
 | Data       | Ora          | Aula                |
 |------------|--------------|---------------------|
@@ -71,28 +52,27 @@ format:
 
 ## Lezioni
 
-Qui sotto trovate i link al materiale principale del corso; di seguito il link al padlet che utilizziamo per gli esercizi in classe:  [Esercizi in classe](https://etherpad.wikimedia.org/p/arca-corsoR){target="_blank"}. 
-
+Qui sotto trovate i link al materiale principale del corso; di seguito il link al padlet che utilizziamo per gli esercizi in classe: [Esercizi in classe](https://etherpad.wikimedia.org/p/arca-corsoR){target="_blank"}.
 
 ### Introduzione
 
 -   *Introduzione a R (1)* - [Slides](materials/0_getStarted/0_getStarted.html){target="_blank"}
 -   *Come lavorare in R - Path e R Projects* - [Slides](materials/1_intro/1.1_intro.html){target="_blank"}
 -   *Introduzione a R (2)* - [Slides](materials/1_intro/1.2_intro.html){target="_blank"}
--   *Introduzione a R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"} 
+-   *Introduzione a R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"}
 
 ### Strutture dati
 
--   *Vettori* - [Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"} 
--   *Fattori* - [Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"} 
--   *Liste, Matrici e Array* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"} 
--   *Dataframe* - [Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"} 
+-   *Vettori* - [Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"}
+-   *Fattori* - [Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"}
+-   *Liste, Matrici e Array* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"}
+-   *Dataframe* - [Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"}
 
 ### Programmazione
 
--   *Condizionale* - [Slides](materials/3_programmazione/3.1_condizionale.html){target="_blank"} 
+-   *Condizionale* - [Slides](materials/3_programmazione/3.1_condizionale.html){target="_blank"}
 -   *Iterativa* - [Slides](materials/3_programmazione/3.2_iterativa.html){target="_blank"}
--   *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html){target="_blank"} 
+-   *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html){target="_blank"}
 
 ### Extra
 
@@ -105,18 +85,17 @@ Qui sotto trovate i link al materiale principale del corso; di seguito il link a
 
 Qui troverete gli esercizi con soluzioni:
 
--   **Vettori** -  
+-   **Vettori** -
 
--   **Fattori** - 
+-   **Fattori** -
 
--   **Liste, Matrici & Array** - 
+-   **Liste, Matrici & Array** -
 
--   **Dataframe** - 
+-   **Dataframe** -
 
--  Programmazione **Condizionale** - 
+-   Programmazione **Condizionale** -
 
--   Programmazione **Iterativa** - 
-
+-   Programmazione **Iterativa** -
 
 # Link utili
 
@@ -125,6 +104,5 @@ Qui troverete gli esercizi con soluzioni:
 -   Libro [**Introduction2R**](https://psicostat.github.io/Introduction2R/) disponibile online su Github
 
 -   [**Guida**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} installazione R ed RStudio
-
 
 **Credits**: Filippo Gambarota e Enrico Toffalini
