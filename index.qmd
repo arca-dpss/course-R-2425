@@ -1,5 +1,6 @@
 ---
-title: " "
+title: "Introduzione a R"
+title-block-banner-color: "#2B3E4F"
 author: "Margherita Calderan"
 title-block-banner: "arcabanner.png"
 date: today
@@ -14,8 +15,6 @@ format:
     toc-location: left
     toc-title: "Contenuti"
 ---
-
-# Introduzione a R: elementi base e applicazioni avanzate
 
 ## Obiettivi 
 
@@ -79,7 +78,6 @@ Qui sotto trovate i link al materiale principale del corso; di seguito il link a
 -   *ReCap* - [Slides](materials/4_extra/recap.html){target="_blank"} - [PDF](materials/4_extra/recap.pdf){target="_blank"}
 -   *Extra, caricare file, visualizzare dati, salvare* - [Slides](materials/4_extra/EXTRA.html){target="_blank"} - [PDF](materials/4_extra/EXTRA.pdf){target="_blank"}
 
-[Esercizi in classe](https://etherpad.wikimedia.org/p/arca-corsoR)
 
 ### Esercizi
 
