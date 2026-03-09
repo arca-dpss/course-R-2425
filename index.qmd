@@ -83,7 +83,7 @@ Qui sotto trovate i link al materiale principale del corso; di seguito il link a
 
 Qui troverete gli esercizi con soluzioni:
 
--   **Vettori** -
+-   Intro e **Vettori** - [Script](materials/esercizi/1-soluzioni.R){target="_blank"}
 
 -   **Fattori** -
 
