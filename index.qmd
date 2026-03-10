@@ -85,15 +85,18 @@ Qui troverete gli esercizi con soluzioni:
 
 -   Intro e **Vettori** - [Script](materials/esercizi/1-soluzioni.R){target="_blank"}
 
--   **Fattori** -
+-   **Fattori** -[Script](materials/esercizi/2-esercizi.R){target="_blank"}
 
--   **Liste, Matrici & Array** -
+-   **Liste, Matrici & Array** -[Script](materials/esercizi/3-esercizi.R){target="_blank"}
+
+- [Script](materials/esercizi/esercizi-aggiuntivi.R){target="_blank"} con esercizi aggiuntivi su tutto quello fatto fino a qui, senza soluzioni.
 
 -   **Dataframe** -
 
 -   Programmazione **Condizionale** -
 
 -   Programmazione **Iterativa** -
+
 
 # Link utili
 
