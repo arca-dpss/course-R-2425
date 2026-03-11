@@ -16,19 +16,19 @@ format:
     toc-title: "Contenuti"
 ---
 
-## Obiettivi 
+## Obiettivi
 
 -   Impareremo tutti gli **elementi principali** che compongono il linguaggio R
 -   Imparare la **logica generale della programmazione** spendibile con qualsiasi linguaggio
 -   Migliorare il modo di affrontare i problemi e **rendere più efficiente il lavoro quotidiano**
 
-## Organizzazione delle lezioni 
+## Organizzazione delle lezioni
 
 -   Comprensione teorico-logica degli argomenti
 -   Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari
 -   Applicazione direttamente scrivendo codice e risolvendo esercizi
 
-## Esame 
+## Esame
 
 -   **Formato**: L'esame consisterà in diversi esercizi.
 -   **Argomenti**: Gli esercizi copriranno gli argomenti trattati durante il corso.
@@ -75,9 +75,8 @@ Qui sotto trovate i link al materiale principale del corso; di seguito il link a
 
 ### Extra
 
--   *ReCap* - [Slides](materials/4_extra/recap.html){target="_blank"} - [PDF](materials/4_extra/recap.pdf){target="_blank"}
--   *Extra, caricare file, visualizzare dati, salvare* - [Slides](materials/4_extra/EXTRA.html){target="_blank"} - [PDF](materials/4_extra/EXTRA.pdf){target="_blank"}
-
+-   *ReCap* - [Slides](materials/4_extra/recap.html){target="_blank"} 
+-   *Extra, caricare file, visualizzare dati, salvare* - [Slides](materials/4_extra/EXTRA.html){target="_blank"} 
 
 ### Esercizi
 
@@ -85,18 +84,21 @@ Qui troverete gli esercizi con soluzioni:
 
 -   Intro e **Vettori** - [Script](materials/esercizi/1-soluzioni.R){target="_blank"}
 
--   **Fattori** -[Script](materials/esercizi/2-esercizi.R){target="_blank"}
+-   **Fattori** - [Script](materials/esercizi/2-esercizi.R){target="_blank"}
 
--   **Liste, Matrici & Array** -[Script](materials/esercizi/3-esercizi.R){target="_blank"}
+-   **Liste, Matrici & Array** - [Script](materials/esercizi/3-esercizi.R){target="_blank"}
 
-- [Script](materials/esercizi/esercizi-aggiuntivi.R){target="_blank"} con esercizi aggiuntivi su tutto quello fatto fino a qui, senza soluzioni.
+-   [Script](materials/esercizi/esercizi-aggiuntivi.R){target="_blank"} con esercizi aggiuntivi su tutto quello fatto fino a qui, senza soluzioni.
 
--   **Dataframe** -
+-   **Dataframe** - [Script](materials/esercizi/4-esercizi.R){target="_blank"}
+
+    -   [Esercizio](~/course-R-2425/materials/2_struttureDati/sara/scriptSara.R){target="_blank"} per Sara
 
 -   Programmazione **Condizionale** -
 
 -   Programmazione **Iterativa** -
 
+    -   Esercizio per Noemi
 
 # Link utili
 
@@ -106,4 +108,6 @@ Qui troverete gli esercizi con soluzioni:
 
 -   [**Guida**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} installazione R ed RStudio
 
-**Credits**: Filippo Gambarota e Enrico Toffalini
+-   [Esercizi aggiuntivi by Filippo Gambarota](https://arca-dpss.github.io/course-R/exercises/esercizi-no-solutions.html){target="_blank"}
+
+**Credits**: Alcune cose sono state prese/adattate da materiali di [Filippo Gambarota](https://github.com/filippogambarota){target="_blank"} e [Enrico Toffalini](https://github.com/EnricoToffalini){target="_blank"}

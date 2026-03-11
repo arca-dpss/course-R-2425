@@ -21,6 +21,9 @@ str(data)
 data$content
 
 # Bisogna eliminare le righe da 1:49
+data$content[-c(1:49),]
+
+
 data$content = data$content[-(1:49),]
 data$content
 
@@ -44,10 +47,21 @@ data$content = data$content |>  # il comando |> concatena più operazioni
   fill(location, .direction = "down") # riempio gli NA
 
 
+# Ora elimino le righe che risultano S 10, S 12 , S 14 alla colonna Description
+# poichè non sono rilevanti
+# NB alla colonna description avrò S 12 .. S 1 ecc.
+# Mentre nella colonna location ho tutto S 12 S 14 ecc, non più S 1
+# in poche parole tengo solo le righe in cui description è S 1
+
+data$content = data$content[data$content$Description == "S  1",]
+
+
 # Dopo aver controllato di aver fatto giusto,
 # ispezionato il dataframe, sostituisco alla colonna Description
 # la colonna location
+
 data$content$Description = data$content$location
+
 
 # Poi elimino la colonna location (l'ultima)
 data$content = data$content[,-ncol(data$content)]
@@ -65,12 +79,8 @@ data$content$Description[grep("S 10", data$content$Description)] = "10"
 
 # ultima consegna vuole che teniamo solo le righe 
 # per cui description è uguale a 14, 12, 10 
-
-data$content = data$content[data$content$Description == "14" |
-                              data$content$Description == "12" |
-                              data$content$Description == "10" , ]
-
-
+# questo è già stato fatto prima tenenod solamente S  1 alla colonna description
+table(data$content$Description)
 
 
 
@@ -105,4 +115,5 @@ mk_lines <- with(data$content,
 writeLines(c(header_lines, mk_lines), con = path_out, useBytes = FALSE)
 
 # 6. Verify the output
-cat(readLines(path_out)[1:15], sep = "\n")
+cat(readLines(path_out)[1:30], sep = "\n")
+

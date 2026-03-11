@@ -59,7 +59,7 @@ temperature = rnorm(100, 15, 8)
 #    temp < 0: "Gelo",
 #    0 <= temp < 15: "Freddo",
 #    15 <= temp < 25: "Mite",
-#    25 <= temp: "Caldo".
+#    25 >= temp: "Caldo".
 #
 #    Usa una serie di ifelse() nested per assegnare una variabile 
 #    temp_label con le etichette corrispondenti.
