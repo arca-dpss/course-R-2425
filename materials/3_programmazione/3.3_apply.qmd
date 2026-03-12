@@ -18,10 +18,10 @@ Immaginate di avere una lista di vettori, e di voler applicare la stessa funzion
 
 ```{r, echo=TRUE}
 my_list=list(
-    vec1=rnorm(n = 100, mean = 0, sd = 1),
-    vec2=runif(n = 100, min = 0, max = 1),
-    vec3=rnorm(n = 100, mean = 0, sd = 1),
-    vec4=rnorm(n = 100, mean = 0, sd = 1)
+    var1=rnorm(n = 100, mean = 0, sd = 1),
+    var2=runif(n = 100, min = 0, max = 1),
+    var3=rnorm(n = 100, mean = 0, sd = 1),
+    var4=rnorm(n = 100, mean = 0, sd = 1)
 )
 ```
 
@@ -32,13 +32,11 @@ my_list=list(
 Applichiamo media, mediana e std
 
 ```{r, echo=TRUE}
-# inizializzo i vettori
-means=vector(mode = "numeric", 
-             length = length(my_list))
-medians=vector(mode = "numeric", 
-               length = length(my_list))
-stds=vector(mode = "numeric", 
-            length = length(my_list))
+# inizializzo i vettori, numeri a caso
+# ma tanti quanti me ne servono
+means = 1:length(my_list)
+medians = 1:length(my_list)
+stds = 1:length(my_list)
 
 # Loop
 for(i in 1:length(my_list)){
@@ -78,9 +76,9 @@ Funziona tutto! ma:
 In R è presente una famiglia di funzioni apply come **`lapply`**, **`sapply`**, etc. che permettono di ottenere lo stesso risultato in modo più conciso, rapido e semplice:
 
 ```{r, echo=TRUE}
-means=sapply(my_list, mean)
-medians=sapply(my_list, median)
-stds=sapply(my_list, sd)
+means = sapply(my_list, mean)
+medians = sapply(my_list, median)
+stds = sapply(my_list, sd)
 
 means
 medians
@@ -134,7 +132,9 @@ res = sapply(vec, print)
 Possiamo utlizzare anche funzioni create da noi:
 
 ```{r, echo=TRUE}
-center_var = function(x) x - mean(x)
+center_var = function(x){
+  x - mean(x)
+}
 
 my_list = list(
     vec1 = runif(n = 10, min  = 0, max = 1),
@@ -198,7 +198,7 @@ lapply(my_list, function(x) x - mean(x))
 **`lapply`** sta per list-apply e restituisce sempre una lista, applicando la funzione ad ogni elemento della lista in input:
 
 ```{r, echo=TRUE}
-res=lapply(my_list, mean)
+res = lapply(my_list, mean)
 res
 class(res)
 ```
@@ -208,7 +208,7 @@ class(res)
 **`sapply`** sta per simplified-apply e (cerca) di restituire una versione più semplice di una lista, applicando la funzione ad ogni elemento della lista in input:
 
 ```{r, echo=TRUE}
-res=sapply(my_list, mean)
+res = sapply(my_list, mean)
 res
 class(res)
 ```
@@ -218,7 +218,7 @@ class(res)
 **`apply`** funziona in modo specifico per dataframe o matrici, applicando una funzione alle righe o alle colonne:
 
 ```{r, echo=TRUE}
-my_df =data.frame(x1 = runif(n = 5,min = 1,max = 10), 
+my_df = data.frame(x1 = runif(n = 5,min = 1,max = 10), 
                   x2 = runif(n = 5,min = 3,max = 4))
 my_df
 ```
@@ -242,9 +242,9 @@ apply(my_df, MARGIN = 2, FUN = mean)
 **`tapply`** permette di applicare una funzione ad un vettore, dividendo questo vettore in base ad una variabile categoriale:
 
 ```{r, echo=TRUE}
-vec=rnorm(75)
+vec = rnorm(75)
 
-index=rep(c("a", "b", "c"), each = 25)
+index = rep(c("a", "b", "c"), each = 25)
 
 tapply(vec, INDEX = index, mean)
 ```
@@ -276,9 +276,11 @@ vapply(my_list, FUN = mean, FUN.VALUE = numeric(length = 1))
 **`mapply`** permette di gestire **più liste contemporaneamente** per scenari più complessi. Ad esempio vogliamo usare la funzione **`rnorm()`** e generare 4 con diverse medie e deviazioni stardard in combinazione:
 
 ```{r, echo=TRUE}
-medie=list(10, 20, 30, 40)
-stds=list(1, 2, 3, 4)
-mapply(function(x,y) rnorm(n = 5, mean = x, sd = y), medie, stds, SIMPLIFY = FALSE)
+medie = list(10, 20, 30, 40)
+stds = list(1, 2, 3, 4)
+
+mapply(function(x,y) rnorm(n = 5, mean = x, sd = y), 
+       medie, stds, SIMPLIFY = FALSE)
 ```
 
 **IMPORTANTE**, tutte le liste incluse devono avere la stessa dimensione!
@@ -300,9 +302,9 @@ mapply(function(x,y) rnorm(n = 5, mean = x, sd = y), medie, stds, SIMPLIFY = FAL
 Lo stesso risultato (in modo più verboso) si ottiene con un **`for`** usando più volte l'iteratore i:
 
 ```{r, echo=TRUE}
-medie=list(10, 20, 30)
-stds=list(1,2,3)
-res=vector(mode = "list", length = length(medie)) # lista vuota
+medie = list(10, 20, 30)
+stds = list(1,2,3)
+res = vector(mode = "list", length = length(medie)) # lista vuota
 
 for(i in 1:length(medie)){
   res[[i]] = rnorm(n = 6, mean = medie[[i]], sd = stds[[i]])
