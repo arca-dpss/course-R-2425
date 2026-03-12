@@ -11,7 +11,6 @@
 # - dalla colonna 1 alla 18
 # - la prima e la seconda riga
 
-data <- data[,-c(15,17,18)] #rimuovo item errati ?
 
 #cambio i nomi delle variabili, voglio che le colonne si chiamino:
 # "consenso", "ITEM1", "ITEM2", "ITEM3", "ITEM4","ITEM5", "ITEM6", 

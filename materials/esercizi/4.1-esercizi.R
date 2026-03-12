@@ -180,6 +180,7 @@ str(sessioni$giorno_1)
 nuovariga = c("Leo",300, "giorno_1")
 sessioni$giorno_1 = rbind(sessioni$giorno_1, nuovariga)
 
+
 # ── SEZIONE 3 – Modifica diretta nella lista ──────────────
 
 # 3.1 Converti la colonna Partecipante di sessioni$giorno_1 in factor.
@@ -187,16 +188,21 @@ sessioni$giorno_1 = rbind(sessioni$giorno_1, nuovariga)
 
 sessioni$giorno_1$Partecipante = as.factor(sessioni$giorno_1$Partecipante)
 nuovariga = c("Bea",300, "giorno_1")
+levels(sessioni$giorno_1$Partecipante)
 
 levels(sessioni$giorno_1$Partecipante) = c(levels(sessioni$giorno_1$Partecipante),
                                            "Bea")
 sessioni$giorno_1 = rbind(sessioni$giorno_1, nuovariga)
 sessioni$giorno_1
 
+
 # ── SEZIONE 4 – Confronto tra giorni ──────────────────────
 
 # 4.1 Calcola la media di RT_ms per giorno_1 e giorno_3
 #     (entrambi senza NA). Quale giorno ha la media più bassa?
+
+sessioni$giorno_1$RT_ms = as.numeric(sessioni$giorno_1$RT_ms)
+mean(sessioni$giorno_1$RT_ms, na.rm = TRUE)
 
 
 # 4.2 Costruisci manualmente un unico dataframe chiamato tutti
@@ -204,23 +210,17 @@ sessioni$giorno_1
 #     Prima assicurati che abbiano le stesse colonne.
 #     (?rbind)
 
-# 4.3 Nel dataframe tutti, quante osservazioni hanno RT_ms > 300?
+sessioni$giorno_1$Partecipante = as.character(sessioni$giorno_1$Partecipante)
 
+sessioni$giorno_1 = sessioni$giorno_1[ , -c(3)]
+sessioni$giorno_2
+sessioni$giorno_3
 
-# ── SEZIONE 3 – Modifica diretta nella lista ──────────────
+tutti = rbind(sessioni[["giorno_1"]], sessioni[["giorno_2"]], sessioni[["giorno_3"]])
+tutti
 
-# 3.1 Converti la colonna Partecipante di sessioni$giorno_1 in factor.
-#     Verifica con class() e levels().
+tutti = rbind(sessioni$giorno_1, sessioni$giorno_2, sessioni$giorno_3)
+str(tutti)
 
-
-# ── SEZIONE 4 – Confronto tra giorni ──────────────────────
-
-# 4.1 Calcola la media di RT_ms per giorno_1 e giorno_3
-#     (entrambi senza NA). Quale giorno ha la media più bassa?
-
-# 4.2 Costruisci manualmente un unico dataframe chiamato tutti
-#     combinando i tre dataframe con rbind().
-#     Prima assicurati che abbiano le stesse colonne.
-#     (?rbind)
 
 # 4.3 Nel dataframe tutti, quante osservazioni hanno RT_ms > 300?

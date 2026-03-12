@@ -82,23 +82,26 @@ Qui sotto trovate i link al materiale principale del corso; di seguito il link a
 
 Qui troverete gli esercizi con soluzioni:
 
--   Intro e **Vettori** - [Script](materials/esercizi/1-soluzioni.R){target="_blank"}
+-   Intro e **Vettori** - [Script](materials/esercizi/1-soluzioni.R){download="1-soluzioni.R"}
 
--   **Fattori** - [Script](materials/esercizi/2-esercizi.R){target="_blank"}
+-   **Fattori** - [Script](materials/esercizi/2-esercizi.R){download="2-esercizi.R"}
 
--   **Liste, Matrici & Array** - [Script](materials/esercizi/3-esercizi.R){target="_blank"}
+-   **Liste, Matrici & Array** - [Script](materials/esercizi/3-esercizi.R){download="3-esercizi.R"}
 
--   [Script](materials/esercizi/esercizi-aggiuntivi.R){target="_blank"} con esercizi aggiuntivi su tutto quello fatto fino a qui, senza soluzioni.
+-   [Script](materials/esercizi/esercizi-aggiuntivi.R){download="esercizi-aggiuntivi.R"} con esercizi aggiuntivi su tutto quello fatto fino a qui, senza soluzioni.
 
--   **Dataframe** - [Script](materials/esercizi/4-esercizi.R){target="_blank"}
+-   **Dataframe** - [Script](materials/esercizi/4-esercizi.R){download="4-esercizi.R"}
 
-    -   [Esercizio](materials/2_struttureDati/sara/scriptSara.R){target="_blank"} per Sara
+    -   [Esercizio](materials/2_struttureDati/sara/scriptSara.R){download="scriptSara.R"} per Sara
+    -   Esercizi [extra](materials/esercizi/4.1-esercizi.R){download="4.1-esercizi.R"}
 
--   Programmazione **Condizionale** -
+-   Programmazione **Condizionale** - [Script](materials/esercizi/5-esercizi.R){download="5-esercizi.R"}
 
 -   Programmazione **Iterativa** -
 
-    -   Esercizio per Noemi
+-   Esercizio per Noemi:
+    -  [dati](materials/3_programmazione/noemi/dataNoemi.csv){download="dataNoemi.csv"}
+    -  [script](materials/3_programmazione/noemi/scriptNoemi.R){download="scriptNoemi.R"}
 
 # Link utili
 
