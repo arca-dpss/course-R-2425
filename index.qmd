@@ -92,7 +92,7 @@ Qui troverete gli esercizi con soluzioni:
 
 -   **Dataframe** - [Script](materials/esercizi/4-esercizi.R){target="_blank"}
 
-    -   [Esercizio](~/course-R-2425/materials/2_struttureDati/sara/scriptSara.R){target="_blank"} per Sara
+    -   [Esercizio](materials/2_struttureDati/sara/scriptSara.R){target="_blank"} per Sara
 
 -   Programmazione **Condizionale** -
 
