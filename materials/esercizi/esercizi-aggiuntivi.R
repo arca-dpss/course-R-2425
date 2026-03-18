@@ -68,11 +68,14 @@ x = -9
 # ordine alfabetico (opzionale, vedi ?sort)
 
 # 4. Crea il vettore num contenente i conteggi giornalieri di libri venduti (da 15 a 27). 
+num = c(15:27)
 
 # 4.1 Sostituisci con NA gli elementi di num multipli di 4.
-
-
+num4 = (num%%4 == 0)
+num[num4] = NA
+num
 # 4.2 Calcola la somma totale dei libri venduti escludendo gli NA.
+sum(num, na.rm = TRUE)
 
 # 5. Crea il vettore my_lett2 ripetendo il pattern di aree "NORD","CENTRO","SUD" due volte.
 
