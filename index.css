@@ -1,0 +1,146 @@
+/* Course website (index.qmd) — sits on top of the Superhero theme */
+
+:root {
+  --accent: #df6919;
+  --card-bg: rgba(255, 255, 255, 0.045);
+  --card-border: rgba(255, 255, 255, 0.10);
+  --muted: rgba(235, 235, 235, 0.68);
+}
+
+/* Section headings with a small accent bar */
+main h2 {
+  margin-top: 2.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--card-border);
+}
+main h2::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 0.9em;
+  margin-right: 0.55rem;
+  border-radius: 3px;
+  background: var(--accent);
+  vertical-align: -0.05em;
+}
+
+/* At-a-glance strip */
+.info-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.5rem 0 1.5rem;
+}
+.info-strip p { display: contents; }
+.info-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  font-size: 0.92rem;
+}
+.info-item .bi { color: var(--accent); margin-right: 0.25rem; }
+
+/* Pill button link */
+a.btn-link-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+a.btn-link-pill:hover { filter: brightness(1.1); }
+
+/* Schedule table */
+table.schedule-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+table.schedule-table thead th {
+  background: rgba(223, 105, 25, 0.16);
+  border-bottom: 1px solid var(--card-border);
+}
+table.schedule-table td,
+table.schedule-table th { padding: 0.6rem 0.9rem; }
+table.schedule-table td:first-child { font-weight: 700; color: var(--accent); }
+
+/* Cards */
+.lesson-card,
+.exam-item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+.lesson-card h3 {
+  margin-top: 0.1rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.15rem;
+}
+.lesson-card h3 + ul { margin-top: 0; }
+.lesson-card ul + h3 { margin-top: 1.2rem; }
+.lesson-card h3 .bi,
+.exam-item .bi { color: var(--accent); margin-right: 0.3rem; }
+.lesson-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0.4rem;
+}
+.lesson-card li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.lesson-card li:last-child { border-bottom: none; }
+
+/* Lesson rows: title on the left, Slides/PDF tags on the right */
+.lesson-grid .lesson-card li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+/* Slides / PDF tags on lesson rows */
+.lesson-card .links {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: 0.35rem;
+}
+.lesson-card .links a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.1rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  text-decoration: none;
+}
+.lesson-card .links a:first-child {
+  background: var(--accent);
+  color: #fff;
+}
+.lesson-card .links a:hover { filter: brightness(1.15); }
+
+/* Credits footer */
+.credits {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--card-border);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+@media (max-width: 575px) {
+  .lesson-grid .lesson-card li { flex-wrap: wrap; }
+}

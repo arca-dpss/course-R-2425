@@ -7,14 +7,26 @@ date: today
 format:
   html:
     theme: Superhero
-    css: style.css
-    fontsize: 1.12em
-    linestretch: 1.5
+    css: index.css
+    fontsize: 1.05em
+    linestretch: 1.6
     mainfont: Helvetica Neue
     toc: true
+    toc-depth: 2
     toc-location: left
     toc-title: "Contents"
+    grid:
+      body-width: 1000px
+      margin-width: 120px
 ---
+
+::: info-strip
+[<i class="bi bi-calendar-event"></i> **19–29 October 2026**]{.info-item}
+[<i class="bi bi-clock"></i> **5 lessons** · 9:00–13:00]{.info-item}
+[<i class="bi bi-geo-alt"></i> **Psico 1** · Aula ARCA]{.info-item}
+[<i class="bi bi-translate"></i> Taught in **English**]{.info-item}
+[<i class="bi bi-building"></i> ARCA · **University of Padova**]{.info-item}
+:::
 
 ## Goals
 
@@ -28,103 +40,129 @@ format:
 -   Understanding code output, error messages and special cases
 -   Hands-on practice writing code and solving exercises
 
+During the lessons we use a shared pad for the in-class exercises: keep it open!
+
+[<i class="bi bi-pencil-square"></i> Open the in-class pad](https://etherpad.wikimedia.org/p/arca-corsoR){.btn-link-pill target="_blank"}
+
+## Schedule
+
+| Lesson | Date                 | Time          | Room                |
+|:------:|----------------------|---------------|---------------------|
+| 1      | Monday 19/10/2026    | 9:00 – 13:00  | Psico 1 - Aula ARCA |
+| 2      | Wednesday 21/10/2026 | 9:00 – 13:00  | Psico 1 - Aula ARCA |
+| 3      | Friday 23/10/2026    | 9:00 – 13:00  | Psico 1 - Aula ARCA |
+| 4      | Tuesday 27/10/2026   | 9:00 – 13:00  | Psico 1 - Aula ARCA |
+| 5      | Thursday 29/10/2026  | 9:00 – 13:00  | Psico 1 - Aula ARCA |
+
+: {.schedule-table}
+
 ## Exam
 
--   **Format**: The exam will consist of several exercises.
--   **Topics**: The exercises will cover the topics presented during the course.
--   **Allowed material**: You may use the material provided during the lessons. Other online material (or ChatGPT) is not allowed during the exam.
--   **Duration**: 1 hour
--   **Mode**: in class
+::: {.grid .exam-grid}
+::: {.g-col-12 .g-col-md-6 .exam-item}
+<i class="bi bi-list-check"></i> **Format**<br>Several exercises covering the topics presented during the course.
+:::
 
-## Rooms and Schedule {style="text-align: center;"}
+::: {.g-col-12 .g-col-md-6 .exam-item}
+<i class="bi bi-hourglass-split"></i> **Duration and mode**<br>1 hour, in class.
+:::
 
-| Date                 | Time         | Room                |
-|----------------------|--------------|---------------------|
-| Monday 19/10/2026    | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| Wednesday 21/10/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| Friday 23/10/2026    | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| Tuesday 27/10/2026   | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| Thursday 29/10/2026  | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+::: {.g-col-12 .exam-item}
+<i class="bi bi-journal-check"></i> **Allowed material**<br>You may use the material provided during the lessons. Other online material (or ChatGPT) is not allowed during the exam.
+:::
+:::
 
-# Material
+## Slides
 
-## Lessons
+Each lesson is available as interactive slides (HTML) and as a PDF to download.
 
-Below you can find the links to the main course material; here is the link to the pad we use for the in-class exercises: [In-class exercises](https://etherpad.wikimedia.org/p/arca-corsoR){target="_blank"}.
+::: {.grid .lesson-grid}
+::: {.g-col-12 .g-col-md-6 .lesson-card}
+### <i class="bi bi-rocket-takeoff"></i> Introduction
 
-### Introduction
+-   **Introduction to R (1)** [[Slides](materials/0_getStarted/0_getStarted.html){target="_blank"} [PDF](materials/0_getStarted/0_getStarted.pdf){target="_blank"}]{.links}
+-   **How to work in R: paths and R Projects** [[Slides](materials/1_intro/1.1_intro.html){target="_blank"} [PDF](materials/1_intro/1.1_intro.pdf){target="_blank"}]{.links}
+-   **Introduction to R (2)** [[Slides](materials/1_intro/1.2_intro.html){target="_blank"} [PDF](materials/1_intro/1.2_intro.pdf){target="_blank"}]{.links}
+-   **Introduction to R (3)** [[Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"} [PDF](materials/1_intro/1.3_funzioni&errori.pdf){target="_blank"}]{.links}
+:::
 
--   *Introduction to R (1)* - [Slides](materials/0_getStarted/0_getStarted.html){target="_blank"}
--   *How to work in R - Paths and R Projects* - [Slides](materials/1_intro/1.1_intro.html){target="_blank"}
--   *Introduction to R (2)* - [Slides](materials/1_intro/1.2_intro.html){target="_blank"}
--   *Introduction to R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"}
+::: {.g-col-12 .g-col-md-6 .lesson-card}
+### <i class="bi bi-boxes"></i> Data structures
 
-### Data structures
+-   **Vectors** [[Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"} [PDF](materials/2_struttureDati/2.1_vettori.pdf){target="_blank"}]{.links}
+-   **Factors** [[Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"} [PDF](materials/2_struttureDati/2.2_fattori.pdf){target="_blank"}]{.links}
+-   **Lists, Matrices and Arrays** [[Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"} [PDF](materials/2_struttureDati/2.3_liste&matrici&array.pdf){target="_blank"}]{.links}
+-   **Dataframes** [[Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"} [PDF](materials/2_struttureDati/2.4_dataframe.pdf){target="_blank"}]{.links}
+:::
 
--   *Vectors* - [Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"}
--   *Factors* - [Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"}
--   *Lists, Matrices and Arrays* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"}
--   *Dataframes* - [Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"}
+::: {.g-col-12 .g-col-md-6 .lesson-card}
+### <i class="bi bi-code-slash"></i> Programming
 
-### Programming
+-   **Conditional** [[Slides](materials/3_programmazione/3.1_condizionale.html){target="_blank"} [PDF](materials/3_programmazione/3.1_condizionale.pdf){target="_blank"}]{.links}
+-   **Iterative** [[Slides](materials/3_programmazione/3.2_iterativa.html){target="_blank"} [PDF](materials/3_programmazione/3.2_iterativa.pdf){target="_blank"}]{.links}
+-   **Apply family** [[Slides](materials/3_programmazione/3.3_apply.html){target="_blank"} [PDF](materials/3_programmazione/3.3_apply.pdf){target="_blank"}]{.links}
+:::
 
--   *Conditional* - [Slides](materials/3_programmazione/3.1_condizionale.html){target="_blank"}
--   *Iterative* - [Slides](materials/3_programmazione/3.2_iterativa.html){target="_blank"}
--   *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html){target="_blank"}
+::: {.g-col-12 .g-col-md-6 .lesson-card}
+### <i class="bi bi-stars"></i> Extra
 
-### Extra
+-   **Recap** [[Slides](materials/4_extra/recap.html){target="_blank"} [PDF](materials/4_extra/recap.pdf){target="_blank"}]{.links}
+-   **Loading files, visualizing data, saving** [[Slides](materials/4_extra/Extra.html){target="_blank"} [PDF](materials/4_extra/EXTRA.pdf){target="_blank"}]{.links}
+:::
+:::
 
--   *ReCap* - [Slides](materials/4_extra/recap.html){target="_blank"}
--   *Extra: loading files, visualizing data, saving* - [Slides](materials/4_extra/Extra.html){target="_blank"}
+## Exercises
 
-### Exercises
+::: callout-note
+## Coming soon
 
-Here you will find the exercises with solutions:
+Exercises and their solutions will be published here during the course, lesson by lesson.
+:::
+
+<!--
+To publish the exercises: remove materials/esercizi/ from .gitignore,
+`git add materials/esercizi`, then replace the callout above with this list.
 
 -   Intro and **Vectors** - [Script](materials/esercizi/1-soluzioni.R){download="1-soluzioni.R"}
-
 -   **Factors** - [Script](materials/esercizi/2-esercizi.R){download="2-esercizi.R"}
-
 -   **Lists, Matrices & Arrays** - [Script](materials/esercizi/3-esercizi.R){download="3-esercizi.R"}
-
 -   [Script](materials/esercizi/esercizi-aggiuntivi.R){download="esercizi-aggiuntivi.R"} with additional exercises on everything covered so far, without solutions.
-
 -   **Dataframes** - [Script](materials/esercizi/4-esercizi.R){download="4-esercizi.R"}
-
     -   [Extra](materials/esercizi/4.1-esercizi.R){download="4.1-esercizi.R"} exercises
-
 -   **Conditional** programming - [Script](materials/esercizi/5-esercizi.R){download="5-esercizi.R"}
+-   **Iterative** programming - [Script](materials/esercizi/6-esercizi.R){download="6-esercizi.R"}
+-->
 
--   **Iterative** programming -
+## Useful links
 
-# Useful links
-
--   Course Github [**Repository**](https://github.com/arca-dpss/course-R-2425)
-
--   The book [**Introduction2R**](https://psicostat.github.io/Introduction2R/), available online on Github (in Italian)
-
--   [**Guide**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} to installing R and RStudio (in Italian)
-
--   [Additional exercises by Filippo Gambarota](https://arca-dpss.github.io/course-R/exercises/esercizi-no-solutions.html){target="_blank"} (in Italian)
-
-### Materials in English
+::: {.grid .links-grid}
+::: {.g-col-12 .g-col-lg-7 .lesson-card}
+### <i class="bi bi-book"></i> Materials in English
 
 -   [**Download R and RStudio**](https://posit.co/download/rstudio-desktop/){target="_blank"}: official installation page
-
--   [**Hands-On Programming with R**](https://rstudio-education.github.io/hopr/){target="_blank"}: a beginner-friendly introduction to programming in R (objects, functions, loops)
-
+-   [**Hands-On Programming with R**](https://rstudio-education.github.io/hopr/){target="_blank"}: a beginner-friendly introduction to programming in R
 -   [**YaRrr! The Pirate's Guide to R**](https://bookdown.org/ndphillips/YaRrr/){target="_blank"}: an introduction to R for psychology students
-
 -   [**Learning Statistics with R**](https://learningstatisticswithr.com/){target="_blank"}: R and statistics for psychology students
-
--   [**R for Data Science (2e)**](https://r4ds.hadley.nz/){target="_blank"}: importing, tidying, transforming and visualizing data with the tidyverse
-
--   [**ggplot2: Elegant Graphics for Data Analysis**](https://ggplot2-book.org/){target="_blank"}: the reference book for plotting with ggplot2
-
+-   [**R for Data Science (2e)**](https://r4ds.hadley.nz/){target="_blank"}: importing, tidying, transforming and visualizing data
+-   [**ggplot2: Elegant Graphics for Data Analysis**](https://ggplot2-book.org/){target="_blank"}: the reference book for plotting
 -   [**Advanced R**](https://adv-r.hadley.nz/){target="_blank"}: for going deeper into how R works
-
 -   [**An Introduction to R**](https://cran.r-project.org/doc/manuals/r-release/R-intro.html){target="_blank"}: the official manual from CRAN
+-   [**Posit Cheatsheets**](https://posit.co/resources/cheatsheets/){target="_blank"}: one-page summaries of RStudio and common packages
+:::
 
--   [**Posit Cheatsheets**](https://posit.co/resources/cheatsheets/){target="_blank"}: one-page summaries of the most used packages and of RStudio
+::: {.g-col-12 .g-col-lg-5 .lesson-card}
+### <i class="bi bi-github"></i> Course resources
 
-**Credits**: Some material has been taken/adapted from materials by [Filippo Gambarota](https://github.com/filippogambarota){target="_blank"} and [Enrico Toffalini](https://github.com/EnricoToffalini){target="_blank"}
+-   [**Course repository**](https://github.com/arca-dpss/course-R-2425){target="_blank"} on GitHub
+
+### <i class="bi bi-translate"></i> Materials in Italian
+
+-   [**Introduction2R**](https://psicostat.github.io/Introduction2R/){target="_blank"}: open-source book on R
+-   [**Installation guide**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} for R and RStudio
+-   [**Additional exercises**](https://arca-dpss.github.io/course-R/exercises/esercizi-no-solutions.html){target="_blank"} by Filippo Gambarota
+:::
+:::
+
+::: credits
+**Credits**: some material has been taken/adapted from materials by [Filippo Gambarota](https://github.com/filippogambarota){target="_blank"} and [Enrico Toffalini](https://github.com/EnricoToffalini){target="_blank"}.
+:::

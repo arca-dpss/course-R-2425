@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-aeb952b550a659bf8725bdd47c53e434.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="index_files/libs/bootstrap/bootstrap-ac0ab37833153cc7ab77dcb2a804bf58.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <style>
 
       .quarto-title-block .quarto-title-banner h1,
@@ -62,7 +62,7 @@ background-size: cover;
 </style>
 
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="index.css">
 </head>
 
 <body class="quarto-light">
@@ -100,26 +100,14 @@ background-size: cover;
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Contents</h2>
    
-  <ul>
+  <ul class="collapse">
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
   <li><a href="#how-the-lessons-are-organized" id="toc-how-the-lessons-are-organized" class="nav-link" data-scroll-target="#how-the-lessons-are-organized">How the lessons are organized</a></li>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
   <li><a href="#exam" id="toc-exam" class="nav-link" data-scroll-target="#exam">Exam</a></li>
-  <li><a href="#rooms-and-schedule" id="toc-rooms-and-schedule" class="nav-link" data-scroll-target="#rooms-and-schedule">Rooms and Schedule</a></li>
-  <li><a href="#material" id="toc-material" class="nav-link" data-scroll-target="#material">Material</a>
-  <ul class="collapse">
-  <li><a href="#lessons" id="toc-lessons" class="nav-link" data-scroll-target="#lessons">Lessons</a>
-  <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures">Data structures</a></li>
-  <li><a href="#programming" id="toc-programming" class="nav-link" data-scroll-target="#programming">Programming</a></li>
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra">Extra</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#useful-links" id="toc-useful-links" class="nav-link" data-scroll-target="#useful-links">Useful links</a>
-  <ul class="collapse">
-  <li><a href="#materials-in-english" id="toc-materials-in-english" class="nav-link" data-scroll-target="#materials-in-english">Materials in English</a></li>
-  </ul></li>
+  <li><a href="#useful-links" id="toc-useful-links" class="nav-link" data-scroll-target="#useful-links">Useful links</a></li>
   </ul>
 </nav>
 </div>
@@ -131,6 +119,9 @@ background-size: cover;
 
 
 
+<div class="info-strip">
+<p><span class="info-item"><i class="bi bi-calendar-event"></i> <strong>19–29 October 2026</strong></span> <span class="info-item"><i class="bi bi-clock"></i> <strong>5 lessons</strong> · 9:00–13:00</span> <span class="info-item"><i class="bi bi-geo-alt"></i> <strong>Psico 1</strong> · Aula ARCA</span> <span class="info-item"><i class="bi bi-translate"></i> Taught in <strong>English</strong></span> <span class="info-item"><i class="bi bi-building"></i> ARCA · <strong>University of Padova</strong></span></p>
+</div>
 <section id="goals" class="level2">
 <h2 class="anchored" data-anchor-id="goals">Goals</h2>
 <ul>
@@ -146,22 +137,15 @@ background-size: cover;
 <li>Understanding code output, error messages and special cases</li>
 <li>Hands-on practice writing code and solving exercises</li>
 </ul>
+<p>During the lessons we use a shared pad for the in-class exercises: keep it open!</p>
+<p><a href="https://etherpad.wikimedia.org/p/arca-corsoR" class="btn-link-pill" target="_blank"><i class="bi bi-pencil-square"></i> Open the in-class pad</a></p>
 </section>
-<section id="exam" class="level2">
-<h2 class="anchored" data-anchor-id="exam">Exam</h2>
-<ul>
-<li><strong>Format</strong>: The exam will consist of several exercises.</li>
-<li><strong>Topics</strong>: The exercises will cover the topics presented during the course.</li>
-<li><strong>Allowed material</strong>: You may use the material provided during the lessons. Other online material (or ChatGPT) is not allowed during the exam.</li>
-<li><strong>Duration</strong>: 1 hour</li>
-<li><strong>Mode</strong>: in class</li>
-</ul>
-</section>
-<section id="rooms-and-schedule" class="level2" style="text-align: center;">
-<h2 style="text-align: center;" class="anchored" data-anchor-id="rooms-and-schedule">Rooms and Schedule</h2>
-<table class="caption-top table">
+<section id="schedule" class="level2">
+<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
+<table class="schedule-table caption-top table">
 <thead>
 <tr class="header">
+<th style="text-align: center;">Lesson</th>
 <th>Date</th>
 <th>Time</th>
 <th>Room</th>
@@ -169,112 +153,157 @@ background-size: cover;
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: center;">1</td>
 <td>Monday 19/10/2026</td>
-<td>9:00 - 13:00</td>
+<td>9:00 – 13:00</td>
 <td>Psico 1 - Aula ARCA</td>
 </tr>
 <tr class="even">
+<td style="text-align: center;">2</td>
 <td>Wednesday 21/10/2026</td>
-<td>9:00 - 13:00</td>
+<td>9:00 – 13:00</td>
 <td>Psico 1 - Aula ARCA</td>
 </tr>
 <tr class="odd">
+<td style="text-align: center;">3</td>
 <td>Friday 23/10/2026</td>
-<td>9:00 - 13:00</td>
+<td>9:00 – 13:00</td>
 <td>Psico 1 - Aula ARCA</td>
 </tr>
 <tr class="even">
+<td style="text-align: center;">4</td>
 <td>Tuesday 27/10/2026</td>
-<td>9:00 - 13:00</td>
+<td>9:00 – 13:00</td>
 <td>Psico 1 - Aula ARCA</td>
 </tr>
 <tr class="odd">
+<td style="text-align: center;">5</td>
 <td>Thursday 29/10/2026</td>
-<td>9:00 - 13:00</td>
+<td>9:00 – 13:00</td>
 <td>Psico 1 - Aula ARCA</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="material" class="level1">
-<h1>Material</h1>
-<section id="lessons" class="level2">
-<h2 class="anchored" data-anchor-id="lessons">Lessons</h2>
-<p>Below you can find the links to the main course material; here is the link to the pad we use for the in-class exercises: <a href="https://etherpad.wikimedia.org/p/arca-corsoR" target="_blank">In-class exercises</a>.</p>
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<section id="exam" class="level2">
+<h2 class="anchored" data-anchor-id="exam">Exam</h2>
+<div class="grid exam-grid">
+<div class="g-col-12 g-col-md-6 exam-item">
+<p><i class="bi bi-list-check"></i> <strong>Format</strong><br>Several exercises covering the topics presented during the course.</p>
+</div>
+<div class="g-col-12 g-col-md-6 exam-item">
+<p><i class="bi bi-hourglass-split"></i> <strong>Duration and mode</strong><br>1 hour, in class.</p>
+</div>
+<div class="g-col-12 exam-item">
+<p><i class="bi bi-journal-check"></i> <strong>Allowed material</strong><br>You may use the material provided during the lessons. Other online material (or ChatGPT) is not allowed during the exam.</p>
+</div>
+</div>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<p>Each lesson is available as interactive slides (HTML) and as a PDF to download.</p>
+<div class="grid lesson-grid">
+<section id="introduction" class="level3 g-col-12 g-col-md-6 lesson-card">
+<h3 class="anchored" data-anchor-id="introduction"><i class="bi bi-rocket-takeoff"></i> Introduction</h3>
 <ul>
-<li><em>Introduction to R (1)</em> - <a href="materials/0_getStarted/0_getStarted.html" target="_blank">Slides</a></li>
-<li><em>How to work in R - Paths and R Projects</em> - <a href="materials/1_intro/1.1_intro.html" target="_blank">Slides</a></li>
-<li><em>Introduction to R (2)</em> - <a href="materials/1_intro/1.2_intro.html" target="_blank">Slides</a></li>
-<li><em>Introduction to R (3)</em> - <a href="materials/1_intro/1.3_funzioni&amp;errori.html" target="_blank">Slides</a></li>
+<li><strong>Introduction to R (1)</strong> <span class="links"><a href="materials/0_getStarted/0_getStarted.html" target="_blank">Slides</a> <a href="materials/0_getStarted/0_getStarted.pdf" target="_blank">PDF</a></span></li>
+<li><strong>How to work in R: paths and R Projects</strong> <span class="links"><a href="materials/1_intro/1.1_intro.html" target="_blank">Slides</a> <a href="materials/1_intro/1.1_intro.pdf" target="_blank">PDF</a></span></li>
+<li><strong>Introduction to R (2)</strong> <span class="links"><a href="materials/1_intro/1.2_intro.html" target="_blank">Slides</a> <a href="materials/1_intro/1.2_intro.pdf" target="_blank">PDF</a></span></li>
+<li><strong>Introduction to R (3)</strong> <span class="links"><a href="materials/1_intro/1.3_funzioni&amp;errori.html" target="_blank">Slides</a> <a href="materials/1_intro/1.3_funzioni&amp;errori.pdf" target="_blank">PDF</a></span></li>
 </ul>
 </section>
-<section id="data-structures" class="level3">
-<h3 class="anchored" data-anchor-id="data-structures">Data structures</h3>
+<section id="data-structures" class="level3 g-col-12 g-col-md-6 lesson-card">
+<h3 class="anchored" data-anchor-id="data-structures"><i class="bi bi-boxes"></i> Data structures</h3>
 <ul>
-<li><em>Vectors</em> - <a href="materials/2_struttureDati/2.1_vettori.html" target="_blank">Slides</a></li>
-<li><em>Factors</em> - <a href="materials/2_struttureDati/2.2_fattori.html" target="_blank">Slides</a></li>
-<li><em>Lists, Matrices and Arrays</em> - <a href="materials/2_struttureDati/2.3_liste&amp;matrici&amp;array.html" target="_blank">Slides</a></li>
-<li><em>Dataframes</em> - <a href="materials/2_struttureDati/2.4_dataframe.html" target="_blank">Slides</a></li>
+<li><strong>Vectors</strong> <span class="links"><a href="materials/2_struttureDati/2.1_vettori.html" target="_blank">Slides</a> <a href="materials/2_struttureDati/2.1_vettori.pdf" target="_blank">PDF</a></span></li>
+<li><strong>Factors</strong> <span class="links"><a href="materials/2_struttureDati/2.2_fattori.html" target="_blank">Slides</a> <a href="materials/2_struttureDati/2.2_fattori.pdf" target="_blank">PDF</a></span></li>
+<li><strong>Lists, Matrices and Arrays</strong> <span class="links"><a href="materials/2_struttureDati/2.3_liste&amp;matrici&amp;array.html" target="_blank">Slides</a> <a href="materials/2_struttureDati/2.3_liste&amp;matrici&amp;array.pdf" target="_blank">PDF</a></span></li>
+<li><strong>Dataframes</strong> <span class="links"><a href="materials/2_struttureDati/2.4_dataframe.html" target="_blank">Slides</a> <a href="materials/2_struttureDati/2.4_dataframe.pdf" target="_blank">PDF</a></span></li>
 </ul>
 </section>
-<section id="programming" class="level3">
-<h3 class="anchored" data-anchor-id="programming">Programming</h3>
+<section id="programming" class="level3 g-col-12 g-col-md-6 lesson-card">
+<h3 class="anchored" data-anchor-id="programming"><i class="bi bi-code-slash"></i> Programming</h3>
 <ul>
-<li><em>Conditional</em> - <a href="materials/3_programmazione/3.1_condizionale.html" target="_blank">Slides</a></li>
-<li><em>Iterative</em> - <a href="materials/3_programmazione/3.2_iterativa.html" target="_blank">Slides</a></li>
-<li><em>Apply family</em> - <a href="materials/3_programmazione/3.3_apply.html" target="_blank">Slides</a></li>
+<li><strong>Conditional</strong> <span class="links"><a href="materials/3_programmazione/3.1_condizionale.html" target="_blank">Slides</a> <a href="materials/3_programmazione/3.1_condizionale.pdf" target="_blank">PDF</a></span></li>
+<li><strong>Iterative</strong> <span class="links"><a href="materials/3_programmazione/3.2_iterativa.html" target="_blank">Slides</a> <a href="materials/3_programmazione/3.2_iterativa.pdf" target="_blank">PDF</a></span></li>
+<li><strong>Apply family</strong> <span class="links"><a href="materials/3_programmazione/3.3_apply.html" target="_blank">Slides</a> <a href="materials/3_programmazione/3.3_apply.pdf" target="_blank">PDF</a></span></li>
 </ul>
 </section>
-<section id="extra" class="level3">
-<h3 class="anchored" data-anchor-id="extra">Extra</h3>
+<section id="extra" class="level3 g-col-12 g-col-md-6 lesson-card">
+<h3 class="anchored" data-anchor-id="extra"><i class="bi bi-stars"></i> Extra</h3>
 <ul>
-<li><em>ReCap</em> - <a href="materials/4_extra/recap.html" target="_blank">Slides</a></li>
-<li><em>Extra: loading files, visualizing data, saving</em> - <a href="materials/4_extra/Extra.html" target="_blank">Slides</a></li>
+<li><strong>Recap</strong> <span class="links"><a href="materials/4_extra/recap.html" target="_blank">Slides</a> <a href="materials/4_extra/recap.pdf" target="_blank">PDF</a></span></li>
+<li><strong>Loading files, visualizing data, saving</strong> <span class="links"><a href="materials/4_extra/Extra.html" target="_blank">Slides</a> <a href="materials/4_extra/EXTRA.pdf" target="_blank">PDF</a></span></li>
 </ul>
 </section>
-<section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
-<p>Here you will find the exercises with solutions:</p>
+</div>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Coming soon
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Exercises and their solutions will be published here during the course, lesson by lesson.</p>
+</div>
+</div>
+<!--
+To publish the exercises: remove materials/esercizi/ from .gitignore,
+`git add materials/esercizi`, then replace the callout above with this list.
+
+-   Intro and **Vectors** - [Script](materials/esercizi/1-soluzioni.R){download="1-soluzioni.R"}
+-   **Factors** - [Script](materials/esercizi/2-esercizi.R){download="2-esercizi.R"}
+-   **Lists, Matrices & Arrays** - [Script](materials/esercizi/3-esercizi.R){download="3-esercizi.R"}
+-   [Script](materials/esercizi/esercizi-aggiuntivi.R){download="esercizi-aggiuntivi.R"} with additional exercises on everything covered so far, without solutions.
+-   **Dataframes** - [Script](materials/esercizi/4-esercizi.R){download="4-esercizi.R"}
+    -   [Extra](materials/esercizi/4.1-esercizi.R){download="4.1-esercizi.R"} exercises
+-   **Conditional** programming - [Script](materials/esercizi/5-esercizi.R){download="5-esercizi.R"}
+-   **Iterative** programming - [Script](materials/esercizi/6-esercizi.R){download="6-esercizi.R"}
+-->
+</section>
+<section id="useful-links" class="level2">
+<h2 class="anchored" data-anchor-id="useful-links">Useful links</h2>
+<div class="grid links-grid">
+<section id="materials-in-english" class="level3 g-col-12 g-col-lg-7 lesson-card">
+<h3 class="anchored" data-anchor-id="materials-in-english"><i class="bi bi-book"></i> Materials in English</h3>
 <ul>
-<li><p>Intro and <strong>Vectors</strong> - <a href="materials/esercizi/1-soluzioni.R" download="1-soluzioni.R">Script</a></p></li>
-<li><p><strong>Factors</strong> - <a href="materials/esercizi/2-esercizi.R" download="2-esercizi.R">Script</a></p></li>
-<li><p><strong>Lists, Matrices &amp; Arrays</strong> - <a href="materials/esercizi/3-esercizi.R" download="3-esercizi.R">Script</a></p></li>
-<li><p><a href="materials/esercizi/esercizi-aggiuntivi.R" download="esercizi-aggiuntivi.R">Script</a> with additional exercises on everything covered so far, without solutions.</p></li>
-<li><p><strong>Dataframes</strong> - <a href="materials/esercizi/4-esercizi.R" download="4-esercizi.R">Script</a></p>
-<ul>
-<li><a href="materials/esercizi/4.1-esercizi.R" download="4.1-esercizi.R">Extra</a> exercises</li>
-</ul></li>
-<li><p><strong>Conditional</strong> programming - <a href="materials/esercizi/5-esercizi.R" download="5-esercizi.R">Script</a></p></li>
-<li><p><strong>Iterative</strong> programming -</p></li>
+<li><a href="https://posit.co/download/rstudio-desktop/" target="_blank"><strong>Download R and RStudio</strong></a>: official installation page</li>
+<li><a href="https://rstudio-education.github.io/hopr/" target="_blank"><strong>Hands-On Programming with R</strong></a>: a beginner-friendly introduction to programming in R</li>
+<li><a href="https://bookdown.org/ndphillips/YaRrr/" target="_blank"><strong>YaRrr! The Pirate’s Guide to R</strong></a>: an introduction to R for psychology students</li>
+<li><a href="https://learningstatisticswithr.com/" target="_blank"><strong>Learning Statistics with R</strong></a>: R and statistics for psychology students</li>
+<li><a href="https://r4ds.hadley.nz/" target="_blank"><strong>R for Data Science (2e)</strong></a>: importing, tidying, transforming and visualizing data</li>
+<li><a href="https://ggplot2-book.org/" target="_blank"><strong>ggplot2: Elegant Graphics for Data Analysis</strong></a>: the reference book for plotting</li>
+<li><a href="https://adv-r.hadley.nz/" target="_blank"><strong>Advanced R</strong></a>: for going deeper into how R works</li>
+<li><a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html" target="_blank"><strong>An Introduction to R</strong></a>: the official manual from CRAN</li>
+<li><a href="https://posit.co/resources/cheatsheets/" target="_blank"><strong>Posit Cheatsheets</strong></a>: one-page summaries of RStudio and common packages</li>
 </ul>
 </section>
-</section>
-</section>
-<section id="useful-links" class="level1">
-<h1>Useful links</h1>
+<div class="g-col-12 g-col-lg-5 lesson-card">
+<section id="course-resources" class="level3">
+<h3 class="anchored" data-anchor-id="course-resources"><i class="bi bi-github"></i> Course resources</h3>
 <ul>
-<li><p>Course Github <a href="https://github.com/arca-dpss/course-R-2425"><strong>Repository</strong></a></p></li>
-<li><p>The book <a href="https://psicostat.github.io/Introduction2R/"><strong>Introduction2R</strong></a>, available online on Github (in Italian)</p></li>
-<li><p><a href="https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html" target="_blank"><strong>Guide</strong></a> to installing R and RStudio (in Italian)</p></li>
-<li><p><a href="https://arca-dpss.github.io/course-R/exercises/esercizi-no-solutions.html" target="_blank">Additional exercises by Filippo Gambarota</a> (in Italian)</p></li>
+<li><a href="https://github.com/arca-dpss/course-R-2425" target="_blank"><strong>Course repository</strong></a> on GitHub</li>
 </ul>
-<section id="materials-in-english" class="level3">
-<h3 class="anchored" data-anchor-id="materials-in-english">Materials in English</h3>
-<ul>
-<li><p><a href="https://posit.co/download/rstudio-desktop/" target="_blank"><strong>Download R and RStudio</strong></a>: official installation page</p></li>
-<li><p><a href="https://rstudio-education.github.io/hopr/" target="_blank"><strong>Hands-On Programming with R</strong></a>: a beginner-friendly introduction to programming in R (objects, functions, loops)</p></li>
-<li><p><a href="https://bookdown.org/ndphillips/YaRrr/" target="_blank"><strong>YaRrr! The Pirate’s Guide to R</strong></a>: an introduction to R for psychology students</p></li>
-<li><p><a href="https://learningstatisticswithr.com/" target="_blank"><strong>Learning Statistics with R</strong></a>: R and statistics for psychology students</p></li>
-<li><p><a href="https://r4ds.hadley.nz/" target="_blank"><strong>R for Data Science (2e)</strong></a>: importing, tidying, transforming and visualizing data with the tidyverse</p></li>
-<li><p><a href="https://ggplot2-book.org/" target="_blank"><strong>ggplot2: Elegant Graphics for Data Analysis</strong></a>: the reference book for plotting with ggplot2</p></li>
-<li><p><a href="https://adv-r.hadley.nz/" target="_blank"><strong>Advanced R</strong></a>: for going deeper into how R works</p></li>
-<li><p><a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html" target="_blank"><strong>An Introduction to R</strong></a>: the official manual from CRAN</p></li>
-<li><p><a href="https://posit.co/resources/cheatsheets/" target="_blank"><strong>Posit Cheatsheets</strong></a>: one-page summaries of the most used packages and of RStudio</p></li>
-</ul>
-<p><strong>Credits</strong>: Some material has been taken/adapted from materials by <a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a> and <a href="https://github.com/EnricoToffalini" target="_blank">Enrico Toffalini</a></p>
 </section>
+<section id="materials-in-italian" class="level3">
+<h3 class="anchored" data-anchor-id="materials-in-italian"><i class="bi bi-translate"></i> Materials in Italian</h3>
+<ul>
+<li><a href="https://psicostat.github.io/Introduction2R/" target="_blank"><strong>Introduction2R</strong></a>: open-source book on R</li>
+<li><a href="https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html" target="_blank"><strong>Installation guide</strong></a> for R and RStudio</li>
+<li><a href="https://arca-dpss.github.io/course-R/exercises/esercizi-no-solutions.html" target="_blank"><strong>Additional exercises</strong></a> by Filippo Gambarota</li>
+</ul>
+</section>
+</div>
+</div>
+<div class="credits">
+<p><strong>Credits</strong>: some material has been taken/adapted from materials by <a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a> and <a href="https://github.com/EnricoToffalini" target="_blank">Enrico Toffalini</a>.</p>
+</div>
 </section>
 
 </main>
