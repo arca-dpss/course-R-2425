@@ -1,8 +1,8 @@
 ---
 title: "Introduction to R"
-title-block-banner-color: "#2B3E4F"
+description: "From your first object to your first loop: a hands-on introduction to programming in R for psychology research."
 author: "Margherita Calderan"
-title-block-banner: "arcabanner.png"
+title-block-banner: true
 date: today
 format:
   html:
