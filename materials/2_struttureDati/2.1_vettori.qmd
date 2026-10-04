@@ -1,6 +1,6 @@
 ---
-title: "Vettori"
-format: 
+title: "Vectors"
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -13,49 +13,49 @@ editor: visual
 set.seed(1111)
 ```
 
-## Strutture Dati
+## Data Structures
 
--   ***`vettori`***
+-   ***`vectors`***
 
--   fattori
+-   factors
 
--   liste
+-   lists
 
--   matrici
+-   matrices
 
--   array
+-   arrays
 
--   dataframe
+-   dataframes
 
-## Vettori
+## Vectors
 
-I vettori sono una struttura dati unidimensionale e sono la più semplice presente in R.
+Vectors are a one-dimensional data structure and are the simplest one in R.
 
 ![](images/vettore.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-## Caratteristiche di un vettore
+## Properties of a vector
 
--   **la lunghezza**: il numero di elementi da cui è formato il vettore
+-   **length**: the number of elements the vector is made of
 
--   **la tipologia**: la tipologia di dati da cui è formato il vettore. Un vettore infatti deve esssere formato da **elementi tutti dello stesso tipo**!
+-   **type**: the type of data the vector is made of. A vector must in fact be made of **elements all of the same type**!
 
-## Caratteristiche degli elementi di un vettore
+## Properties of the elements of a vector
 
--   **un valore**: il valore dell'elemento che può essere di qualsiasi tipo ad esempio un numero o una serie di caratteri
+-   **a value**: the value of the element, which can be of any type, for example a number or a string of characters
 
--   **un indice di posizione**: un numero intero positivo che identifica la sua posizione all'interno del vettore.
+-   **a position index**: a positive integer that identifies its position within the vector.
 
 ![](images/vettore.png){fig-align="center"}
 
-## Creare un vettore
+## Creating a vector
 
-I vettori si possono creare attraverso il comando **`c()`**, indicando tra le parentesi i valori degli elementi nella sucessione desiderata e separati da una virgola.
+Vectors can be created with the **`c()`** command, writing inside the brackets the values of the elements in the desired order, separated by commas.
 
 ```{r, echo=TRUE}
 num_vect = c(1,2,3,4)
-# è possibile anche utilizzare la funzione seq()
+# you can also use the seq() function
 num_vect_seq = seq(from = 1,to = 4, by = 1)
 num_vect
 num_vect_seq
@@ -64,48 +64,48 @@ num_vect_seq
 ::: fragment
 ```{r,echo=TRUE}
 char_vect = c("R","R","R","ok")
-# è possibile anche utilizzare la funzione rep()
+# you can also use the rep() function
 char_vect_rep = c(rep("R", times = 3), "ok")
 char_vect
 char_vect_rep
 ```
 :::
 
-## Tiplogia di vettore
+## Vector type
 
-La tipologia di dati da cui è formato il vettore.
+The type of data the vector is made of.
 
 ```{r, echo=TRUE}
 class(num_vect)
 class(char_vect)
 ```
 
-## Tiplogia di vettore
+## Vector type
 
-Un vettore deve esssere formato da **elementi tutti dello stesso tipo**!
+A vector must be made of **elements all of the same type**!
 
 ```{r, echo=TRUE}
-wrong = c(1,2,3,"non so", 4)
-class(wrong) 
+wrong = c(1,2,3,"don't know", 4)
+class(wrong)
 wrong
 ```
 
-Altrimenti si "rischia" che tutto venga trasformato a carattere.
+Otherwise you "risk" everything being converted to character.
 
 ::: {.fragment}
 ```{r, echo=TRUE}
 correct = c(1,2,3,NA, 4)
-class(correct) 
+class(correct)
 correct
 ```
 :::
 
 ## is.\* & as.\*
 
-Possiamo testare o convertire (quando possibile) la tipologia del vettore attraverso queste funzioni **`is.`** & **`as.`**
+We can test or convert (when possible) the type of a vector with the **`is.`** & **`as.`** functions
 
 ::: fragment
-Vettore di tipo `character`
+A `character` vector
 
 ```{r, echo = TRUE}
 char_vect
@@ -116,7 +116,7 @@ as.numeric(char_vect) #!!
 
 ## is.\* & as.\*
 
-Vettore di tipo `numeric`
+A `numeric` vector
 
 ```{r, echo = TRUE}
 num_vect
@@ -125,7 +125,7 @@ as.character(num_vect) #!!
 ```
 
 ::: fragment
-Vettore di tipo `logical`
+A `logical` vector
 
 ```{r, echo = TRUE}
 logi_vect = c(TRUE,FALSE,TRUE)
@@ -143,14 +143,14 @@ as.numeric(logi_vect)
 ```
 :::
 
-## Attributi del vettore
+## Vector attributes
 
-Ogni elemento del vettore può essere associato ad un nome.
+Each element of a vector can be given a name.
 
 ```{r, echo=TRUE}
 num_vect
 
-names(num_vect) #nessun nome associato
+names(num_vect) # no names assigned
 
 letters[1:4]
 names(num_vect) = letters[1:4]
@@ -160,7 +160,7 @@ num_vect
 
 ------------------------------------------------------------------------
 
-Ogni vettore è caraterizzato da una dimensione (**`dim()`**), in realtà essendo il vettore unidimensionale usiamo il comando **`length()`** per ottenere la lunghezza del vettore
+Every object is characterized by a dimension (**`dim()`**); however, since a vector is one-dimensional, we use the **`length()`** command to get the length of the vector
 
 ```{r, echo=TRUE}
 num_vect
@@ -170,54 +170,54 @@ dim(num_vect)
 length(num_vect)
 ```
 
-## Indicizzazione
+## Indexing
 
-Possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'indice di posizione tramite le parentesi quadre vettore\[pos\] .
+We can select, remove and extract elements simply by using the position index inside square brackets vector\[pos\] .
 
 ```{r, echo=TRUE}
-# Creo un vettore formato da 10 numeri casuali pescati da 1 a 100
+# Create a vector of 10 random numbers drawn between 1 and 100
 my_vect = round(runif(n = 10,min = 1, max = 100))
 my_vect
 ```
 
 ::: fragment
 ```{r, echo=TRUE}
-my_vect[1] # estraggo il primo elemento
+my_vect[1] # extract the first element
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE}
-my_vect[1:5] # estraggo i primi 5 elementi
+my_vect[1:5] # extract the first 5 elements
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE}
-my_vect[c(1,4,2,9)] # estraggo elementi a scelta
+my_vect[c(1,4,2,9)] # extract elements of our choice
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE}
-my_vect[length(my_vect)] #ultimo elemento (perchè?)
+my_vect[length(my_vect)] # last element (why?)
 ```
 :::
 
-## Inidicizzazione Negativa
+## Negative Indexing
 
-Allo stesso modo possiamo decidere di estrarre tutti gli elementi del vettore eccetto alcuni
+In the same way, we can extract all the elements of the vector except some
 
 ```{r, echo=TRUE}
 
-my_vect[-c(1)] #tutti tranne il primo elemento
+my_vect[-c(1)] # all except the first element
 
-my_vect[-c(1:9)] #tutti tranne i primi 10
+my_vect[-c(1:9)] # all except the first 9
 ```
 
 ------------------------------------------------------------------------
 
-Se assegnamo nomi agli elementi del vettore, possiamo indicizzare questi "chiamandoli per nome" (meno comune)
+If we assign names to the elements of the vector, we can index them by "calling them by name" (less common)
 
 ```{r, echo=TRUE}
 letters[1:length(my_vect)]
@@ -226,108 +226,108 @@ names(my_vect) = letters[1:length(my_vect)]
 
 ::: fragment
 ```{r, echo=TRUE}
-names(my_vect) # Che nomi hanno gli elementi di my_vec?
+names(my_vect) # What are the names of the elements of my_vect?
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE}
-my_vect 
+my_vect
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE}
-my_vect["a"] # voglio l'elemento di my_vec chiamato "a"
+my_vect["a"] # I want the element of my_vect called "a"
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE}
-my_vect[1] # voglio il primo elemento di my_vec
+my_vect[1] # I want the first element of my_vect
 ```
 :::
 
-## Indicizzazione Logica
+## Logical Indexing
 
-Possiamo selezionare elementi dal vettore basandoci su specifiche condizioni logiche: **`TRUE`** e **`FALSE`**. L'idea è che se abbiamo un vettore di lunghezza **n** e un'altro vettore logico di lunghezza **n**, tutti gli elementi **`TRUE`** saranno selezionati:
+We can select elements of a vector based on specific logical conditions: **`TRUE`** and **`FALSE`**. The idea is that if we have a vector of length **n** and another logical vector of length **n**, all the **`TRUE`** elements will be selected:
 
 ```{r, echo=TRUE}
-numeri = 1:7
-numeri
+numbers = 1:7
+numbers
 ```
 
 ::: fragment
 ```{r,echo=TRUE}
-numeri>2 & numeri<5
+numbers>2 & numbers<5
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE, eval=FALSE}
-numeri[numeri>2 & numeri<5]
+numbers[numbers>2 & numbers<5]
 ```
 :::
 
 ::: fragment
 ```{r}
-numeri[numeri>2 & numeri<5]
+numbers[numbers>2 & numbers<5]
 ```
 :::
 
 ::: fragment
 ```{r,echo=TRUE}
-as.numeric(numeri>2 & numeri<5)
+as.numeric(numbers>2 & numbers<5)
 ```
 :::
 
 ------------------------------------------------------------------------
 
-Non vale solo per elementi del vettore numeri ma per qualsiasi vettore!
+It doesn't only work for the elements of the numbers vector, but for any vector!
 
 ```{r, echo=TRUE}
-lettere = letters[1:7]
-lettere
+my_letters = letters[1:7]
+my_letters
 ```
 
 ::: fragment
 ```{r, echo=TRUE}
-numeri>2 & numeri<5
+numbers>2 & numbers<5
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE, eval=FALSE}
-lettere[numeri>2 & numeri<5]
+my_letters[numbers>2 & numbers<5]
 ```
 :::
 
 ::: fragment
 ```{r,echo=FALSE}
-lettere[numeri>2 & numeri<5]
+my_letters[numbers>2 & numbers<5]
 ```
 :::
 
-## Indicizzazione Interna
+## Positional Indexing
 
-Attraverso la funzione `which()` possiamo ottenere la posizione associata ad una selezione logica:
+With the `which()` function we can get the positions associated with a logical selection:
 
 ```{r, echo=TRUE}
-lettere
-which(lettere == "a")
+my_letters
+which(my_letters == "a")
 ```
 
-## Indicizzazione Interna
+## Positional Indexing
 
-Esempio:
+Example:
 
 ```{r, echo=TRUE}
-# creo un vettore di 10 numeri interi casuali tra 1 e 40
+# create a vector of 10 random integers between 1 and 40
 my_vect = round(runif(10, min = 1, max = 40))
 my_vect
 ```
 
-Cosa cambia tra questi 2 comandi?
+What is the difference between these 2 commands?
 
 ```{r, echo=TRUE}
 which(my_vect > 20)
@@ -337,73 +337,73 @@ which(my_vect > 20)
 my_vect[which(my_vect > 20)]
 ```
 
-## Indicizzazione e Assegnazione
+## Indexing and Assignment
 
-Indicizzare può essere utile anche per assegnare un valore ad un determinato elemento del vettore:
+Indexing can also be useful to assign a value to a given element of the vector:
 
 ```{r, echo=TRUE}
-lettere
+my_letters
 ```
 
 ::: fragment
 ```{r, echo=TRUE}
-lettere[1] = "z"
-lettere
+my_letters[1] = "z"
+my_letters
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE}
-lettere[9] = "i"
-lettere
+my_letters[9] = "i"
+my_letters
 ```
 :::
 
-## Indicizzazione e Assegnazione
+## Indexing and Assignment
 
-Sostituisco il valore NA con la lettera mancante
+I replace the NA value with the missing letter
 
 ```{r, echo=TRUE}
-lettere
+my_letters
 ```
 
 ```{r, echo=TRUE}
-is.na(lettere) # ci sono elementi di lettere = NA?
+is.na(my_letters) # are there elements of my_letters = NA?
 ```
 
 ::: fragment
 ```{r, echo=TRUE}
-which(is.na(lettere)) # in che posizioni sono questi elementi?
-```
-:::
-
-::: fragment
-```{r, echo=TRUE}
-# effettivamente se guardo nella posizione indicata
-lettere[is.na(lettere)]
-lettere[which(is.na(lettere))]  # equivalente
+which(is.na(my_letters)) # in which positions are these elements?
 ```
 :::
 
 ::: fragment
 ```{r, echo=TRUE}
-lettere[is.na(lettere)] = "h" # sostituisco NA con la lettera mancante
-lettere
+# indeed, if I look at the indicated position
+my_letters[is.na(my_letters)]
+my_letters[which(is.na(my_letters))]  # equivalent
 ```
 :::
 
-# Operazioni matematiche sui vettori
+::: fragment
+```{r, echo=TRUE}
+my_letters[is.na(my_letters)] = "h" # replace NA with the missing letter
+my_letters
+```
+:::
 
-## Operazioni matematiche sui vettori
+# Mathematical operations on vectors
 
-Possiamo eseguire operazioni sui vettori, ed applicare la stessa operazione a tutti gli elementi del vettore (element-wise)
+## Mathematical operations on vectors
+
+We can perform operations on vectors, applying the same operation to all the elements of the vector (element-wise)
 
 ```{r, echo=TRUE}
 
 new_vect = rep(2:4, each = 2)
 new_vect
 
-# potete svolgere qualsiasi operazione
+# you can perform any operation
 new_vect/2
 log(new_vect)
 exp(new_vect)
@@ -412,10 +412,10 @@ exp(new_vect)
 
 ## Summary Statistics
 
-Le operazioni più comuni sono per esempio la media `mean()`, la deviazione standard `sd()`, la mediana `median()`, il valore massimo `max()` e minimo `min()` .
+The most common operations are, for example, the mean `mean()`, the standard deviation `sd()`, the median `median()`, the maximum `max()` and minimum `min()` values.
 
 ```{r, echo=TRUE}
-# creo un vettore campionando 1000 da una distribuzione normale 
+# create a vector by sampling 1000 values from a normal distribution
 new_vect = rnorm(n = 1000, mean = 1, sd = 4)
 mean(new_vect)
 sd(new_vect)
@@ -425,39 +425,39 @@ summary(new_vect)
 
 ## Summary Statistics
 
-Si può anche utilizzare la funzione `describe` del pacchetto `psych`:
+You can also use the `describe` function from the `psych` package:
 
 ```{r, echo=TRUE}
 psych::describe(new_vect)
 ```
 
-## Valori NA
+## NA values
 
-A volte (molto spesso) può capitare di avere dati mancanti
+Sometimes (very often) we may have missing data
 
 ```{r, echo=TRUE}
 
-new_vect[1] = NA # Assegnamo NA al primo elemento del vettore
+new_vect[1] = NA # Assign NA to the first element of the vector
 
-mean(new_vect) # è impossibile calcolare la media!
+mean(new_vect) # the mean cannot be computed!
 
-mean(new_vect, na.rm = TRUE) # soluzione!
+mean(new_vect, na.rm = TRUE) # solution!
 
 ```
 
-## Frequenze
+## Frequencies
 
-Un'altra operazione comune che viene svolta sui vettori (e sulle altre strutture dati), è il conteggio delle frequeze
+Another common operation performed on vectors (and on other data structures) is counting frequencies
 
 ```{r, echo = TRUE}
 
-# riprendiamo il vettore creato all'inizio della lezione
+# let's go back to the vector created at the beginning of the lesson
 char_vect
 
-# attraverso la funzione table possiamo calcolare la frequenze
+# with the table function we can compute frequencies
 table(char_vect)
 
-# ricordatevi che R è case-sensitive!
+# remember that R is case-sensitive!
 char_vect[1] = "r"
 char_vect
 
@@ -465,8 +465,8 @@ table(char_vect)
 
 ```
 
-## Facciamo un po' di pratica! {style="text-align: center;"}
+## Let's practice! {style="text-align: center;"}
 
-<br/> Aprite e tenete aperto questo link:
+<br/> Open this link and keep it open:
 
 <https://etherpad.wikimedia.org/p/arca-corsoR>

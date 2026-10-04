@@ -1,35 +1,35 @@
-# pulisco l'environment
+# clear the environment
 rm(list = ls())
 
-# importo il dataset
+# import the dataset
 install.packages("readr")
 
 library(readr)
 dataNoemi <- read_csv("materials/3_programmazione/noemi/dataNoemi.csv")
 
-# PULIZIA DEI DATI - dai dati grezzi agli aggregati 
-# tolgo le colonne con informazioni non utili 
-# (indirizzo IP, lingua di compilazione, ecc...)
-# Nello specifico rimuovo 
-# - dalla colonna 1 alla 17
-# - la prima e la seconda riga
+# DATA CLEANING - from raw data to aggregates 
+# remove the columns with useless information 
+# (IP address, survey language, etc...)
+# Specifically, I remove 
+# - columns 1 to 17
+# - the first and second rows
 data = dataNoemi[-c(1:2),-c(1:17)] 
 
-# - rimuovo 15,17,18 
-data = data[,-c(15,17,18)] # item errati
+# - remove 15,17,18 
+data = data[,-c(15,17,18)] # wrong items
 
-# cambio i nomi delle variabili, voglio che le colonne si chiamino:
-# "consenso", "ITEM1", "ITEM2", "ITEM3", "ITEM4","ITEM5", "ITEM6", 
+# rename the variables, I want the columns to be called:
+# "consent", "ITEM1", "ITEM2", "ITEM3", "ITEM4","ITEM5", "ITEM6", 
 # "ITEM7", "ITEM8","ITEM9", "ITEM10", "ITEM11", "ITEM12", "ITEM13", 
-# "ITEM14", "diagnosi"
+# "ITEM14", "diagnosis"
 
-names(data) = c("consenso", "ITEM1", "ITEM2", "ITEM3", "ITEM4",
+names(data) = c("consent", "ITEM1", "ITEM2", "ITEM3", "ITEM4",
                 "ITEM5", "ITEM6", "ITEM7", "ITEM8","ITEM9", 
                 "ITEM10", "ITEM11", "ITEM12", "ITEM13", 
-                 "ITEM14", "diagnosi")
+                 "ITEM14", "diagnosis")
 names(data)
 
-# Trasformo i dati da stringa a numerici, usa case_when
+# Convert the data from strings to numbers, use case_when
 table(data$ITEM1)
 unique(data$ITEM1)
 
@@ -49,9 +49,9 @@ data$ITEM1
 
 
 
-# Rimuovo partecipanti con diagnosi cliniche, vedi colonna diagnosi
-data2 = subset(data, subset = diagnosi == "no")
-data2 = data[data$diagnosi == "si", ]
+# Remove participants with clinical diagnoses, see the diagnosis column
+data2 = subset(data, subset = diagnosis == "no")
+data2 = data[data$diagnosis == "si", ]
 
 
 write_csv(data2, file = "materials/3_programmazione/noemi/dataNoemi_ok.csv")
@@ -59,36 +59,36 @@ save(data2, file = "materials/3_programmazione/noemi/dataNoemi_ok.rda")
 
 
 
-# Controllo il dataset
+# Check the dataset
 
 
-####    GESTIONE ITEM-REVERSE    ####
+####    HANDLING REVERSE ITEMS    ####
 # item_reverse = 6−item
-# gli item reverse sono 11, 12, 13, 14
+# the reverse items are 11, 12, 13, 14
 
 
 
 
-####   STATISTICHE DESCRITTIVE ITEM   ####
+####   ITEM DESCRIPTIVE STATISTICS   ####
 
-# Media -------------------------------------------------------------------------
-# per applicare una stessa funzione alle colonne del dataset
-# posso utilizzare la funzione apply, o un ciclo for....
-
-
-
-
-# Stessa cosa per deviazione standard, range (i.e., minimo e massimo), 
-# skweness (via formula o skew del pacchetto psych o skweness di moments),
-# allora perchè non creare una funzione che faccia tutte le cose così
-# da poterla utilizzare tutte le volte che mi serve calcolare queste statistiche?
+# Mean --------------------------------------------------------------------------
+# to apply the same function to the columns of the dataset
+# I can use the apply function, or a for loop....
 
 
 
 
-####   PUNTEGGIO TOTALE   ####   di ogni partecipante ---------------------------
-# creo una colonna, totale, data dalla somma di tutti gli item, vedi funzione rowsum
-# attezione che la prima colonna contiene gli id
+# Same thing for standard deviation, range (i.e., minimum and maximum), 
+# skewness (via the formula, or skew from the psych package, or skewness from moments),
+# so why not create a function that does all these things, so that
+# I can use it every time I need to compute these statistics?
+
+
+
+
+####   TOTAL SCORE   ####   of each participant ---------------------------------
+# create a column, total, given by the sum of all the items, see the rowSums function
+# careful: the first column contains the ids
 
 
 

@@ -8,36 +8,36 @@ editor: visual
 
 ## Preprocessing
 
-Step prima dell'analisi dati
+Steps before data analysis
 
--   Carico il dataset
--   Controllo struttura, dati mancanti, dati strani
--   Visualizzo
+-   Load the dataset
+-   Check the structure, missing data, odd data
+-   Visualize
 
-## Carico pacchetti
+## Loading packages
 
-Come primo step è buona norma caricare i pacchetti necessari (e prima installarli se non sono già installati).
+As a first step, it is good practice to load the required packages (and first install them if they are not installed yet).
 
 ```{r, echo=TRUE, message=FALSE}
 packages=c("readr", "tidyverse", "ggplot2", "ggpubr")
 sapply(packages, require, character.only = T)
 ```
 
-## Carico dataset
+## Loading the dataset
 
-Può capitare di non avere un dataset con tutti i soggetti assieme, ma di dover caricare un dataset per soggetto e poi estrarlo a posteriori. Per questo tipo di operazione è utile la funzione **`map_dfr`** (simile ad apply, si trova nel pacchetto **purrr**, magico mondo di **tidyverse**).
+You may not have a single dataset with all the subjects together, but instead have to load one dataset per subject and combine them afterwards. For this kind of operation the **`map_dfr`** function is useful (similar to apply, it is in the **purrr** package, from the magic world of the **tidyverse**).
 
-## Carico dataset
+## Loading the dataset
 
-**`list.files`** vi permette di cercare e vedere quali file hanno uno specifico pattern. Nel mio caso vado dentro la cartella e mi carico tutti i dati in formato **.csv** (utilizzo la funzione head per mostrarvi i primi 6)
+**`list.files`** lets you search and see which files match a specific pattern. In my case I go into the folder and load all the data in **.csv** format (I use the head function to show you the first 6)
 
 ```{r}
 head(list.files(path = "dataRaw", pattern = "*.csv", full.names = TRUE))
 ```
 
-## Carico dataset
+## Loading the dataset
 
-Applico la funzione **`map_dfr`** a tutti i file ottenuti appena prima attraverso la funzione list.files...
+I apply the **`map_dfr`** function to all the files just obtained with the list.files function...
 
 ```{r, echo=TRUE, message=FALSE, error=TRUE}
 d = list.files(path = "dataRaw", pattern = "*.csv", 
@@ -45,11 +45,11 @@ d = list.files(path = "dataRaw", pattern = "*.csv",
   map_dfr(~read_csv(.x)) 
 ```
 
-## Carico dataset
+## Loading the dataset
 
 Error in `dplyr::bind_rows()`: ! Can't combine `..37$session` <double> and `..38$session` <character>.
 
-Per qualche ragione in qualche file l'informazione sulla sessione viene interpretata come double anzichè character. Quindi dentro map_df ci metto anche il **`mutate`**
+For some reason, in some files the session information is read as double instead of character. So inside map_dfr I also add **`mutate`**
 
 ```{r, echo=TRUE, message=FALSE}
 d=list.files(path = "dataRaw", pattern = "*.csv", 
@@ -57,13 +57,13 @@ d=list.files(path = "dataRaw", pattern = "*.csv",
   map_dfr(~read_csv(.x) %>% 
             mutate(condition = as.character(condition),
                    session = as.character(session)) %>%
-            subset(RUN >= 1)) # tolgo tutte le righe in più che non mi servono
+            subset(RUN >= 1)) # remove all the extra rows I don't need
   
 ```
 
-## Guardo le variabili
+## Looking at the variables
 
-Per esempio controllo che i soggetti abbiano usato gli ID indicati. La funzione **`unique()`** è molto utile poichè restituisce un vettore senza elementi doppi (nel mio dataset avevo 448 trial per soggetto e quindi ogni id è ripetuto 448 volte).
+For example, I check that the subjects used the assigned IDs. The **`unique()`** function is very useful because it returns a vector without duplicated elements (in my dataset I had 448 trials per subject, so each id is repeated 448 times).
 
 ```{r, echo=TRUE}
 unique(d$participant)
@@ -71,7 +71,7 @@ unique(d$participant)
 
 ------------------------------------------------------------------------
 
-La funzione **`grep()`** cerca un pattern dentor una stringa, in questo caso l'id del soggetto doveva essere GNG...
+The **`grep()`** function searches for a pattern inside a string; in this case the subject id was supposed to be GNG...
 
 ```{r, echo=TRUE}
 grep(pattern = "GNG", x = unique(as.factor(d$participant)))
@@ -85,7 +85,7 @@ d$id = factor(case_when(d$participant == "GN100"~ "GNG100",
 
 ------------------------------------------------------------------------
 
-Abbiano inserito correttamente la condizione sperimentale...
+...and that they entered the experimental condition correctly...
 
 ```{r, echo=TRUE}
 unique(d$condition)
@@ -99,9 +99,9 @@ d$C = factor(case_when(d$condition == "CONDIZIONE FS" ~ "FS",
                        d$condition == "SD" ~ "SD"))
 ```
 
-## Sistemo il dataset
+## Tidying the dataset
 
-Trasformo le variabili che mi interessano a fattore, e tengo solo quelle che mi interessano per la visualizzazione ed analisi. Possiamo utilizzare **`mutate()`** per mutare/cambiare il tipo di variabile. E **`select()`** per selezionare le variabili d'interesse:
+I convert the variables I am interested in to factors, and keep only those I need for visualization and analysis. We can use **`mutate()`** to mutate/change the variable type, and **`select()`** to select the variables of interest:
 
 ```{r, echo=TRUE}
 dat = d %>% 
@@ -114,17 +114,17 @@ dat = d %>%
   select(id, P, target, C, B, rt, resp, Trial)
 ```
 
-## Controllo
+## Check
 
-Faccio un check veloce sulla struttura del dataset
+A quick check of the structure of the dataset
 
 ```{r, echo=TRUE}
 str(dat)
 ```
 
-## Aggiungo variabile accuratezza
+## Adding an accuracy variable
 
-Quando ho la risposta ed il trial era Go allora giusto (1), se risposta e trial NoGo allora sbagliato (0)...
+If there is a response and the trial was Go, then correct (1); if there is a response and the trial was NoGo, then wrong (0)...
 
 ```{r, echo =TRUE}
 dat$acc = case_when(dat$target == "nogo.png" & dat$resp == "space" ~ 0,
@@ -137,9 +137,9 @@ dat$acc = case_when(dat$target == "nogo.png" & dat$resp == "space" ~ 0,
 sum(dat$acc == 3)
 ```
 
-## Escludo soggetti
+## Excluding subjects
 
-A volte certi soggetti vengono esclusi a priori perchè non hanno rispettato le "regole" dell'esperimento, in questo caso potete escluderli subito
+Sometimes some subjects are excluded a priori because they did not follow the "rules" of the experiment; in this case you can exclude them right away
 
 ```{r, echo=TRUE}
 dat_clean=subset(dat, 
@@ -155,12 +155,12 @@ dat_clean=subset(dat,
                         id != "GNG92" & id != "GNG95"&
                         id != "GNG96" & id != "GNG105")
 
-# potete anche crease un vettore di ID da escludere e quindi utilizzare %in%
+# you can also create a vector of IDs to exclude and then use %in%
 ```
 
-## Escludo soggetti
+## Excluding subjects
 
-Nel mio caso volevo escludere anche tutti quelli con accuratezza minore a 70%. Per calcolare le statistiche descrittive, è molto utile la funzione **`group_by`** e **`summarise`** del pacchetto **dplyr** (sempre tidy)
+In my case I also wanted to exclude everyone with accuracy below 70%. To compute descriptive statistics, the **`group_by`** and **`summarise`** functions from the **dplyr** package (tidyverse again) are very useful
 
 ```{r, echo=TRUE, message=FALSE}
 summ_acc = dat_clean %>% 
@@ -168,20 +168,20 @@ summ_acc = dat_clean %>%
   summarise(acc_mean = round(mean(acc),2),
             n = n())
 
-# i soggetti GNG102 GNG38  GNG59  GNG59 hanno avuto un'accuratezza molto bassa
+# subjects GNG102 GNG38  GNG59  GNG59 had very low accuracy
 summ_acc$id[which(summ_acc$acc_mean < .7)]
 ```
 
 ------------------------------------------------------------------------
 
-Quindi li escludo attraverso la negazione di %in% (che valuta la presenza di un elemento in un vettore)
+So I exclude them using the negation of %in% (which checks whether an element is present in a vector)
 
 ```{r,echo=TRUE}
 dat_clean2=subset(dat_clean, 
                   !(id %in% summ_acc$id[which(summ_acc$acc_mean < .7)]))
 ```
 
-Controllo che effettivamente non ci siano gli id con accuratezza minore di .7
+I check that the ids with accuracy below .7 are indeed gone
 
 ```{r,echo=TRUE}
 sum(dat_clean2$id %in% summ_acc$id[which(summ_acc$acc_mean < .7)])
@@ -189,7 +189,7 @@ sum(dat_clean2$id %in% summ_acc$id[which(summ_acc$acc_mean < .7)])
 
 ------------------------------------------------------------------------
 
-Dopo aver pulito i dati è bene controllare quante informazioni sono rimaste, per esempio il numero di soggetti per gruppo. **`n_distinct`** conta il numero di unique combinazioni..
+After cleaning the data it is good to check how much information is left, for example the number of subjects per group. **`n_distinct`** counts the number of unique combinations..
 
 ```{r,echo=TRUE}
 dat_clean2 %>%
@@ -198,13 +198,13 @@ dat_clean2 %>%
 
 ```
 
-## Ora visualizziamoli
+## Now let's visualize them
 
-Uno dei migliori pacchetti per la visualizzazione dati è **ggplot2**, potete farci praticamente tutto.
+One of the best packages for data visualization is **ggplot2**; you can do practically anything with it.
 
 ------------------------------------------------------------------------
 
-La prima cosa per cui è utile visualizzare i dati è quella di poter vedere la loro distribuzione, la presenza di valori estremi... **`ggplot`** vuole come input che variabili utilizzare per la x e la y ( o solo una delle due, dipende da cosa vogliamo plottare), posso specificare anche i colori, e varie cose che vedremo...
+The first reason to visualize data is to see their distribution, the presence of extreme values... **`ggplot`** takes as input which variables to use for x and y (or only one of the two, depending on what we want to plot); I can also specify colors and various other things we will see...
 
 ```{r, echo=TRUE, warning=FALSE}
 theme_set(theme_pubr())
@@ -214,21 +214,21 @@ dat_clean2 %>% subset(target == "go.png") %>%
   geom_density(alpha = .5)
 ```
 
-## Accuratezza
+## Accuracy
 
 ```{r, echo=TRUE, warning=FALSE, message=FALSE}
 dat_clean2 %>% subset(target == "nogo.png") %>% 
-  group_by(id,P)%>% # ho raggruppato il dataset per id e P
-  # ho calcolato la media di accuratezza per condizione/soggetto
+  group_by(id,P)%>% # group the dataset by id and P
+  # compute the mean accuracy per condition/subject
   summarise(acc_m = mean(acc))%>% # 
   ggplot(aes(y= acc_m, x = P, color = P))+
-  geom_jitter(alpha = .8, size = 2.5)+ # puntini
-  stat_summary(color = "black") # aggiungo stat mean se
+  geom_jitter(alpha = .8, size = 2.5)+ # dots
+  stat_summary(color = "black") # add mean and se
 ```
 
-## Personalizzazione
+## Customization
 
-Una cosa semplice e carina da fare è crearsi la propria palette di colori da poter utilizzare quando vogliamo nei nostri plot. Potete definirla all'inizio oppure scriverla in uno script a parte e caricarla attraverso il comando **`source()`** come abbiamo visto per le funzioni. A questo [link](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40) potete trovare tantissimi colori (colorblind friendly)
+A simple and nice thing to do is to create your own color palette to use whenever you want in your plots. You can define it at the beginning or write it in a separate script and load it with the **`source()`** command, as we saw for functions. At this [link](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40) you can find lots of (colorblind-friendly) colors
 
 ```{r, echo=TRUE}
 my_pal = list(
@@ -245,17 +245,17 @@ my_pal = list(
 dat_clean2 %>% subset(target == "go.png") %>% 
   ggplot(aes(x= rt, fill = P))+
   geom_density(alpha = .5)+
-  scale_fill_manual(values = my_pal$pal1) # inserisco la mia palette 
+  scale_fill_manual(values = my_pal$pal1) # use my palette 
 ```
 
 ------------------------------------------------------------------------
 
-Attraverso la funzione **`facet_wrap()`** è possibile dividere il plot, per esempio mettendo un pannello per ogni gruppo nel mio caso, attraverso il comando \~ C
+With the **`facet_wrap()`** function we can split the plot, for example with one panel for each group in my case, using \~ C
 
 ```{r,echo = TRUE, warning=FALSE}
 dat_clean2 %>% subset(target == "go.png") %>% 
   ggplot(aes(y= rt, x = Trial, color = P))+
-  geom_point(alpha = .5)+facet_wrap(~ C) + #facet_wrap divide in blocchi
+  geom_point(alpha = .5)+facet_wrap(~ C) + # facet_wrap splits into panels
   scale_color_manual(values = my_pal$pal2)
 ```
 
@@ -311,7 +311,7 @@ dat_clean2 %>% subset(target == "go.png" & rt > .15) %>%
   geom_boxplot(alpha = .4, position = position_dodge(width = .8))+
   scale_color_manual(values = my_pal$pal1)+
   scale_fill_manual(values = my_pal$pal1)+
-  ggtitle("Box Plot tempi di reazione")
+  ggtitle("Box Plot of reaction times")
 ```
 
 ------------------------------------------------------------------------
@@ -326,10 +326,10 @@ dat_clean2 %>% subset(target == "go.png" & rt > .15) %>%
 
 ------------------------------------------------------------------------
 
-## Salvare i plot
+## Saving plots
 
-1)  Creare un oggetto in cui c'è il vostro plot
-2)  Salvarlo
+1)  Create an object containing your plot
+2)  Save it
 
 ```{r,echo = TRUE, warning=FALSE, message=FALSE}
 my_plot = dat_clean2 %>% subset(target == "go.png" & rt > .15) %>% 
@@ -338,17 +338,17 @@ my_plot = dat_clean2 %>% subset(target == "go.png" & rt > .15) %>%
   scale_fill_manual(values = my_pal$pal1)+
   xlab("RTs in sec")
 
-# creo la cartella plot
+# create the plot folder
 dir.create("plot")
 
-# salvo dentro la cartella plot
+# save inside the plot folder
 ggsave("plot/my_plot.jpg", my_plot,dpi = 600, width = 18, 
        height = 10, units = "cm")
 ```
 
-## Tabelle
+## Tables
 
-Un'altra cosa che potrebbe esservi utile è quella di creare delle tabelle con per esempio le statistiche descrittive oppure l'ouput di un modello statistico. Per queste operazioni sono molto utili i pacchetti **flextable** o **kableExtra**:
+Another thing you may find useful is creating tables with, for example, descriptive statistics or the output of a statistical model. For these operations the **flextable** or **kableExtra** packages are very useful:
 
 ::::: columns
 ::: {.column width="55%"}
@@ -371,7 +371,7 @@ descr
 :::
 :::::
 
-## Tabelle
+## Tables
 
 ::::: columns
 ::: {.column width="50%"}
@@ -391,14 +391,14 @@ tab
 :::
 :::::
 
-## Salvo in file word
+## Saving to a Word file
 
 ```{r, echo=TRUE}
-doc=officer::read_docx() # Crea un documento Word vuoto
+doc=officer::read_docx() # Create an empty Word document
 
-doc=body_add_flextable(doc, value = tab) # Aggiungi la flextable
+doc=body_add_flextable(doc, value = tab) # Add the flextable
 
-print(doc, target = "tabella.docx") # Salva il file
+print(doc, target = "tabella.docx") # Save the file
 ```
 
 # 

@@ -1,6 +1,6 @@
 ---
-title: "Funzioni ed Errori"
-format: 
+title: "Functions and Errors"
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -9,26 +9,26 @@ format:
 editor: visual
 ---
 
-## Funzioni
+## Functions
 
-Le funzioni sono un argomento relativamente complesso ed avanzato. Lo tratteremo più avanti. Siccome le usiamo fin da subito (es. funzione `mean` per calcolare la media) è importante avere chiari alcuni aspetti:
+Functions are a relatively complex and advanced topic. We will cover them later. Since we use them right from the start (e.g. the `mean` function to compute the mean), it is important to be clear about a few aspects:
 
--   Funzioni come oggetti
--   Argomenti obbligatori, opzionali e default
--   Ordine degli argomenti
--   Documentazione
+-   Functions as objects
+-   Mandatory and optional arguments, and defaults
+-   Order of arguments
+-   Documentation
 
-## Funzioni
+## Functions
 
-Possiamo pensare alle funzioni in R in modo analogo alle classiche funzioni matematiche. Dati dei valori in **input**, le funzioni eseguono dei specifici calcoli e restituiscono in **output** il risultato ottenuto.
+We can think of functions in R in the same way as classic mathematical functions. Given some **input** values, functions perform specific calculations and return the result as **output**.
 
 ![](images/fun1.png){fig-align="center"}
 
-## Funzioni come oggetti
+## Functions as objects
 
-Abbiamo già visto che ogni cosa in R è un oggetto. Anche le funzioni seppur molto diverse da altri elementi sono creati e trattati in R come oggetti. In questo esempio, creiamo una funzione che ha come input **x**, e che svolge l'operazione di **sommare** ad **x** il valore **3**.
+We have already seen that everything in R is an object. Functions too, although very different from other elements, are created and treated in R as objects. In this example, we create a function that takes **x** as input and **adds** the value **3** to **x**.
 
-L'output dipenderà dal valore di x.
+The output will depend on the value of x.
 
 ```{r, echo=TRUE}
 myfun = function(x) {
@@ -46,101 +46,101 @@ myfun(7)
 ```
 :::
 
-## Funzioni come oggetti
+## Functions as objects
 
-Possiamo crearle, eliminarle o sovrascriverle come un normale oggetto. Vedremo più avanti come crearle ma tenete in considerazione che tutte le funzioni che usiamo sono create come oggetti e salvati nell'ambiente.
+We can create, remove or overwrite them like any other object. We will see later how to create them, but keep in mind that all the functions we use are created as objects and stored in the environment.
 
-## Argomenti
+## Arguments
 
-Gli argomenti delle funzioni sono quelli che da *utenti* dobbiamo conoscere ed impostare nel modo corretto per fare in modo che la funzioni faccia quello per cui è stata pensata. Nell'esempio precedente l'unico argomento era x. Vediamo invece l'`help` della funzione `mean()`.
+Function arguments are what we, as *users*, need to know and set correctly so that the function does what it was designed to do. In the previous example the only argument was x. Let's look at the `help` of the `mean()` function instead.
 
-## Argomenti
+## Arguments
 
-Per impostare questi argomenti ci sono 2 regole:
+There are 2 rules for setting these arguments:
 
--   l'ordine non conta SE DEFINISCO NOME DELL'ARGOMENTO con `x = vettore`, `na.rm = TRUE`, etc.
--   l'ordine conta SE NON DEFINISCO IL NOME DELL'ARGOMENTO. Posso quindi omettere `argomento = valore` ma devo rispettare l'ordine con cui è stata scritta la funzione.
+-   the order does not matter IF I SPECIFY THE ARGUMENT NAME, e.g. `x = vector`, `na.rm = TRUE`, etc.
+-   the order matters IF I DO NOT SPECIFY THE ARGUMENT NAME. I can omit `argument = value`, but I must respect the order in which the function was written.
 
-## Argomenti
+## Arguments
 
-In questo caso proviamo ad usare la funzione `mean()`:
+Let's try to use the `mean()` function:
 
 ```{r, error = TRUE, echo=TRUE}
-#creo un vettore campionando 1000 elementi 
-# da una distribuzione normale con media 0 e sd 1
+# create a vector by sampling 1000 elements
+# from a normal distribution with mean 1 and sd 1
 myvec = rnorm(n = 1000, mean = 1, sd = 1)
 
-mean(x = myvec) # x definito,trim e na.rm non definito, quindi uguali a?
+mean(x = myvec) # x defined, trim and na.rm not defined, so they are equal to?
 ?mean
 ```
 
 ::: fragment
 ```{r, echo = TRUE, warning=TRUE, error=TRUE}
-mean(x = myvec, na.rm = TRUE) # x definito, na.rm definito
+mean(x = myvec, na.rm = TRUE) # x defined, na.rm defined
 
-mean(myvec, TRUE) # cosa succede?
+mean(myvec, TRUE) # what happens?
 ```
 :::
 
 ## Packages
 
-In R è possibile installare e caricare pacchetti aggiuntivi che non fanno altro che rendere disponibili librerie di funzioni create da altri utenti. Per utilizzare un pacchetto:
+In R we can install and load additional packages, which simply make available libraries of functions created by other users. To use a package:
 
--   Installare il pacchetto con **`install.packages("nomepacchetto")`**
+-   Install the package with **`install.packages("packagename")`**
 
--   Caricare il pacchetto con **`library(nomepacchetto)`**
+-   Load the package with **`library(packagename)`**
 
--   Accedere ad una funzione senza caricare il pachetto **`nomepacchetto::nomefunzione()`**. Utile se serve solo una funzione o ci sono conflitti)
+-   Access a function without loading the package with **`packagename::functionname()`** (useful if you only need one function or if there are conflicts)
 
 ## Packages
 
 ![](images/pack.png){fig-align="center" width="600"}
 
-## Come risolvere i problemi in R
+## How to solve problems in R
 
-In R gli errori sono:
+In R, errors are:
 
--   inevitabili
--   parte del codice stesso
--   educativi
+-   inevitable
+-   part of the code itself
+-   educational
 
-## R ed errori
+## R and errors
 
-Ci sono diversi livelli di **allerta** quando scriviamo codice:
+There are different **alert** levels when we write code:
 
--   **`messaggi`**: la funzione ci restituisce qualcosa che è utile sapere, ma tutto liscio
+-   **`messages`**: the function returns something that is useful to know, but everything is fine
 
--   **`warnings`**: la funzione ci informa di qualcosa di *potenzialmente* problematico, ma (circa) tutto liscio
+-   **`warnings`**: the function informs us about something *potentially* problematic, but (more or less) everything is fine
 
--   **`error`**: la funzione non solo ci informa di un **errore** ma le operazioni richieste non sono state eseguite
+-   **`errors`**: the function not only informs us about an **error**, but the requested operations were not executed
 
-## Come risolvere?
+## How to solve them?
 
--   Capire il messaggio
--   Leggere la documentazione della funzione
--   Cercare il messaggio su internet
--   Chiedere aiuto nei forum dedicati
+-   Understand the message
+-   Read the function documentation
+-   Search for the message online
+-   Ask for help in dedicated forums
 
-## La documentazione della funzione
+## Function documentation
 
--   Ogni funzione ha una pagina di documentazione accessibile con `?nomefunzione`, `??nomefunzione` oppure `help(nomefunzione)`
+-   Every function has a documentation page, accessible with `?functionname`, `??functionname` or `help(functionname)`
 
--   Possiamo cercare anche la documentazione del pacchetto
+-   We can also look up the package documentation
 
--   Possiamo cercare su internet il nome della funzione o l'eventuale messaggio che riceviamo
+-   We can search online for the function name or for the message we get
 
 ## Stack overflow
 
-[**Stack overflow**](https://stackoverflow.com/) è un forum di discussione riguardo qualsiasi cosa coinvolga codice (statistica, programmazione, etc.). E' pieno di errori comuni, *How to do ...* e di risposte/soluzioni estremamente utili. Nel 90% dei casi il problema che avete è comune ed è già presente una soluzione.
+[**Stack overflow**](https://stackoverflow.com/) is a discussion forum about anything involving code (statistics, programming, etc.). It is full of common errors, *How to do ...* questions and extremely useful answers/solutions. In 90% of cases the problem you have is common and a solution already exists.
 
-![](images/stackOver.png){fig-align="center" width="600"}
+![](images/stackover.png){fig-align="center" width="600"}
 
 ## ChatGPT
 
-**Attentenzione**
+**Be careful**
 
--   Ponete bene la domanda
+-   Ask the question clearly
 
--   Sinceratevi di aver capito la risposta
+-   Make sure you have understood the answer
 
--   Controllate!
+-   Double-check!

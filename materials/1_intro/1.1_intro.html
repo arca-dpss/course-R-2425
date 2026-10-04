@@ -6,20 +6,26 @@
 <script src="1.1_intro_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="1.1_intro_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="1.1_intro_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="1.1_intro_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="1.1_intro_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
-  <title>Introduzione 1</title>
+  <title>Introduction 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="1.1_intro_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="1.1_intro_files/libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -94,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="1.1_intro_files/libs/revealjs/dist/theme/quarto-c152ea5cec6d0e5c9cb96377574a2ce8.css">
+  <link rel="stylesheet" href="1.1_intro_files/libs/revealjs/dist/theme/quarto-61a84950594467f885fe7fd7ba14a2cd.css">
   <link href="1.1_intro_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="1.1_intro_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="1.1_intro_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -192,26 +198,26 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduzione 1</h1>
+  <h1 class="title">Introduction 1</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="ambiente-di-lavoro" class="slide level2" style="text-align: center;">
-<h2>Ambiente di Lavoro</h2>
-<p>RStudio è diviso in <strong>4 pannelli principali</strong>:</p>
+<section id="working-environment" class="slide level2" style="text-align: center;">
+<h2>Working Environment</h2>
+<p>RStudio is divided into <strong>4 main panes</strong>:</p>
 
 <img data-src="images/R_studio.png" class="quarto-figure quarto-figure-center r-stretch" width="2810"></section>
 <section class="slide level2">
 
-<p><strong>Script.</strong> Il file di testo dove scrivi e salvi il codice. Puoi eseguire una riga alla volta (<code>Ctrl + Invio</code> / <code>Cmd + Enter</code>) oppure tutto lo script cliccando <code>Source</code>. I commenti si aggiungono con <code>#</code>.</p>
+<p><strong>Script.</strong> The text file where you write and save your code. You can run one line at a time (<code>Ctrl + Enter</code> / <code>Cmd + Enter</code>) or the whole script by clicking <code>Source</code>. Comments are added with <code>#</code>.</p>
 <p><br></p>
-<p><strong>Console.</strong> Qui R esegue il codice e mostra i risultati. Puoi scrivere comandi direttamente nella console per prove rapide, ma non vengono salvati.</p>
+<p><strong>Console.</strong> This is where R runs the code and shows the results. You can type commands directly in the console for quick tests, but they are not saved.</p>
 <p><br></p>
-<p><strong>Environment / Scrivania temporanea.</strong> Mostra tutti gli <strong>oggetti</strong> creati durante la sessione corrente.</p>
+<p><strong>Environment / Temporary desk.</strong> Shows all the <strong>objects</strong> created during the current session.</p>
 <p><br></p>
-<p><strong>Varie.</strong> Pannello multifunzione con diverse tab, tra cui il file explorer</p>
+<p><strong>Miscellaneous.</strong> A multi-purpose pane with several tabs, including the file explorer</p>
 </section>
 <section class="slide level2">
 
@@ -224,9 +230,9 @@
 <p><strong>Console</strong></p>
 </div>
 <div class="callout-content">
-<p>I comandi nella console vengono eseguiti ma <strong>non salvati</strong>.</p>
-<p>Per eseguire il comando → <code>Invio</code></p>
-<p>L’output è immediato e appare nella console.</p>
+<p>Commands in the console are executed but <strong>not saved</strong>.</p>
+<p>To run the command → <code>Enter</code></p>
+<p>The output is immediate and appears in the console.</p>
 </div>
 </div>
 </div>
@@ -240,67 +246,67 @@
 <p><strong>Script</strong></p>
 </div>
 <div class="callout-content">
-<p>È possibile salvare gli script con tutti i comandi.</p>
-<p>Per eseguire il comando → <code>Ctrl + Invio</code> (<code>Cmd + Enter</code> su Mac)</p>
-<p>L’output è restituito nella console.</p>
+<p>You can save scripts with all your commands.</p>
+<p>To run the command → <code>Ctrl + Enter</code> (<code>Cmd + Enter</code> on Mac)</p>
+<p>The output is returned in the console.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="come-lavorare-in-r" class="slide level2">
-<h2>Come lavorare in R</h2>
-<p>Creiamo uno script:</p>
+<section id="how-to-work-in-r" class="slide level2">
+<h2>How to work in R</h2>
+<p>Let’s create a script:</p>
 
 <img data-src="images/script.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="come-lavorare-in-r-1" class="slide level2">
-<h2>Come lavorare in R</h2>
-<p>Salviamo:</p>
+<section id="how-to-work-in-r-1" class="slide level2">
+<h2>How to work in R</h2>
+<p>Let’s save it:</p>
 
 <img data-src="images/save.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="working-directory" class="slide level2">
 <h2>Working Directory</h2>
-<p>La posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.</p>
+<p>The location (folder) on your PC where R is working and where R expects to find your files, unless specified otherwise.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/tita/course-R-2425/materials/1_intro"</code></pre>
 </div>
 </div>
 </section>
-<section id="path-assoluto" class="slide level2">
-<h2>Path Assoluto</h2>
+<section id="absolute-path" class="slide level2">
+<h2>Absolute Path</h2>
 <p>PC</p>
 <pre><code>|- Users
-    | 
-    |- tita 
+    |
+    |- tita
         |
         |- course-R-2425
             |
             |- materials
                 |
                 |- 1_intro</code></pre>
-<p><br> Io sto lavorando dentro la cartella 1_intro.</p>
+<p><br> I am working inside the 1_intro folder.</p>
 </section>
-<section id="path-relativo-alla-working-directory" class="slide level2">
-<h2>Path Relativo (alla working directory)</h2>
+<section id="relative-path-to-the-working-directory" class="slide level2">
+<h2>Relative Path (to the working directory)</h2>
 <ol type="1">
-<li>Cambia la working directory attraverso il comando <code>setwd</code>:</li>
+<li>Change the working directory with the <code>setwd</code> command:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">setwd</span>(<span class="st">'/Users/tita/Desktop'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-label="1"></a><span class="fu">setwd</span>(<span class="st">'/Users/tita/Desktop'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="2" type="1">
-<li>Scarica il file <a href="https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv">prova.csv</a> ed inseriscilo nella cartella.</li>
+<li>Download the file <a href="https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv">prova.csv</a> and put it in the folder.</li>
 </ol>
 <div class="fragment">
 <ol start="3" type="1">
-<li>Dato che stiamo lavorando dentro la cartella, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra virgolette, ed utilizzare per esempio la funzione <code>read.csv</code>:</li>
+<li>Since we are working inside the folder, if we want to load a file located in this folder we can simply write the file name in quotes and use, for example, the <code>read.csv</code> function:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"prova.csv"</span>)</span>
-<span id="cb5-2"><a href=""></a></span>
-<span id="cb5-3"><a href=""></a><span class="fu">head</span>(data, <span class="at">n =</span> <span class="dv">4</span>) <span class="co">#mostra le prime righe del dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"prova.csv"</span>)</span>
+<span id="cb5-2"><a href="" aria-label="2"></a></span>
+<span id="cb5-3"><a href="" aria-label="3"></a><span class="fu">head</span>(data, <span class="at">n =</span> <span class="dv">4</span>) <span class="co"># show the first rows of the dataset</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  X id      age
 1 1  1 30.74643
@@ -313,10 +319,10 @@
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<p>Se invece vogliamo caricare un file che si trova in un’altra posizione dobbiamo chiamarlo attraverso il path assoluto:</p>
+<p>If instead we want to load a file located somewhere else, we need to refer to it through its absolute path:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"/Users/tita/course-R-2425/materials/1_intro/prova.csv"</span>)</span>
-<span id="cb7-2"><a href=""></a><span class="fu">head</span>(data, <span class="at">n =</span> <span class="dv">4</span>) <span class="co">#mostra le prime righe del dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-label="1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"/Users/tita/course-R-2425/materials/1_intro/prova.csv"</span>)</span>
+<span id="cb7-2"><a href="" aria-label="2"></a><span class="fu">head</span>(data, <span class="at">n =</span> <span class="dv">4</span>) <span class="co"># show the first rows of the dataset</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  X id      age
 1 1  1 30.74643
@@ -327,20 +333,20 @@
 </div>
 <p><br></p>
 <div class="fragment">
-<p>Oppure, prima cambiare la working directory attraverso il comando <code>setwd</code> e poi caricare il file.</p>
+<p>Or, first change the working directory with the <code>setwd</code> command and then load the file.</p>
 </div>
 </section>
-<section id="la-soluzione-migliore" class="slide level2">
-<h2>La soluzione migliore?</h2>
-<p>Creare un R project!</p>
+<section id="the-best-solution" class="slide level2">
+<h2>The best solution?</h2>
+<p>Create an R project!</p>
 <ul>
-<li>permettono di impostare la working directory in automatico</li>
-<li>permettono di usare <strong><em>relative path</em></strong> invece che <strong><em>absolute path</em></strong></li>
-<li>permettono un veloce accesso ad un determinato progetto</li>
+<li>they set the working directory automatically</li>
+<li>they let you use <strong><em>relative paths</em></strong> instead of <strong><em>absolute paths</em></strong></li>
+<li>they give quick access to a given project</li>
 </ul>
 </section>
-<section id="creiamone-uno" class="title-slide slide level1 center">
-<h1>Creiamone uno!</h1>
+<section id="lets-create-one" class="title-slide slide level1 center">
+<h1>Let’s create one!</h1>
 
 </section>
     </div>
@@ -532,7 +538,7 @@
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -644,13 +650,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

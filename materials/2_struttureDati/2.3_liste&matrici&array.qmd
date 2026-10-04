@@ -1,6 +1,6 @@
 ---
-title: "Liste, Matrici e Array"
-format: 
+title: "Lists, Matrices and Arrays"
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -9,83 +9,83 @@ format:
 editor: visual
 ---
 
-## Strutture Dati
+## Data Structures
 
--   vettori
+-   vectors
 
--   fattori
+-   factors
 
--   ***`liste`***
+-   ***`lists`***
 
--   matrici
+-   matrices
 
--   array
+-   arrays
 
--   dataframe
+-   dataframes
 
-## Liste
+## Lists
 
-Le liste sono strutture flessibili che possono contenere oggetti di tipo differente e di differenti dimensioni (ogni elemento può essere a sua volta una lista), e si creano attraverso il comando `list()`
+Lists are flexible structures that can contain objects of different types and different sizes (each element can itself be a list), and they are created with the `list()` command
 
 ```{r, echo=TRUE}
-my_list = list("ciao!", 1:3, c(TRUE,FALSE), 
-               list("ciao!", 1:3, c(TRUE,FALSE)))
+my_list = list("hello!", 1:3, c(TRUE,FALSE),
+               list("hello!", 1:3, c(TRUE,FALSE)))
 str(my_list)
 ```
 
-## Liste
+## Lists
 
-La lista pur essendo unidimensionale, si sviluppa in profondità
+Although a list is one-dimensional, it develops in depth
 
 ```{r, echo=TRUE}
 str(my_list)
 ```
 
-## Liste
+## Lists
 
-***Primo Livello***: lista
+***First Level***: list
 
 ```{r, echo=TRUE}
-str(my_list[2]) # una parentesi []
+str(my_list[2]) # single brackets []
 ```
 
-***Secondo Livello***: vettore numerico
+***Second Level***: numeric vector
 
 ```{r, echo=TRUE}
-str(my_list[[2]]) # doppia parentesi []
+str(my_list[[2]]) # double brackets [[]]
 ```
 
-***Terzo Livello***: numero intero
+***Third Level***: integer
 
 ```{r, echo=TRUE}
-str(my_list[[2]][1]) # doppia parentesi [] e concatenazione
+str(my_list[[2]][1]) # double brackets [[]] and chaining
 ```
 
-## Liste
+## Lists
 
-E' possibile assegnare dei nomi agli elementi della lista...
+We can assign names to the elements of a list...
 
 ```{r, echo=TRUE}
-my_list_nam = list(parola = "ciao!",
-                   numeri =  1:3, 
-                   logico = c(TRUE,FALSE), 
-                   lista = list("ciao!", 1:3, c(TRUE,FALSE)))
+my_list_nam = list(word = "hello!",
+                   numbers =  1:3,
+                   logical = c(TRUE,FALSE),
+                   list = list("hello!", 1:3, c(TRUE,FALSE)))
 my_list_nam
 ```
 
-## Liste
+## Lists
 
-ed accerdervi chiamandoli per "nome" attraverso l'operatore **`$`**
+and access them by calling them by "name" with the **`$`** operator
 
 ```{r, echo=TRUE}
-my_list_nam$parola
+my_list_nam$word
 
-my_list_nam$lista #lista creata come elemento della lista
+my_list_nam$list # list created as an element of the list
 ```
 
-## Liste - Attributi
+## Lists - Attributes
 
-Come per i vettori anche le liste hanno una lunghezza (**`lenght()`**) ed eventualmente dei nomi (**`names()`**).
+Like vectors, lists also have a length (**`length()`**) and possibly names (**`names()`**).
 
 ```{r, echo=TRUE}
 
@@ -95,89 +95,89 @@ names(my_list_nam)
 ```
 
 ::: fragment
-Il comando **`str()`** (struttura) è molto utile per le liste perchè fornisce una visione sulla struttura:
+The **`str()`** (structure) command is very useful for lists because it gives an overview of their structure:
 
 ```{r, echo=TRUE}
 str(my_list_nam)
 ```
 :::
 
-## Liste - Indicizzazione
+## Lists - Indexing
 
-La differenza tra le parentesi quadre riguarda il fatto se vogliamo fare un subset della lista ottenendo un'altra lista oppure se vogliamo accedere direttamente all'elemento interno:
+The difference between the square brackets is whether we want to subset the list, getting another list, or directly access the inner element:
 
 ```{r, echo=TRUE}
-my_list_nam[1] #ottenendo un'altra lista 
+my_list_nam[1] # getting another list
 
-my_list_nam[[1]] # accedo all'elemento interno
+my_list_nam[[1]] # accessing the inner element
 ```
 
-## Liste - Indicizzazione
+## Lists - Indexing
 
-Se vogliamo fare un vero e proprio subset della lista) dobbiamo sempre usare le parentesi quadre singole:
+If we want to actually subset the list, we must always use single square brackets:
 
 ```{r, echo=TRUE}
-#lista composta dai primi due elementi della my_list_nam 
-my_list2 = my_list_nam[1:2] 
+# list made of the first two elements of my_list_nam
+my_list2 = my_list_nam[1:2]
 str(my_list2)
 ```
 
-## Liste - Indicizzazione Nested
+## Lists - Nested Indexing
 
-Le liste hanno una struttura unidimensionale ma che si può sviluppare in profondità. Per selezionare elementi nested si possono concatenare più parentesi:
+Lists have a one-dimensional structure that can develop in depth. To select nested elements we can chain several brackets:
 
 ```{r, echo=TRUE}
 my_list_nam[2]
 
-my_list_nam[2][1] # errore!
+my_list_nam[2][1] # wrong!
 
 my_list_nam[[2]][1]
 
 ```
 
-## Liste - Perchè?
+## Lists - Why?
 
-Sono flessibili, permettono di conservare/organizzare dati/informazioni complesse e varie. Per esempio la funzione **`lm()`** fornisce in output una lista contentente varie informazioni e risultati sul modello testato.
+They are flexible and allow us to store/organize complex and varied data/information. For example, the **`lm()`** function returns a list containing various pieces of information and results about the tested model.
 
 ```{r, echo=TRUE}
-# Simulo 30 osservazioni, assumendo che l'effetto di x = 0.3
+# Simulate 30 observations, assuming that the effect of x = 0.3
 N = 30; b1 = 0.3; sigma = 1
-x = rnorm(N, 0, 1); # variabile indipedente
-y = b1*x + rnorm(n = N, mean = 0, sd = sigma) # effetto più errore
+x = rnorm(N, 0, 1); # independent variable
+y = b1*x + rnorm(n = N, mean = 0, sd = sigma) # effect plus error
 ```
 
 ::: fragment
 ```{r, echo=TRUE}
-# modello lineare
-mod = lm(y ~ x) 
+# linear model
+mod = lm(y ~ x)
 summary(mod)
 ```
 :::
 
-## Liste - Perchè?
+## Lists - Why?
 
 ```{r, echo=TRUE}
-# cos'è l'oggetto mod?
+# what is the mod object?
 str(mod)
 ```
 
-## Strutture Dati
+## Data Structures
 
--   vettori
+-   vectors
 
--   fattori
+-   factors
 
--   liste
+-   lists
 
--   ***`matrici`***
+-   ***`matrices`***
 
--   array
+-   arrays
 
--   dataframe
+-   dataframes
 
-## Matrici
+## Matrices
 
-Le matrici sono una struttura dati **bidimensionale** (caratterizzate da 2 dimensioni **`dim()`** ) dove il numero di righe rappresenta la dimensione 1 e il numero di colonne la dimensione 2.
+Matrices are a **two-dimensional** data structure (characterized by 2 dimensions, **`dim()`**), where the number of rows is dimension 1 and the number of columns is dimension 2.
 
 ```{r, echo=TRUE}
 my_mat = matrix(data = 1:10, nrow = 2, ncol = 5, byrow = FALSE)
@@ -188,39 +188,39 @@ my_mat
 matrix(data = 1:10, nrow = 2, ncol = 5, byrow = TRUE)
 ```
 
-## Matrici - Attributi
+## Matrices - Attributes
 
 ```{r, echo=TRUE}
 attributes(my_mat)
 ```
 
 ```{r, echo=TRUE}
-my_mat = matrix(data = 1:10, nrow = 2, 
-                ncol = 5, dimnames = list(c("row1", "row2"), 
+my_mat = matrix(data = 1:10, nrow = 2,
+                ncol = 5, dimnames = list(c("row1", "row2"),
                                           c("col1", "col1",
                                             "col3","col4","col5")))
 attributes(my_mat)
 ```
 
-## Matrici - Caratteristiche
+## Matrices - Properties
 
--   Possono contenere **una sola tipologia** di dati
+-   They can contain **only one type** of data
 
--   Essendo **bidimensionali**, abbiamo bisogno di due indici di posizione (righe e colonne) per identificare un elemento
+-   Since they are **two-dimensional**, we need two position indices (rows and columns) to identify an element
 
--   Possono essere viste come un **insieme** di singoli **vettori**
+-   They can be seen as a **set** of single **vectors**
 
-## Matrici - Caratteristiche
+## Matrices - Properties
 
-Il numero di righe e colonne non deve essere lo stesso necessariamente (matrice quadrata) ma il numero di righe deve essere compatibile con il vettore data:
+The number of rows and columns does not have to be the same (square matrix), but the size of the matrix must be compatible with the data vector:
 
 ```{r, echo=TRUE, warning=TRUE}
 matrix(data = 1:10, ncol = 3, nrow = 3)
 ```
 
-## Matrici
+## Matrices
 
-Cosa fa R di default?
+What does R do by default?
 
 ```{r, echo=TRUE, warning=FALSE}
 
@@ -230,11 +230,11 @@ matrix(data = 1:2, ncol = 3, nrow = 3)
 
 ```
 
-**`warnings`**: la funzione ci informa di qualcosa di potenzialmente problematico, ma (circa!!) tutto liscio
+**`warnings`**: the function informs us about something potentially problematic, but (more or less!!) everything is fine
 
-## Matrici - Indicizzazione
+## Matrices - Indexing
 
-Per identificare uno o più elementi nella matrice abbiamo bisogno di indici/e di riga e/o colonna separati da virgola, sempre con le parentesi quadre: **matrice\[riga, colonna\]**
+To identify one or more elements of a matrix we need row and/or column indices separated by a comma, again inside square brackets: **matrix\[row, column\]**
 
 ```{r, echo=TRUE}
 
@@ -243,9 +243,9 @@ my_mat[1,1]
 
 ```
 
-## Matrici - Indicizzazione
+## Matrices - Indexing
 
-E' possibile anche selezionare un'intera riga o colonna
+We can also select an entire row or column
 
 ```{r, echo=TRUE}
 
@@ -255,23 +255,23 @@ my_mat[,1]
 
 ```
 
-## Matrici - Indicizzazione
+## Matrices - Indexing
 
-Come per i vettori, anche in questo caso possiamo applicare l'indicizzazione logica:
+As with vectors, here too we can apply logical indexing:
 
 ```{r, echo=TRUE}
 my_mat>2
 
 my_mat
 
-# Tutti gli elementi maggiori di due
+# All the elements greater than two
 my_mat[my_mat>2]
 
 ```
 
-## Vettori e Matrici
+## Vectors and Matrices
 
-I vettori si creano attraverso la funzione **`c()`** e possono essere concatenati tra loro sempre attraverso la stessa funzione:
+Vectors are created with the **`c()`** function and can be concatenated using the same function:
 
 ```{r, echo=TRUE}
 my_vect1 = c(1:4)
@@ -281,9 +281,9 @@ my_vect12 = c(my_vect1,my_vect2)
 my_vect12
 ```
 
-## Matrici
+## Matrices
 
-Le matrici possono essere unite tra loro attraverso i comandi 
+Matrices can be joined together with the commands
 ```{r, echo=TRUE}
 
 my_mat1 = matrix(data = 1:4,nrow = 2, ncol = 2)
@@ -298,7 +298,7 @@ cbind(my_mat1, my_mat2)
 
 ```
 
-**`rowbind()`** 
+**`rbind()`**
 
 ```{r, echo=TRUE}
 
@@ -306,66 +306,66 @@ rbind(my_mat1, my_mat2)
 
 ```
 
-Cosa notate di "strano"?
+Do you notice anything "strange"?
 
-## Operazioni con le matrici
+## Operations with matrices
 
-Come per i vettori, anche alle matrici si possono applicare operazioni matematiche:
+As with vectors, mathematical operations can also be applied to matrices:
 
 ```{r, echo=TRUE}
 
 my_mat = matrix(data = 1:4,nrow = 2, ncol = 2)
 
-# elemet-wise
+# element-wise
 my_mat*my_mat
 
-# Prodotto matriciale
+# Matrix product
 my_mat%*%my_mat
 # (1*1 + 3*2) , (1*3 + 3*4)
 # (2*1 + 4*2) , (2*3 + 4*4)
 ```
 
-## Strutture Dati
+## Data Structures
 
--   vettori
+-   vectors
 
--   fattori
+-   factors
 
--   liste
+-   lists
 
--   matrici
+-   matrices
 
--   ***`array`***
+-   ***`arrays`***
 
--   dataframe
+-   dataframes
 
-## Array
+## Arrays
 
-Gli array sono degli oggetti n-dimensionali (es., se la matrice è un quadrato un array è un cubo). Valgono le stesse proprietà della matrice scalate alle n dimensioni, si creano con il comando `array`
+Arrays are n-dimensional objects (e.g., if a matrix is a square, an array is a cube). The same properties of matrices apply, scaled to n dimensions; they are created with the `array` command
 
 ```{r, echo=TRUE}
 
-my_array = array(data = 1:6, dim = c(2,3,2)) # esempio tridimensionale
+my_array = array(data = 1:6, dim = c(2,3,2)) # three-dimensional example
 my_array
 
 ```
 
-## Array - Indicizzazione
+## Arrays - Indexing
 
-L'indicizzazione avviene allo stesso modo delle matrici aggiungendo una dimensione
+Indexing works the same way as with matrices, adding one dimension
 
 ```{r, echo=TRUE}
 
 my_array
 
-my_array[1,1,1] # prima riga, prima colonna, prima "fetta"
+my_array[1,1,1] # first row, first column, first "slice"
 
-my_array[1,2,1] # prima riga, seconda colonna, prima "fetta"
+my_array[1,2,1] # first row, second column, first "slice"
 
 ```
 
-## Facciamo un po' di pratica! {style="text-align: center;"}
+## Let's practice! {style="text-align: center;"}
 
-<br/> Aprite e tenete aperto questo link:
+<br/> Open this link and keep it open:
 
 <https://etherpad.wikimedia.org/p/arca-corsoR>

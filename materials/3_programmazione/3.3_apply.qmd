@@ -1,6 +1,6 @@
 ---
 title: "3.3_apply"
-format: 
+format:
    revealjs:
      margin: 0.1
 editor: visual
@@ -8,11 +8,11 @@ editor: visual
 
 ## `*apply` family
 
-Immaginate di avere una lista di vettori, e di voler applicare la stessa funzione/i ad ogni elemento della lista:
+Imagine you have a list of vectors and you want to apply the same function(s) to each element of the list:
 
--   applico manualmente la funzione selezionando gli elementi
+-   I apply the function manually, selecting the elements
 
--   ciclo **`for`** che itera sugli elementi della lista e applica la funzione/i
+-   a **`for`** loop that iterates over the elements of the list and applies the function(s)
 
     ...
 
@@ -29,30 +29,30 @@ my_list=list(
 
 ::::: columns
 ::: {.column width="60%"}
-Applichiamo media, mediana e std
+Let's compute mean, median and std
 
 ```{r, echo=TRUE}
-# inizializzo i vettori, numeri a caso
-# ma tanti quanti me ne servono
+# initialize the vectors with arbitrary numbers,
+# but as many as we need
 means = 1:length(my_list)
 medians = 1:length(my_list)
 stds = 1:length(my_list)
 
 # Loop
 for(i in 1:length(my_list)){
-  
-  means[i] = mean(my_list[[i]]) 
-  medians[i] = median(my_list[[i]]) 
+
+  means[i] = mean(my_list[[i]])
+  medians[i] = median(my_list[[i]])
   stds[i] = sd(my_list[[i]])
 }
 ```
 :::
 
 ::: {.column width="40%"}
-Risultato
+Result
 
 ```{r, echo=TRUE}
-means 
+means
 
 medians
 
@@ -63,17 +63,17 @@ stds
 
 ## `*apply` family
 
-Funziona tutto! ma:
+Everything works! but:
 
--   il for è molto laborioso da scrivere gli indici sia per la lista che per il vettore che stiamo popolando
+-   writing the for loop is laborious, with indices both for the list and for the vector we are filling
 
--   dobbiamo pre-allocare delle variabili (per il motivo della velocità che dicevo)
+-   we need to pre-allocate variables (for speed reasons)
 
--   8 righe di codice (per questo esempio semplice)
+-   8 lines of code (for this simple example)
 
 ## `*apply` family
 
-In R è presente una famiglia di funzioni apply come **`lapply`**, **`sapply`**, etc. che permettono di ottenere lo stesso risultato in modo più conciso, rapido e semplice:
+R has a family of apply functions such as **`lapply`**, **`sapply`**, etc. that let us get the same result in a more concise, fast and simple way:
 
 ```{r, echo=TRUE}
 means = sapply(my_list, mean)
@@ -87,28 +87,28 @@ stds
 
 ## `*apply` family
 
-**apply( \< lista \> , \< funzione \> )**
+**apply( \< list \> , \< function \> )**
 
--   Cosa può essere la **lista**?
-    -   lista
+-   What can the **list** be?
+    -   a list
 
-    -   dataframe
+    -   a dataframe
 
-    -   vettore
--   Cosa può essere la **funzione**?
-    -   base o importata da un pacchetto
+    -   a vector
+-   What can the **function** be?
+    -   base or imported from a package
 
     -   custom
 
-    -   anonima
+    -   anonymous
 
 ## `*apply` family
 
-Prima di analizzare l'**`*apply`** family, credo sia utile un ulteriore parallelismo con il ciclo for che abbiamo visto. **`apply`** non è altro che un ciclo **`for`**, leggermente semplificato.
+Before analysing the **`*apply`** family, I think a further parallel with the for loop we have seen is useful. **`apply`** is nothing more than a slightly simplified **`for`** loop.
 
 ::::: columns
 ::: {.column width="50%"}
-Ciclo **`for`**
+**`for`** loop
 
 ```{r, echo=TRUE}
 vec = 1:5
@@ -127,9 +127,9 @@ res = sapply(vec, print)
 :::
 :::::
 
-## `*apply` family - funzione custom
+## `*apply` family - custom function
 
-Possiamo utlizzare anche funzioni create da noi:
+We can also use functions we created ourselves:
 
 ```{r, echo=TRUE}
 center_var = function(x){
@@ -145,13 +145,13 @@ my_list = list(
 lapply(my_list, center_var)
 ```
 
-## `*apply` family - implicito vs. esplicito
+## `*apply` family - implicit vs. explicit
 
-Quindi come il ciclo **`for`** scritto come **i** in **vec** assegna al valore **i** un **elemento** per volta dell'oggetto **vec**, internamente le funzioni **`*apply`** prendono il **primo elemento** dell'oggetto in **input** (lista) e **applicano** direttamente la funzione che abbiamo scelto.
+So, just as the **`for`** loop written as **i** in **vec** assigns to **i** one **element** of the **vec** object at a time, internally the **`*apply`** functions take the **first element** of the **input** object (list) and directly **apply** the function we have chosen.
 
 ::::: columns
 ::: {.column width="40%"}
-**`sapply`** implicito
+implicit **`sapply`**
 
 ```{r, echo=TRUE}
 vec = 1:5
@@ -160,7 +160,7 @@ res = sapply(vec, print)
 :::
 
 ::: {.column width="60%"}
-**`sapply`** esplicito
+explicit **`sapply`**
 
 ```{r, echo=TRUE}
 vec = 1:5
@@ -169,33 +169,33 @@ res = sapply(vec, function(i) print(i))
 :::
 :::::
 
-## `*apply` family - funzione anonima
+## `*apply` family - anonymous function
 
-Una funzione anonima è una funzione non salvata in un oggetto ma scritta per essere **eseguita direttamente**, all'interno di altre funzioni che lo permettono:
+An anonymous function is a function that is not saved in an object but written to be **executed directly**, inside other functions that allow it:
 
 ```{r, echo=TRUE}
 lapply(my_list, function(x) x - mean(x))
 ```
 
-**`x`** è solo un **placeholder** (analogo di i) e può essere qualsiasi lettera o nome!
+**`x`** is just a **placeholder** (analogous to i) and can be any letter or name!
 
-## Tutte le tipologie di `*apply`
+## All the types of `*apply`
 
--   **`lapply()`**: la funzione di base
+-   **`lapply()`**: the basic function
 
 -   **`sapply()`**: simplified-apply
 
--   **`tapply()`**: poco utilizzata, utile con i fattori
+-   **`tapply()`**: rarely used, useful with factors
 
--   **`apply()`**: utile per i dataframe/matrici
+-   **`apply()`**: useful for dataframes/matrices
 
--   **`mapply()`**: versione multivariata, utilizza più liste contemporaneamente
+-   **`mapply()`**: multivariate version, uses several lists at the same time
 
--   **`vapply()`**: utilizzata dentro le funzioni e pacchetti
+-   **`vapply()`**: used inside functions and packages
 
 ## `lapply`
 
-**`lapply`** sta per list-apply e restituisce sempre una lista, applicando la funzione ad ogni elemento della lista in input:
+**`lapply`** stands for list-apply and always returns a list, applying the function to each element of the input list:
 
 ```{r, echo=TRUE}
 res = lapply(my_list, mean)
@@ -205,7 +205,7 @@ class(res)
 
 ## `sapply`
 
-**`sapply`** sta per simplified-apply e (cerca) di restituire una versione più semplice di una lista, applicando la funzione ad ogni elemento della lista in input:
+**`sapply`** stands for simplified-apply and (tries to) return a simpler version of a list, applying the function to each element of the input list:
 
 ```{r, echo=TRUE}
 res = sapply(my_list, mean)
@@ -215,23 +215,23 @@ class(res)
 
 ## `apply`
 
-**`apply`** funziona in modo specifico per dataframe o matrici, applicando una funzione alle righe o alle colonne:
+**`apply`** works specifically on dataframes or matrices, applying a function to the rows or the columns:
 
 ```{r, echo=TRUE}
-my_df = data.frame(x1 = runif(n = 5,min = 1,max = 10), 
+my_df = data.frame(x1 = runif(n = 5,min = 1,max = 10),
                   x2 = runif(n = 5,min = 3,max = 4))
 my_df
 ```
 
 ## `apply`
 
-Applico a tutte le righe (1) la funzione mean:
+Apply the mean function to all rows (1):
 
 ```{r, echo=TRUE}
 apply(my_df, MARGIN = 1, FUN = mean)
 ```
 
-Applico a tutte le colonne (2) la funzione mean:
+Apply the mean function to all columns (2):
 
 ```{r, echo=TRUE}
 apply(my_df, MARGIN = 2, FUN = mean)
@@ -239,7 +239,7 @@ apply(my_df, MARGIN = 2, FUN = mean)
 
 ## `tapply`
 
-**`tapply`** permette di applicare una funzione ad un vettore, dividendo questo vettore in base ad una variabile categoriale:
+**`tapply`** lets us apply a function to a vector, splitting the vector according to a categorical variable:
 
 ```{r, echo=TRUE}
 vec = rnorm(75)
@@ -249,11 +249,11 @@ index = rep(c("a", "b", "c"), each = 25)
 tapply(vec, INDEX = index, mean)
 ```
 
-Qui dove *`INDEX`* è un vettore stringa o un fattore.
+Here *`INDEX`* is a character vector or a factor.
 
 ## `tapply`
 
-In questo caso calcoliamo la media per ogni categoria d'età:
+In this case we compute the mean for each age category:
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 my_df = readr::read_csv("data/mydf_2.csv")
@@ -263,68 +263,68 @@ tapply(my_df$age, my_df$age_cat, mean)
 
 ## `vapply`
 
-**`vapply`** è una versione più solida delle precedenti dal punto di vista di programmazione. In pratica permette (e richiede) di specificare in anticipo la tipologia di dato che ci aspettiamo come risultato:
+**`vapply`** is a more robust version of the previous ones from a programming point of view. In practice it lets (and requires) us to specify in advance the type of data we expect as a result:
 
 ```{r, echo=TRUE}
 vapply(my_list, FUN = mean, FUN.VALUE = numeric(length = 1))
 ```
 
-*`FUN.VALUE = numeric(length = 1)`*: indica che ogni risultato è un singolo valore numerico.
+*`FUN.VALUE = numeric(length = 1)`*: indicates that each result is a single numeric value.
 
 ## `mapply`
 
-**`mapply`** permette di gestire **più liste contemporaneamente** per scenari più complessi. Ad esempio vogliamo usare la funzione **`rnorm()`** e generare 4 con diverse medie e deviazioni stardard in combinazione:
+**`mapply`** lets us handle **several lists at the same time** for more complex scenarios. For example, we want to use the **`rnorm()`** function to generate 4 samples combining different means and standard deviations:
 
 ```{r, echo=TRUE}
-medie = list(10, 20, 30, 40)
+mus = list(10, 20, 30, 40)
 stds = list(1, 2, 3, 4)
 
-mapply(function(x,y) rnorm(n = 5, mean = x, sd = y), 
-       medie, stds, SIMPLIFY = FALSE)
+mapply(function(x,y) rnorm(n = 5, mean = x, sd = y),
+       mus, stds, SIMPLIFY = FALSE)
 ```
 
-**IMPORTANTE**, tutte le liste incluse devono avere la stessa dimensione!
+**IMPORTANT**: all the lists included must have the same length!
 
 ## `mapply` {.smaller}
 
-**mapply(function(x,y) rnorm(n = 4, mean = x, sd = y), medie, stds, SIMPLIFY = FALSE)**
+**mapply(function(x,y) rnorm(n = 5, mean = x, sd = y), mus, stds, SIMPLIFY = FALSE)**
 
--   **`function(...)`**: è una funzione anonima come abbiamo visto prima che può avere n elementi
+-   **`function(...)`**: an anonymous function, as we saw before, which can have n elements
 
--   **`rnorm(n = 10, mean = x, sd = y)`**: è l'effettiva funzione anonima dove abbiamo i placeholders x and y
+-   **`rnorm(n = 5, mean = x, sd = y)`**: the actual anonymous function, where we have the placeholders x and y
 
--   **`medie, stds`**: sono in **ordine** le liste corrispondenti ai placeholders indicati, quindi x = medie e y = stds
+-   **`mus, stds`**: the lists corresponding, **in order**, to the placeholders, so x = mus and y = stds
 
--   **`SIMPLIFY = FALSE`**: semplicemente dice di restituire una lista e non cercare (come sapply) di semplificare il risultato
+-   **`SIMPLIFY = FALSE`**: simply says to return a list and not to try (like sapply) to simplify the result
 
-## `mapply` come `for`
+## `mapply` as a `for`
 
-Lo stesso risultato (in modo più verboso) si ottiene con un **`for`** usando più volte l'iteratore i:
+The same result (in a more verbose way) can be obtained with a **`for`** loop, using the iterator i several times:
 
 ```{r, echo=TRUE}
-medie = list(10, 20, 30)
+mus = list(10, 20, 30)
 stds = list(1,2,3)
-res = vector(mode = "list", length = length(medie)) # lista vuota
+res = vector(mode = "list", length = length(mus)) # empty list
 
-for(i in 1:length(medie)){
-  res[[i]] = rnorm(n = 6, mean = medie[[i]], sd = stds[[i]])
-} 
+for(i in 1:length(mus)){
+  res[[i]] = rnorm(n = 6, mean = mus[[i]], sd = stds[[i]])
+}
 res
 ```
 
 ## `replicate`
 
-Questa funzione permette di ripetere un operazione n volte, senza però utilizzare un iteratore o un placeholder.
+This function lets us repeat an operation n times, without using an iterator or a placeholder.
 
 **`replicate(n, expr)`**
 
--   ***`n`*** è il numero di ripetizioni
+-   ***`n`*** is the number of repetitions
 
--   ***`expr`*** è la porzione di codice da ripetere
+-   ***`expr`*** is the portion of code to repeat
 
 ## `replicate`
 
-Campioniamo 1000 volte da una normale e facciamo la media AKA distribuzione campionaria della media
+We sample 1000 times from a normal distribution and compute the mean, AKA the sampling distribution of the mean
 
 ::::: columns
 ::: {.column width="50%"}
@@ -333,30 +333,30 @@ nrep=1000
 
 nsample=30
 
-media=100
+mu=100
 
 sd=30
 
 means=
   replicate(
-    n = nrep, 
+    n = nrep,
     expr = {mean(
-      rnorm(nsample, media, sd))}
+      rnorm(nsample, mu, sd))}
     )
 ```
 :::
 
 ::: {.column width="50%"}
 ```{r, echo=FALSE}
-hist(means, main = "Distribuzione campionaria della media")
-abline(v = mean(means), col = "blue", lwd = 3, lty = 2)  # Media stimata
-abline(v = c(mean(means) - sd(means), mean(means) + sd(means)), col = "red", lwd = 3, lty = 3)  # Errore standard
+hist(means, main = "Sampling distribution of the mean")
+abline(v = mean(means), col = "blue", lwd = 3, lty = 2)  # Estimated mean
+abline(v = c(mean(means) - sd(means), mean(means) + sd(means)), col = "red", lwd = 3, lty = 3)  # Standard error
 ```
 :::
 :::::
 
-## Ora facciamo un po' di pratica! {style="text-align: center;"}
+## Now let's practice! {style="text-align: center;"}
 
-<br/> Aprite e tenete aperto questo link:
+<br/> Open this link and keep it open:
 
 <https://etherpad.wikimedia.org/p/arca-corsoR>

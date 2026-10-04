@@ -1,5 +1,5 @@
 ---
-title: "Introduzione a R"
+title: "Introduction to R"
 title-block-banner-color: "#2B3E4F"
 author: "Margherita Calderan"
 title-block-banner: "arcabanner.png"
@@ -7,110 +7,124 @@ date: today
 format:
   html:
     theme: Superhero
-    css: style.css 
+    css: style.css
     fontsize: 1.12em
     linestretch: 1.5
     mainfont: Helvetica Neue
     toc: true
     toc-location: left
-    toc-title: "Contenuti"
+    toc-title: "Contents"
 ---
 
-## Obiettivi
+## Goals
 
--   Impareremo tutti gli **elementi principali** che compongono il linguaggio R
--   Imparare la **logica generale della programmazione** spendibile con qualsiasi linguaggio
--   Migliorare il modo di affrontare i problemi e **rendere più efficiente il lavoro quotidiano**
+-   Learn all the **main elements** that make up the R language
+-   Learn the **general logic of programming**, useful with any language
+-   Improve the way we approach problems and **make everyday work more efficient**
 
-## Organizzazione delle lezioni
+## How the lessons are organized
 
--   Comprensione teorico-logica degli argomenti
--   Comprensione dei risultati del codice, dei messaggi di errore e dei casi particolari
--   Applicazione direttamente scrivendo codice e risolvendo esercizi
+-   Theoretical and logical understanding of the topics
+-   Understanding code output, error messages and special cases
+-   Hands-on practice writing code and solving exercises
 
-## Esame
+## Exam
 
--   **Formato**: L'esame consisterà in diversi esercizi.
--   **Argomenti**: Gli esercizi copriranno gli argomenti trattati durante il corso.
--   **Materiale consentito**: È permesso utilizzare il materiale fornito a lezione. Non è consentito l'uso di altro materiale online (o chatGPT) durante l'esame.
--   **Durata**: 1 ora
--   **Modalità**: in classe
--   **Soluzioni**: [Script](esameMar2026.R){download="esameMar2026.R"}
+-   **Format**: The exam will consist of several exercises.
+-   **Topics**: The exercises will cover the topics presented during the course.
+-   **Allowed material**: You may use the material provided during the lessons. Other online material (or ChatGPT) is not allowed during the exam.
+-   **Duration**: 1 hour
+-   **Mode**: in class
 
-## Aule e Orari {style="text-align: center;"}
+## Rooms and Schedule {style="text-align: center;"}
 
-| Data       | Ora          | Aula                |
-|------------|--------------|---------------------|
-| 09/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 10/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 11/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 12/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
-| 13/03/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| Date                 | Time         | Room                |
+|----------------------|--------------|---------------------|
+| Monday 19/10/2026    | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| Wednesday 21/10/2026 | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| Friday 23/10/2026    | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| Tuesday 27/10/2026   | 9:00 - 13:00 | Psico 1 - Aula ARCA |
+| Thursday 29/10/2026  | 9:00 - 13:00 | Psico 1 - Aula ARCA |
 
-# Materiale
+# Material
 
-## Lezioni
+## Lessons
 
-Qui sotto trovate i link al materiale principale del corso; di seguito il link al padlet che utilizziamo per gli esercizi in classe: [Esercizi in classe](https://etherpad.wikimedia.org/p/arca-corsoR){target="_blank"}.
+Below you can find the links to the main course material; here is the link to the pad we use for the in-class exercises: [In-class exercises](https://etherpad.wikimedia.org/p/arca-corsoR){target="_blank"}.
 
-### Introduzione
+### Introduction
 
--   *Introduzione a R (1)* - [Slides](materials/0_getStarted/0_getStarted.html){target="_blank"}
--   *Come lavorare in R - Path e R Projects* - [Slides](materials/1_intro/1.1_intro.html){target="_blank"}
--   *Introduzione a R (2)* - [Slides](materials/1_intro/1.2_intro.html){target="_blank"}
--   *Introduzione a R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"}
+-   *Introduction to R (1)* - [Slides](materials/0_getStarted/0_getStarted.html){target="_blank"}
+-   *How to work in R - Paths and R Projects* - [Slides](materials/1_intro/1.1_intro.html){target="_blank"}
+-   *Introduction to R (2)* - [Slides](materials/1_intro/1.2_intro.html){target="_blank"}
+-   *Introduction to R (3)* - [Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"}
 
-### Strutture dati
+### Data structures
 
--   *Vettori* - [Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"}
--   *Fattori* - [Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"}
--   *Liste, Matrici e Array* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"}
--   *Dataframe* - [Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"}
+-   *Vectors* - [Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"}
+-   *Factors* - [Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"}
+-   *Lists, Matrices and Arrays* - [Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"}
+-   *Dataframes* - [Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"}
 
-### Programmazione
+### Programming
 
--   *Condizionale* - [Slides](materials/3_programmazione/3.1_condizionale.html){target="_blank"}
--   *Iterativa* - [Slides](materials/3_programmazione/3.2_iterativa.html){target="_blank"}
+-   *Conditional* - [Slides](materials/3_programmazione/3.1_condizionale.html){target="_blank"}
+-   *Iterative* - [Slides](materials/3_programmazione/3.2_iterativa.html){target="_blank"}
 -   *Apply family* - [Slides](materials/3_programmazione/3.3_apply.html){target="_blank"}
 
 ### Extra
 
--   *ReCap* - [Slides](materials/4_extra/recap.html){target="_blank"} 
--   *Extra, caricare file, visualizzare dati, salvare* - [Slides](materials/4_extra/EXTRA.html){target="_blank"} 
+-   *ReCap* - [Slides](materials/4_extra/recap.html){target="_blank"}
+-   *Extra: loading files, visualizing data, saving* - [Slides](materials/4_extra/Extra.html){target="_blank"}
 
-### Esercizi
+### Exercises
 
-Qui troverete gli esercizi con soluzioni:
+Here you will find the exercises with solutions:
 
--   Intro e **Vettori** - [Script](materials/esercizi/1-soluzioni.R){download="1-soluzioni.R"}
+-   Intro and **Vectors** - [Script](materials/esercizi/1-soluzioni.R){download="1-soluzioni.R"}
 
--   **Fattori** - [Script](materials/esercizi/2-esercizi.R){download="2-esercizi.R"}
+-   **Factors** - [Script](materials/esercizi/2-esercizi.R){download="2-esercizi.R"}
 
--   **Liste, Matrici & Array** - [Script](materials/esercizi/3-esercizi.R){download="3-esercizi.R"}
+-   **Lists, Matrices & Arrays** - [Script](materials/esercizi/3-esercizi.R){download="3-esercizi.R"}
 
--   [Script](materials/esercizi/esercizi-aggiuntivi.R){download="esercizi-aggiuntivi.R"} con esercizi aggiuntivi su tutto quello fatto fino a qui, senza soluzioni.
+-   [Script](materials/esercizi/esercizi-aggiuntivi.R){download="esercizi-aggiuntivi.R"} with additional exercises on everything covered so far, without solutions.
 
--   **Dataframe** - [Script](materials/esercizi/4-esercizi.R){download="4-esercizi.R"}
+-   **Dataframes** - [Script](materials/esercizi/4-esercizi.R){download="4-esercizi.R"}
 
-    -   [Esercizio](materials/2_struttureDati/sara/scriptSara.R){download="scriptSara.R"} per Sara
-    -   Esercizi [extra](materials/esercizi/4.1-esercizi.R){download="4.1-esercizi.R"}
+    -   [Extra](materials/esercizi/4.1-esercizi.R){download="4.1-esercizi.R"} exercises
 
--   Programmazione **Condizionale** - [Script](materials/esercizi/5-esercizi.R){download="5-esercizi.R"}
+-   **Conditional** programming - [Script](materials/esercizi/5-esercizi.R){download="5-esercizi.R"}
 
--   Programmazione **Iterativa** -
+-   **Iterative** programming -
 
--   Esercizio per Noemi:
-    -  [dati](materials/3_programmazione/noemi/dataNoemi.csv){download="dataNoemi.csv"}
-    -  [script](materials/3_programmazione/noemi/scriptNoemi.R){download="scriptNoemi.R"}
+# Useful links
 
-# Link utili
+-   Course Github [**Repository**](https://github.com/arca-dpss/course-R-2425)
 
--   [**Repository**](https://github.com/arca-dpss/course-R-2425) Github del corso
+-   The book [**Introduction2R**](https://psicostat.github.io/Introduction2R/), available online on Github (in Italian)
 
--   Libro [**Introduction2R**](https://psicostat.github.io/Introduction2R/) disponibile online su Github
+-   [**Guide**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} to installing R and RStudio (in Italian)
 
--   [**Guida**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} installazione R ed RStudio
+-   [Additional exercises by Filippo Gambarota](https://arca-dpss.github.io/course-R/exercises/esercizi-no-solutions.html){target="_blank"} (in Italian)
 
--   [Esercizi aggiuntivi by Filippo Gambarota](https://arca-dpss.github.io/course-R/exercises/esercizi-no-solutions.html){target="_blank"}
+### Materials in English
 
-**Credits**: Alcune cose sono state prese/adattate da materiali di [Filippo Gambarota](https://github.com/filippogambarota){target="_blank"} e [Enrico Toffalini](https://github.com/EnricoToffalini){target="_blank"}
+-   [**Download R and RStudio**](https://posit.co/download/rstudio-desktop/){target="_blank"}: official installation page
+
+-   [**Hands-On Programming with R**](https://rstudio-education.github.io/hopr/){target="_blank"}: a beginner-friendly introduction to programming in R (objects, functions, loops)
+
+-   [**YaRrr! The Pirate's Guide to R**](https://bookdown.org/ndphillips/YaRrr/){target="_blank"}: an introduction to R for psychology students
+
+-   [**Learning Statistics with R**](https://learningstatisticswithr.com/){target="_blank"}: R and statistics for psychology students
+
+-   [**R for Data Science (2e)**](https://r4ds.hadley.nz/){target="_blank"}: importing, tidying, transforming and visualizing data with the tidyverse
+
+-   [**ggplot2: Elegant Graphics for Data Analysis**](https://ggplot2-book.org/){target="_blank"}: the reference book for plotting with ggplot2
+
+-   [**Advanced R**](https://adv-r.hadley.nz/){target="_blank"}: for going deeper into how R works
+
+-   [**An Introduction to R**](https://cran.r-project.org/doc/manuals/r-release/R-intro.html){target="_blank"}: the official manual from CRAN
+
+-   [**Posit Cheatsheets**](https://posit.co/resources/cheatsheets/){target="_blank"}: one-page summaries of the most used packages and of RStudio
+
+**Credits**: Some material has been taken/adapted from materials by [Filippo Gambarota](https://github.com/filippogambarota){target="_blank"} and [Enrico Toffalini](https://github.com/EnricoToffalini){target="_blank"}

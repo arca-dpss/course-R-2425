@@ -1,6 +1,6 @@
 ---
-title: "Introduzione 1"
-format: 
+title: "Introduction 1"
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -9,38 +9,38 @@ format:
 editor: visual
 ---
 
-## Ambiente di Lavoro {style="text-align: center;"}
+## Working Environment {style="text-align: center;"}
 
-RStudio è diviso in **4 pannelli principali**:
+RStudio is divided into **4 main panes**:
 
 ![](images/R_studio.png){fig-align="center" width="2810"}
 
 ------------------------------------------------------------------------
 
-**Script.** Il file di testo dove scrivi e salvi il codice. Puoi eseguire una riga alla volta (`Ctrl + Invio` / `Cmd + Enter`) oppure tutto lo script cliccando `Source`. I commenti si aggiungono con `#`.
+**Script.** The text file where you write and save your code. You can run one line at a time (`Ctrl + Enter` / `Cmd + Enter`) or the whole script by clicking `Source`. Comments are added with `#`.
 
 <br/>
 
-**Console.** Qui R esegue il codice e mostra i risultati. Puoi scrivere comandi direttamente nella console per prove rapide, ma non vengono salvati.
+**Console.** This is where R runs the code and shows the results. You can type commands directly in the console for quick tests, but they are not saved.
 
 <br/>
 
-**Environment / Scrivania temporanea.** Mostra tutti gli **oggetti** creati durante la sessione corrente.
+**Environment / Temporary desk.** Shows all the **objects** created during the current session.
 
 <br/>
 
-**Varie.** Pannello multifunzione con diverse tab, tra cui il file explorer
+**Miscellaneous.** A multi-purpose pane with several tabs, including the file explorer
 
 ------------------------------------------------------------------------
 
 ::: callout-note
 ## Console
 
-I comandi nella console vengono eseguiti ma **non salvati**.
+Commands in the console are executed but **not saved**.
 
-Per eseguire il comando → `Invio`
+To run the command → `Enter`
 
-L'output è immediato e appare nella console.
+The output is immediate and appears in the console.
 :::
 
 <br/>
@@ -48,28 +48,28 @@ L'output è immediato e appare nella console.
 ::: callout-note
 ## Script
 
-È possibile salvare gli script con tutti i comandi.
+You can save scripts with all your commands.
 
-Per eseguire il comando → `Ctrl + Invio` (`Cmd + Enter` su Mac)
+To run the command → `Ctrl + Enter` (`Cmd + Enter` on Mac)
 
-L'output è restituito nella console.
+The output is returned in the console.
 :::
 
-## Come lavorare in R
+## How to work in R
 
-Creiamo uno script:
+Let's create a script:
 
 ![](images/script.png){fig-align="center"}
 
-## Come lavorare in R
+## How to work in R
 
-Salviamo:
+Let's save it:
 
 ![](images/save.png){fig-align="center"}
 
 ## Working Directory
 
-La posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti.
+The location (folder) on your PC where R is working and where R expects to find your files, unless specified otherwise.
 
 <br/>
 
@@ -77,14 +77,14 @@ La posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si as
 getwd()
 ```
 
-## Path Assoluto
+## Absolute Path
 
 PC
 
-```         
+```
 |- Users
-    | 
-    |- tita 
+    |
+    |- tita
         |
         |- course-R-2425
             |
@@ -93,49 +93,49 @@ PC
                 |- 1_intro
 ```
 
-<br/> Io sto lavorando dentro la cartella 1_intro.
+<br/> I am working inside the 1_intro folder.
 
-## Path Relativo (alla working directory)
+## Relative Path (to the working directory)
 
-1.  Cambia la working directory attraverso il comando `setwd`:
+1.  Change the working directory with the `setwd` command:
 
 ```{r, echo=TRUE, eval=FALSE}
 setwd('/Users/tita/Desktop')
 ```
 
-2.  Scarica il file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv) ed inseriscilo nella cartella.
+2.  Download the file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv) and put it in the folder.
 
 ::: fragment
-3.  Dato che stiamo lavorando dentro la cartella, se vogliamo caricare un file che si trova dentro questa cartella possiamo scrivere semplicemente il nome del file tra virgolette, ed utilizzare per esempio la funzione `read.csv`:
+3.  Since we are working inside the folder, if we want to load a file located in this folder we can simply write the file name in quotes and use, for example, the `read.csv` function:
 
 ```{r, echo=TRUE, warning=FALSE}
 data = read.csv("prova.csv")
 
-head(data, n = 4) #mostra le prime righe del dataset
+head(data, n = 4) # show the first rows of the dataset
 ```
 :::
 
-## 
+##
 
-Se invece vogliamo caricare un file che si trova in un'altra posizione dobbiamo chiamarlo attraverso il path assoluto:
+If instead we want to load a file located somewhere else, we need to refer to it through its absolute path:
 
 ```{r, echo=TRUE, warning=FALSE}
 data = read.csv("/Users/tita/course-R-2425/materials/1_intro/prova.csv")
-head(data, n = 4) #mostra le prime righe del dataset
+head(data, n = 4) # show the first rows of the dataset
 ```
 
 <br/>
 
 ::: fragment
-Oppure, prima cambiare la working directory attraverso il comando `setwd` e poi caricare il file.
+Or, first change the working directory with the `setwd` command and then load the file.
 :::
 
-## La soluzione migliore?
+## The best solution?
 
-Creare un R project!
+Create an R project!
 
--   permettono di impostare la working directory in automatico
--   permettono di usare ***relative path*** invece che ***absolute path***
--   permettono un veloce accesso ad un determinato progetto
+-   they set the working directory automatically
+-   they let you use ***relative paths*** instead of ***absolute paths***
+-   they give quick access to a given project
 
-# Creiamone uno!
+# Let's create one!

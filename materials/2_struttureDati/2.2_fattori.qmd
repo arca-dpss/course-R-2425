@@ -1,6 +1,6 @@
 ---
-title: "Fattori"
-format: 
+title: "Factors"
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -9,27 +9,27 @@ format:
 editor: visual
 ---
 
-## Strutture Dati
+## Data Structures
 
--   vettori
+-   vectors
 
--   ***`fattori`***
+-   ***`factors`***
 
--   liste
+-   lists
 
--   matrici
+-   matrices
 
--   array
+-   arrays
 
--   dataframe
+-   dataframes
 
-## Fattori
+## Factors
 
-I fattori sono una tipologia di dato peculiare e per quanto simile a semplici **`characters`** in realtà sono un tipo di vettore **`integer`** con delle proprietà aggiuntive.
+Factors are a peculiar data type: although they look like simple **`characters`**, they are actually a type of **`integer`** vector with some additional properties.
 
-## Creare un fattore
+## Creating a factor
 
-I fattori si possono creare sia convertendo un vettore character attraverso il comando **`as.factor()`** ...
+Factors can be created either by converting a character vector with the **`as.factor()`** command ...
 
 ```{r, echo=TRUE}
 char_vect = rep(c("hello","ciao", "hola"), each = 2)
@@ -39,7 +39,7 @@ my_fact = as.factor(char_vect)
 my_fact
 ```
 
-... che creando esplicitamente un fattore attraverso il comando **`factor()`**:
+... or by explicitly creating a factor with the **`factor()`** command:
 
 ```{r, echo=TRUE}
 
@@ -47,12 +47,12 @@ my_fact = factor(x = char_vect)
 my_fact
 ```
 
-## Caratteristiche dei fattori
+## Properties of factors
 
-In pratica assegnano un'etichetta ad un valore numerico intero:
+In practice, they assign a label to an integer value:
 
 ```{r, echo = TRUE}
-typeof(my_fact) #typeof determines the type or storage mode of any object
+typeof(my_fact) # typeof determines the type or storage mode of any object
 ```
 
 ```{r, echo=TRUE, warning=TRUE}
@@ -62,10 +62,10 @@ my_fact
 ```
 
 ::: fragment
-Questo non vale per i vettori character!
+This does not hold for character vectors!
 
 ```{r, echo = TRUE}
-typeof(char_vect) #typeof determines the type or storage mode of any object
+typeof(char_vect) # typeof determines the type or storage mode of any object
 ```
 
 ```{r, echo = TRUE}
@@ -77,14 +77,14 @@ char_vect
 
 ------------------------------------------------------------------------
 
-I fattori permettono di avere dei livelli **`levels()`** come metadati,
+Factors store **`levels()`** as metadata,
 
 ```{r, echo = TRUE}
 levels(my_fact)
 ```
 
 ::: {.fragment}
-a prescindere da quali siano effettivamente presenti nel vettore. Per esempio se creo un fattore composto solo dagli elementi di my_fact diversi da ciao:
+regardless of which ones are actually present in the vector. For example, if I create a factor made only of the elements of my_fact different from ciao:
 
 ```{r, echo = TRUE}
 my_fact2 = my_fact[my_fact!="ciao"]
@@ -93,7 +93,7 @@ my_fact2 = my_fact[my_fact!="ciao"]
 :::
 
 ::: {.fragment}
-I livelli di my_fact2 saranno gli stessi di my_fact (ciao incluso) anche se ciao non è presente come osservazione:
+The levels of my_fact2 will be the same as those of my_fact (ciao included), even though ciao is no longer present as an observation:
 
 ```{r, echo = TRUE}
 my_fact2
@@ -102,42 +102,42 @@ levels(my_fact2)
 :::
 ------------------------------------------------------------------------
 
-E' possibile però eslcudere i livelli non più utili attraverso il comando `droplevels()`:
+However, we can drop the levels that are no longer needed with the `droplevels()` command:
 
 ```{r, echo = TRUE}
-# come sarebbe my_fact2 se droppassi i livelli per cui non ci sono osservazioni?
-droplevels(my_fact2) 
+# what would my_fact2 look like if I dropped the levels with no observations?
+droplevels(my_fact2)
 ```
 
 ::: fragment
 ```{r, echo = TRUE}
-# modifico my_fact2 eliminando i livelli inutili
-my_fact2 = droplevels(my_fact2) 
+# modify my_fact2 by removing the unused levels
+my_fact2 = droplevels(my_fact2)
 my_fact2
 ```
 :::
 
 ------------------------------------------------------------------------
 
-E' possibile anche **rinominare** i livelli del fattore...
+We can also **rename** the levels of a factor...
 
 ```{r, echo=TRUE}
-my_fact # il fattore che ho creato 
-my_fact_lev = my_fact # creo un altro fattore "my_fact_lev" identico 
+my_fact # the factor I created
+my_fact_lev = my_fact # create another identical factor "my_fact_lev"
 ```
 
 ::: fragment
-accedendo attraverso il comando `levels`:
+by accessing them with the `levels` command:
 
 ```{r, echo=TRUE}
 levels(my_fact_lev)
-# rinomino i livelli del fattore
-levels(my_fact_lev) = c("italiano","inglese","spagnolo")
+# rename the levels of the factor
+levels(my_fact_lev) = c("italian","english","spanish")
 ```
 :::
 
 ::: fragment
-Ora i due fattori saranno:
+Now the two factors are:
 
 ```{r, echo=TRUE}
 my_fact_lev
@@ -147,16 +147,16 @@ my_fact
 
 ------------------------------------------------------------------------
 
-E' possibile **sia riordinare** che **rinominare** i livelli di un fattore attraverso la funzione `factor()`:
+We can **both reorder** and **rename** the levels of a factor with the `factor()` function:
 
 ```{r, echo=TRUE}
 my_fact
-# di default l'ordine di assegnazione è alfabetico 
+# by default levels are assigned in alphabetical order
 as.integer(my_fact)
 ```
 
 ::: fragment
-Noi possiamo decidere che il primo livello sia hello:
+We can decide that the first level should be hello:
 
 ```{r, echo=TRUE}
 new_fact = factor(x = my_fact, levels = c("hello","ciao","hola"))
@@ -167,19 +167,19 @@ as.integer(new_fact)
 
 ------------------------------------------------------------------------
 
-Possiamo anche rinominare i livelli sempre attraverso la funzione `factor()`:
+We can also rename the levels, again with the `factor()` function:
 
 ```{r, echo=TRUE}
 my_fact
 
 new_fact2 = factor(x = my_fact, levels = c("hello","ciao","hola"),
-                   labels = c("inglese","italiano","spagnolo"))
+                   labels = c("english","italian","spanish"))
 new_fact2
 ```
 
 ::: {.fragment}
 
-Versioni precedenti:
+Previous versions:
 
 ```{r, echo=TRUE}
 new_fact
@@ -190,17 +190,17 @@ my_fact
 
 ------------------------------------------------------------------------
 
-**Ricordate**: l'argomento ***`levels`*** dentro la funzione **`factor()`** serve a **riordinare** i livelli del fattore, mentre la funzione **`levels()`** serve ad accedere ai nomi dei livelli ed eventualmente **rinominarli**!
+**Remember**: the ***`levels`*** argument inside the **`factor()`** function is used to **reorder** the levels of the factor, while the **`levels()`** function is used to access the level names and, if needed, **rename** them!
 
 ```{r, echo=TRUE}
-# il fattore che ho creato 
+# the factor I created
 my_fact
 levels(my_fact)
 levels(my_fact) = c("hello","ciao","hola")
 ```
 
 ::: fragment
-Cosa notate rispetto al vettore my_fact visualizzato sopra?
+What do you notice compared to the my_fact vector shown above?
 
 ```{r, echo=TRUE}
 my_fact
@@ -208,20 +208,20 @@ as.integer(my_fact)
 ```
 :::
 
-## Fattori Ordinali
+## Ordinal Factors
 
-Un sottotipo di fattori sono gli ***ordered factors*** che corrispondo alle variabili ordinali, ovvero dove i livelli sono ordinati in modo crescente:
+A subtype of factors are ***ordered factors***, which correspond to ordinal variables, i.e. variables whose levels are sorted in increasing order:
 
 ```{r, echo=TRUE}
 my_ord_fac = as.ordered(my_fact)
 
-my_ord_fac # odine alfabetico
+my_ord_fac # alphabetical order
 
 attributes(my_ord_fac)
 ```
 
-## Facciamo un po' di pratica! {style="text-align: center;"}
+## Let's practice! {style="text-align: center;"}
 
-<br/> Aprite e tenete aperto questo link:
+<br/> Open this link and keep it open:
 
 <https://etherpad.wikimedia.org/p/arca-corsoR>

@@ -1,6 +1,6 @@
 ---
-title: "Programmazione condizionale"
-format: 
+title: "Conditional programming"
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -9,154 +9,154 @@ format:
 editor: visual
 ---
 
-## Programmazione in R
+## Programming in R
 
-Vedremo i principali costrutti della programmazione e la loro applicazione in R. Molti dei concetti presentati sono trasversali, quindi applicabili anche ad altri linguaggi di programmazione. Qui affronteremo gli aspetti più basici, per applicazioni più avanzate vi suggeriamo il libro: [Advanced R](https://adv-r.hadley.nz/)
+We will look at the main programming constructs and how they are applied in R. Many of the concepts presented are general, so they also apply to other programming languages. Here we will cover the most basic aspects; for more advanced applications we suggest the book: [Advanced R](https://adv-r.hadley.nz/)
 
-## Argomenti
+## Topics
 
--   Costrutti della programmazione
+-   Programming constructs
 
--   Programmazione condizionale
+-   Conditional programming
 
--   Programmazione iterativa
+-   Iterative programming
 
-## Funzioni
+## Functions
 
-Analogalmente alle funzioni matematiche, la funzione in programmazione consiste nell' astrarre una serie di operazioni (nel nostro caso una porzione di codice) definendo una serie di operazioni che forniti degli **input** forniscono degli **output** eseguendo una serie di operazioni.
+Just like mathematical functions, a function in programming abstracts a series of operations (in our case a portion of code): given some **inputs**, it performs a series of operations and returns some **outputs**.
 
 ![](images/fun1.png){fig-align="center"}
 
-## Funzioni - Creazione
+## Functions - Creation
 
-Il comando usato per creare una funzione in R è **`function()`** seguito da una coppia di parentesi graffe **`{ }`** al cui interno deve essere specificato il **corpo** della funzione:
+The command used to create a function in R is **`function()`**, followed by a pair of curly braces **`{ }`** inside which we write the **body** of the function:
 
 ```{r, echo=TRUE}
 
-myfun_sum = function(x,y){ # argomenti
-  
-  x + y  # corpo
+myfun_sum = function(x,y){ # arguments
+
+  x + y  # body
 
   }
 
 myfun_sum(2,3)
 ```
 
-La funzione che ho creato prende in **input** x e y, li **somma**, e fornisce in **output** il risulato.
+The function I created takes x and y as **input**, **adds** them, and returns the result as **output**.
 
-## Funzioni - Creazione
+## Functions - Creation
 
-E' possibile svolgere svariate operazioni dentro una sola funzione. E' preferibile usare il comando **`return()`** per definire esplicitamente l'ouput che desideriamo, per esempio...
+We can perform many different operations inside a single function. It is better to use the **`return()`** command to explicitly define the output we want, for example...
 
 ```{r, echo=TRUE}
 
 myfun = function(x,y, name){
-  
-  # corpo
-  z = x + y  #sommo x e y
-  id = paste(z, name, sep = "_") # creo un codice 
-  
-  #output
+
+  # body
+  z = x + y  # add x and y
+  id = paste(z, name, sep = "_") # create a code
+
+  # output
   return(id)
 }
 
 myfun(2,3, "carlo")
 ```
 
-## Funzioni - Creazione
+## Functions - Creation
 
-Prendiamo un operazione ripetitiva che spesso si fa in analisi dati, **standardizzare** (trasformare in punti z) una variabile ovvero **sottrarre** da un **vettore x** di osservazioni la sua **media** $\mu_x$ e poi **dividere** per la **deviazione standard** $\sigma_x$ :
+Let's take a repetitive operation often performed in data analysis: **standardizing** a variable (transforming it into z scores), i.e. **subtracting** its **mean** $\mu_x$ from a **vector x** of observations and then **dividing** by the **standard deviation** $\sigma_x$ :
 
 $$
 x_z = \frac{x - \mu_x}{\sigma_x}
 $$
 
-## Funzioni - Creazione
+## Functions - Creation
 
-Per creare questa funzione dobbiamo quindi definire:
+To create this function we need to define:
 
--   **argomenti**: variabili da definire (se non già definite)
+-   **arguments**: variables to be defined (if not already defined)
 
--   **corpo**: le operazioni che la funzione deve eseguire usando gli argomenti
+-   **body**: the operations the function must perform using the arguments
 
--   **output**: cosa la funzione deve restituire come risultato
+-   **output**: what the function must return as a result
 
-## Funzioni - Creazione
+## Functions - Creation
 
-### Argomenti
+### Arguments
 
-Gli **argomenti** sono quelle parti **variabili** della funzione che vengono definiti e poi sono necessari ad eseguire la funzione stessa. Nel caso della nostra funzione l'unico argomento è il **vettore** in **input**. Possiamo analogalmente a **`mean`** e **`sd`** impostare un secondo argomento che indichi se eliminare gli NA:
+The **arguments** are the **variable** parts of the function that are defined and then needed to run the function itself. In our function the only argument is the **input** **vector**. Just like **`mean`** and **`sd`**, we can add a second argument indicating whether to remove NAs:
 
 ```{r, echo=TRUE}
-z_score = function(x, na.rm = FALSE){ # argomenti 
+z_score = function(x, na.rm = FALSE){ # arguments
   # body
   # output
 }
 ```
 
-## Funzioni - Creazione
+## Functions - Creation
 
 ### Body
 
-Il **corpo** della funzione sono le **operazioni** da eseguire utilizzando gli argomenti in input. Nel nostro caso dobbiamo sottrarre la media da e dividere per la deviazione standard.
+The **body** of the function contains the **operations** to perform using the input arguments. In our case we need to subtract the mean and divide by the standard deviation.
 
 ```{r, echo=TRUE}
 
-z_score = function(x, na.rm = FALSE){ # argomenti 
-  
+z_score = function(x, na.rm = FALSE){ # arguments
+
   (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm)
   # output
 }
 ```
 
-## Funzioni - Creazione
+## Functions - Creation
 
 ### Output
 
-L'output è il risultato che la funzione ci restituisce dopo aver eseguito tutte le operazioni. Nel nostro caso vogliamo che la funzione restituisca il vettore ma trasformato in punti z. Come abbiamo visto in precedenza, possiamo utilizzare la funzione **`return()`** che esplicitamente dice alla funzione cosa restituire:
+The output is the result the function returns after performing all the operations. In our case we want the function to return the vector transformed into z scores. As we saw before, we can use the **`return()`** function, which explicitly tells the function what to return:
 
 ```{r, echo=TRUE}
 
-z_score = function(x, na.rm = FALSE){ # argomenti 
-  
+z_score = function(x, na.rm = FALSE){ # arguments
+
   xcen = (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm)
-  
+
   return(xcen)
-  
+
 }
 
 ```
 
-## Funzioni - Creazione
+## Functions - Creation
 
-Abbiamo quindi creato questa funzione, che diventa un oggetto nel nostro ***enviroment*** e possiamo utilizzarla
+We have now created this function, which becomes an object in our ***environment***, and we can use it
 
 ```{r, echo=TRUE}
-# creo un vettore x
+# create a vector x
 vect = runif(n = 100, min = 1, max = 10)
 
-mean(vect) # media
+mean(vect) # mean
 
-sd(vect)   # deviazione standard
+sd(vect)   # standard deviation
 
-# centro
-vec0 = z_score(vect) # di default na.rm =  è impostato TRUE 
+# standardize
+vec0 = z_score(vect) # by default na.rm is set to FALSE
 
-round(mean(vec0),2) # media 0 
+round(mean(vec0),2) # mean 0
 
-sd(vec0) # deviazione standard 1
+sd(vec0) # standard deviation 1
 
 ```
 
-## Funzioni - suggerimenti
+## Functions - tips
 
--   Le parentesi grafe **`{}`** possono essere omesse nel caso in cui il codice sia tutto in una stessa riga
--   **`return()`** può essere omesso se l'ultima riga rappresenta l'output desiderato
+-   Curly braces **`{}`** can be omitted if the code is all on the same line
+-   **`return()`** can be omitted if the last line is the desired output
 
 ::::: columns
 ::: {.column width="42%"}
 ```{r, echo=TRUE}
-z_score1 = function(x){ 
+z_score1 = function(x){
   xcen = (x - mean(x))/sd(x)
   return(xcen)
 }
@@ -172,28 +172,28 @@ z_score2(vect[1:5])
 :::
 :::::
 
-## Programmazione condizionale - **`if`**
+## Conditional programming - **`if`**
 
-In programmazione solitamente è necessario non solo eseguire una serie di operazioni MA eseguire delle operazioni in funzione di alcune condizioni.
+In programming we usually need not only to perform a series of operations BUT to perform operations depending on some conditions.
 
-## Programmazione condizionale - **`if`**
+## Conditional programming - **`if`**
 
-Il concetto di **se** ***condizione*** **allora** fai ***operazione*** si traduce in programmazione tramite quelli che si chiamano **`if`** statement
+The concept of **if** ***condition*** **then** do ***operation*** is translated in programming through what are called **`if`** statements
 
 ![](images/if.png)
 
 ## **`if`** statement
 
-Vediamo un'esempio
+Let's see an example
 
 ```{r, echo=TRUE}
 
-myfun_if = function(x){ # argomento
-  
+myfun_if = function(x){ # argument
+
   if (x > 0){
-    cat("Il valore è maggiore di 0\n")
+    cat("The value is greater than 0\n")
   }
-  cat("Fine funzione")
+  cat("End of function")
 }
 
 myfun_if(10)
@@ -204,20 +204,20 @@ myfun_if(-10)
 
 ## **`if`** statement - **`STOP`**
 
-Esiste una famiglia di funzioni con prefisso **`is.`** che fornisce **`TRUE`** quando la tipologia di oggetto corrisponde a quella richiesta e **`FALSE`** in caso contrario.
+There is a family of functions with the **`is.`** prefix that returns **`TRUE`** when the object type matches the requested one and **`FALSE`** otherwise.
 
 ```{r, echo=TRUE, error=TRUE}
 
-myfun_stop = function(x){ # argomento
-  
-  if (!is.numeric(x)) { # utile quando vogliamo evitare che la funzione venga eseguita
-    stop("il vettore deve essere numerico")
+myfun_stop = function(x){ # argument
+
+  if (!is.numeric(x)) { # useful when we want to prevent the function from running
+    stop("the vector must be numeric")
   }
   mean(x, na.rm = TRUE)
 }
 
-x = 1:10  # vettore num 
-y = letters[1:10] # vettore chr
+x = 1:10  # numeric vector
+y = letters[1:10] # character vector
 
 myfun_stop(x)
 myfun_stop(y)
@@ -226,29 +226,29 @@ myfun_stop(y)
 
 ## **`if...else`**
 
-Il semplice utilizzo di un singolo **`if`** potrebbe non essere sufficiente in alcune situazioni. Sopratutto perchè possiamo vedere l'**`if`** come una **deviazione temporanea** dallo script principale che viene imboccata solo se è vera una condizione, altrimenti lo script continua.
+Using a single **`if`** may not be enough in some situations. Above all because we can see the **`if`** as a **temporary detour** from the main script that is taken only if a condition is true; otherwise the script goes on.
 
 ## **`if...else`**
 
-Se vogliamo una struttura più "simmetrica" possiamo eseguire delle operazioni se la condizone è vera **`if`** e altre per tutti gli altri scenari (**`else`**).
+If we want a more "symmetric" structure, we can perform some operations if the condition is true (**`if`**) and others for all the other scenarios (**`else`**).
 
 ![](images/ifelse.png){fig-align="center"}
 
 ## **`if...else`**
 
-Vediamo un esempio
+Let's see an example
 
 ```{r, echo=TRUE}
 
-myfun_ifelse = function(x){ # argomento
-  
+myfun_ifelse = function(x){ # argument
+
   if (x > 0){
-    cat("Il valore è maggiore di 0\n")
+    cat("The value is greater than 0\n")
   }
   else{
-    cat("Il valore è minore di 0\n")
+    cat("The value is less than 0\n")
   }
-  cat("Fine funzione")
+  cat("End of function")
 }
 
 myfun_ifelse(10)
@@ -261,50 +261,50 @@ myfun_ifelse(-10)
 
 ```{r, echo=TRUE}
 
-myfun_ifelse = function(x){ # argomento
+myfun_ifelse = function(x){ # argument
   if (x > 2){
-    cat("Il valore è maggiore di 0\n")
+    cat("The value is greater than 2\n")
   }
   else if (x <= 2 & x >= 0){
-    cat("Il valore è compreso tra 2 e 0\n")
+    cat("The value is between 0 and 2\n")
   }
   else{
-     cat("Il valore è minore di 0\n")
+     cat("The value is less than 0\n")
   }
 }
 
-myfun_ifelse(2.3) 
+myfun_ifelse(2.3)
 myfun_ifelse(-1)
 myfun_ifelse(1.4)
 
 ```
 
-## Programmazione condizionale
+## Conditional programming
 
-Per poter capire quale struttura condizionale utilizzare è importante capire bene il problema che dobbiamo risolvere. Facciamo un esempio, immaginiamo di avere 2 tipi di dati in R: stringhe e numeri. In questo caso è sufficiente avere un **`if statement`** che controlla se l'elemento è una stringa/numero e fa una determinata operazione.
+To understand which conditional structure to use, it is important to understand the problem we need to solve well. Let's take an example: imagine we have 2 types of data in R, strings and numbers. In this case it is enough to have an **`if statement`** that checks whether the element is a string/number and performs a given operation.
 
-## Programmazione condizionale
+## Conditional programming
 
-Scriviamo una funzione che restituisca la media quando il vettore è numerico e la tabella di frequenza.
+Let's write a function that returns the mean when the vector is numeric, and the frequency table otherwise.
 
 ```{r, echo=TRUE}
 my_summary =  function(x){
-  
-    if(is.numeric(x)){ 
+
+    if(is.numeric(x)){
       return(mean(x))
-      
+
     }else{
       return(table(x))
-      } 
+      }
   }
 ```
 
-## Programmazione condizionale
+## Conditional programming
 
-Testiamo la funzione
+Let's test the function
 
 ```{r, echo=TRUE}
-x = 1:7 
+x = 1:7
 my_summary(x)
 
 x = c(rep(c("A","B"), 3), "C")
@@ -312,66 +312,66 @@ my_summary(x)
 
 ```
 
-## Programmazione condizionale
+## Conditional programming
 
-Un limite nell'utilizzare gli **`if statement`** riguarda il fatto che funzionano solo su un **singolo valore** (i.e. non sono vettorizzati). Quindi mentre la funzione **`my_summary`** funziona perchè valuta l'intero vettore come numerico (**`is.numeric()`**)...
+One limitation of **`if statements`** is that they only work on a **single value** (i.e. they are not vectorized). So, while the **`my_summary`** function works because it evaluates whether the whole vector is numeric (**`is.numeric()`**)...
 
-## Programmazione condizionale
+## Conditional programming
 
-Se volessiamo utilizzare la funzione **`myfun_if`** ...
+If we wanted to use the **`myfun_if`** function ...
 
 ```{r, echo=TRUE}
 cat(deparse(myfun_if), sep = "\n")
 ```
 
-questa non funzionerebbe...
+it would not work...
 
 ```{r, echo=TRUE, error=TRUE}
 
-x = 1:7 
+x = 1:7
 
 myfun_if(x)
 
 ```
 
-## Programmazione condizionale
+## Conditional programming
 
-La versione vettorizzata si ottiene tramite la funzione **`ifelse()`**, i cui argomenti sono la condizione da testare, l'output in caso la condizione risulti **`TRUE`**, nel caso sia **`FALSE`**
+The vectorized version is obtained with the **`ifelse()`** function, whose arguments are the condition to test, the output if the condition is **`TRUE`**, and the output if it is **`FALSE`**
 
 ```{r, echo=TRUE}
 x
 
-ifelse(x < 5, "x è minore di 5", "x è maggiore di 5")
+ifelse(x < 5, "x is less than 5", "x is greater than 5")
 
 ```
 
-## Programmazione condizionale
+## Conditional programming
 
-Quando abbiamo bisogno di testare più alternative possiamo creare degli **`ifelse()`** nested. Immaginiamo di avere un vettore **age** e voler creare un altro vettore dove l'età è divisa in **3 fasce**, bambino, adulto, anziano:
+When we need to test several alternatives we can create nested **`ifelse()`**. Imagine we have an **age** vector and want to create another vector where age is divided into **3 groups**: child, adult, elderly:
 
 ```{r, echo=TRUE}
-age = round(runif(10, 3, 80)) # campiono da una distribuzione uniforme da 3 a 80
+age = round(runif(10, 3, 80)) # sample from a uniform distribution from 3 to 80
 age
 
 
-age_ifelse = ifelse(age < 18, 
-                    yes = "bambino",
-                    no = ifelse( age >= 18 & age < 60, "adulto", "anziano"))
+age_ifelse = ifelse(age < 18,
+                    yes = "child",
+                    no = ifelse( age >= 18 & age < 60, "adult", "elderly"))
 age_ifelse
 ```
 
 ## **`dplyr::case_when`**
 
-Quando le condizioni da testare sono numerose (indicativamente \> 3) può essere tedioso scrivere molti ifelse() multipli. Possiamo allora usare la funzione **`dplyr::case_when()`** del pacchetto *`dplyr`* che è una generalizzazione di ifelse():
+When there are many conditions to test (roughly \> 3), writing many nested ifelse() can be tedious. We can then use the **`dplyr::case_when()`** function from the *`dplyr`* package, which is a generalization of ifelse():
 
 ```{r,echo=TRUE, message=FALSE}
-age_case_when = dplyr::case_when(age < 18 ~ "bambino",
-                                 age >= 18 & age < 60 ~ "adulto",
-                                 TRUE ~ "anziano")  
-# con TRUE si identifica "tutto il resto" 
+age_case_when = dplyr::case_when(age < 18 ~ "child",
+                                 age >= 18 & age < 60 ~ "adult",
+                                 TRUE ~ "elderly")
+# TRUE identifies "everything else"
 ```
 
-i risultati ottenuti sono identici...
+the results are identical...
 
 ```{r, echo=TRUE}
 all.equal(age_case_when, age_ifelse)
@@ -379,17 +379,17 @@ all.equal(age_case_when, age_ifelse)
 
 ## **`dplyr::case_when`**
 
-Ricodificare i valori di una variabile come ad esempio invertire gli item di un questionario è un operazione facilmente eseguibile in con **`dplyr::case_when()`**:
+Recoding the values of a variable, for example reversing the items of a questionnaire, is easily done with **`dplyr::case_when()`**:
 
 ```{r, echo=TRUE}
-item = sample(1:5, size = 20, replace = TRUE) # simuliamo 20 risposte ad un item
+item = sample(1:5, size = 20, replace = TRUE) # simulate 20 responses to an item
 item
 ```
 
 ```{r, echo=TRUE}
-library(dplyr) #carico il pacchetto per non dover sempre scrivere il nome
+library(dplyr) # load the package so we don't always have to write its name
 
-item_rec = case_when( #ricodifichiamo con 1 = 5, 2 = 4, 3 = 3, 4 = 2, 5 = 1
+item_rec = case_when( # recode with 1 = 5, 2 = 4, 3 = 3, 4 = 2, 5 = 1
     item == 1 ~ 5,
     item == 2 ~ 4,
     item == 3 ~ 3,
@@ -400,72 +400,72 @@ item_rec
 
 ## **`dplyr::case_when`**
 
-Queste funzioni si possono applicare anche alle variabili presenti in un dataframe:
+These functions can also be applied to the variables in a dataframe:
 
 ```{r, echo=TRUE}
-# creo un dataframe con variabili id e età
+# create a dataframe with id and age variables
 mydf = data.frame(id = factor(1:30), age = sample(14:50, 30))
-# lo salvo per dopo
+# save it for later
 readr::write_csv(mydf, file = "data/mydf.csv")
-# creo una terza variabile con "adolescelte","giovane", "adulto 
-mydf$age_cat = factor(case_when(mydf$age > 30 ~ "adulto",
-                                 mydf$age <= 30 & mydf$age >= 20 ~ "giovane",
-                                 mydf$age < 20 ~ "adolescente",
-                                 TRUE ~ "errore" #  check  errori di codifica
+# create a third variable with "adolescent", "young", "adult"
+mydf$age_cat = factor(case_when(mydf$age > 30 ~ "adult",
+                                 mydf$age <= 30 & mydf$age >= 20 ~ "young",
+                                 mydf$age < 20 ~ "adolescent",
+                                 TRUE ~ "error" # check for coding errors
                                     ))
 str(mydf)
 ```
 
-## Importare una funzione
+## Importing a function
 
-Abbiamo già visto che il comando **`library()`** carica un certo pacchetto, rendendo le funzioni contenute disponibili all'utilizzo. Senza la necessità di creare un pacchetto, possiamo comunque organizzare le nostre funzioni in modo efficace.
+We have already seen that the **`library()`** command loads a package, making the functions it contains available. Without needing to create a package, we can still organize our own functions effectively.
 
-## Importare una funzione
+## Importing a function
 
-Abbiamo due opzioni
+We have two options
 
--   scrivere le funzioni nello stesso script dove esse vengono utilizzate
+-   write the functions in the same script where they are used
 
--   scrivere uno script separato e importare tutte le funzioni contenute
+-   write a separate script and import all the functions it contains
 
-## Importare una funzione
+## Importing a function
 
-Anche in questo caso è una questione di stile e comodità, in generale:
+Here too it is a matter of style and convenience; in general:
 
--   se abbiamo tante funzioni, è meglio scriverle in uno o più file separati e poi importarle all'inizio dello script principale
+-   if we have many functions, it is better to write them in one or more separate files and then import them at the beginning of the main script
 
--   se abbiamo poche funzioni possiamo tenerle nello script principale, magari in una sezione apposita nella parte iniziale
+-   if we have few functions, we can keep them in the main script, perhaps in a dedicated section at the beginning
 
-## Importare una funzione
+## Importing a function
 
-Nel secondo caso è sufficiente quindi scrivere la funzione e questa sarà salvata come oggetto nell'ambiente principale. Mentre per il primo scenario è possibile utilizzare la funzione **`source("utl/script.R")`**:
+In the second case it is enough to write the function, and it will be saved as an object in the main environment. For the first scenario, we can use the **`source("utl/script.R")`** function:
 
 ```{r, echo=TRUE}
-rm(list = ls()) # pulisco l'enviorment
+rm(list = ls()) # clear the environment
 
-# carico le funzioni
+# load the functions
 source("utl/myfun.R")
-# ora avrò le mie funzioni disponibili e potrò utilizzarle 
+# now my functions are available and I can use them
 ls()
 ```
 
-## Importare e utilizzare una funzione
+## Importing and using a function
 
-Ora avrò le mie funzioni disponibili come oggetti nel mio enviroment e potrò utilizzarle:
+Now my functions are available as objects in my environment and I can use them:
 
 ```{r, echo=TRUE, message=FALSE}
-# carico il dataframe salvato in precedenza
+# load the dataframe saved earlier
 mydf_1 = data.frame(readr::read_csv("data/mydf.csv"))
-str(mydf_1) #check
+str(mydf_1) # check
 
-# applico la funzione mydf_fun
+# apply the mydf_fun function
 mydf_2 = mydf_fun(mydf_1)
 head(mydf_2)
-readr::write_csv(mydf_2, file = "data/mydf_2.csv") # lo salvo per dopo
+readr::write_csv(mydf_2, file = "data/mydf_2.csv") # save it for later
 ```
 
-## Ora facciamo un po' di pratica! {style="text-align: center;"}
+## Now let's practice! {style="text-align: center;"}
 
-<br/> Aprite e tenete aperto questo link:
+<br/> Open this link and keep it open:
 
 <https://etherpad.wikimedia.org/p/arca-corsoR>

@@ -1,60 +1,60 @@
-# Esercizi Recap dataframe
+# Dataframe Recap exercises
 
-# Esercizi su data.frame in R
+# Exercises on data.frame in R
 
-# 1. Crea un dataframe chiamato "studenti_df" con le seguenti colonne:
-#    - Matricola (carattere) contenente 8 numeri di matricola inventati
-#    - Corso (fattore) contenente 8 nomi di corsi di laurea
-#    - MediaVoti (numerico) contenente 8 medie voti
-studenti_df = data.frame(
-  Matricola = c("12345678", "23456789", "34567890", "45678901", "56789012", "67890123", "78901234", "89012345"),
-  Corso = factor(c("Informatica", "Biologia", "Fisica", "Chimica", "Matematica", "Informatica", "Biologia", "Fisica")),
-  MediaVoti = c(27.5, 28.3, 26.8, 29.1, 27.9, 26.2, 28.7, 27.4)
+# 1. Create a dataframe called "students_df" with the following columns:
+#    - StudentID (character) containing 8 made-up student ID numbers
+#    - Degree (factor) containing 8 degree course names
+#    - GPA (numeric) containing 8 grade point averages
+students_df = data.frame(
+  StudentID = c("12345678", "23456789", "34567890", "45678901", "56789012", "67890123", "78901234", "89012345"),
+  Degree = factor(c("Computer Science", "Biology", "Physics", "Chemistry", "Mathematics", "Computer Science", "Biology", "Physics")),
+  GPA = c(27.5, 28.3, 26.8, 29.1, 27.9, 26.2, 28.7, 27.4)
 )
 
-# 2. Estrai:
-# 2.1 Solo la colonna Corso (usando l'operatore $)
-# 2.2 La seconda colonna (usando l'indice numerico)
-# 2.3 I valori di Matricola per gli studenti con MediaVoti superiore a 27
-#     (utilizza sia la funzione subset che [])
-#     Confronta l'output dei due comandi
+# 2. Extract:
+# 2.1 Only the Degree column (using the $ operator)
+# 2.2 The second column (using the numeric index)
+# 2.3 The StudentID values of the students with GPA above 27
+#     (use both the subset function and [])
+#     Compare the output of the two commands
 
 
-# 3. Aggiungi a studenti_df una nuova colonna chiamata
-#    AnnoIscrizione (e inserisci l'anno di iscrizione per ogni studente)
+# 3. Add to students_df a new column called
+#    EnrollmentYear (and fill in the enrollment year for each student)
 
-# 4. Calcola la frequenza di ogni Corso di laurea (usa la funzione table())
+# 4. Compute the frequency of each Degree course (use the table() function)
 
-# 5. Seleziona le righe in cui la MediaVoti è maggiore di 26 e
-#    le colonne Matricola e Corso
-#    utilizza sia la funzione subset che []
+# 5. Select the rows where GPA is greater than 26 and
+#    the StudentID and Degree columns
+#    use both the subset function and []
 
-# 6. Crea un altro dataframe ("nuovi_studenti") composto da tre righe
-#    e che abbia delle caratteristiche tali da poter
-#    essere unito a studenti_df (rbind()), unisci quindi i due dataframe 
-#   creando studenti_completo
+# 6. Create another dataframe ("new_students") made of three rows
+#    and with properties such that it can
+#    be joined to students_df (rbind()), then join the two dataframes 
+#    creating students_complete
 
 
-# 7. Supponi di avere questi due dataframe:
-df_studenti = data.frame(
-  Matricola = c("12345", "67890", "11223", "44556", "99887"),
-  Nome = c("Luca", "Anna", "Marco", "Giulia", "Sara")
+# 7. Suppose you have these two dataframes:
+df_students = data.frame(
+  StudentID = c("12345", "67890", "11223", "44556", "99887"),
+  Name = c("Luca", "Anna", "Marco", "Giulia", "Sara")
 )
-df_esami = data.frame(
-  Matricola = c("67890", "11223", "78901"),
-  Esame = c("Matematica", "Fisica", "Chimica"),
-  Voto = c(28, 30, 27)
+df_exams = data.frame(
+  StudentID = c("67890", "11223", "78901"),
+  Exam = c("Mathematics", "Physics", "Chemistry"),
+  Grade = c(28, 30, 27)
 )
-# Crea studenti_esami unendo i due data.frame utilizzando la colonna Matricola come chiave,
-# mantenendo tutte le righe di df_studenti (usa la funzione merge())
+# Create students_exams by merging the two data.frames using the StudentID column as the key,
+# keeping all the rows of df_students (use the merge() function)
 
-# 8. In "studenti_esami" crea una terza colonna "Dettagli"
-#    che unisca le informazioni Nome e Esame (usa paste())
+# 8. In "students_exams" create a third column "Details"
+#    that combines the Name and Exam information (use paste())
 
-# 9. Seleziona gli studenti con NA per la colonna Esame (usa is.na())
+# 9. Select the students with NA in the Exam column (use is.na())
 
-# 10. Seleziona gli studenti che non hanno nessun NA (usa la funzione complete.cases())
+# 10. Select the students without any NA (use the complete.cases() function)
 
-# 11. Calcola la media dei voti in df_esami, escludendo eventuali NA
+# 11. Compute the mean of the grades in df_exams, excluding any NA
 
-# 12. Ordina studenti_df in ordine crescente di MediaVoti (usa la funzione order())
+# 12. Sort students_df in increasing order of GPA (use the order() function)

@@ -6,9 +6,8 @@
 <script src="2.4_dataframe_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="2.4_dataframe_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="2.4_dataframe_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="2.4_dataframe_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="2.4_dataframe_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+<link href="2.4_dataframe_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>Dataframe</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,10 +16,16 @@
   <link rel="stylesheet" href="2.4_dataframe_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="2.4_dataframe_files/libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -29,8 +34,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -94,209 +100,11 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="2.4_dataframe_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="2.4_dataframe_files/libs/revealjs/dist/theme/quarto-61a84950594467f885fe7fd7ba14a2cd.css">
   <link href="2.4_dataframe_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="2.4_dataframe_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="2.4_dataframe_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="2.4_dataframe_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-
-  .callout {
-    margin-top: 1em;
-    margin-bottom: 1em;  
-    border-radius: .25rem;
-  }
-
-  .callout.callout-style-simple { 
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: flex;
-  }
-
-  .callout.callout-style-default {
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-  }
-
-  .callout .callout-body-container {
-    flex-grow: 1;
-  }
-
-  .callout.callout-style-simple .callout-body {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-style-default .callout-body {
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-titled.callout-style-simple .callout-body {
-    margin-top: 0.2em;
-  }
-
-  .callout:not(.callout-titled) .callout-body {
-      display: flex;
-  }
-
-  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
-    padding-left: 1.6em;
-  }
-
-  .callout.callout-titled .callout-header {
-    padding-top: 0.2em;
-    margin-bottom: -0.2em;
-  }
-
-  .callout.callout-titled .callout-title  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-    
-  .callout.callout-titled.callout-style-simple .callout-content  p {
-    margin-top: 0;
-  }
-
-  .callout.callout-titled.callout-style-default .callout-content  p {
-    margin-top: 0.7em;
-  }
-
-  .callout.callout-style-simple div.callout-title {
-    border-bottom: none;
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: 75%;
-  }
-
-  .callout.callout-style-default  div.callout-title {
-    border-bottom: none;
-    font-weight: 600;
-    opacity: 85%;
-    font-size: 0.9rem;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-default div.callout-content {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-simple .callout-icon::before {
-    height: 1rem;
-    width: 1rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-  }
-
-  .callout.callout-style-default .callout-icon::before {
-    height: 0.9rem;
-    width: 0.9rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 0.9rem 0.9rem;
-  }
-
-  .callout-title {
-    display: flex
-  }
-    
-  .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  .callout.no-icon::before {
-    display: none !important;
-  }
-
-  .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
-  }
-
-  .callout.callout-titled .callout-icon::before {
-    margin-top: .5rem;
-    padding-right: .5rem;
-  }
-
-  .callout:not(.callout-titled) .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  /* Callout Types */
-
-  div.callout-note {
-    border-left-color: #4582ec !important;
-  }
-
-  div.callout-note .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
-  }
-
-  div.callout-note.callout-style-default .callout-title {
-    background-color: #dae6fb
-  }
-
-  div.callout-important {
-    border-left-color: #d9534f !important;
-  }
-
-  div.callout-important .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-important.callout-style-default .callout-title {
-    background-color: #f7dddc
-  }
-
-  div.callout-warning {
-    border-left-color: #f0ad4e !important;
-  }
-
-  div.callout-warning .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-warning.callout-style-default .callout-title {
-    background-color: #fcefdc
-  }
-
-  div.callout-tip {
-    border-left-color: #02b875 !important;
-  }
-
-  div.callout-tip .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-tip.callout-style-default .callout-title {
-    background-color: #ccf1e3
-  }
-
-  div.callout-caution {
-    border-left-color: #fd7e14 !important;
-  }
-
-  div.callout-caution .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
-  }
-
-  div.callout-caution.callout-style-default .callout-title {
-    background-color: #ffe5d0
-  }
-
-  </style>
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -396,52 +204,52 @@
 </div>
 
 </section>
-<section id="strutture-dati" class="slide level2">
-<h2>Strutture Dati</h2>
+<section id="data-structures" class="slide level2">
+<h2>Data Structures</h2>
 <ul>
-<li><p>vettori</p></li>
-<li><p>fattori</p></li>
-<li><p>liste</p></li>
-<li><p>matrici</p></li>
-<li><p>array</p></li>
-<li><p><strong><em><code>dataframe</code></em></strong></p></li>
+<li><p>vectors</p></li>
+<li><p>factors</p></li>
+<li><p>lists</p></li>
+<li><p>matrices</p></li>
+<li><p>arrays</p></li>
+<li><p><strong><em><code>dataframes</code></em></strong></p></li>
 </ul>
 </section>
 <section id="dataframe" class="slide level2">
 <h2>Dataframe</h2>
-<p>Il dataframe è la struttura più “complessa”, utile e potente di R. Da un punto di vista intuitivo è un foglio excel mentre da un punto di vista di R è una tipologia di <strong>lista</strong> con alcune caratteristiche/restrizioni</p>
+<p>The dataframe is the most “complex”, useful and powerful structure in R. Intuitively it is an excel sheet, while from R’s point of view it is a type of <strong>list</strong> with some properties/restrictions</p>
 <ul>
-<li>ogni elemento della lista è un <strong>vettore</strong> con un <strong>nome associato</strong> (aka una colonna)</li>
-<li>ogni lista/colonna deve avere lo stesso numero di elementi</li>
-<li>di conseguenza ogni riga ha lo stesso numero di elementi (<strong>struttura rettangolare</strong>)</li>
+<li>each element of the list is a <strong>vector</strong> with an <strong>associated name</strong> (aka a column)</li>
+<li>each list/column must have the same number of elements</li>
+<li>as a consequence, each row has the same number of elements (<strong>rectangular structure</strong>)</li>
 </ul>
 </section>
-<section id="creazione" class="slide level2">
-<h2>Creazione</h2>
-<p>Nella maggior parte dei casi vi capiterà d’importare più che creare dei dataframe, ma è importante prima capire come funzionano e come crearli/manipolarli. Si creano attraverso il comando <code>data.frame</code></p>
+<section id="creation" class="slide level2">
+<h2>Creation</h2>
+<p>Most of the time you will import dataframes rather than create them, but it is important to first understand how they work and how to create/manipulate them. They are created with the <code>data.frame</code> command</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Creo un dataframe con 3 colonne </span></span>
-<span id="cb1-2"><a href=""></a>my_df <span class="ot">=</span> <span class="fu">data.frame</span>( <span class="at">col1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col2 =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
-<span id="cb1-3"><a href=""></a>                    <span class="at">col3 =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)) </span>
-<span id="cb1-4"><a href=""></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a><span class="co"># Create a dataframe with 3 columns</span></span>
+<span id="cb1-2"><a href="" aria-label="2"></a>my_df <span class="ot">=</span> <span class="fu">data.frame</span>( <span class="at">col1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col2 =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
+<span id="cb1-3"><a href="" aria-label="3"></a>                    <span class="at">col3 =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>))</span>
+<span id="cb1-4"><a href="" aria-label="4"></a>my_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2        col3
-1    1    a -1.55643426
-2    2    b -0.03366128
-3    3    c  1.13593425
-4    4    d  1.44699611</code></pre>
+<pre><code>  col1 col2       col3
+1    1    a -1.2164427
+2    2    b  0.9578252
+3    3    c  1.2170114
+4    4    d  0.5070257</code></pre>
 </div>
 </div>
 </section>
-<section id="attributi" class="slide level2">
-<h2>Attributi</h2>
-<p>Il <strong><code>dataframe</code></strong> ha sia gli attributi della lista ovvero i <strong><em>names</em></strong> ma anche gli attributi della matrice ovvero le <strong><em>dimensioni</em></strong> (righe e colonne)</p>
+<section id="attributes" class="slide level2">
+<h2>Attributes</h2>
+<p>The <strong><code>dataframe</code></strong> has both the attributes of a list, i.e.&nbsp;the <strong><em>names</em></strong>, and the attributes of a matrix, i.e.&nbsp;the <strong><em>dimensions</em></strong> (rows and columns)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">typeof</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a><span class="fu">typeof</span>(my_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">attributes</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a><span class="fu">attributes</span>(my_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$names
 [1] "col1" "col2" "col3"
@@ -452,7 +260,7 @@ $class
 $row.names
 [1] 1 2 3 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">dim</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-label="1"></a><span class="fu">dim</span>(my_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4 3</code></pre>
 </div>
@@ -460,9 +268,9 @@ $row.names
 </section>
 <section class="slide level2">
 
-<p>Come per le altre strutture che abbiamo visto, possiamo utlizzare le funzioni <strong><code>names()</code></strong> , <strong><code>dim()</code></strong>, <strong><code>nrow()</code></strong>, <strong><code>ncol()</code></strong>… per ottenere informazioni sulle caratteristiche del dataframe. La funzione più utile è <strong><code>str()</code></strong> poichè ci restituisce una veloce overview della struttura del dataframe: dimensioni, tipi di variabili,…</p>
+<p>As with the other structures we have seen, we can use the functions <strong><code>names()</code></strong> , <strong><code>dim()</code></strong>, <strong><code>nrow()</code></strong>, <strong><code>ncol()</code></strong>… to get information about the properties of the dataframe. The most useful function is <strong><code>str()</code></strong>, since it gives us a quick overview of the structure of the dataframe: dimensions, variable types,…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">str</span>(iris) <span class="co"># iris è un dataset presente di default in R (?iris)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="" aria-label="1"></a><span class="fu">str</span>(iris) <span class="co"># iris is a dataset available by default in R (?iris)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  5 variables:
  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -473,11 +281,11 @@ $row.names
 </div>
 </div>
 </section>
-<section id="indicizzazione" class="slide level2">
-<h2>Indicizzazione</h2>
-<p>Si posso utlizzare sia le parentesi quadre <strong><code>[]</code></strong>:</p>
+<section id="indexing" class="slide level2">
+<h2>Indexing</h2>
+<p>We can use either square brackets <strong><code>[]</code></strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>my_df[<span class="dv">1</span>]  <span class="co"># estraggo un data.frame 5x1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="" aria-label="1"></a>my_df[<span class="dv">1</span>]  <span class="co"># extract a 4x1 data.frame</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  col1
 1    1
@@ -485,83 +293,83 @@ $row.names
 3    3
 4    4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>my_df[[<span class="dv">1</span>]] <span class="co"># estraggo la prima colonna del data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="" aria-label="1"></a>my_df[[<span class="dv">1</span>]] <span class="co"># extract the first column of the data.frame</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>my_df[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co">#  estraggo il primo elemento della prima colonna del data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="" aria-label="1"></a>my_df[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># extract the first element of the first column of the data.frame</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p>che il simbolo del dollaro <strong><code>$</code></strong></p>
+<p>or the dollar sign <strong><code>$</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>my_df<span class="sc">$</span>col1 <span class="co"># estraggo la prima colonna del data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="" aria-label="1"></a>my_df<span class="sc">$</span>col1 <span class="co"># extract the first column of the data.frame</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>my_df<span class="sc">$</span>col1[<span class="dv">1</span>] <span class="co">#  estraggo il primo elemento della prima colonna del data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="" aria-label="1"></a>my_df<span class="sc">$</span>col1[<span class="dv">1</span>] <span class="co"># extract the first element of the first column of the data.frame</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
 </div>
 </section>
-<section id="indicizzazione---operatori-relazionali" class="slide level2">
-<h2>Indicizzazione - Operatori relazionali</h2>
-<p>Una delle operazioni più comuni che dovrete affrontare sarà sicuramente quella di estrarre/valutare un sottoinsieme di valori presenti nel vostro dataset:</p>
+<section id="indexing---relational-operators" class="slide level2">
+<h2>Indexing - Relational operators</h2>
+<p>One of the most common operations you will deal with is extracting/evaluating a subset of the values in your dataset:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="" aria-label="1"></a>my_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2        col3
-1    1    a -1.55643426
-2    2    b -0.03366128
-3    3    c  1.13593425
-4    4    d  1.44699611</code></pre>
+<pre><code>  col1 col2       col3
+1    1    a -1.2164427
+2    2    b  0.9578252
+3    3    c  1.2170114
+4    4    d  0.5070257</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="co"># includo solo le righe in cui alla colonna1 i valori sono maggiori di 2</span></span>
-<span id="cb23-2"><a href=""></a>my_df[my_df<span class="sc">$</span>col1 <span class="sc">&gt;</span> <span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="" aria-label="1"></a><span class="co"># keep only the rows where the values of column1 are greater than 2</span></span>
+<span id="cb23-2"><a href="" aria-label="2"></a>my_df[my_df<span class="sc">$</span>col1 <span class="sc">&gt;</span> <span class="dv">2</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2     col3
-3    3    c 1.135934
-4    4    d 1.446996</code></pre>
+<pre><code>  col1 col2      col3
+3    3    c 1.2170114
+4    4    d 0.5070257</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>my_df[my_df[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">2</span>, ] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="" aria-label="1"></a>my_df[my_df[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">2</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2     col3
-3    3    c 1.135934
-4    4    d 1.446996</code></pre>
+<pre><code>  col1 col2      col3
+3    3    c 1.2170114
+4    4    d 0.5070257</code></pre>
 </div>
 </div>
 </section>
-<section id="esempi" class="slide level2">
-<h2>Esempi</h2>
+<section id="examples" class="slide level2">
+<h2>Examples</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>  col1 col2        col3
-1    1    a -1.55643426
-2    2    b -0.03366128
-3    3    c  1.13593425
-4    4    d  1.44699611</code></pre>
+<pre><code>  col1 col2       col3
+1    1    a -1.2164427
+2    2    b  0.9578252
+3    3    c  1.2170114
+4    4    d  0.5070257</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>my_df[my_df<span class="sc">$</span>col1 <span class="sc">&gt;</span> <span class="dv">2</span> <span class="sc">&amp;</span> my_df<span class="sc">$</span>col1 <span class="sc">&lt;</span> <span class="dv">4</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="" aria-label="1"></a>my_df[my_df<span class="sc">$</span>col1 <span class="sc">&gt;</span> <span class="dv">2</span> <span class="sc">&amp;</span> my_df<span class="sc">$</span>col1 <span class="sc">&lt;</span> <span class="dv">4</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  col1 col2     col3
-3    3    c 1.135934</code></pre>
+3    3    c 1.217011</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a>my_df[my_df<span class="sc">$</span>col1<span class="sc">==</span> <span class="dv">2</span>,  <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="" aria-label="1"></a>my_df[my_df<span class="sc">$</span>col1<span class="sc">==</span> <span class="dv">2</span>,  <span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -573,7 +381,7 @@ $row.names
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a>my_df[my_df<span class="sc">$</span>col1<span class="sc">==</span> <span class="dv">2</span>,  <span class="st">"col2"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="" aria-label="1"></a>my_df[my_df<span class="sc">$</span>col1<span class="sc">==</span> <span class="dv">2</span>,  <span class="st">"col2"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -584,20 +392,20 @@ $row.names
 </div>
 </div>
 </section>
-<section id="indicizzazione-1" class="slide level2">
-<h2>Indicizzazione</h2>
-<p>Ci sono anche dei modi alternativi e più compatti di indicizzare. Ad esempio usando la funzione <strong><code>subset()</code></strong>:</p>
+<section id="indexing-1" class="slide level2">
+<h2>Indexing</h2>
+<p>There are also alternative, more compact ways of indexing. For example, using the <strong><code>subset()</code></strong> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Petal.Length <span class="sc">&gt;</span> <span class="fl">1.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="" aria-label="1"></a><span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Petal.Length <span class="sc">&gt;</span> <span class="fl">1.7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 25          4.8         3.4          1.9         0.2  setosa
 45          5.1         3.8          1.9         0.4  setosa</code></pre>
 </div>
 </div>
-<p>equivalente a:</p>
+<p>equivalent to:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Petal.Length <span class="sc">&gt;</span> <span class="fl">1.7</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="" aria-label="1"></a>iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Petal.Length <span class="sc">&gt;</span> <span class="fl">1.7</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 25          4.8         3.4          1.9         0.2  setosa
@@ -607,13 +415,13 @@ $row.names
 </section>
 <section class="slide level2">
 
-<p>E’ possibile anche selezionare colonne piuttosto che righe attraverso l’argomento <strong><em><code>select</code></em></strong>:</p>
+<p>We can also select columns rather than rows with the <strong><em><code>select</code></em></strong> argument:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="fu">subset</span>(iris, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="" aria-label="1"></a><span class="fu">subset</span>(iris, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="co">#visualizzo le prime due righe attraverso il comando head</span></span>
-<span id="cb39-2"><a href=""></a><span class="fu">head</span>(<span class="fu">subset</span>(iris, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species)), <span class="at">n =</span> <span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="" aria-label="1"></a><span class="co"># show the first rows with the head command</span></span>
+<span id="cb39-2"><a href="" aria-label="2"></a><span class="fu">head</span>(<span class="fu">subset</span>(iris, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species)), <span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Species
 1          5.1  setosa
@@ -624,12 +432,12 @@ $row.names
 </section>
 <section class="slide level2">
 
-<p>Possiamo anche combinare le due cose:</p>
+<p>We can also combine the two:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a><span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="" aria-label="1"></a><span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="fu">head</span>(<span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species)), <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="" aria-label="1"></a><span class="fu">head</span>(<span class="fu">subset</span>(iris, <span class="at">subset =</span> Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="at">select =</span> <span class="fu">c</span>(Sepal.Length, Species)), <span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Species
 1          5.1  setosa
@@ -637,9 +445,9 @@ $row.names
 3          4.7  setosa</code></pre>
 </div>
 </div>
-<p>… equivalente a:</p>
+<p>… equivalent to:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a><span class="fu">head</span>(iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>,<span class="st">"Species"</span>)],<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="" aria-label="1"></a><span class="fu">head</span>(iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>,<span class="st">"Species"</span>)],<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Species
 1          5.1  setosa
@@ -648,14 +456,14 @@ $row.names
 </div>
 </div>
 </section>
-<section id="indicizzazione-2" class="slide level2">
-<h2>Indicizzazione</h2>
-<p>La maggiorparte delle volte vi troverete ad accedere alle variabili tramite l’operatore <strong><code>$</code></strong>. Questo comando può essere utilizzato anche per creare una nuova variabile…</p>
+<section id="indexing-2" class="slide level2">
+<h2>Indexing</h2>
+<p>Most of the time you will access variables with the <strong><code>$</code></strong> operator. This command can also be used to create a new variable…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="co"># creo una variablie che è la somma di Length e Width</span></span>
-<span id="cb46-2"><a href=""></a>iris<span class="sc">$</span>somma <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">+</span> iris<span class="sc">$</span>Sepal.Width</span>
-<span id="cb46-3"><a href=""></a></span>
-<span id="cb46-4"><a href=""></a><span class="fu">str</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="" aria-label="1"></a><span class="co"># create a variable that is the sum of Length and Width</span></span>
+<span id="cb46-2"><a href="" aria-label="2"></a>iris<span class="sc">$</span>sum <span class="ot">=</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">+</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb46-3"><a href="" aria-label="3"></a></span>
+<span id="cb46-4"><a href="" aria-label="4"></a><span class="fu">str</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  6 variables:
  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -663,16 +471,16 @@ $row.names
  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
- $ somma       : num  8.6 7.9 7.9 7.7 8.6 9.3 8 8.4 7.3 8 ...</code></pre>
+ $ sum         : num  8.6 7.9 7.9 7.7 8.6 9.3 8 8.4 7.3 8 ...</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<p>Si applicano gli stessi concetti che abbiamo visto per i vettori, potete quindi sia creare che modificare variabili.</p>
+<p>The same concepts we have seen for vectors apply, so you can both create and modify variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a>my_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">let =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
-<span id="cb48-2"><a href=""></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="" aria-label="1"></a>my_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">let =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb48-2"><a href="" aria-label="2"></a>my_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  num let
 1   1   a
@@ -680,13 +488,13 @@ $row.names
 3   3   c
 4   4   d</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="co"># Modfico la variabile num aggiungendo 1</span></span>
-<span id="cb50-2"><a href=""></a>my_df<span class="sc">$</span>num <span class="ot">=</span> my_df<span class="sc">$</span>num<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb50-3"><a href=""></a></span>
-<span id="cb50-4"><a href=""></a><span class="co"># Creo una terza variabile composta dalla varibile num e let</span></span>
-<span id="cb50-5"><a href=""></a>my_df<span class="sc">$</span>both <span class="ot">=</span> <span class="fu">paste</span>(my_df<span class="sc">$</span>num,my_df<span class="sc">$</span>let, <span class="at">sep =</span> <span class="st">"_"</span>) <span class="co"># ?paste</span></span>
-<span id="cb50-6"><a href=""></a></span>
-<span id="cb50-7"><a href=""></a><span class="fu">str</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="" aria-label="1"></a><span class="co"># Modify the num variable by adding 1</span></span>
+<span id="cb50-2"><a href="" aria-label="2"></a>my_df<span class="sc">$</span>num <span class="ot">=</span> my_df<span class="sc">$</span>num<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb50-3"><a href="" aria-label="3"></a></span>
+<span id="cb50-4"><a href="" aria-label="4"></a><span class="co"># Create a third variable made of the num and let variables</span></span>
+<span id="cb50-5"><a href="" aria-label="5"></a>my_df<span class="sc">$</span>both <span class="ot">=</span> <span class="fu">paste</span>(my_df<span class="sc">$</span>num,my_df<span class="sc">$</span>let, <span class="at">sep =</span> <span class="st">"_"</span>) <span class="co"># ?paste</span></span>
+<span id="cb50-6"><a href="" aria-label="6"></a></span>
+<span id="cb50-7"><a href="" aria-label="7"></a><span class="fu">str</span>(my_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : num  2 3 4 5
@@ -695,23 +503,23 @@ $row.names
 </div>
 </div>
 </section>
-<section id="combinare-dataframes" class="slide level2">
-<h2>Combinare Dataframes</h2>
-<p>Essendo simili a delle matrici, i dataframe si possono combinare tra loro attraverso le funzioni <strong><code>rbind()</code></strong>:</p>
+<section id="combining-dataframes" class="slide level2">
+<h2>Combining Dataframes</h2>
+<p>Since they are similar to matrices, dataframes can be combined with the <strong><code>rbind()</code></strong> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a><span class="co"># primo dataframe</span></span>
-<span id="cb52-2"><a href=""></a><span class="fu">str</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="" aria-label="1"></a><span class="co"># first dataframe</span></span>
+<span id="cb52-2"><a href="" aria-label="2"></a><span class="fu">str</span>(my_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : num  2 3 4 5
  $ let : chr  "a" "b" "c" "d"
  $ both: chr  "2_a" "3_b" "4_c" "5_d"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a><span class="co"># creo un secondo dataframe</span></span>
-<span id="cb54-2"><a href=""></a>my_df2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">num =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">lett =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
-<span id="cb54-3"><a href=""></a>                    <span class="at">both =</span> <span class="fu">paste</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>,letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">sep =</span> <span class="st">"_"</span>))</span>
-<span id="cb54-4"><a href=""></a></span>
-<span id="cb54-5"><a href=""></a><span class="fu">str</span>(my_df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="" aria-label="1"></a><span class="co"># create a second dataframe</span></span>
+<span id="cb54-2"><a href="" aria-label="2"></a>my_df2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">num =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">lett =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
+<span id="cb54-3"><a href="" aria-label="3"></a>                    <span class="at">both =</span> <span class="fu">paste</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>,letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">sep =</span> <span class="st">"_"</span>))</span>
+<span id="cb54-4"><a href="" aria-label="4"></a></span>
+<span id="cb54-5"><a href="" aria-label="5"></a><span class="fu">str</span>(my_df2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : int  4 5 6 7
@@ -722,25 +530,25 @@ $row.names
 </section>
 <section class="slide level2">
 
-<p><strong>Unisco i due dataframes</strong></p>
+<p><strong>Join the two dataframes</strong></p>
 <ul>
-<li><p>I dataframes devono avere lo stesso numero di colonne</p></li>
-<li><p>I nomi delle colonne devono essere identici</p></li>
+<li><p>The dataframes must have the same number of columns</p></li>
+<li><p>The column names must be identical</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a>my_df3 <span class="ot">=</span> <span class="fu">rbind</span>(my_df,my_df2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="" aria-label="1"></a>my_df3 <span class="ot">=</span> <span class="fu">rbind</span>(my_df,my_df2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `match.names()`:
 ! names do not match previous names</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a><span class="fu">str</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="" aria-label="1"></a><span class="fu">str</span>(my_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : num  2 3 4 5
  $ let : chr  "a" "b" "c" "d"
  $ both: chr  "2_a" "3_b" "4_c" "5_d"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a><span class="fu">str</span>(my_df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="" aria-label="1"></a><span class="fu">str</span>(my_df2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   4 obs. of  3 variables:
  $ num : int  4 5 6 7
@@ -751,21 +559,21 @@ $row.names
 </section>
 <section class="slide level2">
 
-<p><strong>Sistemo i nomi</strong></p>
+<p><strong>Fix the names</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="fu">names</span>(my_df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="" aria-label="1"></a><span class="fu">names</span>(my_df2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "num"  "lett" "both"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href=""></a><span class="fu">names</span>(my_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="" aria-label="1"></a><span class="fu">names</span>(my_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "num"  "let"  "both"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a><span class="co"># voglio che i names di my_df2 corrispondano ai names di my_df</span></span>
-<span id="cb66-2"><a href=""></a><span class="fu">names</span>(my_df2) <span class="ot">=</span> <span class="fu">names</span>(my_df)</span>
-<span id="cb66-3"><a href=""></a></span>
-<span id="cb66-4"><a href=""></a>my_df3 <span class="ot">=</span> <span class="fu">rbind</span>(my_df,my_df2) </span>
-<span id="cb66-5"><a href=""></a><span class="fu">str</span>(my_df3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="" aria-label="1"></a><span class="co"># I want the names of my_df2 to match the names of my_df</span></span>
+<span id="cb66-2"><a href="" aria-label="2"></a><span class="fu">names</span>(my_df2) <span class="ot">=</span> <span class="fu">names</span>(my_df)</span>
+<span id="cb66-3"><a href="" aria-label="3"></a></span>
+<span id="cb66-4"><a href="" aria-label="4"></a>my_df3 <span class="ot">=</span> <span class="fu">rbind</span>(my_df,my_df2)</span>
+<span id="cb66-5"><a href="" aria-label="5"></a><span class="fu">str</span>(my_df3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   8 obs. of  3 variables:
  $ num : num  2 3 4 5 4 5 6 7
@@ -776,160 +584,160 @@ $row.names
 </section>
 <section class="slide level2">
 
-<p>Potrebbe anche capitarvi di dover raccogliere differenti tipi di dato dallo stesso partecipante, e successivamente combinare le informazioni raccolte…</p>
-<p>Dataframe contente i tempi di reazione:</p>
+<p>You may also need to collect different types of data from the same participant, and then combine the collected information…</p>
+<p>Dataframe containing the reaction times:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href=""></a>df_rt <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">subj =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"caio"</span>,<span class="st">"tizio"</span>),<span class="at">each =</span> <span class="dv">400</span>)),</span>
-<span id="cb68-2"><a href=""></a>                   <span class="at">cond =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"easy"</span>,<span class="st">"hard"</span>), </span>
-<span id="cb68-3"><a href=""></a>                                     <span class="at">each =</span> <span class="dv">200</span>, <span class="at">times =</span> <span class="dv">2</span>)),</span>
-<span id="cb68-4"><a href=""></a>                      <span class="at">rt =</span> <span class="fu">c</span>(<span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">sdlog =</span> .<span class="dv">25</span>), </span>
-<span id="cb68-5"><a href=""></a>                             <span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span>.<span class="dv">7</span>, <span class="at">sdlog =</span>.<span class="dv">3</span>)))</span>
-<span id="cb68-6"><a href=""></a></span>
-<span id="cb68-7"><a href=""></a><span class="co"># equivalente a creare prima le variabili come vettore e poi inserirle in un df</span></span>
-<span id="cb68-8"><a href=""></a>subj <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"caio"</span>,<span class="st">"tizio"</span>),<span class="at">each =</span> <span class="dv">400</span>))</span>
-<span id="cb68-9"><a href=""></a>cond <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"easy"</span>,<span class="st">"hard"</span>),<span class="at">each =</span> <span class="dv">200</span>, <span class="at">times =</span> <span class="dv">2</span>))</span>
-<span id="cb68-10"><a href=""></a>rt <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">sdlog =</span> .<span class="dv">25</span>), </span>
-<span id="cb68-11"><a href=""></a>                             <span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span>.<span class="dv">7</span>, <span class="at">sdlog =</span>.<span class="dv">3</span>))</span>
-<span id="cb68-12"><a href=""></a></span>
-<span id="cb68-13"><a href=""></a>df_rt <span class="ot">=</span> <span class="fu">data.frame</span>(subj, cond, rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="" aria-label="1"></a>df_rt <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">subj =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"alice"</span>,<span class="st">"bob"</span>),<span class="at">each =</span> <span class="dv">400</span>)),</span>
+<span id="cb68-2"><a href="" aria-label="2"></a>                   <span class="at">cond =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"easy"</span>,<span class="st">"hard"</span>),</span>
+<span id="cb68-3"><a href="" aria-label="3"></a>                                     <span class="at">each =</span> <span class="dv">200</span>, <span class="at">times =</span> <span class="dv">2</span>)),</span>
+<span id="cb68-4"><a href="" aria-label="4"></a>                      <span class="at">rt =</span> <span class="fu">c</span>(<span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">sdlog =</span> .<span class="dv">25</span>),</span>
+<span id="cb68-5"><a href="" aria-label="5"></a>                             <span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span>.<span class="dv">7</span>, <span class="at">sdlog =</span>.<span class="dv">3</span>)))</span>
+<span id="cb68-6"><a href="" aria-label="6"></a></span>
+<span id="cb68-7"><a href="" aria-label="7"></a><span class="co"># equivalent to first creating the variables as vectors and then putting them in a df</span></span>
+<span id="cb68-8"><a href="" aria-label="8"></a>subj <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"alice"</span>,<span class="st">"bob"</span>),<span class="at">each =</span> <span class="dv">400</span>))</span>
+<span id="cb68-9"><a href="" aria-label="9"></a>cond <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"easy"</span>,<span class="st">"hard"</span>),<span class="at">each =</span> <span class="dv">200</span>, <span class="at">times =</span> <span class="dv">2</span>))</span>
+<span id="cb68-10"><a href="" aria-label="10"></a>rt <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">sdlog =</span> .<span class="dv">25</span>),</span>
+<span id="cb68-11"><a href="" aria-label="11"></a>                             <span class="fu">rlnorm</span>(<span class="at">n =</span> <span class="dv">400</span>, <span class="at">meanlog =</span> <span class="sc">-</span>.<span class="dv">7</span>, <span class="at">sdlog =</span>.<span class="dv">3</span>))</span>
+<span id="cb68-12"><a href="" aria-label="12"></a></span>
+<span id="cb68-13"><a href="" aria-label="13"></a>df_rt <span class="ot">=</span> <span class="fu">data.frame</span>(subj, cond, rt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Dataframe contente l’età:</p>
+<p>Dataframe containing the age:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href=""></a>df_age <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">subj =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"caio"</span>,<span class="st">"tizio"</span>)), <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="" aria-label="1"></a>df_age <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">subj =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"alice"</span>,<span class="st">"bob"</span>)), <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href=""></a><span class="fu">str</span>(df_rt) <span class="co"># struttura dataframe tempi di reazione</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="" aria-label="1"></a><span class="fu">str</span>(df_rt) <span class="co"># structure of the reaction times dataframe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   800 obs. of  3 variables:
- $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
+ $ subj: Factor w/ 2 levels "alice","bob": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.276 0.274 0.281 0.323 0.374 ...</code></pre>
+ $ rt  : num  0.572 0.391 0.268 0.329 0.405 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href=""></a><span class="fu">head</span>(df_rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="" aria-label="1"></a><span class="fu">head</span>(df_rt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  subj cond        rt
-1 caio easy 0.2760902
-2 caio easy 0.2738203
-3 caio easy 0.2807314
-4 caio easy 0.3230613
-5 caio easy 0.3739160
-6 caio easy 0.3626198</code></pre>
+<pre><code>   subj cond        rt
+1 alice easy 0.5724112
+2 alice easy 0.3905852
+3 alice easy 0.2675803
+4 alice easy 0.3291322
+5 alice easy 0.4053720
+6 alice easy 0.3111655</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href=""></a><span class="fu">str</span>(df_age) <span class="co"># struttura dataframe età</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="" aria-label="1"></a><span class="fu">str</span>(df_age) <span class="co"># structure of the age dataframe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   2 obs. of  2 variables:
- $ subj: Factor w/ 2 levels "caio","tizio": 1 2
+ $ subj: Factor w/ 2 levels "alice","bob": 1 2
  $ age : num  20 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href=""></a><span class="fu">head</span>(df_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="" aria-label="1"></a><span class="fu">head</span>(df_age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   subj age
-1  caio  20
-2 tizio   3</code></pre>
+1 alice  20
+2   bob   3</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<p>In questo caso, è possibile utilizzare la funzione <strong><code>merge()</code></strong> e/o la funzione <strong><code>_join()</code></strong>:</p>
+<p>In this case, we can use the <strong><code>merge()</code></strong> function and/or the <strong><code>_join()</code></strong> functions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href=""></a>df_all_1 <span class="ot">=</span> <span class="fu">merge</span>(<span class="at">x =</span> df_rt, <span class="at">y =</span> df_age, <span class="at">by=</span><span class="st">"subj"</span>)</span>
-<span id="cb78-2"><a href=""></a><span class="fu">str</span>(df_all_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="" aria-label="1"></a>df_all_1 <span class="ot">=</span> <span class="fu">merge</span>(<span class="at">x =</span> df_rt, <span class="at">y =</span> df_age, <span class="at">by=</span><span class="st">"subj"</span>)</span>
+<span id="cb78-2"><a href="" aria-label="2"></a><span class="fu">str</span>(df_all_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   800 obs. of  4 variables:
- $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
+ $ subj: Factor w/ 2 levels "alice","bob": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.276 0.274 0.281 0.323 0.374 ...
+ $ rt  : num  0.572 0.391 0.268 0.329 0.405 ...
  $ age : num  20 20 20 20 20 20 20 20 20 20 ...</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href=""></a><span class="fu">library</span>(dplyr) <span class="co"># carico il pacchetto dplyr</span></span>
-<span id="cb80-2"><a href=""></a></span>
-<span id="cb80-3"><a href=""></a>df_all_2 <span class="ot">=</span> <span class="fu">left_join</span>(<span class="at">x =</span> df_rt, <span class="at">y =</span> df_age, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"subj"</span>)) <span class="co"># esistono anche right_join; full_join </span></span>
-<span id="cb80-4"><a href=""></a><span class="fu">str</span>(df_all_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="" aria-label="1"></a><span class="fu">library</span>(dplyr) <span class="co"># load the dplyr package</span></span>
+<span id="cb80-2"><a href="" aria-label="2"></a></span>
+<span id="cb80-3"><a href="" aria-label="3"></a>df_all_2 <span class="ot">=</span> <span class="fu">left_join</span>(<span class="at">x =</span> df_rt, <span class="at">y =</span> df_age, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"subj"</span>)) <span class="co"># right_join and full_join also exist</span></span>
+<span id="cb80-4"><a href="" aria-label="4"></a><span class="fu">str</span>(df_all_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   800 obs. of  4 variables:
- $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
+ $ subj: Factor w/ 2 levels "alice","bob": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.276 0.274 0.281 0.323 0.374 ...
+ $ rt  : num  0.572 0.391 0.268 0.329 0.405 ...
  $ age : num  20 20 20 20 20 20 20 20 20 20 ...</code></pre>
 </div>
 </div>
 </section>
-<section id="tabelle-di-contingenza" class="slide level2">
-<h2>Tabelle di contingenza</h2>
-<p>E’ possibile utilizzare le funzione <strong><code>table()</code></strong> sia per calcolare le frequenze che per computare delle tabelle di contigenze, per esempio per vedere quanti trial ho per ogni soggetto.</p>
+<section id="contingency-tables" class="slide level2">
+<h2>Contingency tables</h2>
+<p>We can use the <strong><code>table()</code></strong> function both to compute frequencies and to compute contingency tables, for example to see how many trials we have for each subject.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a><span class="co"># tengo solo rt compresi tra .200 e 1.5 secondi</span></span>
-<span id="cb82-2"><a href=""></a><span class="co"># quindi le righe che rispettano questa condizione</span></span>
-<span id="cb82-3"><a href=""></a>df_rt_clean <span class="ot">=</span> df_rt[df_rt<span class="sc">$</span>rt <span class="sc">&gt;</span> .<span class="dv">25</span> <span class="sc">&amp;</span> df_rt<span class="sc">$</span>rt <span class="sc">&lt;</span> <span class="fl">1.5</span>, ] </span>
-<span id="cb82-4"><a href=""></a></span>
-<span id="cb82-5"><a href=""></a><span class="co"># quanti trial x ogni soggetto</span></span>
-<span id="cb82-6"><a href=""></a><span class="fu">table</span>(df_rt<span class="sc">$</span>subj) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="" aria-label="1"></a><span class="co"># keep only rts between .250 and 1.5 seconds</span></span>
+<span id="cb82-2"><a href="" aria-label="2"></a><span class="co"># i.e. the rows that meet this condition</span></span>
+<span id="cb82-3"><a href="" aria-label="3"></a>df_rt_clean <span class="ot">=</span> df_rt[df_rt<span class="sc">$</span>rt <span class="sc">&gt;</span> .<span class="dv">25</span> <span class="sc">&amp;</span> df_rt<span class="sc">$</span>rt <span class="sc">&lt;</span> <span class="fl">1.5</span>, ]</span>
+<span id="cb82-4"><a href="" aria-label="4"></a></span>
+<span id="cb82-5"><a href="" aria-label="5"></a><span class="co"># how many trials for each subject</span></span>
+<span id="cb82-6"><a href="" aria-label="6"></a><span class="fu">table</span>(df_rt<span class="sc">$</span>subj)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
- caio tizio 
+alice   bob 
   400   400 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a><span class="fu">table</span>(df_rt_clean<span class="sc">$</span>subj) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="" aria-label="1"></a><span class="fu">table</span>(df_rt_clean<span class="sc">$</span>subj)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
- caio tizio 
-  378   396 </code></pre>
+alice   bob 
+  369   396 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a><span class="co"># quanti trial x ogni soggetto x condizione</span></span>
-<span id="cb86-2"><a href=""></a><span class="fu">table</span>(df_rt_clean<span class="sc">$</span>subj, df_rt_clean<span class="sc">$</span>cond) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="" aria-label="1"></a><span class="co"># how many trials for each subject x condition</span></span>
+<span id="cb86-2"><a href="" aria-label="2"></a><span class="fu">table</span>(df_rt_clean<span class="sc">$</span>subj, df_rt_clean<span class="sc">$</span>cond)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       
         easy hard
-  caio   187  191
-  tizio  196  200</code></pre>
+  alice  186  183
+  bob    200  196</code></pre>
 </div>
 </div>
 </section>
-<section id="esportazione-e-importazione-dati" class="slide level2">
-<h2>Esportazione e importazione dati</h2>
-<p>In R è possibile importare dati in molti formati differenti, più comunemente vi troverete ad importare dati <strong><em>.csv</em></strong> oppure <strong><em>.xlsx</em></strong>.</p>
-<p>Qui per esempio, esporto i dataframe in due formati differenti…</p>
+<section id="exporting-and-importing-data" class="slide level2">
+<h2>Exporting and importing data</h2>
+<p>In R we can import data in many different formats; most commonly you will import <strong><em>.csv</em></strong> or <strong><em>.xlsx</em></strong> data.</p>
+<p>Here, for example, I export the dataframes in two different formats…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a><span class="fu">library</span>(readr) <span class="co"># carico il pacchetto readr</span></span>
-<span id="cb88-2"><a href=""></a><span class="fu">library</span>(writexl) <span class="co"># carico il pacchetto writexl</span></span>
-<span id="cb88-3"><a href=""></a></span>
-<span id="cb88-4"><a href=""></a><span class="fu">write.csv</span>(df_rt, <span class="at">file =</span> <span class="st">"DATA/df_rt.csv"</span>,<span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb88-5"><a href=""></a><span class="fu">write_xlsx</span>(df_age, <span class="at">path =</span> <span class="st">"DATA/df_age.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="" aria-label="1"></a><span class="fu">library</span>(readr) <span class="co"># load the readr package</span></span>
+<span id="cb88-2"><a href="" aria-label="2"></a><span class="fu">library</span>(writexl) <span class="co"># load the writexl package</span></span>
+<span id="cb88-3"><a href="" aria-label="3"></a></span>
+<span id="cb88-4"><a href="" aria-label="4"></a><span class="fu">write.csv</span>(df_rt, <span class="at">file =</span> <span class="st">"DATA/df_rt.csv"</span>,<span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb88-5"><a href="" aria-label="5"></a><span class="fu">write_xlsx</span>(df_age, <span class="at">path =</span> <span class="st">"DATA/df_age.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="importo" class="slide level2">
-<h2>Importo</h2>
+<section id="importing" class="slide level2">
+<h2>Importing</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href=""></a><span class="fu">library</span>(readxl) <span class="co"># carico il pacchetto readxl</span></span>
-<span id="cb89-2"><a href=""></a></span>
-<span id="cb89-3"><a href=""></a>df_rt_impo <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>) <span class="co">#utilizza il pacchetto readr</span></span>
-<span id="cb89-4"><a href=""></a></span>
-<span id="cb89-5"><a href=""></a>df_age_impo <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">"DATA/df_age.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="" aria-label="1"></a><span class="fu">library</span>(readxl) <span class="co"># load the readxl package</span></span>
+<span id="cb89-2"><a href="" aria-label="2"></a></span>
+<span id="cb89-3"><a href="" aria-label="3"></a>df_rt_impo <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>) <span class="co"># uses the readr package</span></span>
+<span id="cb89-4"><a href="" aria-label="4"></a></span>
+<span id="cb89-5"><a href="" aria-label="5"></a>df_age_impo <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">"DATA/df_age.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="controllare-la-struttura" class="slide level2">
-<h2>Controllare la struttura</h2>
-<p>Cosa notate di diverso tra i due dataframe?</p>
+<section id="checking-the-structure" class="slide level2">
+<h2>Checking the structure</h2>
+<p>What differences do you notice between the two dataframes?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href=""></a><span class="fu">str</span>(df_rt) <span class="co"># Data frame creato </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="" aria-label="1"></a><span class="fu">str</span>(df_rt) <span class="co"># Data frame we created</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   800 obs. of  3 variables:
- $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
+ $ subj: Factor w/ 2 levels "alice","bob": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num  0.276 0.274 0.281 0.323 0.374 ...</code></pre>
+ $ rt  : num  0.572 0.391 0.268 0.329 0.405 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href=""></a><span class="fu">str</span>(df_rt_impo) <span class="co"># Data frame caricato </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="" aria-label="1"></a><span class="fu">str</span>(df_rt_impo) <span class="co"># Data frame we loaded</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [800 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
- $ subj: chr [1:800] "caio" "caio" "caio" "caio" ...
+ $ subj: chr [1:800] "alice" "alice" "alice" "alice" ...
  $ cond: chr [1:800] "easy" "easy" "easy" "easy" ...
- $ rt  : num [1:800] 0.276 0.274 0.281 0.323 0.374 ...
+ $ rt  : num [1:800] 0.572 0.391 0.268 0.329 0.405 ...
  - attr(*, "spec")=
   .. cols(
   ..   subj = col_character(),
@@ -942,23 +750,23 @@ $row.names
 </section>
 <section class="slide level2">
 
-<p>Il dataframe viene importato come tibble ed in questo caso le variabili <strong><em><code>factor</code></em></strong> sono state importate come <strong><em><code>character</code></em></strong>. Questo è modificabile o in importazione ( <strong><code>?read_csv</code></strong> ):</p>
+<p>The dataframe is imported as a tibble, and in this case the <strong><em><code>factor</code></em></strong> variables have been imported as <strong><em><code>character</code></em></strong>. This can be changed either when importing ( <strong><code>?read_csv</code></strong> ):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href=""></a>df_rt_impo1 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>, </span>
-<span id="cb94-2"><a href=""></a>                       <span class="at">col_types =</span></span>
-<span id="cb94-3"><a href=""></a>                         <span class="fu">list</span>(<span class="fu">col_double</span>(),<span class="fu">col_factor</span>(),</span>
-<span id="cb94-4"><a href=""></a>                              <span class="fu">col_factor</span>(),<span class="fu">col_double</span>()))</span>
-<span id="cb94-5"><a href=""></a><span class="fu">str</span>(df_rt_impo1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="" aria-label="1"></a>df_rt_impo1 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>,</span>
+<span id="cb94-2"><a href="" aria-label="2"></a>                       <span class="at">col_types =</span></span>
+<span id="cb94-3"><a href="" aria-label="3"></a>                         <span class="fu">list</span>(<span class="fu">col_factor</span>(),<span class="fu">col_factor</span>(),</span>
+<span id="cb94-4"><a href="" aria-label="4"></a>                              <span class="fu">col_double</span>()))</span>
+<span id="cb94-5"><a href="" aria-label="5"></a><span class="fu">str</span>(df_rt_impo1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [800 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
- $ subj: num [1:800] NA NA NA NA NA NA NA NA NA NA ...
+ $ subj: Factor w/ 2 levels "alice","bob": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : Factor w/ 800 levels "0.276090211837674",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ rt  : num [1:800] 0.572 0.391 0.268 0.329 0.405 ...
  - attr(*, "spec")=
   .. cols(
-  ..   subj = col_double(),
+  ..   subj = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
   ..   cond = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE),
-  ..   rt = col_factor(levels = NULL, ordered = FALSE, include_na = FALSE)
+  ..   rt = col_double()
   .. )
  - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
 </div>
@@ -966,16 +774,16 @@ $row.names
 </section>
 <section class="slide level2">
 
-<p>o a posteriori attraverso il comando <strong><code>as.factor()</code></strong>:</p>
+<p>or afterwards with the <strong><code>as.factor()</code></strong> command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href=""></a>df_rt_impo<span class="sc">$</span>subj <span class="ot">=</span> <span class="fu">as.factor</span>(df_rt_impo<span class="sc">$</span>subj)</span>
-<span id="cb96-2"><a href=""></a>df_rt_impo<span class="sc">$</span>cond <span class="ot">=</span> <span class="fu">as.factor</span>(df_rt_impo<span class="sc">$</span>cond)</span>
-<span id="cb96-3"><a href=""></a><span class="fu">str</span>(df_rt_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="" aria-label="1"></a>df_rt_impo<span class="sc">$</span>subj <span class="ot">=</span> <span class="fu">as.factor</span>(df_rt_impo<span class="sc">$</span>subj)</span>
+<span id="cb96-2"><a href="" aria-label="2"></a>df_rt_impo<span class="sc">$</span>cond <span class="ot">=</span> <span class="fu">as.factor</span>(df_rt_impo<span class="sc">$</span>cond)</span>
+<span id="cb96-3"><a href="" aria-label="3"></a><span class="fu">str</span>(df_rt_impo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [800 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
- $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
+ $ subj: Factor w/ 2 levels "alice","bob": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num [1:800] 0.276 0.274 0.281 0.323 0.374 ...
+ $ rt  : num [1:800] 0.572 0.391 0.268 0.329 0.405 ...
  - attr(*, "spec")=
   .. cols(
   ..   subj = col_character(),
@@ -988,66 +796,66 @@ $row.names
 </section>
 <section class="slide level2">
 
-<p>equivalente a:</p>
+<p>equivalent to:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href=""></a>df_rt_impo2 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>) <span class="sc">%&gt;%</span> <span class="co">#library(tidyverse)</span></span>
-<span id="cb98-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">subj =</span> <span class="fu">factor</span>(subj), </span>
-<span id="cb98-3"><a href=""></a>         <span class="at">cond =</span> <span class="fu">factor</span>(cond)) </span>
-<span id="cb98-4"><a href=""></a><span class="fu">str</span>(df_rt_impo2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="" aria-label="1"></a>df_rt_impo2 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"DATA/df_rt.csv"</span>) <span class="sc">%&gt;%</span> <span class="co">#library(tidyverse)</span></span>
+<span id="cb98-2"><a href="" aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">subj =</span> <span class="fu">factor</span>(subj),</span>
+<span id="cb98-3"><a href="" aria-label="3"></a>         <span class="at">cond =</span> <span class="fu">factor</span>(cond))</span>
+<span id="cb98-4"><a href="" aria-label="4"></a><span class="fu">str</span>(df_rt_impo2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [800 × 3] (S3: tbl_df/tbl/data.frame)
- $ subj: Factor w/ 2 levels "caio","tizio": 1 1 1 1 1 1 1 1 1 1 ...
+ $ subj: Factor w/ 2 levels "alice","bob": 1 1 1 1 1 1 1 1 1 1 ...
  $ cond: Factor w/ 2 levels "easy","hard": 1 1 1 1 1 1 1 1 1 1 ...
- $ rt  : num [1:800] 0.276 0.274 0.281 0.323 0.374 ...</code></pre>
+ $ rt  : num [1:800] 0.572 0.391 0.268 0.329 0.405 ...</code></pre>
 </div>
 </div>
-<p>(solo per farvi vedere come in <strong><em>R</em></strong>, si possa risolvere un problema in differenti modi)</p>
+<p>(just to show you that in <strong><em>R</em></strong> a problem can be solved in different ways)</p>
 </section>
 <section class="slide level2">
 
-<p>Gli stessi concetti si applicano alla lettura di file xlsx:</p>
+<p>The same concepts apply to reading xlsx files:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href=""></a><span class="fu">str</span>(df_age_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="" aria-label="1"></a><span class="fu">str</span>(df_age_impo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [2 × 2] (S3: tbl_df/tbl/data.frame)
- $ subj: chr [1:2] "caio" "tizio"
+ $ subj: chr [1:2] "alice" "bob"
  $ age : num [1:2] 20 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href=""></a>df_age_impo<span class="sc">$</span>subj<span class="ot">=</span><span class="fu">as.factor</span>(df_age_impo<span class="sc">$</span>subj)</span>
-<span id="cb102-2"><a href=""></a><span class="fu">str</span>(df_age_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="" aria-label="1"></a>df_age_impo<span class="sc">$</span>subj<span class="ot">=</span><span class="fu">as.factor</span>(df_age_impo<span class="sc">$</span>subj)</span>
+<span id="cb102-2"><a href="" aria-label="2"></a><span class="fu">str</span>(df_age_impo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [2 × 2] (S3: tbl_df/tbl/data.frame)
- $ subj: Factor w/ 2 levels "caio","tizio": 1 2
+ $ subj: Factor w/ 2 levels "alice","bob": 1 2
  $ age : num [1:2] 20 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href=""></a>df_age_impo<span class="sc">$</span>subj<span class="ot">=</span><span class="fu">factor</span>(df_age_impo<span class="sc">$</span>subj)</span>
-<span id="cb104-2"><a href=""></a><span class="fu">str</span>(df_age_impo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="" aria-label="1"></a>df_age_impo<span class="sc">$</span>subj<span class="ot">=</span><span class="fu">factor</span>(df_age_impo<span class="sc">$</span>subj)</span>
+<span id="cb104-2"><a href="" aria-label="2"></a><span class="fu">str</span>(df_age_impo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [2 × 2] (S3: tbl_df/tbl/data.frame)
- $ subj: Factor w/ 2 levels "caio","tizio": 1 2
+ $ subj: Factor w/ 2 levels "alice","bob": 1 2
  $ age : num [1:2] 20 3</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<p>Gli esempi che vi ho mostrato riguardano dati in formati <strong>esterni</strong> ad R, è possibile però anche salvare ed importare in formato <strong><code>R</code></strong> .</p>
-<p>Il principale difetto è quello che sono appunto leggibili (principalmente) solo all’interno dell’ambiente R.</p>
-<p>Se abbiamo la necessità di lavorare con software o linguaggi diversi è probabilmente meglio usare un formato più generico.</p>
-<p>Se avanzerà del tempo andremo a vedere anche questo tipo di formato, il materiale è disponibile a questo <a href="https://arca-dpss.github.io/course-R/extra/importing_data.html#1_Introduzione">link</a>.</p>
+<p>The examples I have shown concern data in formats <strong>external</strong> to R, but we can also save and import data in <strong><code>R</code></strong> formats.</p>
+<p>Their main drawback is that they can be read (mainly) only within the R environment.</p>
+<p>If we need to work with different software or languages, it is probably better to use a more generic format.</p>
+<p>If we have time left, we will also look at this type of format; the material is available at this <a href="https://arca-dpss.github.io/course-R/extra/importing_data.html#1_Introduzione">link</a> (in Italian).</p>
 </section>
-<section id="ora-però-facciamo-un-po-di-pratica" class="slide level2" style="text-align: center;">
-<h2>Ora però facciamo un po’ di pratica!</h2>
-<p><br> Aprite e tenete aperto questo link:</p>
+<section id="now-lets-practice" class="slide level2" style="text-align: center;">
+<h2>Now let’s practice!</h2>
+<p><br> Open this link and keep it open:</p>
 <p><a href="https://etherpad.wikimedia.org/p/arca-corsoR" class="uri">https://etherpad.wikimedia.org/p/arca-corsoR</a></p>
-<div class="quarto-auto-generated-content">
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 
 </div>
-</div>
-</section>
-    </div>
-  </div>
+</div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="2.4_dataframe_files/libs/revealjs/dist/reveal.js"></script>
@@ -1076,7 +884,8 @@ $row.names
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1230,7 +1039,7 @@ $row.names
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1295,192 +1104,173 @@ $row.names
     </script>
 
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

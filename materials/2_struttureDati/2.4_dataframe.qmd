@@ -1,6 +1,6 @@
 ---
 title: "Dataframe"
-format: 
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -9,42 +9,42 @@ format:
 editor: visual
 ---
 
-## Strutture Dati
+## Data Structures
 
--   vettori
+-   vectors
 
--   fattori
+-   factors
 
--   liste
+-   lists
 
--   matrici
+-   matrices
 
--   array
+-   arrays
 
--   ***`dataframe`***
+-   ***`dataframes`***
 
 ## Dataframe
 
-Il dataframe è la struttura più "complessa", utile e potente di R. Da un punto di vista intuitivo è un foglio excel mentre da un punto di vista di R è una tipologia di **lista** con alcune caratteristiche/restrizioni
+The dataframe is the most "complex", useful and powerful structure in R. Intuitively it is an excel sheet, while from R's point of view it is a type of **list** with some properties/restrictions
 
--   ogni elemento della lista è un **vettore** con un **nome associato** (aka una colonna)
--   ogni lista/colonna deve avere lo stesso numero di elementi
--   di conseguenza ogni riga ha lo stesso numero di elementi (**struttura rettangolare**)
+-   each element of the list is a **vector** with an **associated name** (aka a column)
+-   each list/column must have the same number of elements
+-   as a consequence, each row has the same number of elements (**rectangular structure**)
 
-## Creazione
+## Creation
 
-Nella maggior parte dei casi vi capiterà d'importare più che creare dei dataframe, ma è importante prima capire come funzionano e come crearli/manipolarli. Si creano attraverso il comando `data.frame`
+Most of the time you will import dataframes rather than create them, but it is important to first understand how they work and how to create/manipulate them. They are created with the `data.frame` command
 
 ```{r, echo=TRUE}
-# Creo un dataframe con 3 colonne 
+# Create a dataframe with 3 columns
 my_df = data.frame( col1 = 1:4, col2 = letters[1:4],
-                    col3 = rnorm(n = 4, mean = 0, sd = 1)) 
+                    col3 = rnorm(n = 4, mean = 0, sd = 1))
 my_df
 ```
 
-## Attributi
+## Attributes
 
-Il **`dataframe`** ha sia gli attributi della lista ovvero i ***names*** ma anche gli attributi della matrice ovvero le ***dimensioni*** (righe e colonne)
+The **`dataframe`** has both the attributes of a list, i.e. the ***names***, and the attributes of a matrix, i.e. the ***dimensions*** (rows and columns)
 
 ```{r, echo=TRUE}
 typeof(my_df)
@@ -54,47 +54,47 @@ dim(my_df)
 
 ------------------------------------------------------------------------
 
-Come per le altre strutture che abbiamo visto, possiamo utlizzare le funzioni **`names()`** , **`dim()`**, **`nrow()`**, **`ncol()`**... per ottenere informazioni sulle caratteristiche del dataframe. La funzione più utile è **`str()`** poichè ci restituisce una veloce overview della struttura del dataframe: dimensioni, tipi di variabili,...
+As with the other structures we have seen, we can use the functions **`names()`** , **`dim()`**, **`nrow()`**, **`ncol()`**... to get information about the properties of the dataframe. The most useful function is **`str()`**, since it gives us a quick overview of the structure of the dataframe: dimensions, variable types,...
 
 ```{r,echo=TRUE}
-str(iris) # iris è un dataset presente di default in R (?iris)
+str(iris) # iris is a dataset available by default in R (?iris)
 ```
 
 ------------------------------------------------------------------------
 
-## Indicizzazione
+## Indexing
 
-Si posso utlizzare sia le parentesi quadre **`[]`**:
+We can use either square brackets **`[]`**:
 
 ```{r, echo = TRUE}
-my_df[1]  # estraggo un data.frame 5x1
-my_df[[1]] # estraggo la prima colonna del data.frame
-my_df[1,1] #  estraggo il primo elemento della prima colonna del data.frame
+my_df[1]  # extract a 4x1 data.frame
+my_df[[1]] # extract the first column of the data.frame
+my_df[1,1] # extract the first element of the first column of the data.frame
 ```
 
 ::: fragment
-che il simbolo del dollaro **`$`**
+or the dollar sign **`$`**
 
 ```{r, echo=TRUE}
-my_df$col1 # estraggo la prima colonna del data.frame
-my_df$col1[1] #  estraggo il primo elemento della prima colonna del data.frame
+my_df$col1 # extract the first column of the data.frame
+my_df$col1[1] # extract the first element of the first column of the data.frame
 
 ```
 :::
 
-## Indicizzazione - Operatori relazionali
+## Indexing - Relational operators
 
-Una delle operazioni più comuni che dovrete affrontare sarà sicuramente quella di estrarre/valutare un sottoinsieme di valori presenti nel vostro dataset:
+One of the most common operations you will deal with is extracting/evaluating a subset of the values in your dataset:
 
 ```{r, echo=TRUE}
 my_df
 
-# includo solo le righe in cui alla colonna1 i valori sono maggiori di 2
+# keep only the rows where the values of column1 are greater than 2
 my_df[my_df$col1 > 2, ]
-my_df[my_df[1] > 2, ] 
+my_df[my_df[1] > 2, ]
 ```
 
-## Esempi
+## Examples
 
 ```{r}
 my_df
@@ -136,9 +136,9 @@ my_df[my_df$col1== 2,  "col2"]
 ```
 :::
 
-## Indicizzazione
+## Indexing
 
-Ci sono anche dei modi alternativi e più compatti di indicizzare. Ad esempio usando la funzione **`subset()`**:
+There are also alternative, more compact ways of indexing. For example, using the **`subset()`** function:
 
 ```{r,echo=TRUE}
 
@@ -146,7 +146,7 @@ subset(iris, subset = Species == "setosa" & Petal.Length > 1.7)
 
 ```
 
-equivalente a:
+equivalent to:
 
 ```{r,echo=TRUE}
 
@@ -156,20 +156,20 @@ iris[iris$Species == "setosa" & iris$Petal.Length > 1.7,]
 
 ------------------------------------------------------------------------
 
-E' possibile anche selezionare colonne piuttosto che righe attraverso l'argomento ***`select`***:
+We can also select columns rather than rows with the ***`select`*** argument:
 
 ```{r, echo=TRUE, eval=FALSE}
 subset(iris, select = c(Sepal.Length, Species))
 ```
 
 ```{r, echo=TRUE}
-#visualizzo le prime due righe attraverso il comando head
-head(subset(iris, select = c(Sepal.Length, Species)), n = 3) 
+# show the first rows with the head command
+head(subset(iris, select = c(Sepal.Length, Species)), n = 3)
 ```
 
 ------------------------------------------------------------------------
 
-Possiamo anche combinare le due cose:
+We can also combine the two:
 
 ```{r,echo=TRUE, eval=FALSE}
 subset(iris, subset = Species == "setosa" & Sepal.Length > 4, select = c(Sepal.Length, Species))
@@ -179,36 +179,36 @@ subset(iris, subset = Species == "setosa" & Sepal.Length > 4, select = c(Sepal.L
 head(subset(iris, subset = Species == "setosa" & Sepal.Length > 4, select = c(Sepal.Length, Species)), n = 3)
 ```
 
-... equivalente a:
+... equivalent to:
 
 ```{r,echo=TRUE}
 
 head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4, c("Sepal.Length","Species")],n = 3)
 ```
 
-## Indicizzazione
+## Indexing
 
-La maggiorparte delle volte vi troverete ad accedere alle variabili tramite l'operatore **`$`**. Questo comando può essere utilizzato anche per creare una nuova variabile...
+Most of the time you will access variables with the **`$`** operator. This command can also be used to create a new variable...
 
 ```{r,echo=TRUE}
-# creo una variablie che è la somma di Length e Width
-iris$somma = iris$Sepal.Length + iris$Sepal.Width
+# create a variable that is the sum of Length and Width
+iris$sum = iris$Sepal.Length + iris$Sepal.Width
 
 str(iris)
 ```
 
 ------------------------------------------------------------------------
 
-Si applicano gli stessi concetti che abbiamo visto per i vettori, potete quindi sia creare che modificare variabili.
+The same concepts we have seen for vectors apply, so you can both create and modify variables.
 
 ```{r, echo=TRUE}
 my_df = data.frame(num = 1:4, let = letters[1:4])
 my_df
 
-# Modfico la variabile num aggiungendo 1
+# Modify the num variable by adding 1
 my_df$num = my_df$num+1
 
-# Creo una terza variabile composta dalla varibile num e let
+# Create a third variable made of the num and let variables
 my_df$both = paste(my_df$num,my_df$let, sep = "_") # ?paste
 
 str(my_df)
@@ -216,15 +216,15 @@ str(my_df)
 
 ------------------------------------------------------------------------
 
-## Combinare Dataframes
+## Combining Dataframes
 
-Essendo simili a delle matrici, i dataframe si possono combinare tra loro attraverso le funzioni **`rbind()`**:
+Since they are similar to matrices, dataframes can be combined with the **`rbind()`** function:
 
 ```{r,echo=TRUE, error=TRUE}
-# primo dataframe
+# first dataframe
 str(my_df)
-# creo un secondo dataframe
-my_df2 = data.frame(num = 4:7, lett = letters[1:4], 
+# create a second dataframe
+my_df2 = data.frame(num = 4:7, lett = letters[1:4],
                     both = paste(4:7,letters[1:4], sep = "_"))
 
 str(my_df2)
@@ -232,14 +232,14 @@ str(my_df2)
 
 ------------------------------------------------------------------------
 
-**Unisco i due dataframes**
+**Join the two dataframes**
 
--   I dataframes devono avere lo stesso numero di colonne
+-   The dataframes must have the same number of columns
 
--   I nomi delle colonne devono essere identici
+-   The column names must be identical
 
 ```{r,echo=TRUE, error=TRUE}
-my_df3 = rbind(my_df,my_df2) 
+my_df3 = rbind(my_df,my_df2)
 
 str(my_df)
 str(my_df2)
@@ -247,62 +247,62 @@ str(my_df2)
 
 ------------------------------------------------------------------------
 
-**Sistemo i nomi**
+**Fix the names**
 
 ```{r,echo=TRUE, error=TRUE}
 names(my_df2)
 names(my_df)
 
-# voglio che i names di my_df2 corrispondano ai names di my_df
+# I want the names of my_df2 to match the names of my_df
 names(my_df2) = names(my_df)
 
-my_df3 = rbind(my_df,my_df2) 
+my_df3 = rbind(my_df,my_df2)
 str(my_df3)
 ```
 
 ------------------------------------------------------------------------
 
-Potrebbe anche capitarvi di dover raccogliere differenti tipi di dato dallo stesso partecipante, e successivamente combinare le informazioni raccolte...
+You may also need to collect different types of data from the same participant, and then combine the collected information...
 
-Dataframe contente i tempi di reazione:
+Dataframe containing the reaction times:
 
 ```{r, echo=TRUE}
-df_rt = data.frame(subj = factor(rep(c("caio","tizio"),each = 400)),
-                   cond = factor(rep(c("easy","hard"), 
+df_rt = data.frame(subj = factor(rep(c("alice","bob"),each = 400)),
+                   cond = factor(rep(c("easy","hard"),
                                      each = 200, times = 2)),
-                      rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25), 
+                      rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25),
                              rlnorm(n = 400, meanlog = -.7, sdlog =.3)))
 
-# equivalente a creare prima le variabili come vettore e poi inserirle in un df
-subj = factor(rep(c("caio","tizio"),each = 400))
+# equivalent to first creating the variables as vectors and then putting them in a df
+subj = factor(rep(c("alice","bob"),each = 400))
 cond = factor(rep(c("easy","hard"),each = 200, times = 2))
-rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25), 
+rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25),
                              rlnorm(n = 400, meanlog = -.7, sdlog =.3))
 
 df_rt = data.frame(subj, cond, rt)
 
 ```
 
-Dataframe contente l'età:
+Dataframe containing the age:
 
 ```{r, echo=TRUE}
-df_age = data.frame(subj = factor(c("caio","tizio")), age = c(20,3))
+df_age = data.frame(subj = factor(c("alice","bob")), age = c(20,3))
 
 ```
 
 ------------------------------------------------------------------------
 
 ```{r,echo=TRUE}
-str(df_rt) # struttura dataframe tempi di reazione
+str(df_rt) # structure of the reaction times dataframe
 head(df_rt)
 
-str(df_age) # struttura dataframe età
+str(df_age) # structure of the age dataframe
 head(df_age)
 ```
 
 ------------------------------------------------------------------------
 
-In questo caso, è possibile utilizzare la funzione **`merge()`** e/o la funzione **`_join()`**:
+In this case, we can use the **`merge()`** function and/or the **`_join()`** functions:
 
 ```{r, echo=TRUE}
 df_all_1 = merge(x = df_rt, y = df_age, by="subj")
@@ -310,79 +310,79 @@ str(df_all_1)
 ```
 
 ```{r, echo=TRUE, message=FALSE}
-library(dplyr) # carico il pacchetto dplyr
+library(dplyr) # load the dplyr package
 
-df_all_2 = left_join(x = df_rt, y = df_age, by = c("subj")) # esistono anche right_join; full_join 
+df_all_2 = left_join(x = df_rt, y = df_age, by = c("subj")) # right_join and full_join also exist
 str(df_all_2)
 ```
 
-## Tabelle di contingenza
+## Contingency tables
 
-E' possibile utilizzare le funzione **`table()`** sia per calcolare le frequenze che per computare delle tabelle di contigenze, per esempio per vedere quanti trial ho per ogni soggetto.
+We can use the **`table()`** function both to compute frequencies and to compute contingency tables, for example to see how many trials we have for each subject.
 
 ```{r, echo=TRUE}
 
-# tengo solo rt compresi tra .200 e 1.5 secondi
-# quindi le righe che rispettano questa condizione
-df_rt_clean = df_rt[df_rt$rt > .25 & df_rt$rt < 1.5, ] 
+# keep only rts between .250 and 1.5 seconds
+# i.e. the rows that meet this condition
+df_rt_clean = df_rt[df_rt$rt > .25 & df_rt$rt < 1.5, ]
 
-# quanti trial x ogni soggetto
-table(df_rt$subj) 
-table(df_rt_clean$subj) 
+# how many trials for each subject
+table(df_rt$subj)
+table(df_rt_clean$subj)
 
-# quanti trial x ogni soggetto x condizione
-table(df_rt_clean$subj, df_rt_clean$cond) 
+# how many trials for each subject x condition
+table(df_rt_clean$subj, df_rt_clean$cond)
 
 ```
 
-## Esportazione e importazione dati
+## Exporting and importing data
 
-In R è possibile importare dati in molti formati differenti, più comunemente vi troverete ad importare dati ***.csv*** oppure ***.xlsx***.
+In R we can import data in many different formats; most commonly you will import ***.csv*** or ***.xlsx*** data.
 
-Qui per esempio, esporto i dataframe in due formati differenti...
+Here, for example, I export the dataframes in two different formats...
 
 ```{r, echo=TRUE}
-library(readr) # carico il pacchetto readr
-library(writexl) # carico il pacchetto writexl
+library(readr) # load the readr package
+library(writexl) # load the writexl package
 
 write.csv(df_rt, file = "DATA/df_rt.csv",row.names = FALSE)
 write_xlsx(df_age, path = "DATA/df_age.xlsx")
 ```
 
-## Importo
+## Importing
 
 ```{r, echo=TRUE}
-library(readxl) # carico il pacchetto readxl
+library(readxl) # load the readxl package
 
-df_rt_impo = read_csv("DATA/df_rt.csv") #utilizza il pacchetto readr
+df_rt_impo = read_csv("DATA/df_rt.csv") # uses the readr package
 
 df_age_impo = read_xlsx("DATA/df_age.xlsx")
 ```
 
-## Controllare la struttura
+## Checking the structure
 
-Cosa notate di diverso tra i due dataframe?
+What differences do you notice between the two dataframes?
 
 ```{r, echo=TRUE, message=FALSE}
-str(df_rt) # Data frame creato 
-str(df_rt_impo) # Data frame caricato 
+str(df_rt) # Data frame we created
+str(df_rt_impo) # Data frame we loaded
 ```
 
 ------------------------------------------------------------------------
 
-Il dataframe viene importato come tibble ed in questo caso le variabili ***`factor`*** sono state importate come ***`character`***. Questo è modificabile o in importazione ( **`?read_csv`** ):
+The dataframe is imported as a tibble, and in this case the ***`factor`*** variables have been imported as ***`character`***. This can be changed either when importing ( **`?read_csv`** ):
 
 ```{r,echo=TRUE,message=FALSE}
-df_rt_impo1 = read_csv("DATA/df_rt.csv", 
+df_rt_impo1 = read_csv("DATA/df_rt.csv",
                        col_types =
-                         list(col_double(),col_factor(),
-                              col_factor(),col_double()))
+                         list(col_factor(),col_factor(),
+                              col_double()))
 str(df_rt_impo1)
 ```
 
 ------------------------------------------------------------------------
 
-o a posteriori attraverso il comando **`as.factor()`**:
+or afterwards with the **`as.factor()`** command:
 
 ```{r,echo=TRUE,message=FALSE}
 df_rt_impo$subj = as.factor(df_rt_impo$subj)
@@ -392,20 +392,20 @@ str(df_rt_impo)
 
 ------------------------------------------------------------------------
 
-equivalente a:
+equivalent to:
 
 ```{r,echo=TRUE,message=FALSE}
 df_rt_impo2 = read_csv("DATA/df_rt.csv") %>% #library(tidyverse)
-  mutate(subj = factor(subj), 
-         cond = factor(cond)) 
+  mutate(subj = factor(subj),
+         cond = factor(cond))
 str(df_rt_impo2)
 ```
 
-(solo per farvi vedere come in ***R***, si possa risolvere un problema in differenti modi)
+(just to show you that in ***R*** a problem can be solved in different ways)
 
 ------------------------------------------------------------------------
 
-Gli stessi concetti si applicano alla lettura di file xlsx:
+The same concepts apply to reading xlsx files:
 
 ```{r, echo=TRUE}
 str(df_age_impo)
@@ -417,16 +417,16 @@ str(df_age_impo)
 
 ------------------------------------------------------------------------
 
-Gli esempi che vi ho mostrato riguardano dati in formati **esterni** ad R, è possibile però anche salvare ed importare in formato **`R`** .
+The examples I have shown concern data in formats **external** to R, but we can also save and import data in **`R`** formats.
 
-Il principale difetto è quello che sono appunto leggibili (principalmente) solo all'interno dell'ambiente R.
+Their main drawback is that they can be read (mainly) only within the R environment.
 
-Se abbiamo la necessità di lavorare con software o linguaggi diversi è probabilmente meglio usare un formato più generico.
+If we need to work with different software or languages, it is probably better to use a more generic format.
 
-Se avanzerà del tempo andremo a vedere anche questo tipo di formato, il materiale è disponibile a questo [link](https://arca-dpss.github.io/course-R/extra/importing_data.html#1_Introduzione).
+If we have time left, we will also look at this type of format; the material is available at this [link](https://arca-dpss.github.io/course-R/extra/importing_data.html#1_Introduzione) (in Italian).
 
-## Ora però facciamo un po' di pratica! {style="text-align: center;"}
+## Now let's practice! {style="text-align: center;"}
 
-<br/> Aprite e tenete aperto questo link:
+<br/> Open this link and keep it open:
 
 <https://etherpad.wikimedia.org/p/arca-corsoR>

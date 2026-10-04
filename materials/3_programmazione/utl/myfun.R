@@ -1,6 +1,6 @@
-# funzioni che utilizzo più volte
+# functions I use several times
 
-z_score = function(x, na.rm = FALSE){ # argomenti 
+z_score = function(x, na.rm = FALSE){ # arguments 
   
   xcen = (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm)
   
@@ -18,40 +18,40 @@ my_summary =  function(x){
   } 
 }
 
-myfun_ifelse = function(x){ # argomento
+myfun_ifelse = function(x){ # argument
   if (x > 2){
-    cat("Il valore è maggiore di 0\n")
+    cat("The value is greater than 2\n")
   }
   else if (x <= 2 & x >= 0){
-    cat("Il valore è compreso tra 2 e 0\n")
+    cat("The value is between 0 and 2\n")
   }
   else{
-    cat("Il valore è minore di 0\n")
+    cat("The value is less than 0\n")
   }
 }
 
 
-myfun_stop = function(x){ # argomento
+myfun_stop = function(x){ # argument
   
-  if (!is.numeric(x)) { # utile quando vogliamo evitare che la funzione venga eseguita
-    stop("il vettore deve essere numerico")
+  if (!is.numeric(x)) { # useful when we want to prevent the function from running
+    stop("the vector must be numeric")
   }
   mean(x, na.rm = TRUE)
 }
 
 mydf_fun = function(mydf){
   
-  if (ncol(mydf) != 2) { # utile quando vogliamo evitare che la funzione venga eseguita
-    stop("dataframe errato")
+  if (ncol(mydf) != 2) { # useful when we want to prevent the function from running
+    stop("wrong dataframe")
   }
   
   if (all.equal(colnames(mydf), c("id","age"))){
     mydf$age_cat = with(mydf, 
                        factor(
-      case_when( age > 30 ~ "adulto",
-                 age <= 30 & age >= 20 ~ "giovane",
-                 age < 20 ~ "adolescente",
-                 TRUE ~ "errore" #  check  errori di codifica
+      case_when( age > 30 ~ "adult",
+                 age <= 30 & age >= 20 ~ "young",
+                 age < 20 ~ "adolescent",
+                 TRUE ~ "error" # check for coding errors
       )))
     
     mydf$age_z = z_score(mydf$age)

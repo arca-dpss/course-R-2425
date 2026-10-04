@@ -1,26 +1,26 @@
-# Installo i pacchetti che mi servono
+# Install the packages I need
 
 # install.packages("dplyr")
 # install.packages("tidyr")
 # install.packages("remotes")
 # remotes::install_github("beauchamplab/raveio")
 
-# Carico i pacchetti -----
+# Load the packages -----
 library(dplyr)
 library(tidyr)
 library(raveio)
 
-# Leggi file -----
+# Read the file -----
 data = raveio::read_eeg_marker("~/course-R-2425/materials/2_struttureDati/sara/dataSara")
 
-# controllo la struttura
+# check the structure
 str(data)
 
-# Modifica il data.frame che è contenuto in data
-# dov'è?
+# Modify the data.frame contained in data
+# where is it?
 data$content
 
-# Bisogna eliminare le righe da 1:49
+# Rows 1:49 must be removed
 data$content[-c(1:49),]
 
 
@@ -28,58 +28,58 @@ data$content = data$content[-(1:49),]
 data$content
 
 
-# Colonna Descritption
-# Per ogni volta che appare: S 10, S 12 o S 14, 
-# le successive 5 osservazioni, al posto di essere S 1 
-# devono essere : S 10; S 12; S 14
+# Description column
+# Every time S 10, S 12 or S 14 appears, 
+# the following 5 observations, instead of being S 1, 
+# must be: S 10; S 12; S 14
 
-# creo una colonna location per essere sicura
-# di svoglere la procedura correttamente
+# create a location column to make sure
+# I carry out the procedure correctly
 data$content$location = data$content$Description
 
-# Assegno NA quando location S 1
+# Assign NA when location is S 1
 data$content$location[data$content$location == "S  1"] = NA
 
-# Attraverso la funzione fill del pacchetto tidyr
-# possono riempire gli NA come se tirassi giù la casella di excel
+# With the fill function from the tidyr package
+# I can fill the NAs, like dragging down a cell in excel
 
-data$content = data$content |>  # il comando |> concatena più operazioni
-  fill(location, .direction = "down") # riempio gli NA
+data$content = data$content |>  # the |> operator chains several operations
+  fill(location, .direction = "down") # fill the NAs
 
 
-# Ora elimino le righe che risultano S 10, S 12 , S 14 alla colonna Description
-# poichè non sono rilevanti
-# NB alla colonna description avrò S 12 .. S 1 ecc.
-# Mentre nella colonna location ho tutto S 12 S 14 ecc, non più S 1
-# in poche parole tengo solo le righe in cui description è S 1
+# Now I remove the rows that are S 10, S 12 , S 14 in the Description column
+# since they are not relevant
+# NB in the description column I will have S 12 .. S 1 etc.
+# While in the location column I have only S 12 S 14 etc, no more S 1
+# in short, I keep only the rows where description is S 1
 
 data$content = data$content[data$content$Description == "S  1",]
 
 
-# Dopo aver controllato di aver fatto giusto,
-# ispezionato il dataframe, sostituisco alla colonna Description
-# la colonna location
+# After checking that I did it right
+# and inspecting the dataframe, I replace the Description column
+# with the location column
 
 data$content$Description = data$content$location
 
 
-# Poi elimino la colonna location (l'ultima)
+# Then I remove the location column (the last one)
 data$content = data$content[,-ncol(data$content)]
 
 
-# Se voglio tenere solo l'informazione del numero 
-# cioè 14 senza S, posso utilizzare la funzione ?grep
-# che mi permette di scovare pattern di stringe
-# e che posso utilizzare per selezionare elementi
-# di della variabile Description
+# If I want to keep only the number information, 
+# i.e. 14 without S, I can use the ?grep function,
+# which lets me find string patterns
+# and which I can use to select elements
+# of the Description variable
 data$content$Description[grep("S 14", data$content$Description)] = "14"
 data$content$Description[grep("S 12", data$content$Description)] = "12"
 data$content$Description[grep("S 10", data$content$Description)] = "10"
 
 
-# ultima consegna vuole che teniamo solo le righe 
-# per cui description è uguale a 14, 12, 10 
-# questo è già stato fatto prima tenenod solamente S  1 alla colonna description
+# the last request is to keep only the rows 
+# where description is equal to 14, 12, 10 
+# this was already done before by keeping only S  1 in the description column
 table(data$content$Description)
 
 

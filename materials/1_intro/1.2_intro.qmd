@@ -1,6 +1,6 @@
 ---
-title: "Introduzione 2"
-format: 
+title: "Introduction 2"
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -9,93 +9,93 @@ format:
 editor: visual
 ---
 
-## **Argomenti**
+## **Topics**
 
--   **Oggetti**
-    -   tipologie di oggetti
-    -   creare/nominare un oggetto
-    -   tipologie di dato
--   **Operatori**
-    -   matematici
-    -   relazionali
-    -   logici
+-   **Objects**
+    -   types of objects
+    -   creating/naming an object
+    -   data types
+-   **Operators**
+    -   mathematical
+    -   relational
+    -   logical
 
-# Oggetti
+# Objects
 
-## Oggetti
+## Objects
 
-Tutto quello che possiamo creare in R viene definito oggetto (e.g., numeri, vettori, matrici, funzioni). <br/>
+Everything we can create in R is called an object (e.g., numbers, vectors, matrices, functions). <br/>
 
 ```{r, echo = TRUE}
-numero = 4
-numero
+number = 4
+number
 ```
 
 ```{r, echo = TRUE}
-vettore = c(1,2,3,4)
-vettore
+my_vector = c(1,2,3,4)
+my_vector
 ```
 
 ```{r, echo = TRUE}
-matrice = matrix(nrow = 2, ncol = 2, data = vettore)
-matrice
+my_matrix = matrix(nrow = 2, ncol = 2, data = my_vector)
+my_matrix
 ```
 
-## Funzioni
+## Functions
 
-Tutto quello che facciamo in R è chiamare **funzioni** su oggetti.
+Everything we do in R is calling **functions** on objects.
 
-Le funzioni ci permettono di **creare** e **modificare** oggetti.
-
-```{r, echo = TRUE}
-vettore
-mean(x = vettore)
-```
+Functions allow us to **create** and **modify** objects.
 
 ```{r, echo = TRUE}
-numero
+my_vector
+mean(x = my_vector)
 ```
 
 ```{r, echo = TRUE}
-numero = mean(vettore)
-numero
+number
 ```
 
-## Creare/nominare oggetti
+```{r, echo = TRUE}
+number = mean(my_vector)
+number
+```
 
-Gli oggetti si possono creare e tramite il comando **`<-`** oppure **`=`**
+## Creating/naming objects
+
+Objects can be created with either the **`<-`** or the **`=`** command
 
 ```{r, echo = TRUE}
-x1 = 3 # nome = oggetto
+x1 = 3 # name = object
 x1
 
-x2 <- 3 # nome <- oggetto
-x2 
+x2 <- 3 # name <- object
+x2
 
-x1 == x2 # i due oggetti sono identici?
+x1 == x2 # are the two objects identical?
 ```
 
-Voi potete scegliere il comando che preferite, l'importante è essere consistenti.
+You can choose the command you prefer; the important thing is to be consistent.
 
-## Regole sulla denominazione di oggetti
+## Rules for naming objects
 
--   Deve iniziare con una lettera e può contenere lettere, numeri, underscore ( \_ ), o punti (.).
--   Potrebbe anche iniziare con un punto (.) ma in tal caso non può essere seguito da un numero.
+-   A name must start with a letter and can contain letters, numbers, underscores ( \_ ), or dots (.).
+-   It may also start with a dot (.), but in that case it cannot be followed by a number.
 
 ```{r, echo = TRUE, warning=TRUE, error=TRUE}
-.3 = 3 
+.3 = 3
 
 .x = 3
 ```
 
 ------------------------------------------------------------------------
 
--   Non deve contenere caratteri speciali come #, &, \$, ?, etc.
+-   It must not contain special characters such as #, &, \$, ?, etc.
 
--   Non deve essere una parola riservata ovvero quelle parole che sono utilizzate da R con un significato speciale (?reserved).
+-   It must not be a reserved word, i.e. one of the words used by R with a special meaning (?reserved).
 
 ```{r, echo = TRUE, warning=TRUE, error=TRUE}
-function = 3  
+function = 3
 
 ```
 
@@ -109,9 +109,9 @@ if = 3
 
 ```
 
-## Convenzioni
+## Conventions
 
-Ci sono alcuni nomi che non sono proibiti ma sono sconsigliati
+Some names are not forbidden but are discouraged
 
 ```{r, echo = TRUE}
 T
@@ -129,140 +129,140 @@ sum = 4; sum
 
 ------------------------------------------------------------------------
 
-L'uso di "*.*" nei nomi degli oggetti (ad esempio, "my.data") va bene in **R** ma non è consentito in **Python**, dove "*.*" fa parte della sintassi del linguaggio.
+Using "*.*" in object names (for example, "my.data") is fine in **R** but is not allowed in **Python**, where "*.*" is part of the language syntax.
 
-Tra i diversi linguaggi, le *convenzioni di denominazione* per i nomi di variabili più lunghi e composti da più parole privilegiano **`snake_case`** (ad esempio, "**my_data**") o **`camelCase`** (ad esempio, "**myData**"), e **abbreviazioni** dove appropriato (ad esempio, "**unipdData**" meglio di "university_of_padova_dataset").
+Across languages, the *naming conventions* for longer, multi-word variable names favour **`snake_case`** (for example, "**my_data**") or **`camelCase`** (for example, "**myData**"), and **abbreviations** where appropriate (for example, "**unipdData**" rather than "university_of_padova_dataset").
 
-## R è case-sensitive
+## R is case-sensitive
 
 <br/>
 
 ```{r, echo = TRUE}
-Nome = "Margherita"
+Name = "Margherita"
 
-nome = "margherita"
+name = "margherita"
 
-Nome
-nome
+Name
+name
 
-Nome == nome
+Name == name
 ```
 
-## Dove vengono salvati gli oggetti?
+## Where are objects stored?
 
-Di default gli oggetti sono creati nel **global environment** accessibile con `ls()` o visibile in R Studio con anche alcune informazioni aggiuntive:
+By default, objects are created in the **global environment**, which can be accessed with `ls()` or viewed in R Studio together with some additional information:
 
 ![](images/envi.png){fig-align="center" width="400"}
 
-## Eliminare oggetti
+## Removing objects
 
-Possiamo eliminare un oggetto presente nel nostro enviroment attraverso il comando **`rm("nomeoggetto")`**.
+We can remove an object from our environment with the **`rm("objectname")`** command.
 
-E' possibile anche pulire completamente/svuotare il nostro enrivoment attraverso il comando **`rm(list = ls())`**.
+We can also completely clear/empty our environment with the **`rm(list = ls())`** command.
 
-# Tipologie di dato
+# Data types
 
-## Tipologie di dato
+## Data types
 
--   **`character`**: Stringhe di caratteri i cui valori alfanumerici vengono delimitati dalle doppie vigolette "Hello world!" o virgolette singole 'Hello world!'
--   **`numeri`**:
-    -   **`double`**: Valori reali con o senza cifre decimali ad esempio 27 o 93.46
-    -   **`integer`**: Valori interi definiti apponendo la lettera L al numero desiderato, ad esempio 58L
+-   **`character`**: Character strings whose alphanumeric values are delimited by double quotes "Hello world!" or single quotes 'Hello world!'
+-   **`numbers`**:
+    -   **`double`**: Real values with or without decimal digits, for example 27 or 93.46
+    -   **`integer`**: Integer values defined by appending the letter L to the number, for example 58L
 
-## Operatori Matematici
+## Mathematical Operators
 
-| Funzione | Cosa fa?        | Esempio     | Risultato |
-|----------|-----------------|-------------|-----------|
-| `+`      | addizione       | `5.4 + 6.1` | `11.5`    |
-| `-`      | sottrazione     | `9 - 4.3`   | `4.7`     |
-| `*`      | moltiplicazione | `7 * 1.4`   | `9.8`     |
-| `/`      | divisione       | `9/3`       | `3`       |
-| `%%`     | resto           | `9%%2`      | `1`       |
-| `^`      | potenza         | `15 ^ 2`    | `225`     |
+| Function | What does it do? | Example     | Result |
+|----------|------------------|-------------|--------|
+| `+`      | addition         | `5.4 + 6.1` | `11.5` |
+| `-`      | subtraction      | `9 - 4.3`   | `4.7`  |
+| `*`      | multiplication   | `7 * 1.4`   | `9.8`  |
+| `/`      | division         | `9/3`       | `3`    |
+| `%%`     | remainder        | `9%%2`      | `1`    |
+| `^`      | power            | `15 ^ 2`    | `225`  |
 
 ------------------------------------------------------------------------
 
-| Funzione | Cosa fa?               | Esempio           | Risultato |
-|----------|------------------------|-------------------|-----------|
-| `abs`    | valore assoluto        | `abs(-8)`         | `8`       |
-| `sqrt`   | radice quadrata        | `sqrt(225)`       | `15`      |
-| `exp`    | funzione esponenziale  | `exp(0)`          | `1`       |
-| `log`    | logaritmo naturale     | `log(1)`          | `0`       |
-| `round`  | arrotondamento, intero | `round(1.738)`    | `2`       |
-| `round`  | arrotondamento         | `round(1.738, 2)` | `1.74`    |
+| Function | What does it do?     | Example           | Result |
+|----------|----------------------|-------------------|--------|
+| `abs`    | absolute value       | `abs(-8)`         | `8`    |
+| `sqrt`   | square root          | `sqrt(225)`       | `15`   |
+| `exp`    | exponential function | `exp(0)`          | `1`    |
+| `log`    | natural logarithm    | `log(1)`          | `0`    |
+| `round`  | rounding, integer    | `round(1.738)`    | `2`    |
+| `round`  | rounding             | `round(1.738, 2)` | `1.74` |
 
-## Operazioni Matematiche
+## Mathematical Operations
 
-L'ordine delle operazioni in R segue le regole della matematica.
+The order of operations in R follows the rules of mathematics.
 
-**Esempi**
+**Examples**
 
 ```{r, echo = TRUE}
-# Senza parentesi
+# Without parentheses
 1 + 2 * 3
 
-# Con le parentesi
+# With parentheses
 (1 + 2) * 3
 ```
 
-## Operatori Relazionali
+## Relational Operators
 
-In R è possibile valutare se una data relazione è vera o falsa. R valuterà le proposizioni e ci restituirà il valore **`TRUE`** se la proposizione è vera oppure **`FALSE`** se la proposizione è falsa.
+In R we can evaluate whether a given relation is true or false. R will evaluate the statement and return **`TRUE`** if the statement is true or **`FALSE`** if the statement is false.
 
 ------------------------------------------------------------------------
 
 +---------------+-------------------+-------------------+---------------+
-| Funzione      | Nome              | Esempio           | Risulato      |
+| Function      | Name              | Example           | Result        |
 +===============+===================+===================+===============+
-| `==`          | uguale            | `30 == 30`        | `TRUE`        |
+| `==`          | equal             | `30 == 30`        | `TRUE`        |
 +---------------+-------------------+-------------------+---------------+
-| `!=`          | diverso           | `30 != 30`        | `FALSE`       |
+| `!=`          | not equal         | `30 != 30`        | `FALSE`       |
 +---------------+-------------------+-------------------+---------------+
-| `>`/`>=`      | maggiore/o uguale | `30 > 10`         | `TRUE`        |
+| `>`/`>=`      | greater/or equal  | `30 > 10`         | `TRUE`        |
 |               |                   |                   |               |
 |               |                   | `30 >= 10`        | `TRUE`        |
 +---------------+-------------------+-------------------+---------------+
-| `<`/`<=`      | minore/o uguale   | `30 < 10`         | `FALSE`       |
+| `<`/`<=`      | less/or equal     | `30 < 10`         | `FALSE`       |
 |               |                   |                   |               |
 |               |                   | `10 <= 10`        | `TRUE`        |
 +---------------+-------------------+-------------------+---------------+
-| `%in%`        | inclusione        | `10%in%c(1,2,10)` | `TRUE`        |
+| `%in%`        | inclusion         | `10%in%c(1,2,10)` | `TRUE`        |
 +---------------+-------------------+-------------------+---------------+
 
 ------------------------------------------------------------------------
 
-**Non vale solo per i numeri!**
+**It doesn't only work with numbers!**
 
 <br/>
 
 ```{r, echo = TRUE}
-Nome = "Margherita"
+Name = "Margherita"
 
-nome = "margherita"
+name = "margherita"
 
-Nome == nome
+Name == name
 ```
 
-<br/> PS. Ricordatevi che **`=`** è diverso da **`==`**
+<br/> PS. Remember that **`=`** is different from **`==`**
 
-## Operatori Logici
+## Logical Operators
 
-In R è possibile congiungere più relazioni per valutare una desiderata proposizione.
+In R we can combine several relations to evaluate a given statement.
 
 ```{r,echo = TRUE}
-x = 30 #Assegnamo a x il valore 30.
+x = 30 # Assign the value 30 to x.
 ```
 
-| Funzione | Nome                   | Esempio       | Risulato |
-|----------|------------------------|---------------|----------|
-| `&`      | Congiunzione           | `x>25 & x<60` | `TRUE`   |
-| `|`      | Disgiunzione Inclusiva | `x>25 | x>60` | `TRUE`   |
-| `!`      | Negazione              | `!(x<18)`     | `TRUE`   |
+| Function | Name                    | Example       | Result |
+|----------|-------------------------|---------------|--------|
+| `&`      | Conjunction (AND)       | `x>25 & x<60` | `TRUE` |
+| `|`      | Inclusive disjunction (OR) | `x>25 | x>60` | `TRUE` |
+| `!`      | Negation (NOT)          | `!(x<18)`     | `TRUE` |
 
-## Operatori Logici
+## Logical Operators
 
 ```{r,echo = TRUE}
-x = 30 #Assegnamo a x il valore 30.
+x = 30 # Assign the value 30 to x.
 x
 ```
 
@@ -304,48 +304,48 @@ x>25 | x>60
 
 ------------------------------------------------------------------------
 
-**TRUE equivale a 1 e FALSE a 0**
+**TRUE is equivalent to 1 and FALSE to 0**
 
 ```{r,echo = TRUE}
-TRUE == 1 
+TRUE == 1
 TRUE == 2
 FALSE == 0
 FALSE == 1
 ```
 
 ::: fragment
-Creo un vettore esempio in cui ci sono dentro le parole casa (ripetuta 4 volte) e bottega (ripetuta 2 volte):
+I create an example vector containing the words home (repeated 4 times) and shop (repeated 2 times):
 ```{r,echo = TRUE}
-esempio = c(rep("casa",times = 4),rep("bottega", times = 2)) #?rep
-esempio
+example = c(rep("home",times = 4),rep("shop", times = 2)) #?rep
+example
 ```
 :::
 
 ::: fragment
 ```{r,echo = TRUE}
-# Quante parole dentro esempio sono uguali a casa?
-esempio == "casa"
+# How many words in example are equal to home?
+example == "home"
 ```
 :::
 
 ::: fragment
 ```{r,echo = TRUE}
-sum(esempio == "casa") # perchè?
+sum(example == "home") # why?
 ```
 :::
 
-## Ordine Valutazione Relazioni
+## Order of Evaluation
 
-Nel valutare le veridicità delle proposizioni R esegue le operazioni nel seguente ordine:
+When evaluating whether statements are true, R performs the operations in the following order:
 
-1.  Operatori matematici (e.g., \^, \*, /, +, -, etc.)
-2.  Operatori relazionali (e.g., \<, \>, \<=, \>=, ==, !=)
-3.  Operatori logici (e.g., !, &, \|)
+1.  Mathematical operators (e.g., \^, \*, /, +, -, etc.)
+2.  Relational operators (e.g., \<, \>, \<=, \>=, ==, !=)
+3.  Logical operators (e.g., !, &, \|)
 
-In caso di dubbi riguardanti l'ordine di esecuzione delle operazioni, la cosa migliore è utilizzare le parentesi tonde ( ) per disambiguare ogni possibile fraintendimento.
+If in doubt about the order in which operations are executed, the best thing to do is to use round brackets ( ) to remove any possible ambiguity.
 
-## Facciamo un po' di pratica! {style="text-align: center;"}
+## Let's practice! {style="text-align: center;"}
 
-<br/> Aprite e tenete aperto questo link: <https://etherpad.wikimedia.org/p/arca-corsoR>
+<br/> Open this link and keep it open: <https://etherpad.wikimedia.org/p/arca-corsoR>
 
 ![](images/pad_condiviso.png){fig-align="center" width="800"}

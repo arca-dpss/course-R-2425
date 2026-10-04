@@ -1,6 +1,6 @@
 ---
 title: "Recap"
-format: 
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -9,87 +9,87 @@ format:
 editor: visual
 ---
 
-# Creare/nominare oggetti
+# Creating/naming objects
 
-## Creare/nominare oggetti
+## Creating/naming objects
 
-Gli oggetti si possono creare e tramite il comando **`<-`** oppure **`=`**
+Objects can be created with either the **`<-`** or the **`=`** command
 
 ```{r, echo=TRUE}
-x1 = 3 # nome = oggetto
+x1 = 3 # name = object
 x1
 
-x2 <- 3 # nome <- oggetto
-x2 
+x2 <- 3 # name <- object
+x2
 
-x1 == x2 # i due oggetti sono identici?
+x1 == x2 # are the two objects identical?
 ```
 
-**I nomi degli oggetti devono iniziare con una lettera!! NON "nome" = ...ma nome = ...**
+**Object names must start with a letter!! NOT "name" = ...but name = ...**
 
-## Operatori Logici
+## Logical Operators
 
-In R è possibile congiungere più relazioni per valutare una desiderata proposizione.
+In R we can combine several relations to evaluate a given statement.
 
 ```{r,echo = TRUE}
-x = 30 #Assegnamo a x il valore 30.
+x = 30 # Assign the value 30 to x.
 ```
 
-| Funzione | Nome                   | Esempio       | Risulato |
-|----------|------------------------|---------------|----------|
-| `&`      | Congiunzione           | `x>25 & x<60` | `TRUE`   |
-| `|`      | Disgiunzione Inclusiva | `x>25 | x>60` | `TRUE`   |
-| `!`      | Negazione              | `!(x<18)`     | `TRUE`   |
+| Function | Name                       | Example       | Result |
+|----------|----------------------------|---------------|--------|
+| `&`      | Conjunction (AND)          | `x>25 & x<60` | `TRUE` |
+| `|`      | Inclusive disjunction (OR) | `x>25 | x>60` | `TRUE` |
+| `!`      | Negation (NOT)             | `!(x<18)`     | `TRUE` |
 
-# Vettori
+# Vectors
 
-## Vettori
+## Vectors
 
--   **un valore**: il valore dell'elemento che può essere di qualsiasi tipo ad esempio un numero o una serie di caratteri
+-   **a value**: the value of the element, which can be of any type, for example a number or a string of characters
 
--   **un indice di posizione**: un numero intero positivo che identifica la sua posizione all'interno del vettore.
+-   **a position index**: a positive integer that identifies its position within the vector.
 
     ![](Untitled/vettore.png)
 
-## Creare un vettore
+## Creating a vector
 
-I vettori si possono creare attraverso il comando **`c()`**, indicando tra le parentesi i valori degli elementi nella sucessione desiderata e separati da una virgola.
+Vectors can be created with the **`c()`** command, writing inside the brackets the values of the elements in the desired order, separated by commas.
 
 ```{r, echo=TRUE}
 num_vect = c(1,2,3,4)
-# è possibile anche utilizzare la funzione seq()
+# you can also use the seq() function
 num_vect_seq = seq(from = 1,to = 4, by = 1)
 
 num_vect;num_vect_seq
 
 char_vect = c("R","R","R","ok")
-# è possibile anche utilizzare la funzione rep()
+# you can also use the rep() function
 char_vect_rep = c(rep("R", 3), "ok")
 
 char_vect;char_vect_rep
 ```
 
-## Tiplogia di vettore
+## Vector type
 
-Un vettore deve esssere formato da **elementi tutti dello stesso tipo**!
+A vector must be made of **elements all of the same type**!
 
 ```{r, echo=TRUE}
-wrong = c(1,2,3,"non so", 4)
-class(wrong) 
+wrong = c(1,2,3,"don't know", 4)
+class(wrong)
 wrong
 ```
 
-Altrimenti si "rischia" che tutto venga trasformato a carattere.
+Otherwise you "risk" everything being converted to character.
 
 ```{r, echo=TRUE}
 correct = c(1,2,3,NA, 4)
-class(correct) 
+class(correct)
 correct
 ```
 
 ## is.\* & as.\*
 
-Possiamo testare o convertire (quando possibile) la tipologia del vettore attraverso queste funzioni **`is.`** & **`as.`**
+We can test or convert (when possible) the type of a vector with the **`is.`** & **`as.`** functions
 
 ```{r, echo = TRUE}
 is.character(char_vect)
@@ -101,55 +101,55 @@ as.character(num_vect) #!!
 logi_vect = c(TRUE,FALSE,TRUE)
 is.logical(logi_vect)
 
-as.numeric(logi_vect) 
+as.numeric(logi_vect)
 ```
 
-## Indicizzazione
+## Indexing
 
-Possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'indice di posizione tramite le parentesi quadre vettore\[pos\]
+We can select, remove and extract elements simply by using the position index inside square brackets vector\[pos\]
 
 ```{r, echo=TRUE}
-# Creo un vettore formato da 20 numeri casuali pescati da 1 a 100
+# Create a vector of 20 random numbers drawn between 1 and 100
 my_vect = round(runif(n = 20,min = 1,max = 100))
 my_vect
 
-my_vect[1] # estraggo il primo elemento
+my_vect[1] # extract the first element
 
-my_vect[1:5] # estraggo i primi 5 elementi
+my_vect[1:5] # extract the first 5 elements
 
-my_vect[c(1,4,2,9)] # estraggo elementi a scelta
+my_vect[c(1,4,2,9)] # extract elements of our choice
 
-my_vect[length(my_vect)] #ultimo elemento (perchè?)
+my_vect[length(my_vect)] # last element (why?)
 ```
 
-## Inidicizzazione negativa
+## Negative indexing
 
-Allo stesso modo possiamo decidere di estrarre tutti gli elementi del vettore eccetto alcuni
+In the same way, we can extract all the elements of the vector except some
 
 ```{r, echo=TRUE}
 
-my_vect[-c(1)] #tutti tranne il primo elemento
+my_vect[-c(1)] # all except the first element
 
-my_vect[-c(1:10)] #tutti tranne i primi 10
+my_vect[-c(1:10)] # all except the first 10
 ```
 
-## Indicizzazione Logica
+## Logical Indexing
 
-Indicizzare con la posizione è l'aspetto più semplice e intuitivo. E' possibile anche selezionare tramite valori **`TRUE`** e **`FALSE`**: possiamo estrarre elementi dal vettore basandoci su specifiche condizioni logiche
+Indexing by position is the simplest and most intuitive approach. We can also select using **`TRUE`** and **`FALSE`** values: we can extract elements from the vector based on specific logical conditions
 
 ```{r, echo=TRUE}
 
-numeri = 1:7
-numeri
-numeri[numeri<2]
+numbers = 1:7
+numbers
+numbers[numbers<2]
 
 ```
 
-# Fattori
+# Factors
 
-## Fattori
+## Factors
 
-I fattori si possono creare sia convertendo un vettore character attraverso il comando **`as.factor()`** che creando esplicitamente un fattore attraverso il comando **`factor()`**
+Factors can be created either by converting a character vector with the **`as.factor()`** command or by explicitly creating a factor with the **`factor()`** command
 
 ```{r, echo=TRUE}
 
@@ -161,22 +161,22 @@ my_fact2 = factor(rep(c("hello","ciao", "hola"), each = 2))
 my_fact == my_fact2
 ```
 
-## Caratteristiche dei fattori
+## Properties of factors
 
-In pratica assegnano un'etichetta ad un valore numerico intero:
+In practice, they assign a label to an integer value:
 
 ```{r, echo = TRUE}
 typeof(my_fact)
 ```
 
 ```{r, echo=TRUE, warning=TRUE}
-as.integer(my_fact) 
+as.integer(my_fact)
 my_fact
 ```
 
-## Livelli del fattore
+## Factor levels
 
-I fattori permettono di avere dei livelli **`levels()`** come metadati, a prescindere da quali siano effettivamente presenti nel vettore
+Factors store **`levels()`** as metadata, regardless of which ones are actually present in the vector
 
 ```{r, echo = TRUE}
 levels(my_fact)
@@ -185,26 +185,26 @@ my_fact2 = my_fact[my_fact!="ciao"]
 my_fact2
 ```
 
-E' possibile però eslcudere i livelli non più utili attraverso il comando **`droplevels()`**
+However, we can drop the levels that are no longer needed with the **`droplevels()`** command
 
 ```{r, echo = TRUE}
-droplevels(my_fact2) 
+droplevels(my_fact2)
 ```
 
 ------------------------------------------------------------------------
 
-E' possibile anche rinominare i livelli del fattore
+We can also rename the levels of a factor
 
 ```{r, echo=TRUE}
-# il fattore che ho creato 
+# the factor I created
 my_fact
 
-# creo un altro fattore "my_fact_lev" identico a "my_fact"
+# create another factor "my_fact_lev" identical to "my_fact"
 my_fact_lev = my_fact
 my_fact_lev == my_fact
 
-# rinomino i livelli del fattore
-levels(my_fact_lev) = c("italiano","inglese","spagnolo")
+# rename the levels of the factor
+levels(my_fact_lev) = c("italian","english","spanish")
 
 my_fact_lev
 
@@ -214,11 +214,11 @@ my_fact
 
 ------------------------------------------------------------------------
 
-E' possibile sia riordinare che rinominare i livelli di un fattore attraverso la funzione **`factor()`**
+We can both reorder and rename the levels of a factor with the **`factor()`** function
 
 ```{r, echo=TRUE}
 my_fact
-# di default l'ordine di assegnazione è alfabetico 
+# by default levels are assigned in alphabetical order
 as.integer(my_fact)
 
 new_fact = factor(my_fact, levels = c("hello","ciao","hola"))
@@ -226,89 +226,89 @@ new_fact
 as.integer(new_fact)
 
 new_fact2 = factor(my_fact, levels = c("hello","ciao","hola"),
-                   labels = c("inglese","italiano","spagnolo"))
+                   labels = c("english","italian","spanish"))
 new_fact2
 ```
 
 ------------------------------------------------------------------------
 
-**Ricordate**: l'argomento ***`levels`*** dentro la funzione **`factor()`** serve a **riordinare** i livelli del fattore, mentre la funzione **`levels()`** li **rinomina** non riordina!
+**Remember**: the ***`levels`*** argument inside the **`factor()`** function is used to **reorder** the levels of the factor, while the **`levels()`** function **renames** them, it does not reorder them!
 
 ```{r, echo=TRUE}
-# il fattore che ho creato 
+# the factor I created
 my_fact
 as.integer(my_fact)
 levels(my_fact) = c("hello","ciao","hola")
 
-# Cosa notate rispetto al vettore my_fact visualizzato sopra?
+# What do you notice compared to the my_fact vector shown above?
 my_fact
 as.integer(my_fact)
 ```
 
-# Liste
+# Lists
 
-## Liste
+## Lists
 
-Le liste sono strutture flessibili che possono contenere oggetti di tipo differente e di differenti dimensioni (ogni elemento può essere a sua volta una lista)
+Lists are flexible structures that can contain objects of different types and different sizes (each element can itself be a list)
 
 ```{r, echo=TRUE}
-my_list = list("ciao!", 1:3, c(TRUE,FALSE), 
-               list("ciao!", 1:3, c(TRUE,FALSE)))
+my_list = list("hello!", 1:3, c(TRUE,FALSE),
+               list("hello!", 1:3, c(TRUE,FALSE)))
 str(my_list)
 ```
 
-## Liste
+## Lists
 
-La lista pur essendo unidimensionale, si sviluppa in profondità
+Although a list is one-dimensional, it develops in depth
 
 ```{r, echo=TRUE}
 str(my_list)
 ```
 
-## Liste
+## Lists
 
-***Primo Livello***: lista
+***First Level***: list
 
 ```{r, echo=TRUE}
-str(my_list[2]) 
+str(my_list[2])
 ```
 
-***Secondo Livello***: vettore numerico
+***Second Level***: numeric vector
 
 ```{r, echo=TRUE}
-str(my_list[[2]]) 
+str(my_list[[2]])
 ```
 
-***Terzo Livello***: numero intero
+***Third Level***: integer
 
 ```{r, echo=TRUE}
-str(my_list[[2]][1])# numero intero 
+str(my_list[[2]][1]) # integer
 ```
 
-## Liste
+## Lists
 
-E' possibile assegnare dei nomi agli elementi della lista...
+We can assign names to the elements of a list...
 
 ```{r, echo=TRUE}
-my_list_nam = list(parola = "ciao!",numeri =  1:3, 
-                   logico = c(TRUE,FALSE), 
-               lista = list("ciao!", 1:3, c(TRUE,FALSE)))
+my_list_nam = list(word = "hello!",numbers =  1:3,
+                   logical = c(TRUE,FALSE),
+               list = list("hello!", 1:3, c(TRUE,FALSE)))
 my_list_nam
 ```
 
-## Liste
+## Lists
 
-... ed accerdervi chiamandoli per "nome" attraverso l'operatore **`$`**
+... and access them by calling them by "name" with the **`$`** operator
 
 ```{r, echo=TRUE}
-my_list_nam$parola
+my_list_nam$word
 
-my_list_nam$lista #lista creata come elemento della lista
+my_list_nam$list # list created as an element of the list
 ```
 
-## Liste - Attributi
+## Lists - Attributes
 
-Come per i vettori anche le liste hanno una lunghezza (**`lenght()`**) ed eventualmente dei nomi (**`names()`**). Il comando **`str()`** (struttura) è molto utile per le liste perchè fornisce una visione sulla struttura:
+Like vectors, lists also have a length (**`length()`**) and possibly names (**`names()`**). The **`str()`** (structure) command is very useful for lists because it gives an overview of their structure:
 
 ```{r, echo=TRUE}
 
@@ -317,29 +317,29 @@ length(my_list_nam); names(my_list_nam)
 str(my_list_nam)
 ```
 
-## Liste - Indicizzazione
+## Lists - Indexing
 
-La differenza tra le parentesi quadre riguarda il fatto se vogliamo fare un subset della lista ottenendo un'altra lista oppure se vogliamo accedere direttamente all'elemento interno:
-
-```{r, echo=TRUE}
-my_list_nam[1] #ottenendo un'altra lista 
-
-my_list_nam[[1]] # accedo all'elemento interno
-```
-
-## Liste - Indicizzazione
-
-Se vogliamo selezionare più elementi (quindi fare un vero e proprio subset della lista) dobbiamo sempre usare le parentesi quadre singole:
+The difference between the square brackets is whether we want to subset the list, getting another list, or directly access the inner element:
 
 ```{r, echo=TRUE}
+my_list_nam[1] # getting another list
 
-#lista composta dai primi due elementi della my_list_nam 
-my_list_nam[1:2] 
+my_list_nam[[1]] # accessing the inner element
 ```
 
-## Liste - Indicizzazione Nested
+## Lists - Indexing
 
-Le liste hanno una struttura unidimensionale ma che si può sviluppare in profondità. Per selezionare elementi nested si possono concatenare più parentesi:
+If we want to select several elements (i.e. actually subset the list) we must always use single square brackets:
+
+```{r, echo=TRUE}
+
+# list made of the first two elements of my_list_nam
+my_list_nam[1:2]
+```
+
+## Lists - Nested Indexing
+
+Lists have a one-dimensional structure that can develop in depth. To select nested elements we can chain several brackets:
 
 ```{r, echo=TRUE}
 
@@ -351,11 +351,11 @@ my_list_nam[[4]][[2]]
 
 ```
 
-# Matrici
+# Matrices
 
-## Matrici
+## Matrices
 
-Le matrici sono una struttura dati **bidimensionale** (caratterizzate da 2 dimensioni **`dim()`** ) dove il numero di righe rappresenta la dimensione 1 e il numero di colonne la dimensione 2.
+Matrices are a **two-dimensional** data structure (characterized by 2 dimensions, **`dim()`**), where the number of rows is dimension 1 and the number of columns is dimension 2.
 
 ```{r, echo=TRUE}
 my_mat = matrix(data = 1:10, nrow = 2, ncol = 5, byrow = FALSE)
@@ -366,25 +366,25 @@ my_mat
 matrix(data = 1:10, nrow = 2, ncol = 5, byrow = TRUE)
 ```
 
-## Matrici - Caratteristiche
+## Matrices - Properties
 
--   Possono contenere **una sola tipologia** di dati
+-   They can contain **only one type** of data
 
--   Essendo **bidimensionali**, abbiamo bisogno di due indici di posizione (righe e colonne) per identificare un elemento
+-   Since they are **two-dimensional**, we need two position indices (rows and columns) to identify an element
 
--   Possono essere viste come un **insieme** di singoli **vettori**
+-   They can be seen as a **set** of single **vectors**
 
-## Matrici - Caratteristiche
+## Matrices - Properties
 
-Il numero di righe e colonne non deve essere lo stesso necessariamente (matrice quadrata) ma il numero di righe deve essere compatibile con il vettore data:
+The number of rows and columns does not have to be the same (square matrix), but the size of the matrix must be compatible with the data vector:
 
 ```{r, echo=TRUE, warning=TRUE}
 matrix(data = 1:10, ncol = 3, nrow = 3)
 ```
 
-## Matrici
+## Matrices
 
-Cosa fa R di default?
+What does R do by default?
 
 ```{r, echo=TRUE, warning=FALSE}
 
@@ -394,11 +394,11 @@ matrix(data = 1:2, ncol = 3, nrow = 3)
 
 ```
 
-**`warnings`**: la funzione ci informa di qualcosa di potenzialmente problematico, ma (circa!!) tutto liscio
+**`warnings`**: the function informs us about something potentially problematic, but (more or less!!) everything is fine
 
-## Matrici - Indicizzazione
+## Matrices - Indexing
 
-Per identificare uno o più elementi nella matrice abbiamo bisogno di indici/e di riga e/o colonna separati da virgola, sempre con le parentesi quadre: matrice\[riga, colonna\]
+To identify one or more elements of a matrix we need row and/or column indices separated by a comma, again inside square brackets: matrix\[row, column\]
 
 ```{r, echo=TRUE}
 
@@ -407,9 +407,9 @@ my_mat[1,1]
 
 ```
 
-## Matrici - Indicizzazione
+## Matrices - Indexing
 
-E' possibile anche selezionare un'intera riga o colonna
+We can also select an entire row or column
 
 ```{r, echo=TRUE}
 
@@ -419,21 +419,21 @@ my_mat[,1]
 
 ```
 
-## Matrici - Indicizzazione
+## Matrices - Indexing
 
-Come per i vettori, anche in questo caso possiamo applicare l'indicizzazione logica:
+As with vectors, here too we can apply logical indexing:
 
 ```{r, echo=TRUE}
 my_mat>2
 
-# Tutti gli elementi maggiori di due
+# All the elements greater than two
 my_mat[my_mat>2]
 
 ```
 
-## Vettori e Matrici
+## Vectors and Matrices
 
-I vettori si creano attraverso la funzione **`c()`** e possono essere concatenati tra loro sempre attraverso la stessa funzione:
+Vectors are created with the **`c()`** function and can be concatenated using the same function:
 
 ```{r, echo=TRUE}
 my_vect1 = c(1:4); my_vect2 = c(5:10)
@@ -441,9 +441,9 @@ my_vect12 = c(my_vect1,my_vect2)
 my_vect12
 ```
 
-## Matrici
+## Matrices
 
-Similarmente, le matrici possono essere unite tra loro attraverso i comandi **`cbind()`** e **`rowbind()`** :
+Similarly, matrices can be joined together with the **`cbind()`** and **`rbind()`** commands:
 
 ```{r, echo=TRUE}
 
@@ -459,26 +459,26 @@ rbind(my_mat, my_mat)
 
 ## Dataframe
 
-Il dataframe è la struttura più "complessa", utile e potente di R. Da un punto di vista intuitivo è un foglio excel mentre da un punto di vista di R è una tipologia di lista con alcune caratteristiche/restrizioni
+The dataframe is the most "complex", useful and powerful structure in R. Intuitively it is an excel sheet, while from R's point of view it is a type of list with some properties/restrictions
 
--   ogni elemento della lista è un **vettore** con un **nome associato** (aka una colonna)
--   ogni lista/colonna deve avere lo stesso numero di elementi
--   di conseguenza ogni riga ha lo stesso numero di elementi (**struttura rettangolare**)
+-   each element of the list is a **vector** with an **associated name** (aka a column)
+-   each list/column must have the same number of elements
+-   as a consequence, each row has the same number of elements (**rectangular structure**)
 
-## Crezione dataframe
+## Creating a dataframe
 
-Attraverso la funzione data.frame() è possibile creare un dataframe...
+With the data.frame() function we can create a dataframe...
 
 ```{r, echo=TRUE}
-# Creo un dataframe con 3 colonne 
+# Create a dataframe with 3 columns
 my_df = data.frame( col1 = 1:4, col2 = letters[1:4],
-                    col3 = rnorm(4)) 
+                    col3 = rnorm(4))
 my_df
 ```
 
-## Attributi
+## Attributes
 
-Il **`dataframe`** ha sia gli attributi della **lista** ovvero i ***names*** ma anche gli attributi della **matrice** ovvero le ***dimensioni*** (righe e colonne)
+The **`dataframe`** has both the attributes of a **list**, i.e. the ***names***, and the attributes of a **matrix**, i.e. the ***dimensions*** (rows and columns)
 
 ```{r, echo=TRUE}
 typeof(my_df)
@@ -486,28 +486,28 @@ attributes(my_df)
 dim(my_df)
 ```
 
-## Indicizzazione
+## Indexing
 
-Si posso utlizzare sia le parentesi quadre **`[]`** che il simbolo del dollaro **`$`**
+We can use either square brackets **`[]`** or the dollar sign **`$`**
 
 ```{r, echo = TRUE}
-my_df[1] # estraggo un data.frame 5x1
-my_df[[1]]# estraggo la prima colonna del data.frame
-my_df$col1# estraggo la prima colonna del data.frame
-my_df[1,1]#  estraggo il primo elemento della prima colonna del data.frame
+my_df[1] # extract a 4x1 data.frame
+my_df[[1]]# extract the first column of the data.frame
+my_df$col1# extract the first column of the data.frame
+my_df[1,1]# extract the first element of the first column of the data.frame
 ```
 
-## Indicizzazione - Operatori relazionali
+## Indexing - Relational operators
 
-Una delle operazioni più comuni che dovrete affrontare sarà sicuramente quella di estrarre/valutare un sottoinsieme di valori presenti nel vostro dataset:
+One of the most common operations you will deal with is extracting/evaluating a subset of the values in your dataset:
 
 ```{r, echo=TRUE}
-# includo solo le righe in cui alla colonna1 i valori sono maggiori di 2
+# keep only the rows where the values of column1 are greater than 2
 my_df[my_df$col1 > 2, ]
-my_df[my_df[1] > 2, ] 
+my_df[my_df[1] > 2, ]
 ```
 
-## Esempi
+## Examples
 
 ```{r}
 my_df
@@ -523,9 +523,9 @@ my_df
     -   -1.481937
 :::
 
-## Indicizzazione
+## Indexing
 
-Ci sono anche dei modi alternativi e più compatti di indicizzare. Ad esempio usando la funzione **`subset()`**:
+There are also alternative, more compact ways of indexing. For example, using the **`subset()`** function:
 
 ```{r,echo=TRUE}
 
@@ -533,7 +533,7 @@ subset(iris, subset = Species == "setosa" & Petal.Length > 1.7)
 
 ```
 
-equivalente a:
+equivalent to:
 
 ```{r,echo=TRUE}
 
@@ -543,7 +543,7 @@ iris[iris$Species == "setosa" & iris$Petal.Length > 1.7,]
 
 ------------------------------------------------------------------------
 
-E' possibile anche selezionare colonne piuttosto che righe attraverso l'argomento ***`select`***:
+We can also select columns rather than rows with the ***`select`*** argument:
 
 ```{r, echo=TRUE}
 head(subset(iris, select = c(Sepal.Length, Species)), n = 3)
@@ -551,18 +551,18 @@ head(subset(iris, select = c(Sepal.Length, Species)), n = 3)
 
 ------------------------------------------------------------------------
 
-Possiamo anche combinare le due cose:
+We can also combine the two:
 
 ```{r,echo=TRUE}
-head(subset(iris, Species == "setosa" & Sepal.Length > 4, 
+head(subset(iris, Species == "setosa" & Sepal.Length > 4,
              c(Sepal.Length, Species)), n = 3)
 ```
 
-equivalente a:
+equivalent to:
 
 ```{r,echo=TRUE}
 
-head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4, 
+head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4,
           c("Sepal.Length","Species")],n = 3)
 ```
 
@@ -570,13 +570,13 @@ head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4,
 
 ## \$\$\$\$\$\$
 
-La maggiorparte delle volte vi troverete ad accedere alle variabili tramite l'operatore **`$`**. Questo comando può essere utilizzato anche per creare una nuova variabile...
+Most of the time you will access variables with the **`$`** operator. This command can also be used to create a new variable...
 
 ```{r,echo=TRUE}
-iris$somma = iris$Sepal.Length + iris$Sepal.Width
+iris$sum = iris$Sepal.Length + iris$Sepal.Width
 str(iris)
 ```
 
-# ESAME
+# EXAM
 
 <https://etherpad.wikimedia.org/p/arca-corsoR>

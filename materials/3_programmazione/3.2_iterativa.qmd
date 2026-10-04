@@ -1,6 +1,6 @@
 ---
-title: "Programmazione iterativa"
-format: 
+title: "Iterative programming"
+format:
    revealjs:
      margin: .05
      fontsize: 1.9em
@@ -9,22 +9,22 @@ format:
 editor: visual
 ---
 
-## Programmazione iterativa
+## Iterative programming
 
-Il concetto di iterazione è alla base di qualsiasi operazione nei linguaggi di programmazione. In R molte delle operazioni sono vettorizzate. Questo rende il linguaggio più efficiente e pulito MA nasconde il concetto di iterazione.
+The concept of iteration underlies any operation in programming languages. In R many operations are vectorized. This makes the language more efficient and cleaner BUT hides the concept of iteration.
 
-Ad esempio la funzione **`sum()`** permette di sommare un vettore di numeri.
+For example, the **`sum()`** function lets us add up a vector of numbers.
 
 ```{r, echo=TRUE}
-# somma i numeri da 1 a 10
+# add up the numbers from 1 to 10
 sum(1:10)
 ```
 
-Ma cosa si nasconde sotto?
+But what is hidden underneath?
 
 ------------------------------------------------------------------------
 
-Esempio: se io vi chiedo di usare la funzione **`print()`** per scrivere "hello world" nella console 5 volte, come fate?
+Example: if I ask you to use the **`print()`** function to write "hello world" in the console 5 times, how would you do it?
 
 ```{r, echo=TRUE}
 msg = "hello world"
@@ -37,78 +37,78 @@ print(msg)
 
 ------------------------------------------------------------------------
 
-Quello che ci manca (e che invece fa la funzione **`sum()`**) è un modo di ripetere una certa operazione, senza effettivamente ripetere il codice manualmente.
+What we are missing (and what the **`sum()`** function does) is a way to repeat a given operation without actually repeating the code manually.
 
-Ci sono vari costrutti che ci permettono di ripetere operazioni, i più utilizzati sono:
+There are several constructs that let us repeat operations; the most used are:
 
--   Ciclo **`for`**
+-   The **`for`** loop
 
--   Ciclo **`while`**
+-   The **`while`** loop
 
--   Ciclo **`repeat`**
+-   The **`repeat`** loop
 
--   **`*apply`** family
+-   The **`*apply`** family
 
-## Il ciclo **`for`**
+## The **`for`** loop
 
 ![](images/for.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-Il ciclo **`for`** è una struttura che permette di ripetere un numero finito e pre-determinato di volte una certa porzione di codice.
+The **`for`** loop is a structure that lets us repeat a portion of code a finite, pre-determined number of times.
 
-La scrittura di un ciclo for è:
+A for loop is written as:
 
 ```{r, echo=TRUE, error}
 n = 10
 for(i in 1:n){
-# quali operazioni
+# which operations
 }
 ```
 
-Se voglio stampare una cosa 5 volte, posso tranquillamente usare un ciclo for:
+If I want to print something 5 times, I can simply use a for loop:
 
 ```{r, echo=TRUE}
 for(i in 1:5){
-print(paste("hello word", i, sep = "_"))
+print(paste("hello world", i, sep = "_"))
 }
 ```
 
 ------------------------------------------------------------------------
 
-## Scomponiamo il ciclo **`for`**
+## Breaking down the **`for`** loop
 
--   **`for(){ }`**: è l'implementazione in R (in modo simile all'if statement)
+-   **`for(){ }`**: this is the implementation in R (similar to the if statement)
 
--   **`i`**: questo viene chiamato iteratore o indice. E' un indice generico che può assumere qualsiasi valore e nome. Per convenzione viene chiamato i, j etc. Questo tiene conto del numero di iterazioni che il nostro ciclo deve fare
+-   **`i`**: this is called the iterator or index. It is a generic index that can take any value and name. By convention it is called i, j etc. It keeps track of the number of iterations our loop has to do
 
--   **`in <valori>`**: questo indica i valori che assumerà l'iteratore all'interno del ciclo
+-   **`in <values>`**: this indicates the values the iterator will take inside the loop
 
--   **`{ # operazioni }`**: sono le operazioni che i ciclo deve eseguire
+-   **`{ # operations }`**: these are the operations the loop must perform
 
 ------------------------------------------------------------------------
 
-La potenza del ciclo for sta nel fatto che l'**iteratore** i assume i valori del vettore specificato dopo **`in`**, uno alla volta:
+The power of the for loop lies in the fact that the **iterator** i takes the values of the vector specified after **`in`**, one at a time:
 
 ```{r, echo=TRUE}
-for(i in 1:10){ 
+for(i in 1:10){
   print(i)
 }
 ```
 
 ------------------------------------------------------------------------
 
-## **`For`** con iteratore vs senza
+## **`For`** with an index vs without
 
 ::::: columns
 ::: {.column width="50%"}
-**`i`** rappresenta l'indice degli elementi del vettore vec
+**`i`** represents the index of the elements of the vector vec
 
 ```{r, echo=TRUE}
 vec=1:5
 
-for(i in 1:length(vec)){ 
-  
+for(i in 1:length(vec)){
+
   print(vec[i])
 
   }
@@ -116,13 +116,13 @@ for(i in 1:length(vec)){
 :::
 
 ::: {.column width="50%"}
-**`i`** rappresenta direttamente ogni elemento del vettore vec
+**`i`** directly represents each element of the vector vec
 
 ```{r, echo=TRUE}
 vec=1:5
 
-for(i in vec){ 
-  
+for(i in vec){
+
   print(i)
 
 }
@@ -130,74 +130,74 @@ for(i in vec){
 :::
 :::::
 
-## Ciclo **`while`**
+## The **`while`** loop
 
-Il ciclo **`while`** utilizza una condizione logica e non un iteratore e un range di valori come nel for. Il ciclo continuerà fino a che la condizione è **`TRUE`**:
+The **`while`** loop uses a logical condition instead of an iterator and a range of values as in the for loop. The loop keeps going as long as the condition is **`TRUE`**:
 
 ![](images/while.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-Provate a scrivere questo ciclo **`while`** e vedere cosa succede e capire perchè accade
+Try writing this **`while`** loop, see what happens and understand why
 
 ```{r, echo=TRUE, eval=FALSE}
 x = 10
 
-while (x < 15) { 
+while (x < 15) {
 
   print(x)
 
 }
 ```
-   
+
 
 
 ------------------------------------------------------------------------
 
-Il ciclo **`while`** è un ciclo non pre-determinato e quindi necessita sempre di un modo per essere interrotto, facendo diventare la condizione falsa.
+The **`while`** loop is not pre-determined, so it always needs a way to be stopped, by making the condition false.
 
 ```{r, echo=TRUE}
 x = 5
 
-while (x < 15) { 
+while (x < 15) {
   print(x)
-  x = x + 1 
+  x = x + 1
 }
 ```
 
-## Ciclo **`repeat`**
+## The **`repeat`** loop
 
-La logica del ciclo **`repeat`** è molto simile a quella del ciclo **`while`**, ma con 3 importanti differenze:
+The logic of the **`repeat`** loop is very similar to that of the **`while`** loop, but with 3 important differences:
 
-1)  esegue sempre almeno un'interazione
+1)  it always performs at least one iteration
 
-2)  enfatizza la ripetizione fino a che una condizione non viene raggiunta
+2)  it emphasizes repetition until a condition is met
 
-3)  utilizza il comando **`break`** per terminare
+3)  it uses the **`break`** command to stop
 
-## Ciclo **`repeat`**
+## The **`repeat`** loop
 
-Lancia il dado finchè non viene fuori 6:
+Roll the die until a 6 comes up:
 
 ```{r, echo=TRUE}
 repeat{
-  lancia_dado = sample(1:6, 1)
-  print(lancia_dado)
-  if(lancia_dado == 6) break
+  die_roll = sample(1:6, 1)
+  print(die_roll)
+  if(die_roll == 6) break
 }
 ```
 
 ## **`repeat`** vs. **`while`**
 
-**`repeat`** valuta la condizione una volta **finita** l'iterazione, mentre **`while`** all'**inizio**. Se la condizione non è **`TRUE`** all'inizio, il while non parte mentre repeat si:
+**`repeat`** evaluates the condition at the **end** of the iteration, while **`while`** does it at the **beginning**. If the condition is not **`TRUE`** at the start, while does not run, whereas repeat does:
 
 ::::: columns
 ::: {.column width="50%"}
 ```{r, echo=TRUE}
 i=1
-repeat { 
+repeat {
   print(i)
-  i=i+1 
+  i=i+1
   if(i > 3)break
   }
 ```
@@ -206,61 +206,61 @@ repeat {
 ::: {.column width="50%"}
 ```{r, echo=TRUE}
 i=1
-while (i < 4) { 
+while (i < 4) {
   print(i)
-  i=i+1 
+  i=i+1
   }
 ```
 :::
 :::::
 
-## Esempio funzione **`sum()`**
+## Example: the **`sum()`** function
 
-Immaginiamo di non avere la funzione **`sum()`** e di volerla ricreare, come facciamo? Idee?
+Imagine we did not have the **`sum()`** function and wanted to recreate it: how would we do it? Any ideas?
 
-## Somma come iterazione
+## Sum as iteration
 
-Scomponiamo concettualmente la somma, sommiamo i numeri da 1 a 10:
+Let's break the sum down conceptually; we add up the numbers from 1 to 10:
 
--   prendo il primo e lo sommo al secondo (somma = 1 + 2)
+-   I take the first one and add it to the second (total = 1 + 2)
 
--   prendo la somma e la sommo al 3 elemento somma = somma + 3 ...
+-   I take the total and add it to the 3rd element: total = total + 3 ...
 
-In pratica abbiamo:
+In practice we have:
 
--   il nostro vettore da sommare
+-   our vector to sum
 
--   un oggetto somma che accumula progressivamente le somme precedenti
+-   a total object that progressively accumulates the previous sums
 
 ------------------------------------------------------------------------
 
-## Somma come iterazione
+## Sum as iteration
 
 ```{r, echo=TRUE}
-somma = 0 # inizializziamo la somma a 0
-x = 1:10 #vettore x 
+total = 0 # initialize the total to 0
+x = 1:10 # vector x
 
-for(i in 1:length(x)){ # per tutta la lunghezza di x = 1:10 
-  somma = somma + x[i]
+for(i in 1:length(x)){ # for the whole length of x = 1:10
+  total = total + x[i]
 }
 ```
 
 ------------------------------------------------------------------------
 
-Mettiamo tutto dentro una funzione (i.e., creo una funzione che replichi quello che fa la funzione somma)
+Let's put everything inside a function (i.e., I create a function that replicates what the sum function does)
 
 ```{r, echo=TRUE}
 my_sum = function(x){
-  
-  somma = 0 # inizializziamo la somma a 0
-  
-  for(i in seq_along(x)){  # equivalente a 1:length(x)
-    
-    somma = somma + x[i]
-  
+
+  total = 0 # initialize the total to 0
+
+  for(i in seq_along(x)){  # equivalent to 1:length(x)
+
+    total = total + x[i]
+
     }
-  
-  return(somma)
+
+  return(total)
 
 }
 
@@ -273,44 +273,44 @@ sum(x)
 
 ------------------------------------------------------------------------
 
-## Iterazione, applicazioni
+## Iteration, applications
 
-Il ciclo **`for`** è anche utile per simulare dei dati per esempio. Supponiamo di avere una variabile y (reddito) che dipenda dall'età:
+The **`for`** loop is also useful, for example, to simulate data. Suppose we have a variable y (income) that depends on age:
 
-1. Carico il dataset che ho creato:
+1. I load the dataset I created:
 
 ```{r, echo=TRUE}
-mydf = read.csv(file = "data/mydf_2.csv") #carico il dataset 
+mydf = read.csv(file = "data/mydf_2.csv") # load the dataset
 
 str(mydf)
 ```
 
 ------------------------------------------------------------------------
 
-2. Simulo, attraverso un ciclo **`for`** , la variabile **y** (reddito) assumendo che dipenda da **age_z** (età):
+2. With a **`for`** loop, I simulate the variable **y** (income) assuming it depends on **age_z** (age):
 
 ```{r, echo=TRUE}
-set.seed(111) # per riproducibilità
+set.seed(111) # for reproducibility
 
 niter = 1000
-res_all = rep(NA, niter)    # tutti gli effetti stimati
-p_val = rep(NA, niter)      # tutti i p-value
+res_all = rep(NA, niter)    # all estimated effects
+p_val = rep(NA, niter)      # all p-values
 
-# Dati osservati
+# Observed data
 age_z = mydf$age_z
-eff_eta = .2 #effetto età
+eff_age = .2 # age effect
 n_obs = length(age_z)
 
 for(i in 1:niter) {
-  y = 0 + eff_eta * age_z + rnorm(n_obs, 0, 1) # aggiungo sempre un pò di rumore
-  
-  # modello lineare
-  mod = lm(y ~ 1 + age_z) 
-  
-  # estraggo stima effetto
-  res_all[i] = coef(mod)[2] 
-  
-  # p-value di age_z
+  y = 0 + eff_age * age_z + rnorm(n_obs, 0, 1) # always add some noise
+
+  # linear model
+  mod = lm(y ~ 1 + age_z)
+
+  # extract the effect estimate
+  res_all[i] = coef(mod)[2]
+
+  # p-value of age_z
   p_val[i] = summary(mod)$coefficients[2, 4]
 }
 
@@ -318,16 +318,16 @@ for(i in 1:niter) {
 
 ------------------------------------------------------------------------
 
-Risultato:
+Result:
 
 ```{r, echo=TRUE}
-# Filtra solo risultati significativi
+# Keep only significant results
 res_sig = res_all[p_val <= 0.05]
 
-# Statistiche descrittive
-cat("Proporzione significativi = Power:", mean(p_val <= 0.05), "\n")
-cat("Media tutti gli effetti:", mean(res_all), "\n")
-cat("Media effetti significativi:", mean(res_sig), "\n")
+# Descriptive statistics
+cat("Proportion significant = Power:", mean(p_val <= 0.05), "\n")
+cat("Mean of all effects:", mean(res_all), "\n")
+cat("Mean of significant effects:", mean(res_sig), "\n")
 ```
 
 
@@ -336,45 +336,45 @@ cat("Media effetti significativi:", mean(res_sig), "\n")
 
 
 ```{r}
-# Plot comparativo con par(mfrow)
+# Side-by-side plots with par(mfrow)
 par(mfrow = c(1, 2))
 
-# Istogramma di TUTTI i risultati
-hist(res_all, 
-     main = "Tutti i risultati", 
-     xlab = "Effetto stimato",
+# Histogram of ALL results
+hist(res_all,
+     main = "All results",
+     xlab = "Estimated effect",
      col = "lightblue",
      xlim = range(res_all))
-abline(v = eff_eta, col = "red", lwd = 2, lty = 2)  # vero effetto
+abline(v = eff_age, col = "red", lwd = 2, lty = 2)  # true effect
 
-# Istogramma solo risultati SIGNIFICATIVI
-hist(res_sig, 
-     main = "Solo risultati significativi (p <= 0.05)", 
-     xlab = "Effetto stimato",
+# Histogram of SIGNIFICANT results only
+hist(res_sig,
+     main = "Significant results only (p <= 0.05)",
+     xlab = "Estimated effect",
      col = "lightgreen",
      xlim = range(res_all))
-abline(v = eff_eta, col = "red", lwd = 2, lty = 2)  # vero effetto
+abline(v = eff_age, col = "red", lwd = 2, lty = 2)  # true effect
 ```
 
 
 ------------------------------------------------------------------------
 
 
-Proprio grazie al for loop è possibile effetuare una ***power simulation***.
+It is precisely thanks to the for loop that we can run a ***power simulation***.
 
-Per saperne di più date un'occhiata a questa [pagina](https://www.memoryandlearninglab.it/workshops-on-data-analysis/)! :)
+To learn more, have a look at this [page](https://www.memoryandlearninglab.it/workshops-on-data-analysis/)! :)
 
-## Ciclo `for` nested
+## Nested `for` loops
 
-Una volta compresa la struttura iterativa, si può espandere facilmente inserendo un ciclo dentro un altro:
+Once you understand the iterative structure, you can easily extend it by putting a loop inside another one:
 
 ```{r, echo=TRUE}
-for(i in 1:3){ # livello 1
-  
-  for(j in 1:3){ # livello 2
-    
+for(i in 1:3){ # level 1
+
+  for(j in 1:3){ # level 2
+
       print(paste(i, j))
-    
+
   }
 
 }
@@ -382,57 +382,57 @@ for(i in 1:3){ # livello 1
 
 ------------------------------------------------------------------------
 
-Immaginiamo di avere due gruppi sperimentali (ad esempio, Gruppo di controllo e Gruppo trattamento), ciascuno con 10 partecipanti. Vogliamo misurare una variabile (ad esempio, il tempo di reazione) per ogni partecipante e registrare i risultati in un dataframe:
+Imagine we have two experimental groups (for example, a Control group and a Treatment group), each with 10 participants. We want to measure a variable (for example, reaction time) for each participant and record the results in a dataframe:
 
 ```{r, echo=TRUE}
-# Definire parametri della ricerca
-gruppi = c("Controllo", "Trattamento") # Nomi dei gruppi
-num_soggetti=10                      # Numero di soggetti per gruppo
-tot_soggetti = num_soggetti * length(gruppi)
+# Define the study parameters
+groups = c("Control", "Treatment") # Group names
+n_subj=10                          # Number of subjects per group
+tot_subj = n_subj * length(groups)
 
-# Creare un data.frame per memorizzare i dati
+# Create a data.frame to store the data
 res=data.frame(
-  
-  # Fattore gruppo
-  Gruppo = factor(x = rep(gruppi, each = num_soggetti)),
-  
-  # fattore soggetto 
-  Soggetto = factor(x = 1:tot_soggetti),
-  
-  # Tempo di reazione vettore numerico con rt = 0 
-  RT = numeric(tot_soggetti)
+
+  # Group factor
+  Group = factor(x = rep(groups, each = n_subj)),
+
+  # Subject factor
+  Subject = factor(x = 1:tot_subj),
+
+  # Reaction time: numeric vector with rt = 0
+  RT = numeric(tot_subj)
 )
 ```
 
------------------------------------------------------------------------- 
+------------------------------------------------------------------------
 ```{r, echo=TRUE}
-head(res, 5) # guardo le prime osservazioni di res
-tail(res, 5) # guardo le ultime osservazioni di res
+head(res, 5) # look at the first observations of res
+tail(res, 5) # look at the last observations of res
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo=TRUE}
-# Ciclo nested per simulare raccolta dati
-set.seed(42)  # Per riproducibilità dei dati simulati
+# Nested loop to simulate data collection
+set.seed(42)  # For reproducibility of the simulated data
 
-k = 1 #iteratore tempi di reazione
+k = 1 # reaction time iterator
 
-# quanti livelli ha Gruppo?
-for (i in 1:length(levels(res$Gruppo))) {
-  
-  # inizio con il primo gruppo che è il gruppo di controllo
-  gruppo = levels(res$Gruppo)[i] 
-  
-  for (j in 1:num_soggetti) { # num_soggetti each gruppo
-    
-    # è il gruppo di controllo?
-    RT = ifelse(gruppo == "Controllo", 
-               yes = rlnorm(1, mean = log(.500), sd = .050), 
+# how many levels does Group have?
+for (i in 1:length(levels(res$Group))) {
+
+  # start with the first group, which is the control group
+  group = levels(res$Group)[i]
+
+  for (j in 1:n_subj) { # n_subj for each group
+
+    # is it the control group?
+    RT = ifelse(group == "Control",
+               yes = rlnorm(1, mean = log(.500), sd = .050),
                no = rlnorm(1, mean = log(.450), sd = .050))
-    
+
     res$RT[k] = RT
-    k = k + 1 
+    k = k + 1
   }
 }
 ```
@@ -443,13 +443,13 @@ for (i in 1:length(levels(res$Gruppo))) {
 str(res)
 head(res, 3)
 tail(res, 3)
-mean(res$RT[res$Gruppo == "Controllo"])
-mean(res$RT[res$Gruppo == "Trattamento"])
+mean(res$RT[res$Group == "Control"])
+mean(res$RT[res$Group == "Treatment"])
 ```
 
 
-## Ora facciamo un po' di pratica! {style="text-align: center;"}
+## Now let's practice! {style="text-align: center;"}
 
-<br/> Aprite e tenete aperto questo link:
+<br/> Open this link and keep it open:
 
 <https://etherpad.wikimedia.org/p/arca-corsoR>

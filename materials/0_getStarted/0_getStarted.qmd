@@ -1,6 +1,6 @@
 ---
 title: "Get Started"
-format: 
+format:
    revealjs:
      margin: .05
      fontsize: 2.2em
@@ -8,100 +8,100 @@ format:
      mainfont: Helvetica Neue
 editor: visual
 ---
-## Che cos'è ![R](images/R_logo.png){fig-align="center" width="80"}
+## What is ![R](images/R_logo.png){fig-align="center" width="80"}
 
-[**R**](https://www.r-project.org/) è un linguaggio di programmazione fortemente votato alla statistica, gestione di dati e visualizzazione.
+[**R**](https://www.r-project.org/) is a programming language strongly oriented towards statistics, data management and visualization.
 
-E' nato nel 1993 da **Ross Ihaka** e **Robert Gentleman**.
+It was created in 1993 by **Ross Ihaka** and **Robert Gentleman**.
 
-E' un software completamente **open-source** e **gratuito** in continua evoluzione e cambiamento.
+It is completely **open-source** and **free** software, constantly evolving and changing.
 
-## Perchè ![R](images/R_logo.png){fig-align="center" width="80"}
+## Why ![R](images/R_logo.png){fig-align="center" width="80"}
 
-### Un cenno all'open-source
+### A word on open-source
 
-Un software si definisce open-source quando il **codice sorgente è disponibile** a tutti per essere **modificato**, **aggiornato** e **controllato**.
+A piece of software is called open-source when its **source code is available** to everyone to be **modified**, **updated** and **inspected**.
 
-R è **sia open-source che gratuito** e vanta una community estremamente attiva, come spesso accade con tutti i progetti open-source e in generale i linguaggi di programmazione.
+R is **both open-source and free**, and it has an extremely active community, as often happens with open-source projects and programming languages in general.
 
-## Quale è la concorrenza?
+## Who are the competitors?
 
-Il principale "concorrente" di R è sicuramente **Python** che offre un ambiente altrettanto potente, sviluppato e attivo.
+R's main "competitor" is certainly **Python**, which offers an equally powerful, well-developed and active environment.
 
-Non è facile (e forse non è possibile) capire quale sia il migliore.
+It is not easy (and maybe not even possible) to say which one is better.
 
-In ogni caso, una volta imparato R, imparare Python sarà molto semplice.
+In any case, once you have learned R, learning Python will be very easy.
 
-## Quale NON è la concorrenza?
+## Who are NOT the competitors?
 
-Nell'ambito della statistica ci sono vari software non open-source ed a pagamento come:
+In the field of statistics there are several non-open-source, paid software packages such as:
 
 -   Statistica
 -   SPSS
 -   STATA
 -   SAS
 
-## Quale NON è la concorrenza?
+## Who are NOT the competitors?
 
-Sono degli ottimi software ma:
+They are excellent pieces of software, but:
 
--   Non forniscono conoscenze trasversali
--   Siete legati ad uno specifico ambiente
--   Le licenze possono costare molto
--   La community non è altrettanto attiva (non open-source)
+-   They do not provide transferable skills
+-   You are tied to a specific environment
+-   Licenses can be very expensive
+-   The community is not as active (not open-source)
 
-## Quali sono delle alternative?
+## What are the alternatives?
 
-Ci sono degli ottimo software open-source basati su R come:
+There are some excellent open-source programs based on R, such as:
 
 -   [Jamovi](https://www.jamovi.org/)
-    -   **pros**: si può accedere al codice R sottostante
-    -   **cons**: le funzioni sono comunque limitate, grafici, modelli complessi
+    -   **pros**: you can access the underlying R code
+    -   **cons**: functions are still limited (plots, complex models)
 -   [Jasp](https://jasp-stats.org/)
-    -   **pros**: molti modelli anche avanzati
-    -   **cons**: non si può vedere il codice R
+    -   **pros**: many models, including advanced ones
+    -   **cons**: you cannot see the R code
 
-## Imparare un linguaggio come investimento
+## Learning a language as an investment
 
-Imparare in linguaggio come R vi permette di conoscere uno strumento molto potente ma anche di imparare:
+Learning a language like R lets you master a very powerful tool, but also learn to:
 
--   Ragionare e risolvere problemi con il codice
--   Trasferire quello che avete imparato ad altri linguaggi
--   Essere sempre autonomi e non legati ad uno specifico ambiente
--   Avere una skill realmente di valore
+-   Reason and solve problems with code
+-   Transfer what you have learned to other languages
+-   Always be autonomous and not tied to a specific environment
+-   Have a truly valuable skill
 
-# Imparare R è difficile...MA ne vale la pena!
+# Learning R is hard...BUT it's worth it!
 
-## Installare R e R-Studio
+## Installing R and R-Studio
 
-R ed R-studio sono due software distinti.
+R and R-studio are two different pieces of software.
 
 ![](images/R_cons.png){fig-align="center" width="400"}
 
 ## R-Studio
 
-R-studio è un'interfaccia user-friendly che permette di utilizzare R.
+R-studio is a user-friendly interface that lets you use R.
 
 ![](images/R_studio.png){fig-align="center"}
 
-## Installare R e R-Studio
+## Installing R and R-Studio
 
-Entrambi vanno installati separatamente e la procedura varia a seconda del proprio sistema operativo.
+They must be installed separately, and the procedure depends on your operating system.
 
-Se non l'avete già installato, seguite la procedura spiegata a questo link: <https://posit.co/download/rstudio-desktop/>
+If you have not installed them yet, follow the procedure explained at this link: <https://posit.co/download/rstudio-desktop/>
 
-## Interfaccia R-Studio
+## R-Studio Interface
 
-Questa è la mia disposizione. Attraverso questo menu potete scegliere la disposizione che preferite.
+This is my layout. Through this menu you can choose the layout you prefer.
 
 ![](images/R_studio_pane.png){fig-align="center" width="500"}
 
-## Interfaccia R-Studio
+## R-Studio Interface
 
-Attraverso questo menu potete scegliere colore/font che preferite.
+Through this menu you can choose the colors/font you prefer.
 
-RStudio `>` Preferenze `>` Appearence (MacOS)
+RStudio `>` Preferences `>` Appearance (MacOS)
 
-Tools `>` Options `>` Appearence (Windows)
+Tools `>` Global Options `>` Appearance (Windows)
 
 ![](images/R_studio_pane1.png){fig-align="center" width="400"}
