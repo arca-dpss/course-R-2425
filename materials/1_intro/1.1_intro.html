@@ -101,6 +101,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="1.1_intro_files/libs/revealjs/dist/theme/quarto-61a84950594467f885fe7fd7ba14a2cd.css">
+  <link rel="stylesheet" href="../slides.css">
   <link href="1.1_intro_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="1.1_intro_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="1.1_intro_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -204,65 +205,36 @@
 </div>
 
 </section>
-<section id="working-environment" class="slide level2" style="text-align: center;">
-<h2>Working Environment</h2>
-<p>RStudio is divided into <strong>4 main panes</strong>:</p>
+<section id="rstudio" class="slide level2">
+<h2>RStudio</h2>
 
-<img data-src="images/R_studio.png" class="quarto-figure quarto-figure-center r-stretch" width="2810"></section>
-<section class="slide level2">
-
-<p><strong>Script.</strong> The text file where you write and save your code. You can run one line at a time (<code>Ctrl + Enter</code> / <code>Cmd + Enter</code>) or the whole script by clicking <code>Source</code>. Comments are added with <code>#</code>.</p>
-<p><br></p>
-<p><strong>Console.</strong> This is where R runs the code and shows the results. You can type commands directly in the console for quick tests, but they are not saved.</p>
-<p><br></p>
-<p><strong>Environment / Temporary desk.</strong> Shows all the <strong>objects</strong> created during the current session.</p>
-<p><br></p>
-<p><strong>Miscellaneous.</strong> A multi-purpose pane with several tabs, including the file explorer</p>
-</section>
-<section class="slide level2">
-
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Console</strong></p>
-</div>
-<div class="callout-content">
-<p>Commands in the console are executed but <strong>not saved</strong>.</p>
-<p>To run the command → <code>Enter</code></p>
-<p>The output is immediate and appears in the console.</p>
-</div>
-</div>
-</div>
-<p><br></p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Script</strong></p>
-</div>
-<div class="callout-content">
-<p>You can save scripts with all your commands.</p>
-<p>To run the command → <code>Ctrl + Enter</code> (<code>Cmd + Enter</code> on Mac)</p>
-<p>The output is returned in the console.</p>
-</div>
-</div>
-</div>
-</section>
+<img data-src="images/rstudio0.png" class="quarto-figure quarto-figure-center r-stretch" width="1000"></section>
 <section id="how-to-work-in-r" class="slide level2">
 <h2>How to work in R</h2>
-<p>Let’s create a script:</p>
+<p>Let’s create a <strong>script</strong>, a “text” file where you write and save your code.</p>
+<p><br></p>
 
-<img data-src="images/script.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/script.png" class="quarto-figure quarto-figure-center r-stretch" width="800"></section>
 <section id="how-to-work-in-r-1" class="slide level2">
 <h2>How to work in R</h2>
 <p>Let’s save it:</p>
 
 <img data-src="images/save.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="working-environment" class="slide level2">
+<h2>Working Environment</h2>
+<p>RStudio is divided into <strong>4 main panes</strong>:</p>
+
+<img data-src="images/rstudio1.png" class="quarto-figure quarto-figure-center r-stretch" width="2000"></section>
+<section class="slide level2">
+
+<p>RStudio is divided into <strong>4 main panes</strong>:</p>
+<ul>
+<li><p><strong>Script.</strong> The text file where you write and save your code. You can run one line at a time (<code>Ctrl + Enter</code> / <code>Cmd + Enter</code>) or the whole script by clicking <code>Source</code>. Comments are added with <code>#</code>.</p></li>
+<li><p><strong>Console.</strong> This is where R runs the code and shows the results. You can type commands directly in the console for quick tests, but they are not saved.</p></li>
+<li><p><strong>Environment / Temporary desk.</strong> Shows all the <strong>objects</strong> created during the current session.</p></li>
+<li><p><strong>Miscellaneous.</strong> A multi-purpose pane with several tabs, including the file explorer.</p></li>
+</ul>
+</section>
 <section id="working-directory" class="slide level2">
 <h2>Working Directory</h2>
 <p>The location (folder) on your PC where R is working and where R expects to find your files, unless specified otherwise.</p>
@@ -294,7 +266,7 @@
 <li>Change the working directory with the <code>setwd</code> command:</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-label="1"></a><span class="fu">setwd</span>(<span class="st">'/Users/tita/Desktop'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-label="1"></a><span class="fu">setwd</span>(<span class="st">'/Users/tita/Desktop/introR'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="2" type="1">
 <li>Download the file <a href="https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv">prova.csv</a> and put it in the folder.</li>
@@ -304,36 +276,28 @@
 <li>Since we are working inside the folder, if we want to load a file located in this folder we can simply write the file name in quotes and use, for example, the <code>read.csv</code> function:</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"prova.csv"</span>)</span>
-<span id="cb5-2"><a href="" aria-label="2"></a></span>
-<span id="cb5-3"><a href="" aria-label="3"></a><span class="fu">head</span>(data, <span class="at">n =</span> <span class="dv">4</span>) <span class="co"># show the first rows of the dataset</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  X id      age
-1 1  1 30.74643
-2 2  2 34.06618
-3 3  3 28.73101
-4 4  4 28.48286</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"prova.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<p>If instead we want to load a file located somewhere else, we need to refer to it through its absolute path:</p>
+<p>Now move the <code>prova.csv</code> outside the introR folder (e.g., in the desktop), and run the same command..</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-label="1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"/Users/tita/course-R-2425/materials/1_intro/prova.csv"</span>)</span>
-<span id="cb7-2"><a href="" aria-label="2"></a><span class="fu">head</span>(data, <span class="at">n =</span> <span class="dv">4</span>) <span class="co"># show the first rows of the dataset</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  X id      age
-1 1  1 30.74643
-2 2  2 34.06618
-3 3  3 28.73101
-4 4  4 28.48286</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="" aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"prova.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p>If we want to load a file located outside our <code>wd</code>, we need to refer to it through its absolute path:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-label="1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/Users/tita/Desktop/prova.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<p><br></p>
 <div class="fragment">
 <p>Or, first change the working directory with the <code>setwd</code> command and then load the file.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="" aria-label="1"></a><span class="fu">setwd</span>(<span class="st">'/Users/tita/Desktop'</span>)</span>
+<span id="cb8-2"><a href="" aria-label="2"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"prova.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </section>
 <section id="the-best-solution" class="slide level2">

@@ -2,6 +2,7 @@
 title: "Iterative programming"
 format:
    revealjs:
+     css: ../slides.css
      margin: .05
      fontsize: 1.9em
      linestretch: 1.4
@@ -27,7 +28,7 @@ But what is hidden underneath?
 Example: if I ask you to use the **`print()`** function to write "hello world" in the console 5 times, how would you do it?
 
 ```{r, echo=TRUE}
-msg = "hello world"
+msg <- "hello world"
 print(msg)
 print(msg)
 print(msg)
@@ -60,7 +61,7 @@ The **`for`** loop is a structure that lets us repeat a portion of code a finite
 A for loop is written as:
 
 ```{r, echo=TRUE, error}
-n = 10
+n <- 10
 for(i in 1:n){
 # which operations
 }
@@ -105,7 +106,7 @@ for(i in 1:10){
 **`i`** represents the index of the elements of the vector vec
 
 ```{r, echo=TRUE}
-vec=1:5
+vec <- 1:5
 
 for(i in 1:length(vec)){
 
@@ -119,7 +120,7 @@ for(i in 1:length(vec)){
 **`i`** directly represents each element of the vector vec
 
 ```{r, echo=TRUE}
-vec=1:5
+vec <- 1:5
 
 for(i in vec){
 
@@ -141,7 +142,7 @@ The **`while`** loop uses a logical condition instead of an iterator and a range
 Try writing this **`while`** loop, see what happens and understand why
 
 ```{r, echo=TRUE, eval=FALSE}
-x = 10
+x <- 10
 
 while (x < 15) {
 
@@ -157,11 +158,11 @@ while (x < 15) {
 The **`while`** loop is not pre-determined, so it always needs a way to be stopped, by making the condition false.
 
 ```{r, echo=TRUE}
-x = 5
+x <- 5
 
 while (x < 15) {
   print(x)
-  x = x + 1
+  x <- x + 1
 }
 ```
 
@@ -181,7 +182,7 @@ Roll the die until a 6 comes up:
 
 ```{r, echo=TRUE}
 repeat{
-  die_roll = sample(1:6, 1)
+  die_roll <- sample(1:6, 1)
   print(die_roll)
   if(die_roll == 6) break
 }
@@ -194,10 +195,10 @@ repeat{
 ::::: columns
 ::: {.column width="50%"}
 ```{r, echo=TRUE}
-i=1
+i <- 1
 repeat {
   print(i)
-  i=i+1
+  i <- i+1
   if(i > 3)break
   }
 ```
@@ -205,10 +206,10 @@ repeat {
 
 ::: {.column width="50%"}
 ```{r, echo=TRUE}
-i=1
+i <- 1
 while (i < 4) {
   print(i)
-  i=i+1
+  i <- i+1
   }
 ```
 :::
@@ -237,11 +238,11 @@ In practice we have:
 ## Sum as iteration
 
 ```{r, echo=TRUE}
-total = 0 # initialize the total to 0
-x = 1:10 # vector x
+total <- 0 # initialize the total to 0
+x <- 1:10 # vector x
 
 for(i in 1:length(x)){ # for the whole length of x = 1:10
-  total = total + x[i]
+  total <- total + x[i]
 }
 ```
 
@@ -250,13 +251,13 @@ for(i in 1:length(x)){ # for the whole length of x = 1:10
 Let's put everything inside a function (i.e., I create a function that replicates what the sum function does)
 
 ```{r, echo=TRUE}
-my_sum = function(x){
+my_sum <- function(x){
 
-  total = 0 # initialize the total to 0
+  total <- 0 # initialize the total to 0
 
   for(i in seq_along(x)){  # equivalent to 1:length(x)
 
-    total = total + x[i]
+    total <- total + x[i]
 
     }
 
@@ -264,7 +265,7 @@ my_sum = function(x){
 
 }
 
-x = rnorm(100, mean = 0, sd = 1)
+x <- rnorm(100, mean = 0, sd = 1)
 
 my_sum(x)
 
@@ -280,7 +281,7 @@ The **`for`** loop is also useful, for example, to simulate data. Suppose we hav
 1. I load the dataset I created:
 
 ```{r, echo=TRUE}
-mydf = read.csv(file = "data/mydf_2.csv") # load the dataset
+mydf <- read.csv(file = "data/mydf_2.csv") # load the dataset
 
 str(mydf)
 ```
@@ -292,26 +293,26 @@ str(mydf)
 ```{r, echo=TRUE}
 set.seed(111) # for reproducibility
 
-niter = 1000
-res_all = rep(NA, niter)    # all estimated effects
-p_val = rep(NA, niter)      # all p-values
+niter <- 1000
+res_all <- rep(NA, niter)    # all estimated effects
+p_val <- rep(NA, niter)      # all p-values
 
 # Observed data
-age_z = mydf$age_z
-eff_age = .2 # age effect
-n_obs = length(age_z)
+age_z <- mydf$age_z
+eff_age <- .2 # age effect
+n_obs <- length(age_z)
 
 for(i in 1:niter) {
-  y = 0 + eff_age * age_z + rnorm(n_obs, 0, 1) # always add some noise
+  y <- 0 + eff_age * age_z + rnorm(n_obs, 0, 1) # always add some noise
 
   # linear model
-  mod = lm(y ~ 1 + age_z)
+  mod <- lm(y ~ 1 + age_z)
 
   # extract the effect estimate
-  res_all[i] = coef(mod)[2]
+  res_all[i] <- coef(mod)[2]
 
   # p-value of age_z
-  p_val[i] = summary(mod)$coefficients[2, 4]
+  p_val[i] <- summary(mod)$coefficients[2, 4]
 }
 
 ```
@@ -322,7 +323,7 @@ Result:
 
 ```{r, echo=TRUE}
 # Keep only significant results
-res_sig = res_all[p_val <= 0.05]
+res_sig <- res_all[p_val <= 0.05]
 
 # Descriptive statistics
 cat("Proportion significant = Power:", mean(p_val <= 0.05), "\n")
@@ -386,12 +387,12 @@ Imagine we have two experimental groups (for example, a Control group and a Trea
 
 ```{r, echo=TRUE}
 # Define the study parameters
-groups = c("Control", "Treatment") # Group names
-n_subj=10                          # Number of subjects per group
-tot_subj = n_subj * length(groups)
+groups <- c("Control", "Treatment") # Group names
+n_subj <- 10                          # Number of subjects per group
+tot_subj <- n_subj * length(groups)
 
 # Create a data.frame to store the data
-res=data.frame(
+res <- data.frame(
 
   # Group factor
   Group = factor(x = rep(groups, each = n_subj)),
@@ -416,23 +417,23 @@ tail(res, 5) # look at the last observations of res
 # Nested loop to simulate data collection
 set.seed(42)  # For reproducibility of the simulated data
 
-k = 1 # reaction time iterator
+k <- 1 # reaction time iterator
 
 # how many levels does Group have?
 for (i in 1:length(levels(res$Group))) {
 
   # start with the first group, which is the control group
-  group = levels(res$Group)[i]
+  group <- levels(res$Group)[i]
 
   for (j in 1:n_subj) { # n_subj for each group
 
     # is it the control group?
-    RT = ifelse(group == "Control",
+    RT <- ifelse(group == "Control",
                yes = rlnorm(1, mean = log(.500), sd = .050),
                no = rlnorm(1, mean = log(.450), sd = .050))
 
-    res$RT[k] = RT
-    k = k + 1
+    res$RT[k] <- RT
+    k <- k + 1
   }
 }
 ```

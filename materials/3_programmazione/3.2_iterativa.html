@@ -101,6 +101,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="3.2_iterativa_files/libs/revealjs/dist/theme/quarto-61a84950594467f885fe7fd7ba14a2cd.css">
+  <link rel="stylesheet" href="../slides.css">
   <link href="3.2_iterativa_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="3.2_iterativa_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="3.2_iterativa_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -221,7 +222,7 @@
 
 <p>Example: if I ask you to use the <strong><code>print()</code></strong> function to write “hello world” in the console 5 times, how would you do it?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a>msg <span class="ot">=</span> <span class="st">"hello world"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a>msg <span class="ot">&lt;-</span> <span class="st">"hello world"</span></span>
 <span id="cb3-2"><a href="" aria-label="2"></a><span class="fu">print</span>(msg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "hello world"</code></pre>
@@ -264,7 +265,7 @@
 <p>The <strong><code>for</code></strong> loop is a structure that lets us repeat a portion of code a finite, pre-determined number of times.</p>
 <p>A for loop is written as:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="" aria-label="1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="" aria-label="1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb13-2"><a href="" aria-label="2"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
 <span id="cb13-3"><a href="" aria-label="3"></a><span class="co"># which operations</span></span>
 <span id="cb13-4"><a href="" aria-label="4"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -319,7 +320,7 @@
 <div class="column" style="width:50%;">
 <p><strong><code>i</code></strong> represents the index of the elements of the vector vec</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="" aria-label="1"></a>vec<span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="" aria-label="1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
 <span id="cb18-2"><a href="" aria-label="2"></a></span>
 <span id="cb18-3"><a href="" aria-label="3"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(vec)){</span>
 <span id="cb18-4"><a href="" aria-label="4"></a></span>
@@ -337,7 +338,7 @@
 </div><div class="column" style="width:50%;">
 <p><strong><code>i</code></strong> directly represents each element of the vector vec</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="" aria-label="1"></a>vec<span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="" aria-label="1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
 <span id="cb20-2"><a href="" aria-label="2"></a></span>
 <span id="cb20-3"><a href="" aria-label="3"></a><span class="cf">for</span>(i <span class="cf">in</span> vec){</span>
 <span id="cb20-4"><a href="" aria-label="4"></a></span>
@@ -363,7 +364,7 @@
 
 <p>Try writing this <strong><code>while</code></strong> loop, see what happens and understand why</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="" aria-label="1"></a>x <span class="ot">=</span> <span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="" aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb22-2"><a href="" aria-label="2"></a></span>
 <span id="cb22-3"><a href="" aria-label="3"></a><span class="cf">while</span> (x <span class="sc">&lt;</span> <span class="dv">15</span>) {</span>
 <span id="cb22-4"><a href="" aria-label="4"></a></span>
@@ -376,11 +377,11 @@
 
 <p>The <strong><code>while</code></strong> loop is not pre-determined, so it always needs a way to be stopped, by making the condition false.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="" aria-label="1"></a>x <span class="ot">=</span> <span class="dv">5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="" aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb23-2"><a href="" aria-label="2"></a></span>
 <span id="cb23-3"><a href="" aria-label="3"></a><span class="cf">while</span> (x <span class="sc">&lt;</span> <span class="dv">15</span>) {</span>
 <span id="cb23-4"><a href="" aria-label="4"></a>  <span class="fu">print</span>(x)</span>
-<span id="cb23-5"><a href="" aria-label="5"></a>  x <span class="ot">=</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb23-5"><a href="" aria-label="5"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb23-6"><a href="" aria-label="6"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5
@@ -410,12 +411,18 @@
 <p>Roll the die until a 6 comes up:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="" aria-label="1"></a><span class="cf">repeat</span>{</span>
-<span id="cb25-2"><a href="" aria-label="2"></a>  die_roll <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb25-2"><a href="" aria-label="2"></a>  die_roll <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>)</span>
 <span id="cb25-3"><a href="" aria-label="3"></a>  <span class="fu">print</span>(die_roll)</span>
 <span id="cb25-4"><a href="" aria-label="4"></a>  <span class="cf">if</span>(die_roll <span class="sc">==</span> <span class="dv">6</span>) <span class="cf">break</span></span>
 <span id="cb25-5"><a href="" aria-label="5"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3
+[1] 5
+[1] 4
+[1] 3
+[1] 4
+[1] 5
+[1] 2
 [1] 6</code></pre>
 </div>
 </div>
@@ -426,10 +433,10 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="" aria-label="1"></a>i<span class="ot">=</span><span class="dv">1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="" aria-label="1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb27-2"><a href="" aria-label="2"></a><span class="cf">repeat</span> {</span>
 <span id="cb27-3"><a href="" aria-label="3"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb27-4"><a href="" aria-label="4"></a>  i<span class="ot">=</span>i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb27-4"><a href="" aria-label="4"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
 <span id="cb27-5"><a href="" aria-label="5"></a>  <span class="cf">if</span>(i <span class="sc">&gt;</span> <span class="dv">3</span>)<span class="cf">break</span></span>
 <span id="cb27-6"><a href="" aria-label="6"></a>  }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -440,10 +447,10 @@
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="" aria-label="1"></a>i<span class="ot">=</span><span class="dv">1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="" aria-label="1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb29-2"><a href="" aria-label="2"></a><span class="cf">while</span> (i <span class="sc">&lt;</span> <span class="dv">4</span>) {</span>
 <span id="cb29-3"><a href="" aria-label="3"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb29-4"><a href="" aria-label="4"></a>  i<span class="ot">=</span>i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb29-4"><a href="" aria-label="4"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
 <span id="cb29-5"><a href="" aria-label="5"></a>  }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
@@ -473,11 +480,11 @@
 <section id="sum-as-iteration-1" class="slide level2">
 <h2>Sum as iteration</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="" aria-label="1"></a>total <span class="ot">=</span> <span class="dv">0</span> <span class="co"># initialize the total to 0</span></span>
-<span id="cb31-2"><a href="" aria-label="2"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># vector x</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="" aria-label="1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># initialize the total to 0</span></span>
+<span id="cb31-2"><a href="" aria-label="2"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># vector x</span></span>
 <span id="cb31-3"><a href="" aria-label="3"></a></span>
 <span id="cb31-4"><a href="" aria-label="4"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)){ <span class="co"># for the whole length of x = 1:10</span></span>
-<span id="cb31-5"><a href="" aria-label="5"></a>  total <span class="ot">=</span> total <span class="sc">+</span> x[i]</span>
+<span id="cb31-5"><a href="" aria-label="5"></a>  total <span class="ot">&lt;-</span> total <span class="sc">+</span> x[i]</span>
 <span id="cb31-6"><a href="" aria-label="6"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -485,13 +492,13 @@
 
 <p>Let’s put everything inside a function (i.e., I create a function that replicates what the sum function does)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="" aria-label="1"></a>my_sum <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="" aria-label="1"></a>my_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
 <span id="cb32-2"><a href="" aria-label="2"></a></span>
-<span id="cb32-3"><a href="" aria-label="3"></a>  total <span class="ot">=</span> <span class="dv">0</span> <span class="co"># initialize the total to 0</span></span>
+<span id="cb32-3"><a href="" aria-label="3"></a>  total <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># initialize the total to 0</span></span>
 <span id="cb32-4"><a href="" aria-label="4"></a></span>
 <span id="cb32-5"><a href="" aria-label="5"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(x)){  <span class="co"># equivalent to 1:length(x)</span></span>
 <span id="cb32-6"><a href="" aria-label="6"></a></span>
-<span id="cb32-7"><a href="" aria-label="7"></a>    total <span class="ot">=</span> total <span class="sc">+</span> x[i]</span>
+<span id="cb32-7"><a href="" aria-label="7"></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> x[i]</span>
 <span id="cb32-8"><a href="" aria-label="8"></a></span>
 <span id="cb32-9"><a href="" aria-label="9"></a>    }</span>
 <span id="cb32-10"><a href="" aria-label="10"></a></span>
@@ -499,15 +506,15 @@
 <span id="cb32-12"><a href="" aria-label="12"></a></span>
 <span id="cb32-13"><a href="" aria-label="13"></a>}</span>
 <span id="cb32-14"><a href="" aria-label="14"></a></span>
-<span id="cb32-15"><a href="" aria-label="15"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb32-15"><a href="" aria-label="15"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
 <span id="cb32-16"><a href="" aria-label="16"></a></span>
 <span id="cb32-17"><a href="" aria-label="17"></a><span class="fu">my_sum</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4154756</code></pre>
+<pre><code>[1] -13.27224</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="" aria-label="1"></a><span class="fu">sum</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4154756</code></pre>
+<pre><code>[1] -13.27224</code></pre>
 </div>
 </div>
 </section>
@@ -518,15 +525,15 @@
 <li>I load the dataset I created:</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="" aria-label="1"></a>mydf <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/mydf_2.csv"</span>) <span class="co"># load the dataset</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="" aria-label="1"></a>mydf <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/mydf_2.csv"</span>) <span class="co"># load the dataset</span></span>
 <span id="cb36-2"><a href="" aria-label="2"></a></span>
 <span id="cb36-3"><a href="" aria-label="3"></a><span class="fu">str</span>(mydf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   30 obs. of  4 variables:
  $ id     : int  1 2 3 4 5 6 7 8 9 10 ...
- $ age    : int  47 50 23 39 28 15 17 38 19 42 ...
- $ age_cat: chr  "adult" "adult" "young" "adult" ...
- $ age_z  : num  1.394 1.665 -0.774 0.672 -0.322 ...</code></pre>
+ $ age    : int  29 18 27 40 30 38 42 36 22 45 ...
+ $ age_cat: chr  "young" "adolescent" "young" "adult" ...
+ $ age_z  : num  -0.1876 -1.1701 -0.3662 0.795 -0.0983 ...</code></pre>
 </div>
 </div>
 </section>
@@ -538,26 +545,26 @@
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>) <span class="co"># for reproducibility</span></span>
 <span id="cb38-2"><a href="" aria-label="2"></a></span>
-<span id="cb38-3"><a href="" aria-label="3"></a>niter <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb38-4"><a href="" aria-label="4"></a>res_all <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, niter)    <span class="co"># all estimated effects</span></span>
-<span id="cb38-5"><a href="" aria-label="5"></a>p_val <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, niter)      <span class="co"># all p-values</span></span>
+<span id="cb38-3"><a href="" aria-label="3"></a>niter <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb38-4"><a href="" aria-label="4"></a>res_all <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, niter)    <span class="co"># all estimated effects</span></span>
+<span id="cb38-5"><a href="" aria-label="5"></a>p_val <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, niter)      <span class="co"># all p-values</span></span>
 <span id="cb38-6"><a href="" aria-label="6"></a></span>
 <span id="cb38-7"><a href="" aria-label="7"></a><span class="co"># Observed data</span></span>
-<span id="cb38-8"><a href="" aria-label="8"></a>age_z <span class="ot">=</span> mydf<span class="sc">$</span>age_z</span>
-<span id="cb38-9"><a href="" aria-label="9"></a>eff_age <span class="ot">=</span> .<span class="dv">2</span> <span class="co"># age effect</span></span>
-<span id="cb38-10"><a href="" aria-label="10"></a>n_obs <span class="ot">=</span> <span class="fu">length</span>(age_z)</span>
+<span id="cb38-8"><a href="" aria-label="8"></a>age_z <span class="ot">&lt;-</span> mydf<span class="sc">$</span>age_z</span>
+<span id="cb38-9"><a href="" aria-label="9"></a>eff_age <span class="ot">&lt;-</span> .<span class="dv">2</span> <span class="co"># age effect</span></span>
+<span id="cb38-10"><a href="" aria-label="10"></a>n_obs <span class="ot">&lt;-</span> <span class="fu">length</span>(age_z)</span>
 <span id="cb38-11"><a href="" aria-label="11"></a></span>
 <span id="cb38-12"><a href="" aria-label="12"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>niter) {</span>
-<span id="cb38-13"><a href="" aria-label="13"></a>  y <span class="ot">=</span> <span class="dv">0</span> <span class="sc">+</span> eff_age <span class="sc">*</span> age_z <span class="sc">+</span> <span class="fu">rnorm</span>(n_obs, <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># always add some noise</span></span>
+<span id="cb38-13"><a href="" aria-label="13"></a>  y <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="sc">+</span> eff_age <span class="sc">*</span> age_z <span class="sc">+</span> <span class="fu">rnorm</span>(n_obs, <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># always add some noise</span></span>
 <span id="cb38-14"><a href="" aria-label="14"></a></span>
 <span id="cb38-15"><a href="" aria-label="15"></a>  <span class="co"># linear model</span></span>
-<span id="cb38-16"><a href="" aria-label="16"></a>  mod <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> age_z)</span>
+<span id="cb38-16"><a href="" aria-label="16"></a>  mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> age_z)</span>
 <span id="cb38-17"><a href="" aria-label="17"></a></span>
 <span id="cb38-18"><a href="" aria-label="18"></a>  <span class="co"># extract the effect estimate</span></span>
-<span id="cb38-19"><a href="" aria-label="19"></a>  res_all[i] <span class="ot">=</span> <span class="fu">coef</span>(mod)[<span class="dv">2</span>]</span>
+<span id="cb38-19"><a href="" aria-label="19"></a>  res_all[i] <span class="ot">&lt;-</span> <span class="fu">coef</span>(mod)[<span class="dv">2</span>]</span>
 <span id="cb38-20"><a href="" aria-label="20"></a></span>
 <span id="cb38-21"><a href="" aria-label="21"></a>  <span class="co"># p-value of age_z</span></span>
-<span id="cb38-22"><a href="" aria-label="22"></a>  p_val[i] <span class="ot">=</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">4</span>]</span>
+<span id="cb38-22"><a href="" aria-label="22"></a>  p_val[i] <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">4</span>]</span>
 <span id="cb38-23"><a href="" aria-label="23"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -566,20 +573,20 @@
 <p>Result:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="" aria-label="1"></a><span class="co"># Keep only significant results</span></span>
-<span id="cb39-2"><a href="" aria-label="2"></a>res_sig <span class="ot">=</span> res_all[p_val <span class="sc">&lt;=</span> <span class="fl">0.05</span>]</span>
+<span id="cb39-2"><a href="" aria-label="2"></a>res_sig <span class="ot">&lt;-</span> res_all[p_val <span class="sc">&lt;=</span> <span class="fl">0.05</span>]</span>
 <span id="cb39-3"><a href="" aria-label="3"></a></span>
 <span id="cb39-4"><a href="" aria-label="4"></a><span class="co"># Descriptive statistics</span></span>
 <span id="cb39-5"><a href="" aria-label="5"></a><span class="fu">cat</span>(<span class="st">"Proportion significant = Power:"</span>, <span class="fu">mean</span>(p_val <span class="sc">&lt;=</span> <span class="fl">0.05</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Proportion significant = Power: 0.165 </code></pre>
+<pre><code>Proportion significant = Power: 0.172 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="" aria-label="1"></a><span class="fu">cat</span>(<span class="st">"Mean of all effects:"</span>, <span class="fu">mean</span>(res_all), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean of all effects: 0.1975066 </code></pre>
+<pre><code>Mean of all effects: 0.2004597 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="" aria-label="1"></a><span class="fu">cat</span>(<span class="st">"Mean of significant effects:"</span>, <span class="fu">mean</span>(res_sig), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean of significant effects: 0.4470989 </code></pre>
+<pre><code>Mean of significant effects: 0.4471571 </code></pre>
 </div>
 </div>
 </section>
@@ -623,12 +630,12 @@
 <p>Imagine we have two experimental groups (for example, a Control group and a Treatment group), each with 10 participants. We want to measure a variable (for example, reaction time) for each participant and record the results in a dataframe:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-label="1"></a><span class="co"># Define the study parameters</span></span>
-<span id="cb47-2"><a href="" aria-label="2"></a>groups <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Treatment"</span>) <span class="co"># Group names</span></span>
-<span id="cb47-3"><a href="" aria-label="3"></a>n_subj<span class="ot">=</span><span class="dv">10</span>                          <span class="co"># Number of subjects per group</span></span>
-<span id="cb47-4"><a href="" aria-label="4"></a>tot_subj <span class="ot">=</span> n_subj <span class="sc">*</span> <span class="fu">length</span>(groups)</span>
+<span id="cb47-2"><a href="" aria-label="2"></a>groups <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Treatment"</span>) <span class="co"># Group names</span></span>
+<span id="cb47-3"><a href="" aria-label="3"></a>n_subj <span class="ot">&lt;-</span> <span class="dv">10</span>                          <span class="co"># Number of subjects per group</span></span>
+<span id="cb47-4"><a href="" aria-label="4"></a>tot_subj <span class="ot">&lt;-</span> n_subj <span class="sc">*</span> <span class="fu">length</span>(groups)</span>
 <span id="cb47-5"><a href="" aria-label="5"></a></span>
 <span id="cb47-6"><a href="" aria-label="6"></a><span class="co"># Create a data.frame to store the data</span></span>
-<span id="cb47-7"><a href="" aria-label="7"></a>res<span class="ot">=</span><span class="fu">data.frame</span>(</span>
+<span id="cb47-7"><a href="" aria-label="7"></a>res <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb47-8"><a href="" aria-label="8"></a></span>
 <span id="cb47-9"><a href="" aria-label="9"></a>  <span class="co"># Group factor</span></span>
 <span id="cb47-10"><a href="" aria-label="10"></a>  <span class="at">Group =</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="fu">rep</span>(groups, <span class="at">each =</span> n_subj)),</span>
@@ -670,23 +677,23 @@
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="" aria-label="1"></a><span class="co"># Nested loop to simulate data collection</span></span>
 <span id="cb52-2"><a href="" aria-label="2"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)  <span class="co"># For reproducibility of the simulated data</span></span>
 <span id="cb52-3"><a href="" aria-label="3"></a></span>
-<span id="cb52-4"><a href="" aria-label="4"></a>k <span class="ot">=</span> <span class="dv">1</span> <span class="co"># reaction time iterator</span></span>
+<span id="cb52-4"><a href="" aria-label="4"></a>k <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># reaction time iterator</span></span>
 <span id="cb52-5"><a href="" aria-label="5"></a></span>
 <span id="cb52-6"><a href="" aria-label="6"></a><span class="co"># how many levels does Group have?</span></span>
 <span id="cb52-7"><a href="" aria-label="7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">levels</span>(res<span class="sc">$</span>Group))) {</span>
 <span id="cb52-8"><a href="" aria-label="8"></a></span>
 <span id="cb52-9"><a href="" aria-label="9"></a>  <span class="co"># start with the first group, which is the control group</span></span>
-<span id="cb52-10"><a href="" aria-label="10"></a>  group <span class="ot">=</span> <span class="fu">levels</span>(res<span class="sc">$</span>Group)[i]</span>
+<span id="cb52-10"><a href="" aria-label="10"></a>  group <span class="ot">&lt;-</span> <span class="fu">levels</span>(res<span class="sc">$</span>Group)[i]</span>
 <span id="cb52-11"><a href="" aria-label="11"></a></span>
 <span id="cb52-12"><a href="" aria-label="12"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_subj) { <span class="co"># n_subj for each group</span></span>
 <span id="cb52-13"><a href="" aria-label="13"></a></span>
 <span id="cb52-14"><a href="" aria-label="14"></a>    <span class="co"># is it the control group?</span></span>
-<span id="cb52-15"><a href="" aria-label="15"></a>    RT <span class="ot">=</span> <span class="fu">ifelse</span>(group <span class="sc">==</span> <span class="st">"Control"</span>,</span>
+<span id="cb52-15"><a href="" aria-label="15"></a>    RT <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(group <span class="sc">==</span> <span class="st">"Control"</span>,</span>
 <span id="cb52-16"><a href="" aria-label="16"></a>               <span class="at">yes =</span> <span class="fu">rlnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">log</span>(.<span class="dv">500</span>), <span class="at">sd =</span> .<span class="dv">050</span>),</span>
 <span id="cb52-17"><a href="" aria-label="17"></a>               <span class="at">no =</span> <span class="fu">rlnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="fu">log</span>(.<span class="dv">450</span>), <span class="at">sd =</span> .<span class="dv">050</span>))</span>
 <span id="cb52-18"><a href="" aria-label="18"></a></span>
-<span id="cb52-19"><a href="" aria-label="19"></a>    res<span class="sc">$</span>RT[k] <span class="ot">=</span> RT</span>
-<span id="cb52-20"><a href="" aria-label="20"></a>    k <span class="ot">=</span> k <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb52-19"><a href="" aria-label="19"></a>    res<span class="sc">$</span>RT[k] <span class="ot">&lt;-</span> RT</span>
+<span id="cb52-20"><a href="" aria-label="20"></a>    k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb52-21"><a href="" aria-label="21"></a>  }</span>
 <span id="cb52-22"><a href="" aria-label="22"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>

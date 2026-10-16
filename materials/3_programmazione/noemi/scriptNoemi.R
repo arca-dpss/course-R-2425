@@ -13,17 +13,17 @@ dataNoemi <- read_csv("materials/3_programmazione/noemi/dataNoemi.csv")
 # Specifically, I remove 
 # - columns 1 to 17
 # - the first and second rows
-data = dataNoemi[-c(1:2),-c(1:17)] 
+data <- dataNoemi[-c(1:2),-c(1:17)] 
 
 # - remove 15,17,18 
-data = data[,-c(15,17,18)] # wrong items
+data <- data[,-c(15,17,18)] # wrong items
 
 # rename the variables, I want the columns to be called:
 # "consent", "ITEM1", "ITEM2", "ITEM3", "ITEM4","ITEM5", "ITEM6", 
 # "ITEM7", "ITEM8","ITEM9", "ITEM10", "ITEM11", "ITEM12", "ITEM13", 
 # "ITEM14", "diagnosis"
 
-names(data) = c("consent", "ITEM1", "ITEM2", "ITEM3", "ITEM4",
+names(data) <- c("consent", "ITEM1", "ITEM2", "ITEM3", "ITEM4",
                 "ITEM5", "ITEM6", "ITEM7", "ITEM8","ITEM9", 
                 "ITEM10", "ITEM11", "ITEM12", "ITEM13", 
                  "ITEM14", "diagnosis")
@@ -33,7 +33,7 @@ names(data)
 table(data$ITEM1)
 unique(data$ITEM1)
 
-str_num = function(x){
+str_num <- function(x){
   dplyr::case_when(x == "( 1 ) Per niente vero" ~ 1,
                    x == "( 2 ) Poco vero" ~ 2,
                    x == "( 3 ) Abbastanza vero" ~ 3,
@@ -42,7 +42,7 @@ str_num = function(x){
                    TRUE ~ 111)
 }
 str_num(x = data$ITEM1)
-prova = str_num(x = data$ITEM1)
+prova <- str_num(x = data$ITEM1)
 table(prova)
 table(as.factor(data$ITEM1))
 data$ITEM1
@@ -50,8 +50,8 @@ data$ITEM1
 
 
 # Remove participants with clinical diagnoses, see the diagnosis column
-data2 = subset(data, subset = diagnosis == "no")
-data2 = data[data$diagnosis == "si", ]
+data2 <- subset(data, subset = diagnosis == "no")
+data2 <- data[data$diagnosis == "si", ]
 
 
 write_csv(data2, file = "materials/3_programmazione/noemi/dataNoemi_ok.csv")

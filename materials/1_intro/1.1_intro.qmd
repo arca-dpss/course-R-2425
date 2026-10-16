@@ -2,6 +2,7 @@
 title: "Introduction 1"
 format:
    revealjs:
+     css: ../slides.css
      margin: .05
      fontsize: 1.9em
      linestretch: 1.4
@@ -9,63 +10,45 @@ format:
 editor: visual
 ---
 
-## Working Environment {style="text-align: center;"}
+## RStudio
 
-RStudio is divided into **4 main panes**:
-
-![](images/R_studio.png){fig-align="center" width="2810"}
-
-------------------------------------------------------------------------
-
-**Script.** The text file where you write and save your code. You can run one line at a time (`Ctrl + Enter` / `Cmd + Enter`) or the whole script by clicking `Source`. Comments are added with `#`.
-
-<br/>
-
-**Console.** This is where R runs the code and shows the results. You can type commands directly in the console for quick tests, but they are not saved.
-
-<br/>
-
-**Environment / Temporary desk.** Shows all the **objects** created during the current session.
-
-<br/>
-
-**Miscellaneous.** A multi-purpose pane with several tabs, including the file explorer
-
-------------------------------------------------------------------------
-
-::: callout-note
-## Console
-
-Commands in the console are executed but **not saved**.
-
-To run the command → `Enter`
-
-The output is immediate and appears in the console.
-:::
-
-<br/>
-
-::: callout-note
-## Script
-
-You can save scripts with all your commands.
-
-To run the command → `Ctrl + Enter` (`Cmd + Enter` on Mac)
-
-The output is returned in the console.
-:::
+![](images/rstudio0.png){fig-align="center" width="1000"}
 
 ## How to work in R
 
-Let's create a script:
+Let's create a **script**, a "text" file where you write and save your code.
 
-![](images/script.png){fig-align="center"}
+<br/>
+
+![](images/script.png){fig-align="center" width="800"}
 
 ## How to work in R
 
 Let's save it:
 
 ![](images/save.png){fig-align="center"}
+
+## Working Environment 
+
+RStudio is divided into **4 main panes**:
+
+![](images/rstudio1.png){fig-align="center" width="2000"}
+
+------------------------------------------------------------------------
+
+RStudio is divided into **4 main panes**:
+
+- **Script.** The text file where you write and save your code. You can run one line at a time (`Ctrl + Enter` / `Cmd + Enter`) or the whole script by clicking `Source`. Comments are added with `#`.
+
+
+- **Console.** This is where R runs the code and shows the results. You can type commands directly in the console for quick tests, but they are not saved. 
+
+
+- **Environment / Temporary desk.** Shows all the **objects** created during the current session.
+
+
+- **Miscellaneous.** A multi-purpose pane with several tabs, including the file explorer.
+
 
 ## Working Directory
 
@@ -81,7 +64,7 @@ getwd()
 
 PC
 
-```
+```         
 |- Users
     |
     |- tita
@@ -100,7 +83,7 @@ PC
 1.  Change the working directory with the `setwd` command:
 
 ```{r, echo=TRUE, eval=FALSE}
-setwd('/Users/tita/Desktop')
+setwd('/Users/tita/Desktop/introR')
 ```
 
 2.  Download the file [prova.csv](https://github.com/arca-dpss/course-R-2425/blob/main/materials/1_intro/prova.csv) and put it in the folder.
@@ -109,25 +92,35 @@ setwd('/Users/tita/Desktop')
 3.  Since we are working inside the folder, if we want to load a file located in this folder we can simply write the file name in quotes and use, for example, the `read.csv` function:
 
 ```{r, echo=TRUE, warning=FALSE}
-data = read.csv("prova.csv")
-
-head(data, n = 4) # show the first rows of the dataset
+data <- read.csv("prova.csv")
 ```
 :::
 
-##
+## 
 
-If instead we want to load a file located somewhere else, we need to refer to it through its absolute path:
+Now move the `prova.csv` outside the introR folder (e.g., in the desktop), and run the same command.. 
 
-```{r, echo=TRUE, warning=FALSE}
-data = read.csv("/Users/tita/course-R-2425/materials/1_intro/prova.csv")
-head(data, n = 4) # show the first rows of the dataset
+```{r, echo=TRUE, eval=FALSE}
+data <- read.csv("prova.csv")
 ```
 
-<br/>
+::: fragment
+If we want to load a file located outside our `wd`, we need to refer to it through its absolute path:
+
+```{r, echo=TRUE, warning=FALSE, eval=FALSE}
+data <- read.csv("/Users/tita/Desktop/prova.csv")
+```
+
+:::
 
 ::: fragment
 Or, first change the working directory with the `setwd` command and then load the file.
+
+```{r, echo=TRUE, eval=FALSE}
+setwd('/Users/tita/Desktop')
+data <- read.csv("prova.csv")
+```
+
 :::
 
 ## The best solution?

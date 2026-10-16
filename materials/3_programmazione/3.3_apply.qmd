@@ -2,6 +2,7 @@
 title: "3.3_apply"
 format:
    revealjs:
+     css: ../slides.css
      margin: 0.1
 editor: visual
 ---
@@ -17,7 +18,7 @@ Imagine you have a list of vectors and you want to apply the same function(s) to
     ...
 
 ```{r, echo=TRUE}
-my_list=list(
+my_list <- list(
     var1=rnorm(n = 100, mean = 0, sd = 1),
     var2=runif(n = 100, min = 0, max = 1),
     var3=rnorm(n = 100, mean = 0, sd = 1),
@@ -34,16 +35,16 @@ Let's compute mean, median and std
 ```{r, echo=TRUE}
 # initialize the vectors with arbitrary numbers,
 # but as many as we need
-means = 1:length(my_list)
-medians = 1:length(my_list)
-stds = 1:length(my_list)
+means <- 1:length(my_list)
+medians <- 1:length(my_list)
+stds <- 1:length(my_list)
 
 # Loop
 for(i in 1:length(my_list)){
 
-  means[i] = mean(my_list[[i]])
-  medians[i] = median(my_list[[i]])
-  stds[i] = sd(my_list[[i]])
+  means[i] <- mean(my_list[[i]])
+  medians[i] <- median(my_list[[i]])
+  stds[i] <- sd(my_list[[i]])
 }
 ```
 :::
@@ -76,9 +77,9 @@ Everything works! but:
 R has a family of apply functions such as **`lapply`**, **`sapply`**, etc. that let us get the same result in a more concise, fast and simple way:
 
 ```{r, echo=TRUE}
-means = sapply(my_list, mean)
-medians = sapply(my_list, median)
-stds = sapply(my_list, sd)
+means <- sapply(my_list, mean)
+medians <- sapply(my_list, median)
+stds <- sapply(my_list, sd)
 
 means
 medians
@@ -111,7 +112,7 @@ Before analysing the **`*apply`** family, I think a further parallel with the fo
 **`for`** loop
 
 ```{r, echo=TRUE}
-vec = 1:5
+vec <- 1:5
 for(i in vec){
   print(i)}
 ```
@@ -121,8 +122,8 @@ for(i in vec){
 **`sapply`**
 
 ```{r, echo=TRUE}
-vec = 1:5
-res = sapply(vec, print)
+vec <- 1:5
+res <- sapply(vec, print)
 ```
 :::
 :::::
@@ -132,11 +133,11 @@ res = sapply(vec, print)
 We can also use functions we created ourselves:
 
 ```{r, echo=TRUE}
-center_var = function(x){
+center_var <- function(x){
   x - mean(x)
 }
 
-my_list = list(
+my_list <- list(
     vec1 = runif(n = 10, min  = 0, max = 1),
     vec2 = runif(n = 10, min  = 0, max = 1),
     vec3 = runif(n = 10, min  = 0, max = 1)
@@ -154,8 +155,8 @@ So, just as the **`for`** loop written as **i** in **vec** assigns to **i** one 
 implicit **`sapply`**
 
 ```{r, echo=TRUE}
-vec = 1:5
-res = sapply(vec, print)
+vec <- 1:5
+res <- sapply(vec, print)
 ```
 :::
 
@@ -163,8 +164,8 @@ res = sapply(vec, print)
 explicit **`sapply`**
 
 ```{r, echo=TRUE}
-vec = 1:5
-res = sapply(vec, function(i) print(i))
+vec <- 1:5
+res <- sapply(vec, function(i) print(i))
 ```
 :::
 :::::
@@ -198,7 +199,7 @@ lapply(my_list, function(x) x - mean(x))
 **`lapply`** stands for list-apply and always returns a list, applying the function to each element of the input list:
 
 ```{r, echo=TRUE}
-res = lapply(my_list, mean)
+res <- lapply(my_list, mean)
 res
 class(res)
 ```
@@ -208,7 +209,7 @@ class(res)
 **`sapply`** stands for simplified-apply and (tries to) return a simpler version of a list, applying the function to each element of the input list:
 
 ```{r, echo=TRUE}
-res = sapply(my_list, mean)
+res <- sapply(my_list, mean)
 res
 class(res)
 ```
@@ -218,7 +219,7 @@ class(res)
 **`apply`** works specifically on dataframes or matrices, applying a function to the rows or the columns:
 
 ```{r, echo=TRUE}
-my_df = data.frame(x1 = runif(n = 5,min = 1,max = 10),
+my_df <- data.frame(x1 = runif(n = 5,min = 1,max = 10),
                   x2 = runif(n = 5,min = 3,max = 4))
 my_df
 ```
@@ -242,9 +243,9 @@ apply(my_df, MARGIN = 2, FUN = mean)
 **`tapply`** lets us apply a function to a vector, splitting the vector according to a categorical variable:
 
 ```{r, echo=TRUE}
-vec = rnorm(75)
+vec <- rnorm(75)
 
-index = rep(c("a", "b", "c"), each = 25)
+index <- rep(c("a", "b", "c"), each = 25)
 
 tapply(vec, INDEX = index, mean)
 ```
@@ -256,7 +257,7 @@ Here *`INDEX`* is a character vector or a factor.
 In this case we compute the mean for each age category:
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
-my_df = readr::read_csv("data/mydf_2.csv")
+my_df <- readr::read_csv("data/mydf_2.csv")
 head(my_df)
 tapply(my_df$age, my_df$age_cat, mean)
 ```
@@ -276,8 +277,8 @@ vapply(my_list, FUN = mean, FUN.VALUE = numeric(length = 1))
 **`mapply`** lets us handle **several lists at the same time** for more complex scenarios. For example, we want to use the **`rnorm()`** function to generate 4 samples combining different means and standard deviations:
 
 ```{r, echo=TRUE}
-mus = list(10, 20, 30, 40)
-stds = list(1, 2, 3, 4)
+mus <- list(10, 20, 30, 40)
+stds <- list(1, 2, 3, 4)
 
 mapply(function(x,y) rnorm(n = 5, mean = x, sd = y),
        mus, stds, SIMPLIFY = FALSE)
@@ -302,12 +303,12 @@ mapply(function(x,y) rnorm(n = 5, mean = x, sd = y),
 The same result (in a more verbose way) can be obtained with a **`for`** loop, using the iterator i several times:
 
 ```{r, echo=TRUE}
-mus = list(10, 20, 30)
-stds = list(1,2,3)
-res = vector(mode = "list", length = length(mus)) # empty list
+mus <- list(10, 20, 30)
+stds <- list(1,2,3)
+res <- vector(mode = "list", length = length(mus)) # empty list
 
 for(i in 1:length(mus)){
-  res[[i]] = rnorm(n = 6, mean = mus[[i]], sd = stds[[i]])
+  res[[i]] <- rnorm(n = 6, mean = mus[[i]], sd = stds[[i]])
 }
 res
 ```
@@ -329,15 +330,15 @@ We sample 1000 times from a normal distribution and compute the mean, AKA the sa
 ::::: columns
 ::: {.column width="50%"}
 ```{r, echo=TRUE}
-nrep=1000
+nrep <- 1000
 
-nsample=30
+nsample <- 30
 
-mu=100
+mu <- 100
 
-sd=30
+sd <- 30
 
-means=
+means <-
   replicate(
     n = nrep,
     expr = {mean(

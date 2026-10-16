@@ -6,7 +6,7 @@
 #    - StudentID (character) containing 8 made-up student ID numbers
 #    - Degree (factor) containing 8 degree course names
 #    - GPA (numeric) containing 8 grade point averages
-students_df = data.frame(
+students_df <- data.frame(
   StudentID = c("12345678", "23456789", "34567890", "45678901", "56789012", "67890123", "78901234", "89012345"),
   Degree = factor(c("Computer Science", "Biology", "Physics", "Chemistry", "Mathematics", "Computer Science", "Biology", "Physics")),
   GPA = c(27.5, 28.3, 26.8, 29.1, 27.9, 26.2, 28.7, 27.4)
@@ -36,11 +36,11 @@ students_df = data.frame(
 
 
 # 7. Suppose you have these two dataframes:
-df_students = data.frame(
+df_students <- data.frame(
   StudentID = c("12345", "67890", "11223", "44556", "99887"),
   Name = c("Luca", "Anna", "Marco", "Giulia", "Sara")
 )
-df_exams = data.frame(
+df_exams <- data.frame(
   StudentID = c("67890", "11223", "78901"),
   Exam = c("Mathematics", "Physics", "Chemistry"),
   Grade = c(28, 30, 27)

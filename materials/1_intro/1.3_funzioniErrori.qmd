@@ -2,6 +2,7 @@
 title: "Functions and Errors"
 format:
    revealjs:
+     css: ../slides.css
      margin: .05
      fontsize: 1.9em
      linestretch: 1.4
@@ -31,7 +32,7 @@ We have already seen that everything in R is an object. Functions too, although 
 The output will depend on the value of x.
 
 ```{r, echo=TRUE}
-myfun = function(x) {
+myfun <- function(x) {
   return(x + 3)
 }
 
@@ -68,7 +69,7 @@ Let's try to use the `mean()` function:
 ```{r, error = TRUE, echo=TRUE}
 # create a vector by sampling 1000 elements
 # from a normal distribution with mean 1 and sd 1
-myvec = rnorm(n = 1000, mean = 1, sd = 1)
+myvec <- rnorm(n = 1000, mean = 1, sd = 1)
 
 mean(x = myvec) # x defined, trim and na.rm not defined, so they are equal to?
 ?mean
@@ -135,7 +136,7 @@ There are different **alert** levels when we write code:
 
 ![](images/stackover.png){fig-align="center" width="600"}
 
-## ChatGPT
+## AI
 
 **Be careful**
 
@@ -144,3 +145,5 @@ There are different **alert** levels when we write code:
 -   Make sure you have understood the answer
 
 -   Double-check!
+
+

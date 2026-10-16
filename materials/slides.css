@@ -1,0 +1,8 @@
+/* Shared styles for all slide decks (linked from each .qmd with css: ../slides.css) */
+
+/* Bigger code: about the same size as the slide text (about 30px in most decks).
+   Quarto's default is 0.55em of the text (about 17px). A fixed size keeps code the
+   same in every deck; reveal.js scales the whole slide to the screen. */
+.reveal pre {
+  font-size: 28px;
+}

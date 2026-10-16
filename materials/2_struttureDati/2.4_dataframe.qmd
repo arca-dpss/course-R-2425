@@ -2,6 +2,7 @@
 title: "Dataframe"
 format:
    revealjs:
+     css: ../slides.css
      margin: .05
      fontsize: 1.9em
      linestretch: 1.4
@@ -37,7 +38,7 @@ Most of the time you will import dataframes rather than create them, but it is i
 
 ```{r, echo=TRUE}
 # Create a dataframe with 3 columns
-my_df = data.frame( col1 = 1:4, col2 = letters[1:4],
+my_df <- data.frame( col1 = 1:4, col2 = letters[1:4],
                     col3 = rnorm(n = 4, mean = 0, sd = 1))
 my_df
 ```
@@ -192,7 +193,7 @@ Most of the time you will access variables with the **`$`** operator. This comma
 
 ```{r,echo=TRUE}
 # create a variable that is the sum of Length and Width
-iris$sum = iris$Sepal.Length + iris$Sepal.Width
+iris$sum <- iris$Sepal.Length + iris$Sepal.Width
 
 str(iris)
 ```
@@ -202,14 +203,14 @@ str(iris)
 The same concepts we have seen for vectors apply, so you can both create and modify variables.
 
 ```{r, echo=TRUE}
-my_df = data.frame(num = 1:4, let = letters[1:4])
+my_df <- data.frame(num = 1:4, let = letters[1:4])
 my_df
 
 # Modify the num variable by adding 1
-my_df$num = my_df$num+1
+my_df$num <- my_df$num+1
 
 # Create a third variable made of the num and let variables
-my_df$both = paste(my_df$num,my_df$let, sep = "_") # ?paste
+my_df$both <- paste(my_df$num,my_df$let, sep = "_") # ?paste
 
 str(my_df)
 ```
@@ -224,7 +225,7 @@ Since they are similar to matrices, dataframes can be combined with the **`rbind
 # first dataframe
 str(my_df)
 # create a second dataframe
-my_df2 = data.frame(num = 4:7, lett = letters[1:4],
+my_df2 <- data.frame(num = 4:7, lett = letters[1:4],
                     both = paste(4:7,letters[1:4], sep = "_"))
 
 str(my_df2)
@@ -239,7 +240,7 @@ str(my_df2)
 -   The column names must be identical
 
 ```{r,echo=TRUE, error=TRUE}
-my_df3 = rbind(my_df,my_df2)
+my_df3 <- rbind(my_df,my_df2)
 
 str(my_df)
 str(my_df2)
@@ -254,9 +255,9 @@ names(my_df2)
 names(my_df)
 
 # I want the names of my_df2 to match the names of my_df
-names(my_df2) = names(my_df)
+names(my_df2) <- names(my_df)
 
-my_df3 = rbind(my_df,my_df2)
+my_df3 <- rbind(my_df,my_df2)
 str(my_df3)
 ```
 
@@ -267,26 +268,26 @@ You may also need to collect different types of data from the same participant, 
 Dataframe containing the reaction times:
 
 ```{r, echo=TRUE}
-df_rt = data.frame(subj = factor(rep(c("alice","bob"),each = 400)),
+df_rt <- data.frame(subj = factor(rep(c("alice","bob"),each = 400)),
                    cond = factor(rep(c("easy","hard"),
                                      each = 200, times = 2)),
                       rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25),
                              rlnorm(n = 400, meanlog = -.7, sdlog =.3)))
 
 # equivalent to first creating the variables as vectors and then putting them in a df
-subj = factor(rep(c("alice","bob"),each = 400))
-cond = factor(rep(c("easy","hard"),each = 200, times = 2))
-rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25),
+subj <- factor(rep(c("alice","bob"),each = 400))
+cond <- factor(rep(c("easy","hard"),each = 200, times = 2))
+rt <- c(rlnorm(n = 400, meanlog = -1, sdlog = .25),
                              rlnorm(n = 400, meanlog = -.7, sdlog =.3))
 
-df_rt = data.frame(subj, cond, rt)
+df_rt <- data.frame(subj, cond, rt)
 
 ```
 
 Dataframe containing the age:
 
 ```{r, echo=TRUE}
-df_age = data.frame(subj = factor(c("alice","bob")), age = c(20,3))
+df_age <- data.frame(subj = factor(c("alice","bob")), age = c(20,3))
 
 ```
 
@@ -305,14 +306,14 @@ head(df_age)
 In this case, we can use the **`merge()`** function and/or the **`_join()`** functions:
 
 ```{r, echo=TRUE}
-df_all_1 = merge(x = df_rt, y = df_age, by="subj")
+df_all_1 <- merge(x = df_rt, y = df_age, by="subj")
 str(df_all_1)
 ```
 
 ```{r, echo=TRUE, message=FALSE}
 library(dplyr) # load the dplyr package
 
-df_all_2 = left_join(x = df_rt, y = df_age, by = c("subj")) # right_join and full_join also exist
+df_all_2 <- left_join(x = df_rt, y = df_age, by = c("subj")) # right_join and full_join also exist
 str(df_all_2)
 ```
 
@@ -324,7 +325,7 @@ We can use the **`table()`** function both to compute frequencies and to compute
 
 # keep only rts between .250 and 1.5 seconds
 # i.e. the rows that meet this condition
-df_rt_clean = df_rt[df_rt$rt > .25 & df_rt$rt < 1.5, ]
+df_rt_clean <- df_rt[df_rt$rt > .25 & df_rt$rt < 1.5, ]
 
 # how many trials for each subject
 table(df_rt$subj)
@@ -354,9 +355,9 @@ write_xlsx(df_age, path = "DATA/df_age.xlsx")
 ```{r, echo=TRUE}
 library(readxl) # load the readxl package
 
-df_rt_impo = read_csv("DATA/df_rt.csv") # uses the readr package
+df_rt_impo <- read_csv("DATA/df_rt.csv") # uses the readr package
 
-df_age_impo = read_xlsx("DATA/df_age.xlsx")
+df_age_impo <- read_xlsx("DATA/df_age.xlsx")
 ```
 
 ## Checking the structure
@@ -373,7 +374,7 @@ str(df_rt_impo) # Data frame we loaded
 The dataframe is imported as a tibble, and in this case the ***`factor`*** variables have been imported as ***`character`***. This can be changed either when importing ( **`?read_csv`** ):
 
 ```{r,echo=TRUE,message=FALSE}
-df_rt_impo1 = read_csv("DATA/df_rt.csv",
+df_rt_impo1 <- read_csv("DATA/df_rt.csv",
                        col_types =
                          list(col_factor(),col_factor(),
                               col_double()))
@@ -385,8 +386,8 @@ str(df_rt_impo1)
 or afterwards with the **`as.factor()`** command:
 
 ```{r,echo=TRUE,message=FALSE}
-df_rt_impo$subj = as.factor(df_rt_impo$subj)
-df_rt_impo$cond = as.factor(df_rt_impo$cond)
+df_rt_impo$subj <- as.factor(df_rt_impo$subj)
+df_rt_impo$cond <- as.factor(df_rt_impo$cond)
 str(df_rt_impo)
 ```
 
@@ -395,7 +396,7 @@ str(df_rt_impo)
 equivalent to:
 
 ```{r,echo=TRUE,message=FALSE}
-df_rt_impo2 = read_csv("DATA/df_rt.csv") %>% #library(tidyverse)
+df_rt_impo2 <- read_csv("DATA/df_rt.csv") %>% #library(tidyverse)
   mutate(subj = factor(subj),
          cond = factor(cond))
 str(df_rt_impo2)
@@ -409,9 +410,9 @@ The same concepts apply to reading xlsx files:
 
 ```{r, echo=TRUE}
 str(df_age_impo)
-df_age_impo$subj=as.factor(df_age_impo$subj)
+df_age_impo$subj <- as.factor(df_age_impo$subj)
 str(df_age_impo)
-df_age_impo$subj=factor(df_age_impo$subj)
+df_age_impo$subj <- factor(df_age_impo$subj)
 str(df_age_impo)
 ```
 

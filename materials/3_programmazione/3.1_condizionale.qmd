@@ -2,6 +2,7 @@
 title: "Conditional programming"
 format:
    revealjs:
+     css: ../slides.css
      margin: .05
      fontsize: 1.9em
      linestretch: 1.4
@@ -33,7 +34,7 @@ The command used to create a function in R is **`function()`**, followed by a pa
 
 ```{r, echo=TRUE}
 
-myfun_sum = function(x,y){ # arguments
+myfun_sum <- function(x,y){ # arguments
 
   x + y  # body
 
@@ -50,11 +51,11 @@ We can perform many different operations inside a single function. It is better 
 
 ```{r, echo=TRUE}
 
-myfun = function(x,y, name){
+myfun <- function(x,y, name){
 
   # body
-  z = x + y  # add x and y
-  id = paste(z, name, sep = "_") # create a code
+  z <- x + y  # add x and y
+  id <- paste(z, name, sep = "_") # create a code
 
   # output
   return(id)
@@ -88,7 +89,7 @@ To create this function we need to define:
 The **arguments** are the **variable** parts of the function that are defined and then needed to run the function itself. In our function the only argument is the **input** **vector**. Just like **`mean`** and **`sd`**, we can add a second argument indicating whether to remove NAs:
 
 ```{r, echo=TRUE}
-z_score = function(x, na.rm = FALSE){ # arguments
+z_score <- function(x, na.rm = FALSE){ # arguments
   # body
   # output
 }
@@ -102,7 +103,7 @@ The **body** of the function contains the **operations** to perform using the in
 
 ```{r, echo=TRUE}
 
-z_score = function(x, na.rm = FALSE){ # arguments
+z_score <- function(x, na.rm = FALSE){ # arguments
 
   (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm)
   # output
@@ -117,9 +118,9 @@ The output is the result the function returns after performing all the operation
 
 ```{r, echo=TRUE}
 
-z_score = function(x, na.rm = FALSE){ # arguments
+z_score <- function(x, na.rm = FALSE){ # arguments
 
-  xcen = (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm)
+  xcen <- (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm)
 
   return(xcen)
 
@@ -133,14 +134,14 @@ We have now created this function, which becomes an object in our ***environment
 
 ```{r, echo=TRUE}
 # create a vector x
-vect = runif(n = 100, min = 1, max = 10)
+vect <- runif(n = 100, min = 1, max = 10)
 
 mean(vect) # mean
 
 sd(vect)   # standard deviation
 
 # standardize
-vec0 = z_score(vect) # by default na.rm is set to FALSE
+vec0 <- z_score(vect) # by default na.rm is set to FALSE
 
 round(mean(vec0),2) # mean 0
 
@@ -156,8 +157,8 @@ sd(vec0) # standard deviation 1
 ::::: columns
 ::: {.column width="42%"}
 ```{r, echo=TRUE}
-z_score1 = function(x){
-  xcen = (x - mean(x))/sd(x)
+z_score1 <- function(x){
+  xcen <- (x - mean(x))/sd(x)
   return(xcen)
 }
 z_score1(vect[1:5])
@@ -166,7 +167,7 @@ z_score1(vect[1:5])
 
 ::: {.column width="58%"}
 ```{r, echo=TRUE}
-z_score2 = function(x) (x - mean(x)) / sd(x)
+z_score2 <- function(x) (x - mean(x)) / sd(x)
 z_score2(vect[1:5])
 ```
 :::
@@ -188,7 +189,7 @@ Let's see an example
 
 ```{r, echo=TRUE}
 
-myfun_if = function(x){ # argument
+myfun_if <- function(x){ # argument
 
   if (x > 0){
     cat("The value is greater than 0\n")
@@ -208,7 +209,7 @@ There is a family of functions with the **`is.`** prefix that returns **`TRUE`**
 
 ```{r, echo=TRUE, error=TRUE}
 
-myfun_stop = function(x){ # argument
+myfun_stop <- function(x){ # argument
 
   if (!is.numeric(x)) { # useful when we want to prevent the function from running
     stop("the vector must be numeric")
@@ -216,8 +217,8 @@ myfun_stop = function(x){ # argument
   mean(x, na.rm = TRUE)
 }
 
-x = 1:10  # numeric vector
-y = letters[1:10] # character vector
+x <- 1:10  # numeric vector
+y <- letters[1:10] # character vector
 
 myfun_stop(x)
 myfun_stop(y)
@@ -240,7 +241,7 @@ Let's see an example
 
 ```{r, echo=TRUE}
 
-myfun_ifelse = function(x){ # argument
+myfun_ifelse <- function(x){ # argument
 
   if (x > 0){
     cat("The value is greater than 0\n")
@@ -261,7 +262,7 @@ myfun_ifelse(-10)
 
 ```{r, echo=TRUE}
 
-myfun_ifelse = function(x){ # argument
+myfun_ifelse <- function(x){ # argument
   if (x > 2){
     cat("The value is greater than 2\n")
   }
@@ -288,7 +289,7 @@ To understand which conditional structure to use, it is important to understand 
 Let's write a function that returns the mean when the vector is numeric, and the frequency table otherwise.
 
 ```{r, echo=TRUE}
-my_summary =  function(x){
+my_summary <- function(x){
 
     if(is.numeric(x)){
       return(mean(x))
@@ -304,10 +305,10 @@ my_summary =  function(x){
 Let's test the function
 
 ```{r, echo=TRUE}
-x = 1:7
+x <- 1:7
 my_summary(x)
 
-x = c(rep(c("A","B"), 3), "C")
+x <- c(rep(c("A","B"), 3), "C")
 my_summary(x)
 
 ```
@@ -328,7 +329,7 @@ it would not work...
 
 ```{r, echo=TRUE, error=TRUE}
 
-x = 1:7
+x <- 1:7
 
 myfun_if(x)
 
@@ -350,11 +351,11 @@ ifelse(x < 5, "x is less than 5", "x is greater than 5")
 When we need to test several alternatives we can create nested **`ifelse()`**. Imagine we have an **age** vector and want to create another vector where age is divided into **3 groups**: child, adult, elderly:
 
 ```{r, echo=TRUE}
-age = round(runif(10, 3, 80)) # sample from a uniform distribution from 3 to 80
+age <- round(runif(10, 3, 80)) # sample from a uniform distribution from 3 to 80
 age
 
 
-age_ifelse = ifelse(age < 18,
+age_ifelse <- ifelse(age < 18,
                     yes = "child",
                     no = ifelse( age >= 18 & age < 60, "adult", "elderly"))
 age_ifelse
@@ -365,7 +366,7 @@ age_ifelse
 When there are many conditions to test (roughly \> 3), writing many nested ifelse() can be tedious. We can then use the **`dplyr::case_when()`** function from the *`dplyr`* package, which is a generalization of ifelse():
 
 ```{r,echo=TRUE, message=FALSE}
-age_case_when = dplyr::case_when(age < 18 ~ "child",
+age_case_when <- dplyr::case_when(age < 18 ~ "child",
                                  age >= 18 & age < 60 ~ "adult",
                                  TRUE ~ "elderly")
 # TRUE identifies "everything else"
@@ -382,14 +383,14 @@ all.equal(age_case_when, age_ifelse)
 Recoding the values of a variable, for example reversing the items of a questionnaire, is easily done with **`dplyr::case_when()`**:
 
 ```{r, echo=TRUE}
-item = sample(1:5, size = 20, replace = TRUE) # simulate 20 responses to an item
+item <- sample(1:5, size = 20, replace = TRUE) # simulate 20 responses to an item
 item
 ```
 
 ```{r, echo=TRUE}
 library(dplyr) # load the package so we don't always have to write its name
 
-item_rec = case_when( # recode with 1 = 5, 2 = 4, 3 = 3, 4 = 2, 5 = 1
+item_rec <- case_when( # recode with 1 = 5, 2 = 4, 3 = 3, 4 = 2, 5 = 1
     item == 1 ~ 5,
     item == 2 ~ 4,
     item == 3 ~ 3,
@@ -404,11 +405,11 @@ These functions can also be applied to the variables in a dataframe:
 
 ```{r, echo=TRUE}
 # create a dataframe with id and age variables
-mydf = data.frame(id = factor(1:30), age = sample(14:50, 30))
+mydf <- data.frame(id = factor(1:30), age = sample(14:50, 30))
 # save it for later
 readr::write_csv(mydf, file = "data/mydf.csv")
 # create a third variable with "adolescent", "young", "adult"
-mydf$age_cat = factor(case_when(mydf$age > 30 ~ "adult",
+mydf$age_cat <- factor(case_when(mydf$age > 30 ~ "adult",
                                  mydf$age <= 30 & mydf$age >= 20 ~ "young",
                                  mydf$age < 20 ~ "adolescent",
                                  TRUE ~ "error" # check for coding errors
@@ -455,11 +456,11 @@ Now my functions are available as objects in my environment and I can use them:
 
 ```{r, echo=TRUE, message=FALSE}
 # load the dataframe saved earlier
-mydf_1 = data.frame(readr::read_csv("data/mydf.csv"))
+mydf_1 <- data.frame(readr::read_csv("data/mydf.csv"))
 str(mydf_1) # check
 
 # apply the mydf_fun function
-mydf_2 = mydf_fun(mydf_1)
+mydf_2 <- mydf_fun(mydf_1)
 head(mydf_2)
 readr::write_csv(mydf_2, file = "data/mydf_2.csv") # save it for later
 ```

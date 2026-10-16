@@ -2,6 +2,7 @@
 title: "EXTRA"
 format: 
    revealjs:
+     css: ../slides.css
      margin: 0.1
 editor: visual
 ---
@@ -19,7 +20,7 @@ Steps before data analysis
 As a first step, it is good practice to load the required packages (and first install them if they are not installed yet).
 
 ```{r, echo=TRUE, message=FALSE}
-packages=c("readr", "tidyverse", "ggplot2", "ggpubr")
+packages <- c("readr", "tidyverse", "ggplot2", "ggpubr")
 sapply(packages, require, character.only = T)
 ```
 
@@ -40,7 +41,7 @@ head(list.files(path = "dataRaw", pattern = "*.csv", full.names = TRUE))
 I apply the **`map_dfr`** function to all the files just obtained with the list.files function...
 
 ```{r, echo=TRUE, message=FALSE, error=TRUE}
-d = list.files(path = "dataRaw", pattern = "*.csv", 
+d <- list.files(path = "dataRaw", pattern = "*.csv", 
                full.names = TRUE)%>%
   map_dfr(~read_csv(.x)) 
 ```
@@ -52,7 +53,7 @@ Error in `dplyr::bind_rows()`: ! Can't combine `..37$session` <double> and `..38
 For some reason, in some files the session information is read as double instead of character. So inside map_dfr I also add **`mutate`**
 
 ```{r, echo=TRUE, message=FALSE}
-d=list.files(path = "dataRaw", pattern = "*.csv", 
+d <- list.files(path = "dataRaw", pattern = "*.csv", 
              full.names = TRUE) %>% 
   map_dfr(~read_csv(.x) %>% 
             mutate(condition = as.character(condition),
@@ -79,7 +80,7 @@ grep(pattern = "GNG", x = unique(as.factor(d$participant)))
 unique(d$participant)[-c(grep(pattern = "GNG", x = unique(d$participant)))]
 
 
-d$id = factor(case_when(d$participant == "GN100"~ "GNG100",
+d$id <- factor(case_when(d$participant == "GN100"~ "GNG100",
                         .default = d$participant))
 ```
 
@@ -90,7 +91,7 @@ d$id = factor(case_when(d$participant == "GN100"~ "GNG100",
 ```{r, echo=TRUE}
 unique(d$condition)
 
-d$C = factor(case_when(d$condition == "CONDIZIONE FS" ~ "FS",
+d$C <- factor(case_when(d$condition == "CONDIZIONE FS" ~ "FS",
                        d$condition == "FF" ~ "FS",
                        d$condition == "fs" ~ "FS",
                        d$condition == "sd" ~ "SD",
@@ -104,7 +105,7 @@ d$C = factor(case_when(d$condition == "CONDIZIONE FS" ~ "FS",
 I convert the variables I am interested in to factors, and keep only those I need for visualization and analysis. We can use **`mutate()`** to mutate/change the variable type, and **`select()`** to select the variables of interest:
 
 ```{r, echo=TRUE}
-dat = d %>% 
+dat <- d %>% 
   mutate(P = factor(LW_P),
          target = factor(target_col),
          B = factor(B),
@@ -127,7 +128,7 @@ str(dat)
 If there is a response and the trial was Go, then correct (1); if there is a response and the trial was NoGo, then wrong (0)...
 
 ```{r, echo =TRUE}
-dat$acc = case_when(dat$target == "nogo.png" & dat$resp == "space" ~ 0,
+dat$acc <- case_when(dat$target == "nogo.png" & dat$resp == "space" ~ 0,
                     dat$target == "nogo.png" &  is.na(dat$resp) ~ 1,
                     dat$target == "go.png" & dat$resp == "space" ~ 1,
                     dat$target == "go.png" & is.na(dat$resp) ~ 0,
@@ -142,7 +143,7 @@ sum(dat$acc == 3)
 Sometimes some subjects are excluded a priori because they did not follow the "rules" of the experiment; in this case you can exclude them right away
 
 ```{r, echo=TRUE}
-dat_clean=subset(dat, 
+dat_clean <- subset(dat, 
                         # PSQI = 14
                         id != "GNG82" & 
                         # not respect sleep schedule
@@ -163,7 +164,7 @@ dat_clean=subset(dat,
 In my case I also wanted to exclude everyone with accuracy below 70%. To compute descriptive statistics, the **`group_by`** and **`summarise`** functions from the **dplyr** package (tidyverse again) are very useful
 
 ```{r, echo=TRUE, message=FALSE}
-summ_acc = dat_clean %>% 
+summ_acc <- dat_clean %>% 
   group_by(id, target)%>%
   summarise(acc_mean = round(mean(acc),2),
             n = n())
@@ -177,7 +178,7 @@ summ_acc$id[which(summ_acc$acc_mean < .7)]
 So I exclude them using the negation of %in% (which checks whether an element is present in a vector)
 
 ```{r,echo=TRUE}
-dat_clean2=subset(dat_clean, 
+dat_clean2 <- subset(dat_clean, 
                   !(id %in% summ_acc$id[which(summ_acc$acc_mean < .7)]))
 ```
 
@@ -231,7 +232,7 @@ dat_clean2 %>% subset(target == "nogo.png") %>%
 A simple and nice thing to do is to create your own color palette to use whenever you want in your plots. You can define it at the beginning or write it in a separate script and load it with the **`source()`** command, as we saw for functions. At this [link](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40) you can find lots of (colorblind-friendly) colors
 
 ```{r, echo=TRUE}
-my_pal = list(
+my_pal <- list(
   pal1 = c("#D81B60","#1E88E5", "#FFC107", "#004D40"),
   pal2 = c("#580646","#3CA756", "#CE597A"),
   pal = c("#D81B60", "#004D40", "#1E88E5", "#FFC107",
@@ -332,7 +333,7 @@ dat_clean2 %>% subset(target == "go.png" & rt > .15) %>%
 2)  Save it
 
 ```{r,echo = TRUE, warning=FALSE, message=FALSE}
-my_plot = dat_clean2 %>% subset(target == "go.png" & rt > .15) %>% 
+my_plot <- dat_clean2 %>% subset(target == "go.png" & rt > .15) %>% 
   ggplot(aes(x= rt,  color = P, fill = P))+ geom_density(alpha = .5) +
   facet_wrap(~C)+ scale_color_manual(values = my_pal$pal1)+
   scale_fill_manual(values = my_pal$pal1)+
@@ -354,7 +355,7 @@ Another thing you may find useful is creating tables with, for example, descript
 ::: {.column width="55%"}
 ```{r, echo=TRUE, message=FALSE}
 library(flextable);library(kableExtra)
-descr = dat_clean2%>%
+descr <- dat_clean2%>%
   group_by(P,C)%>%
   summarise(medRT = round(median(rt, 
                                  na.rm = T),4),
@@ -376,7 +377,7 @@ descr
 ::::: columns
 ::: {.column width="50%"}
 ```{r, echo=TRUE, message=FALSE}
-tab = descr |>
+tab <- descr |>
     flextable() |>
     theme_vanilla() |>
     autofit() |>
@@ -394,9 +395,9 @@ tab
 ## Saving to a Word file
 
 ```{r, echo=TRUE}
-doc=officer::read_docx() # Create an empty Word document
+doc <- officer::read_docx() # Create an empty Word document
 
-doc=body_add_flextable(doc, value = tab) # Add the flextable
+doc <- body_add_flextable(doc, value = tab) # Add the flextable
 
 print(doc, target = "tabella.docx") # Save the file
 ```

@@ -101,6 +101,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="2.2_fattori_files/libs/revealjs/dist/theme/quarto-61a84950594467f885fe7fd7ba14a2cd.css">
+  <link rel="stylesheet" href="../slides.css">
   <link href="2.2_fattori_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="2.2_fattori_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="2.2_fattori_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -223,12 +224,12 @@
 <h2>Creating a factor</h2>
 <p>Factors can be created either by converting a character vector with the <strong><code>as.factor()</code></strong> command …</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a>char_vect <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>, <span class="st">"hola"</span>), <span class="at">each =</span> <span class="dv">2</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a>char_vect <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>, <span class="st">"hola"</span>), <span class="at">each =</span> <span class="dv">2</span>)</span>
 <span id="cb1-2"><a href="" aria-label="2"></a>char_vect</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "hello" "hello" "ciao"  "ciao"  "hola"  "hola" </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a>my_fact <span class="ot">=</span> <span class="fu">as.factor</span>(char_vect)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a>my_fact <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(char_vect)</span>
 <span id="cb3-2"><a href="" aria-label="2"></a>my_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
@@ -237,7 +238,7 @@ Levels: ciao hello hola</code></pre>
 </div>
 <p>… or by explicitly creating a factor with the <strong><code>factor()</code></strong> command:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a>my_fact <span class="ot">=</span> <span class="fu">factor</span>(<span class="at">x =</span> char_vect)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a>my_fact <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> char_vect)</span>
 <span id="cb5-2"><a href="" aria-label="2"></a>my_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
@@ -297,7 +298,7 @@ Levels: ciao hello hola</code></pre>
 <div class="fragment">
 <p>regardless of which ones are actually present in the vector. For example, if I create a factor made only of the elements of my_fact different from ciao:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="" aria-label="1"></a>my_fact2 <span class="ot">=</span> my_fact[my_fact<span class="sc">!=</span><span class="st">"ciao"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="" aria-label="1"></a>my_fact2 <span class="ot">&lt;-</span> my_fact[my_fact<span class="sc">!=</span><span class="st">"ciao"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -329,7 +330,7 @@ Levels: hello hola</code></pre>
 <div class="fragment">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="" aria-label="1"></a><span class="co"># modify my_fact2 by removing the unused levels</span></span>
-<span id="cb28-2"><a href="" aria-label="2"></a>my_fact2 <span class="ot">=</span> <span class="fu">droplevels</span>(my_fact2)</span>
+<span id="cb28-2"><a href="" aria-label="2"></a>my_fact2 <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(my_fact2)</span>
 <span id="cb28-3"><a href="" aria-label="3"></a>my_fact2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello hola  hola 
@@ -347,7 +348,7 @@ Levels: hello hola</code></pre>
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: ciao hello hola</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="" aria-label="1"></a>my_fact_lev <span class="ot">=</span> my_fact <span class="co"># create another identical factor "my_fact_lev"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="" aria-label="1"></a>my_fact_lev <span class="ot">&lt;-</span> my_fact <span class="co"># create another identical factor "my_fact_lev"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>by accessing them with the <code>levels</code> command:</p>
@@ -357,7 +358,7 @@ Levels: ciao hello hola</code></pre>
 <pre><code>[1] "ciao"  "hello" "hola" </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="" aria-label="1"></a><span class="co"># rename the levels of the factor</span></span>
-<span id="cb35-2"><a href="" aria-label="2"></a><span class="fu">levels</span>(my_fact_lev) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"italian"</span>,<span class="st">"english"</span>,<span class="st">"spanish"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb35-2"><a href="" aria-label="2"></a><span class="fu">levels</span>(my_fact_lev) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"italian"</span>,<span class="st">"english"</span>,<span class="st">"spanish"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -394,7 +395,7 @@ Levels: ciao hello hola</code></pre>
 <div class="fragment">
 <p>We can decide that the first level should be hello:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="" aria-label="1"></a>new_fact <span class="ot">=</span> <span class="fu">factor</span>(<span class="at">x =</span> my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="" aria-label="1"></a>new_fact <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>))</span>
 <span id="cb44-2"><a href="" aria-label="2"></a>new_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
@@ -416,7 +417,7 @@ Levels: hello ciao hola</code></pre>
 <pre><code>[1] hello hello ciao  ciao  hola  hola 
 Levels: ciao hello hola</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="" aria-label="1"></a>new_fact2 <span class="ot">=</span> <span class="fu">factor</span>(<span class="at">x =</span> my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="" aria-label="1"></a>new_fact2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>),</span>
 <span id="cb50-2"><a href="" aria-label="2"></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"english"</span>,<span class="st">"italian"</span>,<span class="st">"spanish"</span>))</span>
 <span id="cb50-3"><a href="" aria-label="3"></a>new_fact2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -454,7 +455,7 @@ Levels: ciao hello hola</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ciao"  "hello" "hola" </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="" aria-label="1"></a><span class="fu">levels</span>(my_fact) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="" aria-label="1"></a><span class="fu">levels</span>(my_fact) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>What do you notice compared to the my_fact vector shown above?</p>
@@ -475,7 +476,7 @@ Levels: hello ciao hola</code></pre>
 <h2>Ordinal Factors</h2>
 <p>A subtype of factors are <strong><em>ordered factors</em></strong>, which correspond to ordinal variables, i.e.&nbsp;variables whose levels are sorted in increasing order:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="" aria-label="1"></a>my_ord_fac <span class="ot">=</span> <span class="fu">as.ordered</span>(my_fact)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="" aria-label="1"></a>my_ord_fac <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(my_fact)</span>
 <span id="cb65-2"><a href="" aria-label="2"></a></span>
 <span id="cb65-3"><a href="" aria-label="3"></a>my_ord_fac <span class="co"># alphabetical order</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">

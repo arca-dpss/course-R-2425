@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="2.3_liste&amp;matrici&amp;array_files/libs/clipboard/clipboard.min.js"></script>
-<script src="2.3_liste&amp;matrici&amp;array_files/libs/quarto-html/tabby.min.js"></script>
-<script src="2.3_liste&amp;matrici&amp;array_files/libs/quarto-html/popper.min.js"></script>
-<script src="2.3_liste&amp;matrici&amp;array_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="2.3_liste&amp;matrici&amp;array_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="2.3_liste&amp;matrici&amp;array_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="2.3_liste&amp;matrici&amp;array_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="2.3_listeMatriciArray_files/libs/clipboard/clipboard.min.js"></script>
+<script src="2.3_listeMatriciArray_files/libs/quarto-html/tabby.min.js"></script>
+<script src="2.3_listeMatriciArray_files/libs/quarto-html/popper.min.js"></script>
+<script src="2.3_listeMatriciArray_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="2.3_listeMatriciArray_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="2.3_listeMatriciArray_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="2.3_listeMatriciArray_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
   <title>Lists, Matrices and Arrays</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="2.3_listeMatriciArray_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="2.3_listeMatriciArray_files/libs/revealjs/dist/reveal.css">
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -100,11 +100,12 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/dist/theme/quarto-61a84950594467f885fe7fd7ba14a2cd.css">
-  <link href="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="2.3_listeMatriciArray_files/libs/revealjs/dist/theme/quarto-61a84950594467f885fe7fd7ba14a2cd.css">
+  <link rel="stylesheet" href="../slides.css">
+  <link href="2.3_listeMatriciArray_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="2.3_listeMatriciArray_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="2.3_listeMatriciArray_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="2.3_listeMatriciArray_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -219,7 +220,7 @@
 <h2>Lists</h2>
 <p>Lists are flexible structures that can contain objects of different types and different sizes (each element can itself be a list), and they are created with the <code>list()</code> command</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a>my_list <span class="ot">=</span> <span class="fu">list</span>(<span class="st">"hello!"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"hello!"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>),</span>
 <span id="cb1-2"><a href="" aria-label="2"></a>               <span class="fu">list</span>(<span class="st">"hello!"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>)))</span>
 <span id="cb1-3"><a href="" aria-label="3"></a><span class="fu">str</span>(my_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -280,7 +281,7 @@
 <h2>Lists</h2>
 <p>We can assign names to the elements of a list…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="" aria-label="1"></a>my_list_nam <span class="ot">=</span> <span class="fu">list</span>(<span class="at">word =</span> <span class="st">"hello!"</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="" aria-label="1"></a>my_list_nam <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">word =</span> <span class="st">"hello!"</span>,</span>
 <span id="cb11-2"><a href="" aria-label="2"></a>                   <span class="at">numbers =</span>  <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
 <span id="cb11-3"><a href="" aria-label="3"></a>                   <span class="at">logical =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>),</span>
 <span id="cb11-4"><a href="" aria-label="4"></a>                   <span class="at">list =</span> <span class="fu">list</span>(<span class="st">"hello!"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>)))</span>
@@ -378,7 +379,7 @@ $list[[3]]
 <p>If we want to actually subset the list, we must always use single square brackets:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="" aria-label="1"></a><span class="co"># list made of the first two elements of my_list_nam</span></span>
-<span id="cb27-2"><a href="" aria-label="2"></a>my_list2 <span class="ot">=</span> my_list_nam[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb27-2"><a href="" aria-label="2"></a>my_list2 <span class="ot">&lt;-</span> my_list_nam[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
 <span id="cb27-3"><a href="" aria-label="3"></a><span class="fu">str</span>(my_list2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 2
@@ -412,14 +413,14 @@ $list[[3]]
 <p>They are flexible and allow us to store/organize complex and varied data/information. For example, the <strong><code>lm()</code></strong> function returns a list containing various pieces of information and results about the tested model.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="" aria-label="1"></a><span class="co"># Simulate 30 observations, assuming that the effect of x = 0.3</span></span>
-<span id="cb35-2"><a href="" aria-label="2"></a>N <span class="ot">=</span> <span class="dv">30</span>; b1 <span class="ot">=</span> <span class="fl">0.3</span>; sigma <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb35-3"><a href="" aria-label="3"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>); <span class="co"># independent variable</span></span>
-<span id="cb35-4"><a href="" aria-label="4"></a>y <span class="ot">=</span> b1<span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma) <span class="co"># effect plus error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb35-2"><a href="" aria-label="2"></a>N <span class="ot">&lt;-</span> <span class="dv">30</span>; b1 <span class="ot">&lt;-</span> <span class="fl">0.3</span>; sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb35-3"><a href="" aria-label="3"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>); <span class="co"># independent variable</span></span>
+<span id="cb35-4"><a href="" aria-label="4"></a>y <span class="ot">&lt;-</span> b1<span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma) <span class="co"># effect plus error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="" aria-label="1"></a><span class="co"># linear model</span></span>
-<span id="cb36-2"><a href="" aria-label="2"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb36-2"><a href="" aria-label="2"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
 <span id="cb36-3"><a href="" aria-label="3"></a><span class="fu">summary</span>(mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -428,16 +429,16 @@ lm(formula = y ~ x)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--2.0987 -0.6954  0.1417  0.6185  2.3527 
+-1.8960 -0.6437 -0.2343  0.5997  2.1611 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)
-(Intercept)  -0.1062     0.1965  -0.541    0.593
-x             0.2879     0.2098   1.372    0.181
+(Intercept) -0.25793    0.19243  -1.340    0.191
+x            0.01835    0.18213   0.101    0.920
 
-Residual standard error: 1.073 on 28 degrees of freedom
-Multiple R-squared:  0.06301,   Adjusted R-squared:  0.02954 
-F-statistic: 1.883 on 1 and 28 DF,  p-value: 0.1809</code></pre>
+Residual standard error: 1.053 on 28 degrees of freedom
+Multiple R-squared:  0.0003624, Adjusted R-squared:  -0.03534 
+F-statistic: 0.01015 on 1 and 28 DF,  p-value: 0.9205</code></pre>
 </div>
 </div>
 </div>
@@ -449,14 +450,14 @@ F-statistic: 1.883 on 1 and 28 DF,  p-value: 0.1809</code></pre>
 <span id="cb38-2"><a href="" aria-label="2"></a><span class="fu">str</span>(mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 12
- $ coefficients : Named num [1:2] -0.106 0.288
+ $ coefficients : Named num [1:2] -0.2579 0.0184
   ..- attr(*, "names")= chr [1:2] "(Intercept)" "x"
- $ residuals    : Named num [1:30] 0.851 0.422 -1.46 0.442 0.635 ...
+ $ residuals    : Named num [1:30] 2.161 -0.348 -0.996 2.016 0.563 ...
   ..- attr(*, "names")= chr [1:30] "1" "2" "3" "4" ...
- $ effects      : Named num [1:30] 0.695 1.472 -1.578 0.271 0.413 ...
+ $ effects      : Named num [1:30] 1.417 0.106 -1.309 1.534 0.425 ...
   ..- attr(*, "names")= chr [1:30] "(Intercept)" "x" "" "" ...
  $ rank         : int 2
- $ fitted.values: Named num [1:30] 0.0396 -0.1915 -0.0307 -0.3105 -0.585 ...
+ $ fitted.values: Named num [1:30] -0.238 -0.283 -0.26 -0.227 -0.294 ...
   ..- attr(*, "names")= chr [1:30] "1" "2" "3" "4" ...
  $ assign       : int [1:2] 0 1
  $ qr           :List of 5
@@ -465,7 +466,7 @@ F-statistic: 1.883 on 1 and 28 DF,  p-value: 0.1809</code></pre>
   .. .. ..$ : chr [1:30] "1" "2" "3" "4" ...
   .. .. ..$ : chr [1:2] "(Intercept)" "x"
   .. ..- attr(*, "assign")= int [1:2] 0 1
-  ..$ qraux: num [1:2] 1.18 1.06
+  ..$ qraux: num [1:2] 1.18 1.26
   ..$ pivot: int [1:2] 1 2
   ..$ tol  : num 1e-07
   ..$ rank : int 2
@@ -488,8 +489,8 @@ F-statistic: 1.883 on 1 and 28 DF,  p-value: 0.1809</code></pre>
   .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
   .. .. ..- attr(*, "names")= chr [1:2] "y" "x"
  $ model        :'data.frame':  30 obs. of  2 variables:
-  ..$ y: num [1:30] 0.8905 0.2302 -1.4907 0.1312 0.0497 ...
-  ..$ x: num [1:30] 0.507 -0.296 0.262 -0.71 -1.663 ...
+  ..$ y: num [1:30] 1.923 -0.632 -1.256 1.789 0.27 ...
+  ..$ x: num [1:30] 1.0595 -1.3786 -0.0965 1.7083 -1.9625 ...
   ..- attr(*, "terms")=Classes 'terms', 'formula'  language y ~ x
   .. .. ..- attr(*, "variables")= language list(y, x)
   .. .. ..- attr(*, "factors")= int [1:2, 1] 0 1
@@ -523,7 +524,7 @@ F-statistic: 1.883 on 1 and 28 DF,  p-value: 0.1809</code></pre>
 <h2>Matrices</h2>
 <p>Matrices are a <strong>two-dimensional</strong> data structure (characterized by 2 dimensions, <strong><code>dim()</code></strong>), where the number of rows is dimension 1 and the number of columns is dimension 2.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="" aria-label="1"></a>my_mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="" aria-label="1"></a>my_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb40-2"><a href="" aria-label="2"></a>my_mat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5]
@@ -550,7 +551,7 @@ F-statistic: 1.883 on 1 and 28 DF,  p-value: 0.1809</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="" aria-label="1"></a>my_mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="" aria-label="1"></a>my_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
 <span id="cb46-2"><a href="" aria-label="2"></a>                <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"row1"</span>, <span class="st">"row2"</span>),</span>
 <span id="cb46-3"><a href="" aria-label="3"></a>                                          <span class="fu">c</span>(<span class="st">"col1"</span>, <span class="st">"col1"</span>,</span>
 <span id="cb46-4"><a href="" aria-label="4"></a>                                            <span class="st">"col3"</span>,<span class="st">"col4"</span>,<span class="st">"col5"</span>)))</span>
@@ -673,10 +674,10 @@ row2    2    4    6    8   10</code></pre>
 <h2>Vectors and Matrices</h2>
 <p>Vectors are created with the <strong><code>c()</code></strong> function and can be concatenated using the same function:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="" aria-label="1"></a>my_vect1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb69-2"><a href="" aria-label="2"></a>my_vect2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="" aria-label="1"></a>my_vect1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb69-2"><a href="" aria-label="2"></a>my_vect2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb69-3"><a href="" aria-label="3"></a></span>
-<span id="cb69-4"><a href="" aria-label="4"></a>my_vect12 <span class="ot">=</span> <span class="fu">c</span>(my_vect1,my_vect2)</span>
+<span id="cb69-4"><a href="" aria-label="4"></a>my_vect12 <span class="ot">&lt;-</span> <span class="fu">c</span>(my_vect1,my_vect2)</span>
 <span id="cb69-5"><a href="" aria-label="5"></a>my_vect12</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
@@ -687,8 +688,8 @@ row2    2    4    6    8   10</code></pre>
 <h2>Matrices</h2>
 <p>Matrices can be joined together with the commands</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="" aria-label="1"></a>my_mat1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb71-2"><a href="" aria-label="2"></a>my_mat2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],<span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="" aria-label="1"></a>my_mat1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb71-2"><a href="" aria-label="2"></a>my_mat2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],<span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong><code>cbind()</code></strong></p>
 <div class="cell">
@@ -716,7 +717,7 @@ row2    2    4    6    8   10</code></pre>
 <h2>Operations with matrices</h2>
 <p>As with vectors, mathematical operations can also be applied to matrices:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="" aria-label="1"></a>my_mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="" aria-label="1"></a>my_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
 <span id="cb76-2"><a href="" aria-label="2"></a></span>
 <span id="cb76-3"><a href="" aria-label="3"></a><span class="co"># element-wise</span></span>
 <span id="cb76-4"><a href="" aria-label="4"></a>my_mat<span class="sc">*</span>my_mat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -751,7 +752,7 @@ row2    2    4    6    8   10</code></pre>
 <h2>Arrays</h2>
 <p>Arrays are n-dimensional objects (e.g., if a matrix is a square, an array is a cube). The same properties of matrices apply, scaled to n dimensions; they are created with the <code>array</code> command</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="" aria-label="1"></a>my_array <span class="ot">=</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)) <span class="co"># three-dimensional example</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="" aria-label="1"></a>my_array <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)) <span class="co"># three-dimensional example</span></span>
 <span id="cb81-2"><a href="" aria-label="2"></a>my_array</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
@@ -810,19 +811,19 @@ row2    2    4    6    8   10</code></pre>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="2.3_liste&amp;matrici&amp;array_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="2.3_listeMatriciArray_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

@@ -11,7 +11,7 @@ library(tidyr)
 library(raveio)
 
 # Read the file -----
-data = raveio::read_eeg_marker("~/course-R-2425/materials/2_struttureDati/sara/dataSara")
+data <- raveio::read_eeg_marker("~/course-R-2425/materials/2_struttureDati/sara/dataSara")
 
 # check the structure
 str(data)
@@ -24,7 +24,7 @@ data$content
 data$content[-c(1:49),]
 
 
-data$content = data$content[-(1:49),]
+data$content <- data$content[-(1:49),]
 data$content
 
 
@@ -35,15 +35,15 @@ data$content
 
 # create a location column to make sure
 # I carry out the procedure correctly
-data$content$location = data$content$Description
+data$content$location <- data$content$Description
 
 # Assign NA when location is S 1
-data$content$location[data$content$location == "S  1"] = NA
+data$content$location[data$content$location == "S  1"] <- NA
 
 # With the fill function from the tidyr package
 # I can fill the NAs, like dragging down a cell in excel
 
-data$content = data$content |>  # the |> operator chains several operations
+data$content <- data$content |>  # the |> operator chains several operations
   fill(location, .direction = "down") # fill the NAs
 
 
@@ -53,18 +53,18 @@ data$content = data$content |>  # the |> operator chains several operations
 # While in the location column I have only S 12 S 14 etc, no more S 1
 # in short, I keep only the rows where description is S 1
 
-data$content = data$content[data$content$Description == "S  1",]
+data$content <- data$content[data$content$Description == "S  1",]
 
 
 # After checking that I did it right
 # and inspecting the dataframe, I replace the Description column
 # with the location column
 
-data$content$Description = data$content$location
+data$content$Description <- data$content$location
 
 
 # Then I remove the location column (the last one)
-data$content = data$content[,-ncol(data$content)]
+data$content <- data$content[,-ncol(data$content)]
 
 
 # If I want to keep only the number information, 
@@ -72,9 +72,9 @@ data$content = data$content[,-ncol(data$content)]
 # which lets me find string patterns
 # and which I can use to select elements
 # of the Description variable
-data$content$Description[grep("S 14", data$content$Description)] = "14"
-data$content$Description[grep("S 12", data$content$Description)] = "12"
-data$content$Description[grep("S 10", data$content$Description)] = "10"
+data$content$Description[grep("S 14", data$content$Description)] <- "14"
+data$content$Description[grep("S 12", data$content$Description)] <- "12"
+data$content$Description[grep("S 10", data$content$Description)] <- "10"
 
 
 # the last request is to keep only the rows 

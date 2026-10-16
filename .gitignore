@@ -5,3 +5,6 @@
 
 # exercises and solutions (not published yet)
 materials/esercizi/
+
+/.quarto/
+**/*.quarto_ipynb

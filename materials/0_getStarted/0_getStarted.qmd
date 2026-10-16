@@ -2,12 +2,14 @@
 title: "Get Started"
 format:
    revealjs:
+     css: ../slides.css
      margin: .05
      fontsize: 2.2em
      linestretch: 1.5
      mainfont: Helvetica Neue
 editor: visual
 ---
+
 ## What is ![R](images/R_logo.png){fig-align="center" width="80"}
 
 [**R**](https://www.r-project.org/) is a programming language strongly oriented towards statistics, data management and visualization.
@@ -55,11 +57,7 @@ They are excellent pieces of software, but:
 There are some excellent open-source programs based on R, such as:
 
 -   [Jamovi](https://www.jamovi.org/)
-    -   **pros**: you can access the underlying R code
-    -   **cons**: functions are still limited (plots, complex models)
--   [Jasp](https://jasp-stats.org/)
-    -   **pros**: many models, including advanced ones
-    -   **cons**: you cannot see the R code
+-   [Jasp](https://jasp-stats.org/): many models, including advanced ones!
 
 ## Learning a language as an investment
 
@@ -90,18 +88,8 @@ They must be installed separately, and the procedure depends on your operating s
 
 If you have not installed them yet, follow the procedure explained at this link: <https://posit.co/download/rstudio-desktop/>
 
-## R-Studio Interface
+## **Important things to know**
 
-This is my layout. Through this menu you can choose the layout you prefer.
+1.  Leave R and RStudio where they are: your computer installs them in the right place automatically
 
-![](images/R_studio_pane.png){fig-align="center" width="500"}
-
-## R-Studio Interface
-
-Through this menu you can choose the colors/font you prefer.
-
-RStudio `>` Preferences `>` Appearance (MacOS)
-
-Tools `>` Global Options `>` Appearance (Windows)
-
-![](images/R_studio_pane1.png){fig-align="center" width="400"}
+2.  Create a folder named `introR`, on your Desktop or wherever you prefer: it will be our **working directory** for the entire course

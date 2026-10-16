@@ -2,6 +2,7 @@
 title: "Factors"
 format:
    revealjs:
+     css: ../slides.css
      margin: .05
      fontsize: 1.9em
      linestretch: 1.4
@@ -32,10 +33,10 @@ Factors are a peculiar data type: although they look like simple **`characters`*
 Factors can be created either by converting a character vector with the **`as.factor()`** command ...
 
 ```{r, echo=TRUE}
-char_vect = rep(c("hello","ciao", "hola"), each = 2)
+char_vect <- rep(c("hello","ciao", "hola"), each = 2)
 char_vect
 
-my_fact = as.factor(char_vect)
+my_fact <- as.factor(char_vect)
 my_fact
 ```
 
@@ -43,7 +44,7 @@ my_fact
 
 ```{r, echo=TRUE}
 
-my_fact = factor(x = char_vect)
+my_fact <- factor(x = char_vect)
 my_fact
 ```
 
@@ -87,7 +88,7 @@ levels(my_fact)
 regardless of which ones are actually present in the vector. For example, if I create a factor made only of the elements of my_fact different from ciao:
 
 ```{r, echo = TRUE}
-my_fact2 = my_fact[my_fact!="ciao"]
+my_fact2 <- my_fact[my_fact!="ciao"]
 ```
 
 :::
@@ -112,7 +113,7 @@ droplevels(my_fact2)
 ::: fragment
 ```{r, echo = TRUE}
 # modify my_fact2 by removing the unused levels
-my_fact2 = droplevels(my_fact2)
+my_fact2 <- droplevels(my_fact2)
 my_fact2
 ```
 :::
@@ -123,7 +124,7 @@ We can also **rename** the levels of a factor...
 
 ```{r, echo=TRUE}
 my_fact # the factor I created
-my_fact_lev = my_fact # create another identical factor "my_fact_lev"
+my_fact_lev <- my_fact # create another identical factor "my_fact_lev"
 ```
 
 ::: fragment
@@ -132,7 +133,7 @@ by accessing them with the `levels` command:
 ```{r, echo=TRUE}
 levels(my_fact_lev)
 # rename the levels of the factor
-levels(my_fact_lev) = c("italian","english","spanish")
+levels(my_fact_lev) <- c("italian","english","spanish")
 ```
 :::
 
@@ -159,7 +160,7 @@ as.integer(my_fact)
 We can decide that the first level should be hello:
 
 ```{r, echo=TRUE}
-new_fact = factor(x = my_fact, levels = c("hello","ciao","hola"))
+new_fact <- factor(x = my_fact, levels = c("hello","ciao","hola"))
 new_fact
 as.integer(new_fact)
 ```
@@ -172,7 +173,7 @@ We can also rename the levels, again with the `factor()` function:
 ```{r, echo=TRUE}
 my_fact
 
-new_fact2 = factor(x = my_fact, levels = c("hello","ciao","hola"),
+new_fact2 <- factor(x = my_fact, levels = c("hello","ciao","hola"),
                    labels = c("english","italian","spanish"))
 new_fact2
 ```
@@ -196,7 +197,7 @@ my_fact
 # the factor I created
 my_fact
 levels(my_fact)
-levels(my_fact) = c("hello","ciao","hola")
+levels(my_fact) <- c("hello","ciao","hola")
 ```
 
 ::: fragment
@@ -213,7 +214,7 @@ as.integer(my_fact)
 A subtype of factors are ***ordered factors***, which correspond to ordinal variables, i.e. variables whose levels are sorted in increasing order:
 
 ```{r, echo=TRUE}
-my_ord_fac = as.ordered(my_fact)
+my_ord_fac <- as.ordered(my_fact)
 
 my_ord_fac # alphabetical order
 

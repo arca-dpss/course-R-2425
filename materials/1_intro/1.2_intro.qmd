@@ -2,6 +2,7 @@
 title: "Introduction 2"
 format:
    revealjs:
+     css: ../slides.css
      margin: .05
      fontsize: 1.9em
      linestretch: 1.4
@@ -27,104 +28,98 @@ editor: visual
 Everything we can create in R is called an object (e.g., numbers, vectors, matrices, functions). <br/>
 
 ```{r, echo = TRUE}
-number = 4
+number <- 4
 number
 ```
 
-```{r, echo = TRUE}
-my_vector = c(1,2,3,4)
-my_vector
-```
+::: fragment
 
 ```{r, echo = TRUE}
-my_matrix = matrix(nrow = 2, ncol = 2, data = my_vector)
+my_vector <- c(1,2,3,4)
+my_vector
+```
+:::
+
+::: fragment
+```{r, echo = TRUE}
+my_matrix <- matrix(nrow = 2, ncol = 2, data = my_vector)
 my_matrix
 ```
 
+:::
+
 ## Functions
 
-Everything we do in R is calling **functions** on objects.
-
-Functions allow us to **create** and **modify** objects.
+Everything we do in R is calling **functions** on objects. Functions allow us to **create** and **modify** objects.
 
 ```{r, echo = TRUE}
 my_vector
 mean(x = my_vector)
+my_vector_mean <- mean(my_vector)
+my_vector_mean
 ```
 
-```{r, echo = TRUE}
-number
-```
-
-```{r, echo = TRUE}
-number = mean(my_vector)
-number
-```
 
 ## Creating/naming objects
 
-Objects can be created with either the **`<-`** or the **`=`** command
+Objects are created with the assignment arrow **`<-`** or **`=`**
 
 ```{r, echo = TRUE}
-x1 = 3 # name = object
+x1 <- 3 # name <- object
 x1
 
-x2 <- 3 # name <- object
+x2 = 3 # name = object
 x2
-
-x1 == x2 # are the two objects identical?
 ```
 
-You can choose the command you prefer; the important thing is to be consistent.
+
 
 ## Rules for naming objects
 
--   A name must start with a letter and can contain letters, numbers, underscores ( \_ ), or dots (.).
+-   A name **must start with a letter** and can contain letters, numbers, underscores ( \_ ), or dots (.).
+
 -   It may also start with a dot (.), but in that case it cannot be followed by a number.
 
 ```{r, echo = TRUE, warning=TRUE, error=TRUE}
-.3 = 3
+.3 <- 3
 
-.x = 3
+.x <- 3
 ```
 
-------------------------------------------------------------------------
+-   It must **not** contain **special characters** such as #, &, \$, ?, etc.
 
--   It must not contain special characters such as #, &, \$, ?, etc.
+----------------------------------------------------------------------
+
 
 -   It must not be a reserved word, i.e. one of the words used by R with a special meaning (?reserved).
 
 ```{r, echo = TRUE, warning=TRUE, error=TRUE}
-function = 3
+function <- 3
 
 ```
 
 ```{r, echo = TRUE,warning=TRUE, error=TRUE}
-TRUE = 3
+TRUE <- 3
 
 ```
 
 ```{r, echo = TRUE,warning=TRUE, error=TRUE}
-if = 3
+if <- 3
 
 ```
 
-## Conventions
+---
 
-Some names are not forbidden but are discouraged
+### Some names are not forbidden but are discouraged
 
 ```{r, echo = TRUE}
 T
-TRUE
 T == TRUE
 
-T = 1; T
+T <- FALSE;
 
-T == TRUE
-
-sum(2,3)
-
-sum = 4; sum
+T == TRUE  #?????
+T == FALSE #?????
 ```
 
 ------------------------------------------------------------------------
@@ -133,20 +128,23 @@ Using "*.*" in object names (for example, "my.data") is fine in **R** but is not
 
 Across languages, the *naming conventions* for longer, multi-word variable names favour **`snake_case`** (for example, "**my_data**") or **`camelCase`** (for example, "**myData**"), and **abbreviations** where appropriate (for example, "**unipdData**" rather than "university_of_padova_dataset").
 
-## R is case-sensitive
+---
 
-<br/>
+### R is case-sensitive
 
 ```{r, echo = TRUE}
-Name = "Margherita"
-
-name = "margherita"
-
-Name
-name
-
+Name <- "Margherita"
+name <- "margherita"
 Name == name
 ```
+
+::: fragment
+```{r, echo = TRUE}
+Name <- "margherita"
+name <- "margherita"
+Name == name
+```
+:::
 
 ## Where are objects stored?
 
@@ -171,6 +169,8 @@ We can also completely clear/empty our environment with the **`rm(list = ls())`*
 
 ## Mathematical Operators
 
+<br/>
+
 | Function | What does it do? | Example     | Result |
 |----------|------------------|-------------|--------|
 | `+`      | addition         | `5.4 + 6.1` | `11.5` |
@@ -180,7 +180,9 @@ We can also completely clear/empty our environment with the **`rm(list = ls())`*
 | `%%`     | remainder        | `9%%2`      | `1`    |
 | `^`      | power            | `15 ^ 2`    | `225`  |
 
-------------------------------------------------------------------------
+## Mathematical Operators
+
+<br/>
 
 | Function | What does it do?     | Example           | Result |
 |----------|----------------------|-------------------|--------|
@@ -209,25 +211,27 @@ The order of operations in R follows the rules of mathematics.
 
 In R we can evaluate whether a given relation is true or false. R will evaluate the statement and return **`TRUE`** if the statement is true or **`FALSE`** if the statement is false.
 
-------------------------------------------------------------------------
+## Relational Operators
 
-+---------------+-------------------+-------------------+---------------+
-| Function      | Name              | Example           | Result        |
-+===============+===================+===================+===============+
-| `==`          | equal             | `30 == 30`        | `TRUE`        |
-+---------------+-------------------+-------------------+---------------+
-| `!=`          | not equal         | `30 != 30`        | `FALSE`       |
-+---------------+-------------------+-------------------+---------------+
-| `>`/`>=`      | greater/or equal  | `30 > 10`         | `TRUE`        |
-|               |                   |                   |               |
-|               |                   | `30 >= 10`        | `TRUE`        |
-+---------------+-------------------+-------------------+---------------+
-| `<`/`<=`      | less/or equal     | `30 < 10`         | `FALSE`       |
-|               |                   |                   |               |
-|               |                   | `10 <= 10`        | `TRUE`        |
-+---------------+-------------------+-------------------+---------------+
-| `%in%`        | inclusion         | `10%in%c(1,2,10)` | `TRUE`        |
-+---------------+-------------------+-------------------+---------------+
+<br/>
+
++---------------+------------------+-------------------+---------------+
+| Function      | Name             | Example           | Result        |
++===============+==================+===================+===============+
+| `==`          | equal            | `30 == 30`        | `TRUE`        |
++---------------+------------------+-------------------+---------------+
+| `!=`          | not equal        | `30 != 30`        | `FALSE`       |
++---------------+------------------+-------------------+---------------+
+| `>`/`>=`      | greater/or equal | `30 > 10`         | `TRUE`        |
+|               |                  |                   |               |
+|               |                  | `30 >= 10`        | `TRUE`        |
++---------------+------------------+-------------------+---------------+
+| `<`/`<=`      | less/or equal    | `30 < 10`         | `FALSE`       |
+|               |                  |                   |               |
+|               |                  | `10 <= 10`        | `TRUE`        |
++---------------+------------------+-------------------+---------------+
+| `%in%`        | inclusion        | `10%in%c(1,2,10)` | `TRUE`        |
++---------------+------------------+-------------------+---------------+
 
 ------------------------------------------------------------------------
 
@@ -236,33 +240,35 @@ In R we can evaluate whether a given relation is true or false. R will evaluate 
 <br/>
 
 ```{r, echo = TRUE}
-Name = "Margherita"
+Name <- "Margherita"
 
-name = "margherita"
+name <- "margherita"
 
 Name == name
 ```
 
-<br/> PS. Remember that **`=`** is different from **`==`**
+<br/> **NB**. Remember that **`=`** is different from **`==`**
 
 ## Logical Operators
 
 In R we can combine several relations to evaluate a given statement.
 
 ```{r,echo = TRUE}
-x = 30 # Assign the value 30 to x.
+x <- 30 # Assign the value 30 to x.
 ```
 
-| Function | Name                    | Example       | Result |
-|----------|-------------------------|---------------|--------|
-| `&`      | Conjunction (AND)       | `x>25 & x<60` | `TRUE` |
+<br/>
+
+| Function | Name                       | Example       | Result |
+|----------|----------------------------|---------------|--------|
+| `&`      | Conjunction (AND)          | `x>25 & x<60` | `TRUE` |
 | `|`      | Inclusive disjunction (OR) | `x>25 | x>60` | `TRUE` |
-| `!`      | Negation (NOT)          | `!(x<18)`     | `TRUE` |
+| `!`      | Negation (NOT)             | `!(x<18)`     | `TRUE` |
 
 ## Logical Operators
 
 ```{r,echo = TRUE}
-x = 30 # Assign the value 30 to x.
+x <- 30 # Assign the value 30 to x.
 x
 ```
 
@@ -302,28 +308,35 @@ x>25 | x>60
 ```
 :::
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
-**TRUE is equivalent to 1 and FALSE to 0**
+### TRUE is equivalent to 1 and FALSE to 0
 
 ```{r,echo = TRUE}
 TRUE == 1
+
 TRUE == 2
+
 FALSE == 0
+
 FALSE == 1
 ```
 
-::: fragment
-I create an example vector containing the words home (repeated 4 times) and shop (repeated 2 times):
+
+----------------------------
+
+### TRUE is equivalent to 1 and FALSE to 0
+
+I create an example vector containing the words home (repeated 3 times) and shop (repeated 2 times):
+
 ```{r,echo = TRUE}
-example = c(rep("home",times = 4),rep("shop", times = 2)) #?rep
+example <- c("home", "home", "home","shop", "shop") #?rep
 example
 ```
-:::
 
 ::: fragment
 ```{r,echo = TRUE}
-# How many words in example are equal to home?
+# Which words in `example` are equal to home?
 example == "home"
 ```
 :::
@@ -343,6 +356,8 @@ When evaluating whether statements are true, R performs the operations in the fo
 3.  Logical operators (e.g., !, &, \|)
 
 If in doubt about the order in which operations are executed, the best thing to do is to use round brackets ( ) to remove any possible ambiguity.
+
+
 
 ## Let's practice! {style="text-align: center;"}
 
