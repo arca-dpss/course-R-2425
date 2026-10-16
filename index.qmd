@@ -83,7 +83,7 @@ Each lesson is available as interactive slides (HTML) and as a PDF to download.
 -   **Introduction to R (1)** [[Slides](materials/0_getStarted/0_getStarted.html){target="_blank"} [PDF](materials/0_getStarted/0_getStarted.pdf){target="_blank"}]{.links}
 -   **How to work in R: paths and R Projects** [[Slides](materials/1_intro/1.1_intro.html){target="_blank"} [PDF](materials/1_intro/1.1_intro.pdf){target="_blank"}]{.links}
 -   **Introduction to R (2)** [[Slides](materials/1_intro/1.2_intro.html){target="_blank"} [PDF](materials/1_intro/1.2_intro.pdf){target="_blank"}]{.links}
--   **Introduction to R (3)** [[Slides](materials/1_intro/1.3_funzioni&errori.html){target="_blank"} [PDF](materials/1_intro/1.3_funzioni&errori.pdf){target="_blank"}]{.links}
+-   **Introduction to R (3)** [[Slides](materials/1_intro/1.3_funzioniErrori.html){target="_blank"} [PDF](materials/1_intro/1.3_funzioniErrori.pdf){target="_blank"}]{.links}
 :::
 
 ::: {.g-col-12 .g-col-md-6 .lesson-card}
@@ -91,7 +91,7 @@ Each lesson is available as interactive slides (HTML) and as a PDF to download.
 
 -   **Vectors** [[Slides](materials/2_struttureDati/2.1_vettori.html){target="_blank"} [PDF](materials/2_struttureDati/2.1_vettori.pdf){target="_blank"}]{.links}
 -   **Factors** [[Slides](materials/2_struttureDati/2.2_fattori.html){target="_blank"} [PDF](materials/2_struttureDati/2.2_fattori.pdf){target="_blank"}]{.links}
--   **Lists, Matrices and Arrays** [[Slides](materials/2_struttureDati/2.3_liste&matrici&array.html){target="_blank"} [PDF](materials/2_struttureDati/2.3_liste&matrici&array.pdf){target="_blank"}]{.links}
+-   **Lists, Matrices and Arrays** [[Slides](materials/2_struttureDati/2.3_listeMatriciArray.html){target="_blank"} [PDF](materials/2_struttureDati/2.3_listeMatriciArray.pdf){target="_blank"}]{.links}
 -   **Dataframes** [[Slides](materials/2_struttureDati/2.4_dataframe.html){target="_blank"} [PDF](materials/2_struttureDati/2.4_dataframe.pdf){target="_blank"}]{.links}
 :::
 
