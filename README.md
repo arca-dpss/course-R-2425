@@ -9,7 +9,6 @@ ARCA courses are advanced, strongly hands-on courses on modern tools for researc
 This is the main repository of the course, where you will find all the information, slides, links and material.
 The material has been adapted from the course taught by [Filippo Gambarota](https://github.com/arca-dpss/course-R) in previous years.
 
-The main reference material is the book [Introduzione a R](https://psicostat.github.io/Introduction2R/) (in Italian). The book is constantly being updated and improved, and is available online and fully open-source.
 
 # Rooms and schedule
 
