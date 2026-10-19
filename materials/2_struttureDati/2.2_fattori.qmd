@@ -40,6 +40,8 @@ my_fact <- as.factor(char_vect)
 my_fact
 ```
 
+## Creating a factor
+
 ... or by explicitly creating a factor with the **`factor()`** command:
 
 ```{r, echo=TRUE}
@@ -47,6 +49,15 @@ my_fact
 my_fact <- factor(x = char_vect)
 my_fact
 ```
+
+... equivalently 
+```{r, echo=TRUE}
+
+my_fact <- factor(x = rep(c("hello","ciao", "hola"), each = 2))
+my_fact <- factor(x = c("hello","hello", "ciao", "ciao", "hola","hola"))
+
+```
+
 
 ## Properties of factors
 
@@ -56,25 +67,12 @@ In practice, they assign a label to an integer value:
 typeof(my_fact) # typeof determines the type or storage mode of any object
 ```
 
-```{r, echo=TRUE, warning=TRUE}
-as.integer(my_fact)
+Why these numbers?
 
+```{r, echo=TRUE, warning=TRUE}
+as.integer(my_fact) 
 my_fact
 ```
-
-::: fragment
-This does not hold for character vectors!
-
-```{r, echo = TRUE}
-typeof(char_vect) # typeof determines the type or storage mode of any object
-```
-
-```{r, echo = TRUE}
-as.integer(char_vect)
-
-char_vect
-```
-:::
 
 ------------------------------------------------------------------------
 
@@ -84,23 +82,23 @@ Factors store **`levels()`** as metadata,
 levels(my_fact)
 ```
 
-::: {.fragment}
-regardless of which ones are actually present in the vector. For example, if I create a factor made only of the elements of my_fact different from ciao:
+::: fragment
+regardless of which ones are actually present in the vector. For example, if I create a factor made only of the elements of `my_fact` different from *ciao*:
 
 ```{r, echo = TRUE}
 my_fact2 <- my_fact[my_fact!="ciao"]
 ```
-
 :::
 
-::: {.fragment}
-The levels of my_fact2 will be the same as those of my_fact (ciao included), even though ciao is no longer present as an observation:
+::: fragment
+The **levels** of `my_fact2` will be the **same** as those of `my_fact` (*ciao* included), even though *ciao* is **no longer present as an observation**:
 
 ```{r, echo = TRUE}
 my_fact2
 levels(my_fact2)
 ```
 :::
+
 ------------------------------------------------------------------------
 
 However, we can drop the levels that are no longer needed with the `droplevels()` command:
@@ -135,20 +133,26 @@ levels(my_fact_lev)
 # rename the levels of the factor
 levels(my_fact_lev) <- c("italian","english","spanish")
 ```
+
+Why in this **order**?
 :::
 
-::: fragment
+
+
+
+-----
+
 Now the two factors are:
 
 ```{r, echo=TRUE}
 my_fact_lev
 my_fact
 ```
-:::
+
 
 ------------------------------------------------------------------------
 
-We can **both reorder** and **rename** the levels of a factor with the `factor()` function:
+We can **reorder the levels** of a factor with the `factor()` function:
 
 ```{r, echo=TRUE}
 my_fact
@@ -168,7 +172,7 @@ as.integer(new_fact)
 
 ------------------------------------------------------------------------
 
-We can also rename the levels, again with the `factor()` function:
+We can also **rename the levels**, again with the `factor()` function:
 
 ```{r, echo=TRUE}
 my_fact
@@ -178,16 +182,20 @@ new_fact2 <- factor(x = my_fact, levels = c("hello","ciao","hola"),
 new_fact2
 ```
 
-::: {.fragment}
 
-Previous versions:
+---
+
+Factor versions:
 
 ```{r, echo=TRUE}
+my_fact
+
 new_fact
 
-my_fact
+new_fact2
 ```
-:::
+
+Which are the differences?
 
 ------------------------------------------------------------------------
 
@@ -196,18 +204,12 @@ my_fact
 ```{r, echo=TRUE}
 # the factor I created
 my_fact
-levels(my_fact)
 levels(my_fact) <- c("hello","ciao","hola")
-```
-
-::: fragment
-What do you notice compared to the my_fact vector shown above?
-
-```{r, echo=TRUE}
+# What do you notice compared to the my_fact vector shown above?
 my_fact
-as.integer(my_fact)
 ```
-:::
+
+
 
 ## Ordinal Factors
 
@@ -220,6 +222,28 @@ my_ord_fac # alphabetical order
 
 attributes(my_ord_fac)
 ```
+
+---
+
+```{r, echo=TRUE}
+my_ord_fac <- factor(x = c("never", "sometimes","often","always"),
+                     ordered = TRUE) 
+my_ord_fac# alphabetical order
+```
+
+So what should we do?
+
+:::fragments
+
+```{r, echo=TRUE}
+my_ord_fac <- factor(x = c("never", "sometimes","often","always"),
+                     levels = c("never", "sometimes","often","always"), 
+                     ordered = TRUE)
+my_ord_fac 
+```
+
+:::
+
 
 ## Let's practice! {style="text-align: center;"}
 
