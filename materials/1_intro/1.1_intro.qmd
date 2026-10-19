@@ -7,6 +7,7 @@ format:
      fontsize: 1.9em
      linestretch: 1.4
      mainfont: Helvetica Neue
+     syntax-highlighting: tango
 editor: visual
 ---
 
@@ -28,7 +29,7 @@ Let's save it:
 
 ![](images/save.png){fig-align="center"}
 
-## Working Environment 
+## Working Environment
 
 RStudio is divided into **4 main panes**:
 
@@ -38,17 +39,13 @@ RStudio is divided into **4 main panes**:
 
 RStudio is divided into **4 main panes**:
 
-- **Script.** The text file where you write and save your code. You can run one line at a time (`Ctrl + Enter` / `Cmd + Enter`) or the whole script by clicking `Source`. Comments are added with `#`.
+-   **Script.** The text file where you write and save your code. You can run one line at a time (`Ctrl + Enter` / `Cmd + Enter`) or the whole script by clicking `Source`. Comments are added with `#`.
 
+-   **Console.** This is where R runs the code and shows the results. You can type commands directly in the console for quick tests, but they are not saved.
 
-- **Console.** This is where R runs the code and shows the results. You can type commands directly in the console for quick tests, but they are not saved. 
+-   **Environment / Temporary desk.** Shows all the **objects** created during the current session.
 
-
-- **Environment / Temporary desk.** Shows all the **objects** created during the current session.
-
-
-- **Miscellaneous.** A multi-purpose pane with several tabs, including the file explorer.
-
+-   **Miscellaneous.** A multi-purpose pane with several tabs, including the file explorer.
 
 ## Working Directory
 
@@ -98,7 +95,7 @@ data <- read.csv("prova.csv")
 
 ## 
 
-Now move the `prova.csv` outside the introR folder (e.g., in the desktop), and run the same command.. 
+Now move the `prova.csv` outside the introR folder (e.g., in the desktop), and run the same command..
 
 ```{r, echo=TRUE, eval=FALSE}
 data <- read.csv("prova.csv")
@@ -110,7 +107,6 @@ If we want to load a file located outside our `wd`, we need to refer to it throu
 ```{r, echo=TRUE, warning=FALSE, eval=FALSE}
 data <- read.csv("/Users/tita/Desktop/prova.csv")
 ```
-
 :::
 
 ::: fragment
@@ -120,7 +116,6 @@ Or, first change the working directory with the `setwd` command and then load th
 setwd('/Users/tita/Desktop')
 data <- read.csv("prova.csv")
 ```
-
 :::
 
 ## The best solution?

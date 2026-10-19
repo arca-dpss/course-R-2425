@@ -7,6 +7,7 @@ format:
      fontsize: 1.9em
      linestretch: 1.4
      mainfont: Helvetica Neue
+     syntax-highlighting: tango
 editor: visual
 ---
 
@@ -62,7 +63,6 @@ num_vect
 num_vect_seq
 ```
 
-
 ## Creating a vector
 
 Vectors can be created with the **`c()`** command, writing inside the brackets the values of the elements in the desired order, separated by commas.
@@ -74,7 +74,6 @@ char_vect_rep <- c(rep("R", times = 3), "ok")
 char_vect
 char_vect_rep
 ```
-
 
 ## Vector type
 
@@ -249,7 +248,6 @@ my_vect["a"] # I want the element of my_vect called "a"
 ```
 :::
 
-
 ## Logical Indexing
 
 We can select elements of a vector based on specific logical conditions: **`TRUE`** and **`FALSE`**. The idea is that if we have a vector of length **n** and another logical vector of length **n**, all the **`TRUE`** elements will be selected:
@@ -382,7 +380,6 @@ which(is.na(my_letters)) # in which positions are these elements?
 ## Indexing and Assignment
 
 I replace the NA value with the missing letter
-
 
 ```{r, echo=TRUE}
 # indeed, if I look at the indicated position

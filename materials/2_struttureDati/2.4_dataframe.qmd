@@ -7,6 +7,7 @@ format:
      fontsize: 1.9em
      linestretch: 1.4
      mainfont: Helvetica Neue
+     syntax-highlighting: tango
 editor: visual
 ---
 
@@ -48,17 +49,26 @@ my_df
 The **`dataframe`** has both the attributes of a list, i.e. the ***names***, and the attributes of a matrix, i.e. the ***dimensions*** (rows and columns)
 
 ```{r, echo=TRUE}
-typeof(my_df)
 attributes(my_df)
 dim(my_df)
 ```
 
 ------------------------------------------------------------------------
 
-As with the other structures we have seen, we can use the functions **`names()`** , **`dim()`**, **`nrow()`**, **`ncol()`**... to get information about the properties of the dataframe. The most useful function is **`str()`**, since it gives us a quick overview of the structure of the dataframe: dimensions, variable types,...
+As with the other structures we have seen, we can use the functions **`names()`** , **`dim()`**, **`nrow()`**, **`ncol()`**... to get information about the properties of the dataframe. 
 
 ```{r,echo=TRUE}
-str(iris) # iris is a dataset available by default in R (?iris)
+names(iris) # iris is a dataset available by default in R (?iris)
+nrow(iris)
+ncol(iris)
+```
+
+----
+
+The most useful function is **`str()`**, since it gives us a quick overview of the structure of the dataframe: dimensions, variable types,...
+
+```{r,echo=TRUE}
+str(iris) 
 ```
 
 ------------------------------------------------------------------------
@@ -68,20 +78,30 @@ str(iris) # iris is a dataset available by default in R (?iris)
 We can use either square brackets **`[]`**:
 
 ```{r, echo = TRUE}
+my_df
 my_df[1]  # extract a 4x1 data.frame
+```
+
+---
+
+```{r, echo = TRUE}
 my_df[[1]] # extract the first column of the data.frame
 my_df[1,1] # extract the first element of the first column of the data.frame
 ```
 
-::: fragment
-or the dollar sign **`$`**
+---
+
+...or the dollar sign **`$`**
 
 ```{r, echo=TRUE}
+# my_df[[1]] equivalent
 my_df$col1 # extract the first column of the data.frame
-my_df$col1[1] # extract the first element of the first column of the data.frame
-
 ```
-:::
+
+... extract the first element of the first column...
+```{r, echo=TRUE}
+my_df$col1[1] 
+```
 
 ## Indexing - Relational operators
 
@@ -91,8 +111,8 @@ One of the most common operations you will deal with is extracting/evaluating a 
 my_df
 
 # keep only the rows where the values of column1 are greater than 2
-my_df[my_df$col1 > 2, ]
-my_df[my_df[1] > 2, ]
+my_df[my_df$col1 > 2, ] # = my_df[my_df[1] > 2, ]
+
 ```
 
 ## Examples
@@ -142,10 +162,10 @@ my_df[my_df$col1== 2,  "col2"]
 There are also alternative, more compact ways of indexing. For example, using the **`subset()`** function:
 
 ```{r,echo=TRUE}
-
 subset(iris, subset = Species == "setosa" & Petal.Length > 1.7)
-
 ```
+
+<br/>
 
 equivalent to:
 
@@ -159,32 +179,27 @@ iris[iris$Species == "setosa" & iris$Petal.Length > 1.7,]
 
 We can also select columns rather than rows with the ***`select`*** argument:
 
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE}
 subset(iris, select = c(Sepal.Length, Species))
 ```
 
-```{r, echo=TRUE}
-# show the first rows with the head command
-head(subset(iris, select = c(Sepal.Length, Species)), n = 3)
-```
 
 ------------------------------------------------------------------------
 
 We can also combine the two:
 
-```{r,echo=TRUE, eval=FALSE}
-subset(iris, subset = Species == "setosa" & Sepal.Length > 4, select = c(Sepal.Length, Species))
+```{r,echo=TRUE, eval=TRUE}
+#| attr-output: 'style="max-height: 250px; max-width: 80%; overflow: auto;"'
+subset(iris, subset = Species == "setosa" & Sepal.Length > 4, 
+       select = c(Sepal.Length, Species))
 ```
 
-```{r,echo=TRUE}
-head(subset(iris, subset = Species == "setosa" & Sepal.Length > 4, select = c(Sepal.Length, Species)), n = 3)
-```
 
 ... equivalent to:
 
-```{r,echo=TRUE}
-
-head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4, c("Sepal.Length","Species")],n = 3)
+```{r,echo=TRUE, eval=FALSE}
+iris[iris$Species == "setosa" & iris$Sepal.Length > 4,
+     c("Sepal.Length","Species")]
 ```
 
 ## Indexing
@@ -192,56 +207,49 @@ head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4, c("Sepal.Length","Sp
 Most of the time you will access variables with the **`$`** operator. This command can also be used to create a new variable...
 
 ```{r,echo=TRUE}
+#| attr-output: 'style="max-height: 280px; max-width: 90%; overflow: auto;"'
 # create a variable that is the sum of Length and Width
 iris$sum <- iris$Sepal.Length + iris$Sepal.Width
-
-str(iris)
+iris[, c("Sepal.Length", "Sepal.Width", "sum")]
 ```
 
 ------------------------------------------------------------------------
 
-The same concepts we have seen for vectors apply, so you can both create and modify variables.
+The same concepts we have seen for vectors apply, so you can both create and modify variables...
 
 ```{r, echo=TRUE}
 my_df <- data.frame(num = 1:4, let = letters[1:4])
-my_df
 
 # Modify the num variable by adding 1
 my_df$num <- my_df$num+1
+my_df$num
 
-# Create a third variable made of the num and let variables
-my_df$both <- paste(my_df$num,my_df$let, sep = "_") # ?paste
-
-str(my_df)
+# Create a third variable ?paste
+my_df$both <- paste(my_df$num, my_df$let, sep = "_") 
+my_df$both
 ```
 
-------------------------------------------------------------------------
 
 ## Combining Dataframes
 
-Since they are similar to matrices, dataframes can be combined with the **`rbind()`** function:
+Dataframes can be combined with the **`rbind()`** function:
 
 ```{r,echo=TRUE, error=TRUE}
-# first dataframe
-str(my_df)
 # create a second dataframe
 my_df2 <- data.frame(num = 4:7, lett = letters[1:4],
                     both = paste(4:7,letters[1:4], sep = "_"))
 
-str(my_df2)
+# join the two
+my_df3 <- rbind(my_df,my_df2)
 ```
 
-------------------------------------------------------------------------
-
-**Join the two dataframes**
+## Rules
 
 -   The dataframes must have the same number of columns
 
 -   The column names must be identical
 
 ```{r,echo=TRUE, error=TRUE}
-my_df3 <- rbind(my_df,my_df2)
-
 str(my_df)
 str(my_df2)
 ```
@@ -265,75 +273,81 @@ str(my_df3)
 
 You may also need to collect different types of data from the same participant, and then combine the collected information...
 
-Dataframe containing the reaction times:
-
 ```{r, echo=TRUE}
-df_rt <- data.frame(subj = factor(rep(c("alice","bob"),each = 400)),
+df_rt <- data.frame(subj = factor(rep(c("alice","bob"), each = 60)),
                    cond = factor(rep(c("easy","hard"),
-                                     each = 200, times = 2)),
-                      rt = c(rlnorm(n = 400, meanlog = -1, sdlog = .25),
-                             rlnorm(n = 400, meanlog = -.7, sdlog =.3)))
-
-# equivalent to first creating the variables as vectors and then putting them in a df
-subj <- factor(rep(c("alice","bob"),each = 400))
-cond <- factor(rep(c("easy","hard"),each = 200, times = 2))
-rt <- c(rlnorm(n = 400, meanlog = -1, sdlog = .25),
-                             rlnorm(n = 400, meanlog = -.7, sdlog =.3))
-
-df_rt <- data.frame(subj, cond, rt)
-
+                                     each = 30, times = 2)),
+                      rt = c(rlnorm(n = 30, meanlog = -1, sdlog = .25),
+                             rlnorm(n = 30, meanlog = -.7, sdlog =.3),
+                             rlnorm(n = 30, meanlog = -1, sdlog = .25),
+                             rlnorm(n = 30, meanlog = -.7, sdlog =.3)))
+df_rt
 ```
+
+----
 
 Dataframe containing the age:
 
 ```{r, echo=TRUE}
-df_age <- data.frame(subj = factor(c("alice","bob")), age = c(20,3))
-
+df_age <- data.frame(subj = factor(c("alice","bob")), age = c(20,18))
+df_age
 ```
 
 ------------------------------------------------------------------------
 
 ```{r,echo=TRUE}
-str(df_rt) # structure of the reaction times dataframe
-head(df_rt)
+# structure of the reaction times dataframe
+str(df_rt)
 
-str(df_age) # structure of the age dataframe
-head(df_age)
+
+# structure of the age dataframe
+str(df_age) 
 ```
 
 ------------------------------------------------------------------------
 
-In this case, we can use the **`merge()`** function and/or the **`_join()`** functions:
+In this case, we can use the **`merge()`** function ...
 
 ```{r, echo=TRUE}
 df_all_1 <- merge(x = df_rt, y = df_age, by="subj")
-str(df_all_1)
+df_all_1
 ```
+
+----
+
+... or the **`_join()`** function..
 
 ```{r, echo=TRUE, message=FALSE}
 library(dplyr) # load the dplyr package
 
-df_all_2 <- left_join(x = df_rt, y = df_age, by = c("subj")) # right_join and full_join also exist
-str(df_all_2)
+df_all_2 <- left_join(x = df_rt, y = df_age, by = c("subj")) 
+df_all_2
 ```
+
+
+---
+
+```{r, echo=TRUE}
+df_rt$gender <- rep(c("F","M"), each = 60)
+df_age$gender <- c("F","M")
+
+df_all_g <- merge(x = df_rt, y = df_age, by=c("subj","gender"))
+df_all_g
+```
+
+
 
 ## Contingency tables
 
-We can use the **`table()`** function both to compute frequencies and to compute contingency tables, for example to see how many trials we have for each subject.
+We can use the **`table()`** function both to compute frequencies...
 
 ```{r, echo=TRUE}
 
 # keep only rts between .250 and 1.5 seconds
 # i.e. the rows that meet this condition
 df_rt_clean <- df_rt[df_rt$rt > .25 & df_rt$rt < 1.5, ]
-
-# how many trials for each subject
-table(df_rt$subj)
-table(df_rt_clean$subj)
-
-# how many trials for each subject x condition
-table(df_rt_clean$subj, df_rt_clean$cond)
-
+table(df_rt_clean$subj) # trials for each subject
+table(df_rt_clean$subj, df_rt_clean$cond) # subject x condition
 ```
 
 ## Exporting and importing data
@@ -362,9 +376,9 @@ df_age_impo <- read_xlsx("DATA/df_age.xlsx")
 
 ## Checking the structure
 
-What differences do you notice between the two dataframes?
 
 ```{r, echo=TRUE, message=FALSE}
+#| attr-output: 'style="max-height: 200px; max-width: 90%; overflow: auto;"'
 str(df_rt) # Data frame we created
 str(df_rt_impo) # Data frame we loaded
 ```
@@ -406,25 +420,13 @@ str(df_rt_impo2)
 
 ------------------------------------------------------------------------
 
-The same concepts apply to reading xlsx files:
-
-```{r, echo=TRUE}
-str(df_age_impo)
-df_age_impo$subj <- as.factor(df_age_impo$subj)
-str(df_age_impo)
-df_age_impo$subj <- factor(df_age_impo$subj)
-str(df_age_impo)
-```
-
-------------------------------------------------------------------------
 
 The examples I have shown concern data in formats **external** to R, but we can also save and import data in **`R`** formats.
 
 Their main drawback is that they can be read (mainly) only within the R environment.
 
-If we need to work with different software or languages, it is probably better to use a more generic format.
+If we need to work with different software or languages, it is probably better to use a more generic format (e.g, .csv or .txt).
 
-If we have time left, we will also look at this type of format; the material is available at this [link](https://arca-dpss.github.io/course-R/extra/importing_data.html#1_Introduzione) (in Italian).
 
 ## Now let's practice! {style="text-align: center;"}
 

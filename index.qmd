@@ -159,7 +159,6 @@ To publish the exercises: remove materials/esercizi/ from .gitignore,
 
 -   [**Introduction2R**](https://psicostat.github.io/Introduction2R/){target="_blank"}: open-source book on R
 -   [**Installation guide**](https://ottaviae.github.io/test-organizzioni-fisppa/slides/01-IntroR/guida.html){target="_blank"} for R and RStudio
--   [**Additional exercises**](https://arca-dpss.github.io/course-R/exercises/esercizi-no-solutions.html){target="_blank"} by Filippo Gambarota
 :::
 :::
 

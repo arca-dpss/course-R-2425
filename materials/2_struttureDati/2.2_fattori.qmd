@@ -7,6 +7,7 @@ format:
      fontsize: 1.9em
      linestretch: 1.4
      mainfont: Helvetica Neue
+     syntax-highlighting: tango
 editor: visual
 ---
 
@@ -50,14 +51,14 @@ my_fact <- factor(x = char_vect)
 my_fact
 ```
 
-... equivalently 
+... equivalently
+
 ```{r, echo=TRUE}
 
 my_fact <- factor(x = rep(c("hello","ciao", "hola"), each = 2))
 my_fact <- factor(x = c("hello","hello", "ciao", "ciao", "hola","hola"))
 
 ```
-
 
 ## Properties of factors
 
@@ -137,10 +138,7 @@ levels(my_fact_lev) <- c("italian","english","spanish")
 Why in this **order**?
 :::
 
-
-
-
------
+------------------------------------------------------------------------
 
 Now the two factors are:
 
@@ -148,7 +146,6 @@ Now the two factors are:
 my_fact_lev
 my_fact
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -182,8 +179,7 @@ new_fact2 <- factor(x = my_fact, levels = c("hello","ciao","hola"),
 new_fact2
 ```
 
-
----
+------------------------------------------------------------------------
 
 Factor versions:
 
@@ -209,8 +205,6 @@ levels(my_fact) <- c("hello","ciao","hola")
 my_fact
 ```
 
-
-
 ## Ordinal Factors
 
 A subtype of factors are ***ordered factors***, which correspond to ordinal variables, i.e. variables whose levels are sorted in increasing order:
@@ -223,7 +217,7 @@ my_ord_fac # alphabetical order
 attributes(my_ord_fac)
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r, echo=TRUE}
 my_ord_fac <- factor(x = c("never", "sometimes","often","always"),
@@ -233,17 +227,14 @@ my_ord_fac# alphabetical order
 
 So what should we do?
 
-:::fragments
-
+::: fragments
 ```{r, echo=TRUE}
 my_ord_fac <- factor(x = c("never", "sometimes","often","always"),
                      levels = c("never", "sometimes","often","always"), 
                      ordered = TRUE)
 my_ord_fac 
 ```
-
 :::
-
 
 ## Let's practice! {style="text-align: center;"}
 

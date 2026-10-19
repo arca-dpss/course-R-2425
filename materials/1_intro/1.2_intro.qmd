@@ -7,6 +7,7 @@ format:
      fontsize: 1.9em
      linestretch: 1.4
      mainfont: Helvetica Neue
+     syntax-highlighting: tango
 editor: visual
 ---
 
@@ -33,7 +34,6 @@ number
 ```
 
 ::: fragment
-
 ```{r, echo = TRUE}
 my_vector <- c(1,2,3,4)
 my_vector
@@ -45,7 +45,6 @@ my_vector
 my_matrix <- matrix(nrow = 2, ncol = 2, data = my_vector)
 my_matrix
 ```
-
 :::
 
 ## Functions
@@ -59,7 +58,6 @@ my_vector_mean <- mean(my_vector)
 my_vector_mean
 ```
 
-
 ## Creating/naming objects
 
 Objects are created with the assignment arrow **`<-`** or **`=`**
@@ -71,8 +69,6 @@ x1
 x2 = 3 # name = object
 x2
 ```
-
-
 
 ## Rules for naming objects
 
@@ -88,8 +84,7 @@ x2
 
 -   It must **not** contain **special characters** such as #, &, \$, ?, etc.
 
-----------------------------------------------------------------------
-
+------------------------------------------------------------------------
 
 -   It must not be a reserved word, i.e. one of the words used by R with a special meaning (?reserved).
 
@@ -108,7 +103,7 @@ if <- 3
 
 ```
 
----
+------------------------------------------------------------------------
 
 ### Some names are not forbidden but are discouraged
 
@@ -128,7 +123,7 @@ Using "*.*" in object names (for example, "my.data") is fine in **R** but is not
 
 Across languages, the *naming conventions* for longer, multi-word variable names favour **`snake_case`** (for example, "**my_data**") or **`camelCase`** (for example, "**myData**"), and **abbreviations** where appropriate (for example, "**unipdData**" rather than "university_of_padova_dataset").
 
----
+------------------------------------------------------------------------
 
 ### R is case-sensitive
 
@@ -308,7 +303,7 @@ x>25 | x>60
 ```
 :::
 
---------------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ### TRUE is equivalent to 1 and FALSE to 0
 
@@ -322,8 +317,7 @@ FALSE == 0
 FALSE == 1
 ```
 
-
-----------------------------
+------------------------------------------------------------------------
 
 ### TRUE is equivalent to 1 and FALSE to 0
 
@@ -356,8 +350,6 @@ When evaluating whether statements are true, R performs the operations in the fo
 3.  Logical operators (e.g., !, &, \|)
 
 If in doubt about the order in which operations are executed, the best thing to do is to use round brackets ( ) to remove any possible ambiguity.
-
-
 
 ## Let's practice! {style="text-align: center;"}
 

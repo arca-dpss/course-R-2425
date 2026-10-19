@@ -7,7 +7,6 @@ ARCA courses are advanced, strongly hands-on courses on modern tools for researc
 # ARCA - Introduction to R
 
 This is the main repository of the course, where you will find all the information, slides, links and material.
-The material has been adapted from the course taught by [Filippo Gambarota](https://github.com/arca-dpss/course-R) in previous years.
 
 
 # Rooms and schedule

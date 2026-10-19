@@ -7,6 +7,7 @@ format:
      fontsize: 1.9em
      linestretch: 1.4
      mainfont: Helvetica Neue
+     syntax-highlighting: tango
 editor: visual
 ---
 
@@ -145,5 +146,3 @@ There are different **alert** levels when we write code:
 -   Make sure you have understood the answer
 
 -   Double-check!
-
-
