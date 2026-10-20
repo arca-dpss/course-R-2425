@@ -227,7 +227,9 @@ my_ord_fac# alphabetical order
 
 So what should we do?
 
-::: fragments
+
+::: fragment
+
 ```{r, echo=TRUE}
 my_ord_fac <- factor(x = c("never", "sometimes","often","always"),
                      levels = c("never", "sometimes","often","always"), 

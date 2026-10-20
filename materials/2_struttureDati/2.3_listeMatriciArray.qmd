@@ -30,9 +30,12 @@ editor: visual
 Lists are flexible structures that can contain objects of different types and different sizes (each element can itself be a list), and they are created with the `list()` command
 
 ```{r, echo=TRUE}
-my_list <- list("hello!", 1:3, c(TRUE,FALSE),
-               list("hello!", 1:3, c(TRUE,FALSE)))
-str(my_list)
+my_list <- list("hello!", 
+                1:3, 
+                c(TRUE,FALSE),
+               list("hello!", 
+                    1:3, 
+                    c(TRUE,FALSE)))
 ```
 
 ## Lists
@@ -43,32 +46,6 @@ List develop in depth...
 str(my_list)
 ```
 
-## Lists
-
-***First Level***: list
-
-```{r, echo=TRUE}
-my_list[2] # single brackets []
-str(my_list[2]) 
-```
-
-::: fragment
-***Second Level***: numeric vector
-
-```{r, echo=TRUE}
-my_list[[2]] # double brackets [[]]
-str(my_list[[2]]) # double brackets [[]]
-```
-:::
-
-------------------------------------------------------------------------
-
-***Third Level***: integer
-
-```{r, echo=TRUE}
-my_list[[2]][1] # double brackets [[]] and chaining
-str(my_list[[2]][1]) 
-```
 
 ## Lists
 
@@ -145,9 +122,9 @@ Lists have a one-dimensional structure that can develop in depth. To select nest
 ```{r, echo=TRUE}
 my_list_nam[2]
 
-my_list_nam[2][1] # wrong!
+my_list_nam[[2]][1] 
 
-my_list_nam[[2]][1]
+my_list_nam[2][1] # wrong!
 
 ```
 
