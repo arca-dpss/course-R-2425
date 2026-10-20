@@ -231,7 +231,11 @@
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a><span class="co"># myfun(7)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a><span class="fu">myfun</span>(<span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -253,8 +257,8 @@
 <h2>Arguments</h2>
 <p>There are 2 rules for setting these arguments:</p>
 <ul>
-<li>the order does not matter IF I SPECIFY THE ARGUMENT NAME, e.g.&nbsp;<code>x = vector</code>, <code>na.rm = TRUE</code>, etc.</li>
-<li>the order matters IF I DO NOT SPECIFY THE ARGUMENT NAME. I can omit <code>argument = value</code>, but I must respect the order in which the function was written.</li>
+<li>the order does not matter <strong>IF I SPECIFY THE ARGUMENT NAME</strong>, e.g.&nbsp;<code>x = vector</code>, <code>na.rm = TRUE</code>, etc.</li>
+<li>the <strong>order matters</strong> IF I DO <strong>NOT SPECIFY THE ARGUMENT NAME</strong>. I can omit <code>argument = value</code>, but I must respect the order in which the function was written.</li>
 </ul>
 </section>
 <section id="arguments-2" class="slide level2">
@@ -267,7 +271,7 @@
 <span id="cb5-4"><a href="" aria-label="4"></a></span>
 <span id="cb5-5"><a href="" aria-label="5"></a><span class="fu">mean</span>(<span class="at">x =</span> myvec) <span class="co"># x defined, trim and na.rm not defined, so they are equal to?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9707941</code></pre>
+<pre><code>[1] 1.012073</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-label="1"></a>?mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -275,8 +279,12 @@
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="" aria-label="1"></a><span class="fu">mean</span>(<span class="at">x =</span> myvec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># x defined, na.rm defined</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9707941</code></pre>
+<pre><code>[1] 1.012073</code></pre>
 </div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="" aria-label="1"></a><span class="fu">mean</span>(myvec, <span class="cn">TRUE</span>) <span class="co"># what happens?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `mean.default()`:

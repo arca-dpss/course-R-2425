@@ -33,15 +33,22 @@ set.seed(1111)
 
 Vectors are a one-dimensional data structure and are the simplest one in R.
 
-![](images/vettore.png){fig-align="center"}
+<br/>
 
-------------------------------------------------------------------------
+```{r}
+c(0, 1, 2, 10)
 
-## Properties of a vector
+c("bob", "alan", "daisy", "paul")
+```
+
+<br/>
+
+#### Properties of a vector
 
 -   **length**: the number of elements the vector is made of
 
 -   **type**: the type of data the vector is made of. A vector must in fact be made of **elements all of the same type**!
+
 
 ## Properties of the elements of a vector
 

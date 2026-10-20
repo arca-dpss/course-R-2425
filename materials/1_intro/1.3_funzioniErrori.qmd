@@ -38,10 +38,13 @@ myfun <- function(x) {
 }
 
 myfun(2)
-
-# myfun(7)
 ```
 
+::: fragment
+```{r, echo=TRUE, eval=FALSE}
+myfun(7)
+```
+:::
 ::: fragment
 ```{r}
 myfun(7)
@@ -60,8 +63,8 @@ Function arguments are what we, as *users*, need to know and set correctly so th
 
 There are 2 rules for setting these arguments:
 
--   the order does not matter IF I SPECIFY THE ARGUMENT NAME, e.g. `x = vector`, `na.rm = TRUE`, etc.
--   the order matters IF I DO NOT SPECIFY THE ARGUMENT NAME. I can omit `argument = value`, but I must respect the order in which the function was written.
+-   the order does not matter **IF I SPECIFY THE ARGUMENT NAME**, e.g. `x = vector`, `na.rm = TRUE`, etc.
+-   the **order matters** IF I DO **NOT SPECIFY THE ARGUMENT NAME**. I can omit `argument = value`, but I must respect the order in which the function was written.
 
 ## Arguments
 
@@ -79,7 +82,11 @@ mean(x = myvec) # x defined, trim and na.rm not defined, so they are equal to?
 ::: fragment
 ```{r, echo = TRUE, warning=TRUE, error=TRUE}
 mean(x = myvec, na.rm = TRUE) # x defined, na.rm defined
+```
+:::
 
+::: fragment
+```{r, echo = TRUE, warning=TRUE, error=TRUE}
 mean(myvec, TRUE) # what happens?
 ```
 :::
