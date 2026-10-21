@@ -249,14 +249,17 @@ Levels: ciao hello hola</code></pre>
 <p>… equivalently</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-label="1"></a>my_fact <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>, <span class="st">"hola"</span>), <span class="at">each =</span> <span class="dv">2</span>))</span>
-<span id="cb7-2"><a href="" aria-label="2"></a>my_fact <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"hello"</span>, <span class="st">"ciao"</span>, <span class="st">"ciao"</span>, <span class="st">"hola"</span>,<span class="st">"hola"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-2"><a href="" aria-label="2"></a></span>
+<span id="cb7-3"><a href="" aria-label="3"></a>my_fact <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"hello"</span>, <span class="st">"hello"</span>, <span class="st">"ciao"</span>,</span>
+<span id="cb7-4"><a href="" aria-label="4"></a>                        <span class="st">"ciao"</span>, <span class="st">"hola"</span>, <span class="st">"hola"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="properties-of-factors" class="slide level2">
 <h2>Properties of factors</h2>
 <p>In practice, they assign a label to an integer value:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="" aria-label="1"></a><span class="fu">typeof</span>(my_fact) <span class="co"># typeof determines the type or storage mode of any object</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="" aria-label="1"></a><span class="co"># typeof determines the type or storage mode of any object</span></span>
+<span id="cb8-2"><a href="" aria-label="2"></a><span class="fu">typeof</span>(my_fact)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
@@ -308,7 +311,7 @@ Levels: ciao hello hola</code></pre>
 
 <p>However, we can drop the levels that are no longer needed with the <code>droplevels()</code> command:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="" aria-label="1"></a><span class="co"># what would my_fact2 look like if I dropped the levels with no observations?</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="" aria-label="1"></a><span class="co"># my_fact2 without the levels that have no observations</span></span>
 <span id="cb21-2"><a href="" aria-label="2"></a><span class="fu">droplevels</span>(my_fact2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] hello hello hola  hola 
@@ -327,135 +330,195 @@ Levels: hello hola</code></pre>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-<p>We can also <strong>rename</strong> the levels of a factor…</p>
+<section id="reorder-levels" class="slide level2">
+<h2>Reorder levels</h2>
+<p>Why reorder? The <strong>first level</strong> is the <strong>reference category</strong>: statistical models often compare every group to it.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="" aria-label="1"></a>my_fact <span class="co"># the factor I created</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="" aria-label="1"></a><span class="co"># the group of each participant in an experiment</span></span>
+<span id="cb25-2"><a href="" aria-label="2"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"placebo"</span>, <span class="st">"caffeine"</span>, <span class="st">"nicotine"</span>,</span>
+<span id="cb25-3"><a href="" aria-label="3"></a>                  <span class="st">"placebo"</span>, <span class="st">"caffeine"</span>))</span>
+<span id="cb25-4"><a href="" aria-label="4"></a>group</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] hello hello ciao  ciao  hola  hola 
-Levels: ciao hello hola</code></pre>
+<pre><code>[1] placebo  caffeine nicotine placebo  caffeine
+Levels: caffeine nicotine placebo</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="" aria-label="1"></a>my_fact_lev <span class="ot">&lt;-</span> my_fact <span class="co"># create another identical factor "my_fact_lev"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="fragment">
-<p>by accessing them with the <code>levels</code> command:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="" aria-label="1"></a><span class="fu">levels</span>(my_fact_lev)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="" aria-label="1"></a><span class="fu">levels</span>(group)       <span class="co"># the table of levels</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "ciao"  "hello" "hola" </code></pre>
+<pre><code>[1] "caffeine" "nicotine" "placebo" </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="" aria-label="1"></a><span class="co"># rename the levels of the factor</span></span>
-<span id="cb30-2"><a href="" aria-label="2"></a><span class="fu">levels</span>(my_fact_lev) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"italian"</span>,<span class="st">"english"</span>,<span class="st">"spanish"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="" aria-label="1"></a><span class="fu">as.integer</span>(group)   <span class="co"># the codes saved in the factor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 1 2 3 1</code></pre>
 </div>
-<p>Why in this <strong>order</strong>?</p>
 </div>
+<p>Here <code>placebo</code> should be the reference, but the alphabetical order puts it <strong>last</strong>.</p>
 </section>
-<section class="slide level2">
-
-<p>Now the two factors are:</p>
+<section id="reorder-placebo-first" class="slide level2">
+<h2>Reorder: placebo first</h2>
+<p><code>levels</code> in <code>factor()</code>: the levels <strong>in the order we want</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="" aria-label="1"></a>my_fact_lev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="" aria-label="1"></a>group_ord <span class="ot">&lt;-</span> <span class="fu">factor</span>(group,</span>
+<span id="cb31-2"><a href="" aria-label="2"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"placebo"</span>, <span class="st">"caffeine"</span>, <span class="st">"nicotine"</span>))</span>
+<span id="cb31-3"><a href="" aria-label="3"></a></span>
+<span id="cb31-4"><a href="" aria-label="4"></a><span class="fu">levels</span>(group_ord)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] english english italian italian spanish spanish
-Levels: italian english spanish</code></pre>
+<pre><code>[1] "placebo"  "caffeine" "nicotine"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="" aria-label="1"></a>my_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="" aria-label="1"></a><span class="fu">as.integer</span>(group_ord)    <span class="co"># new codes...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] hello hello ciao  ciao  hola  hola 
-Levels: ciao hello hola</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<p>We can <strong>reorder the levels</strong> of a factor with the <code>factor()</code> function:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="" aria-label="1"></a>my_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] hello hello ciao  ciao  hola  hola 
-Levels: ciao hello hola</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="" aria-label="1"></a><span class="co"># by default levels are assigned in alphabetical order</span></span>
-<span id="cb37-2"><a href="" aria-label="2"></a><span class="fu">as.integer</span>(my_fact)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 2 1 1 3 3</code></pre>
+<pre><code>[1] 1 2 3 1 2</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p>We can decide that the first level should be hello:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="" aria-label="1"></a>new_fact <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>))</span>
-<span id="cb39-2"><a href="" aria-label="2"></a>new_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="" aria-label="1"></a>group_ord </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] hello hello ciao  ciao  hola  hola 
-Levels: hello ciao hola</code></pre>
+<pre><code>[1] placebo  caffeine nicotine placebo  caffeine
+Levels: placebo caffeine nicotine</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="" aria-label="1"></a><span class="fu">as.integer</span>(new_fact)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="" aria-label="1"></a>group</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 1 2 2 3 3</code></pre>
+<pre><code>[1] placebo  caffeine nicotine placebo  caffeine
+Levels: caffeine nicotine placebo</code></pre>
 </div>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-<p>We can also <strong>rename the levels</strong>, again with the <code>factor()</code> function:</p>
+<section id="a-shortcut-relevel" class="slide level2">
+<h2>A shortcut: <code>relevel()</code></h2>
+<p>If we only need to choose the <strong>reference category</strong>, <code>relevel()</code> moves it to the first place and leaves the others as they are:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="" aria-label="1"></a>my_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="" aria-label="1"></a><span class="fu">levels</span>(group)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] hello hello ciao  ciao  hola  hola 
-Levels: ciao hello hola</code></pre>
+<pre><code>[1] "caffeine" "nicotine" "placebo" </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="" aria-label="1"></a>new_fact2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> my_fact, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>),</span>
-<span id="cb45-2"><a href="" aria-label="2"></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"english"</span>,<span class="st">"italian"</span>,<span class="st">"spanish"</span>))</span>
-<span id="cb45-3"><a href="" aria-label="3"></a>new_fact2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="" aria-label="1"></a>group_ref <span class="ot">&lt;-</span> <span class="fu">relevel</span>(group, <span class="at">ref =</span> <span class="st">"placebo"</span>)</span>
+<span id="cb41-2"><a href="" aria-label="2"></a><span class="fu">levels</span>(group_ref)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] english english italian italian spanish spanish
-Levels: english italian spanish</code></pre>
+<pre><code>[1] "placebo"  "caffeine" "nicotine"</code></pre>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-<p>Factor versions:</p>
+<section id="rename-levelsx---..." class="slide level2">
+<h2>Rename: <code>levels(x) &lt;- ...</code></h2>
+<p>The new names are assigned <strong>by position</strong>: the first name goes to the first level, and so on.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-label="1"></a>my_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="" aria-label="1"></a><span class="fu">levels</span>(group_ord)        <span class="co"># ALWAYS check the current order first!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] hello hello ciao  ciao  hola  hola 
-Levels: ciao hello hola</code></pre>
+<pre><code>[1] "placebo"  "caffeine" "nicotine"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="" aria-label="1"></a>new_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="" aria-label="1"></a>group_short <span class="ot">&lt;-</span> group_ord</span>
+<span id="cb45-2"><a href="" aria-label="2"></a><span class="fu">levels</span>(group_short) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"PLA"</span>, <span class="st">"CAF"</span>, <span class="st">"NIC"</span>)</span>
+<span id="cb45-3"><a href="" aria-label="3"></a>group_ord </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] hello hello ciao  ciao  hola  hola 
-Levels: hello ciao hola</code></pre>
+<pre><code>[1] placebo  caffeine nicotine placebo  caffeine
+Levels: placebo caffeine nicotine</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="" aria-label="1"></a>new_fact2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-label="1"></a>group_short</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] english english italian italian spanish spanish
-Levels: english italian spanish</code></pre>
+<pre><code>[1] PLA CAF NIC PLA CAF
+Levels: PLA CAF NIC</code></pre>
 </div>
 </div>
-<p>Which are the differences?</p>
 </section>
-<section class="slide level2">
-
-<p><strong>Remember</strong>: the <strong><em><code>levels</code></em></strong> argument inside the <strong><code>factor()</code></strong> function is used to <strong>reorder</strong> the levels of the factor, while the <strong><code>levels()</code></strong> function is used to access the level names and, if needed, <strong>rename</strong> them!</p>
+<section id="the-trap-renaming-in-the-wrong-order" class="slide level2">
+<h2>⚠️ The trap: renaming in the wrong order</h2>
+<p>We wanted placebo first, so we write the names in the order we want…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="" aria-label="1"></a><span class="co"># the factor I created</span></span>
-<span id="cb53-2"><a href="" aria-label="2"></a>my_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="" aria-label="1"></a>group_wrong <span class="ot">&lt;-</span> group</span>
+<span id="cb49-2"><a href="" aria-label="2"></a><span class="fu">levels</span>(group_wrong) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"placebo"</span>, <span class="st">"caffeine"</span>, <span class="st">"nicotine"</span>)</span>
+<span id="cb49-3"><a href="" aria-label="3"></a>group</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] hello hello ciao  ciao  hola  hola 
-Levels: ciao hello hola</code></pre>
+<pre><code>[1] placebo  caffeine nicotine placebo  caffeine
+Levels: caffeine nicotine placebo</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="" aria-label="1"></a><span class="fu">levels</span>(my_fact) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"ciao"</span>,<span class="st">"hola"</span>)</span>
-<span id="cb55-2"><a href="" aria-label="2"></a><span class="co"># What do you notice compared to the my_fact vector shown above?</span></span>
-<span id="cb55-3"><a href="" aria-label="3"></a>my_fact</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="" aria-label="1"></a>group_wrong</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] ciao  ciao  hello hello hola  hola 
-Levels: hello ciao hola</code></pre>
+<pre><code>[1] nicotine placebo  caffeine nicotine placebo 
+Levels: placebo caffeine nicotine</code></pre>
 </div>
 </div>
+<div class="fragment">
+<p><strong>No error, no warning, but every value is now wrong!</strong> <code>levels(x) &lt;-</code> <strong>renames</strong>, it does not reorder: “caffeine” (first level) was renamed “placebo”, and so on.</p>
+</div>
+</section>
+<section id="the-safe-way-factorx-levels-labels" class="slide level2">
+<h2>The safe way: <code>factor(x, levels, labels)</code></h2>
+<p>To reorder <strong>and</strong> rename in one step:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="" aria-label="1"></a>group_new <span class="ot">&lt;-</span> <span class="fu">factor</span>(group,</span>
+<span id="cb53-2"><a href="" aria-label="2"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"placebo"</span>, <span class="st">"caffeine"</span>, <span class="st">"nicotine"</span>),</span>
+<span id="cb53-3"><a href="" aria-label="3"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"PLA"</span>, <span class="st">"CAF"</span>, <span class="st">"NIC"</span>))</span>
+<span id="cb53-4"><a href="" aria-label="4"></a>group</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] placebo  caffeine nicotine placebo  caffeine
+Levels: caffeine nicotine placebo</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="" aria-label="1"></a>group_new</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] PLA CAF NIC PLA CAF
+Levels: PLA CAF NIC</code></pre>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><strong><code>levels</code></strong>: the <strong>existing</strong> values, in the order we want</li>
+<li><strong><code>labels</code></strong>: their <strong>new</strong> names, in the same order: matched <strong>by name</strong>, so the data cannot get mixed up</li>
+</ul>
+</div>
+</section>
+<section id="summary" class="slide level2 smaller">
+<h2>Summary</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 45%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>to…</th>
+<th>use</th>
+<th>does the data change?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>see the levels</td>
+<td><code>levels(x)</code></td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td>reorder the levels</td>
+<td><code>factor(x, levels = c(...))</code></td>
+<td>no</td>
+</tr>
+<tr class="odd">
+<td>choose the reference</td>
+<td><code>relevel(x, ref = "...")</code></td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td>rename the levels</td>
+<td><code>levels(x) &lt;- c(...)</code></td>
+<td>no, <strong>if you follow the current order</strong></td>
+</tr>
+<tr class="odd">
+<td>reorder + rename</td>
+<td><code>factor(x, levels = c(...), labels = c(...))</code></td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td>remove unused levels</td>
+<td><code>droplevels(x)</code></td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="order-of-the-levels-ordered-factor" class="slide level2">
+<h2>Order of the levels ≠ ordered factor</h2>
+<p>The order of the levels only decides <strong>which comes first</strong> (reference, tables, plots). It does not mean that one group is “bigger” than another.</p>
 </section>
 <section id="ordinal-factors" class="slide level2">
 <h2>Ordinal Factors</h2>
@@ -465,13 +528,13 @@ Levels: hello ciao hola</code></pre>
 <span id="cb57-2"><a href="" aria-label="2"></a></span>
 <span id="cb57-3"><a href="" aria-label="3"></a>my_ord_fac <span class="co"># alphabetical order</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] ciao  ciao  hello hello hola  hola 
-Levels: hello &lt; ciao &lt; hola</code></pre>
+<pre><code>[1] hello hello ciao  ciao  hola  hola 
+Levels: ciao &lt; hello &lt; hola</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="" aria-label="1"></a><span class="fu">attributes</span>(my_ord_fac)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$levels
-[1] "hello" "ciao"  "hola" 
+[1] "ciao"  "hello" "hola" 
 
 $class
 [1] "ordered" "factor" </code></pre>
@@ -481,9 +544,10 @@ $class
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="" aria-label="1"></a>my_ord_fac <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"never"</span>, <span class="st">"sometimes"</span>,<span class="st">"often"</span>,<span class="st">"always"</span>),</span>
-<span id="cb61-2"><a href="" aria-label="2"></a>                     <span class="at">ordered =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb61-3"><a href="" aria-label="3"></a>my_ord_fac<span class="co"># alphabetical order</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="" aria-label="1"></a>my_ord_fac <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb61-2"><a href="" aria-label="2"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="st">"never"</span>, <span class="st">"sometimes"</span>, <span class="st">"often"</span>, <span class="st">"always"</span>),</span>
+<span id="cb61-3"><a href="" aria-label="3"></a>  <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-4"><a href="" aria-label="4"></a>my_ord_fac<span class="co"># alphabetical order</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] never     sometimes often     always   
 Levels: always &lt; never &lt; often &lt; sometimes</code></pre>
@@ -492,10 +556,11 @@ Levels: always &lt; never &lt; often &lt; sometimes</code></pre>
 <p>So what should we do?</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="" aria-label="1"></a>my_ord_fac <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"never"</span>, <span class="st">"sometimes"</span>,<span class="st">"often"</span>,<span class="st">"always"</span>),</span>
-<span id="cb63-2"><a href="" aria-label="2"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"never"</span>, <span class="st">"sometimes"</span>,<span class="st">"often"</span>,<span class="st">"always"</span>), </span>
-<span id="cb63-3"><a href="" aria-label="3"></a>                     <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb63-4"><a href="" aria-label="4"></a>my_ord_fac </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="" aria-label="1"></a>my_ord_fac <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb63-2"><a href="" aria-label="2"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="st">"never"</span>, <span class="st">"sometimes"</span>, <span class="st">"often"</span>, <span class="st">"always"</span>),</span>
+<span id="cb63-3"><a href="" aria-label="3"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"never"</span>, <span class="st">"sometimes"</span>, <span class="st">"often"</span>, <span class="st">"always"</span>),</span>
+<span id="cb63-4"><a href="" aria-label="4"></a>  <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-5"><a href="" aria-label="5"></a>my_ord_fac </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] never     sometimes often     always   
 Levels: never &lt; sometimes &lt; often &lt; always</code></pre>

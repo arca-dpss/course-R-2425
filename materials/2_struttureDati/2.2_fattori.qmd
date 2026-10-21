@@ -56,7 +56,9 @@ my_fact
 ```{r, echo=TRUE}
 
 my_fact <- factor(x = rep(c("hello","ciao", "hola"), each = 2))
-my_fact <- factor(x = c("hello","hello", "ciao", "ciao", "hola","hola"))
+
+my_fact <- factor(x = c("hello", "hello", "ciao",
+                        "ciao", "hola", "hola"))
 
 ```
 
@@ -65,7 +67,8 @@ my_fact <- factor(x = c("hello","hello", "ciao", "ciao", "hola","hola"))
 In practice, they assign a label to an integer value:
 
 ```{r, echo = TRUE}
-typeof(my_fact) # typeof determines the type or storage mode of any object
+# typeof determines the type or storage mode of any object
+typeof(my_fact)
 ```
 
 Why these numbers?
@@ -105,7 +108,7 @@ levels(my_fact2)
 However, we can drop the levels that are no longer needed with the `droplevels()` command:
 
 ```{r, echo = TRUE}
-# what would my_fact2 look like if I dropped the levels with no observations?
+# my_fact2 without the levels that have no observations
 droplevels(my_fact2)
 ```
 
@@ -117,93 +120,109 @@ my_fact2
 ```
 :::
 
-------------------------------------------------------------------------
+## Reorder levels 
 
-We can also **rename** the levels of a factor...
+Why reorder? The **first level** is the **reference category**: statistical models often compare every group to it.
 
 ```{r, echo=TRUE}
-my_fact # the factor I created
-my_fact_lev <- my_fact # create another identical factor "my_fact_lev"
+# the group of each participant in an experiment
+group <- factor(x = c("placebo", "caffeine", "nicotine",
+                  "placebo", "caffeine"))
+group
+levels(group)       # the table of levels
+as.integer(group)   # the codes saved in the factor
+```
+
+Here `placebo` should be the reference, but the alphabetical order puts it **last**.
+
+## Reorder: placebo first
+
+`levels` in `factor()`: the levels **in the order we want**
+
+```{r, echo=TRUE}
+group_ord <- factor(group,
+  levels = c("placebo", "caffeine", "nicotine"))
+
+levels(group_ord)
+as.integer(group_ord)    # new codes...
 ```
 
 ::: fragment
-by accessing them with the `levels` command:
-
 ```{r, echo=TRUE}
-levels(my_fact_lev)
-# rename the levels of the factor
-levels(my_fact_lev) <- c("italian","english","spanish")
+group_ord 
+group
 ```
-
-Why in this **order**?
 :::
 
-------------------------------------------------------------------------
+## A shortcut: `relevel()`
 
-Now the two factors are:
+If we only need to choose the **reference category**, `relevel()` moves it to the first place and leaves the others as they are:
 
 ```{r, echo=TRUE}
-my_fact_lev
-my_fact
+levels(group)
+group_ref <- relevel(group, ref = "placebo")
+levels(group_ref)
 ```
 
-------------------------------------------------------------------------
+## Rename: `levels(x) <- ...`
 
-We can **reorder the levels** of a factor with the `factor()` function:
+The new names are assigned **by position**: the first name goes to the first level, and so on.
 
 ```{r, echo=TRUE}
-my_fact
-# by default levels are assigned in alphabetical order
-as.integer(my_fact)
+levels(group_ord)        # ALWAYS check the current order first!
+group_short <- group_ord
+levels(group_short) <- c("PLA", "CAF", "NIC")
+group_ord 
+group_short
+```
+
+## ⚠️ The trap: renaming in the wrong order
+
+We wanted placebo first, so we write the names in the order we want...
+
+```{r, echo=TRUE}
+group_wrong <- group
+levels(group_wrong) <- c("placebo", "caffeine", "nicotine")
+group
+group_wrong
 ```
 
 ::: fragment
-We can decide that the first level should be hello:
-
-```{r, echo=TRUE}
-new_fact <- factor(x = my_fact, levels = c("hello","ciao","hola"))
-new_fact
-as.integer(new_fact)
-```
+**No error, no warning, but every value is now wrong!** `levels(x) <-` **renames**, it does not reorder: "caffeine" (first level) was renamed "placebo", and so on.
 :::
 
-------------------------------------------------------------------------
+## The safe way: `factor(x, levels, labels)`
 
-We can also **rename the levels**, again with the `factor()` function:
-
-```{r, echo=TRUE}
-my_fact
-
-new_fact2 <- factor(x = my_fact, levels = c("hello","ciao","hola"),
-                   labels = c("english","italian","spanish"))
-new_fact2
-```
-
-------------------------------------------------------------------------
-
-Factor versions:
+To reorder **and** rename in one step:
 
 ```{r, echo=TRUE}
-my_fact
-
-new_fact
-
-new_fact2
+group_new <- factor(group,
+  levels = c("placebo", "caffeine", "nicotine"),
+  labels = c("PLA", "CAF", "NIC"))
+group
+group_new
 ```
 
-Which are the differences?
+::: fragment
+-   **`levels`**: the **existing** values, in the order we want
+-   **`labels`**: their **new** names, in the same order: matched **by name**, so the data cannot get mixed up
+:::
 
-------------------------------------------------------------------------
+## Summary {.smaller}
 
-**Remember**: the ***`levels`*** argument inside the **`factor()`** function is used to **reorder** the levels of the factor, while the **`levels()`** function is used to access the level names and, if needed, **rename** them!
+| to... | use | does the data change? |
+|---------------------|---------------------------------|------------------|
+| see the levels | `levels(x)` | no |
+| reorder the levels | `factor(x, levels = c(...))` | no |
+| choose the reference | `relevel(x, ref = "...")` | no |
+| rename the levels | `levels(x) <- c(...)` | no, **if you follow the current order** |
+| reorder + rename | `factor(x, levels = c(...), labels = c(...))` | no |
+| remove unused levels | `droplevels(x)` | no |
 
-```{r, echo=TRUE}
-# the factor I created
-my_fact
-levels(my_fact) <- c("hello","ciao","hola")
-# What do you notice compared to the my_fact vector shown above?
-my_fact
-```
+## Order of the levels ≠ ordered factor
+
+The order of the levels only decides **which comes first** (reference, tables, plots). It does not mean that one group is "bigger" than another.
+
 
 ## Ordinal Factors
 
@@ -220,20 +239,20 @@ attributes(my_ord_fac)
 ------------------------------------------------------------------------
 
 ```{r, echo=TRUE}
-my_ord_fac <- factor(x = c("never", "sometimes","often","always"),
-                     ordered = TRUE) 
+my_ord_fac <- factor(
+  x = c("never", "sometimes", "often", "always"),
+  ordered = TRUE)
 my_ord_fac# alphabetical order
 ```
 
 So what should we do?
 
-
 ::: fragment
-
 ```{r, echo=TRUE}
-my_ord_fac <- factor(x = c("never", "sometimes","often","always"),
-                     levels = c("never", "sometimes","often","always"), 
-                     ordered = TRUE)
+my_ord_fac <- factor(
+  x = c("never", "sometimes", "often", "always"),
+  levels = c("never", "sometimes", "often", "always"),
+  ordered = TRUE)
 my_ord_fac 
 ```
 :::
