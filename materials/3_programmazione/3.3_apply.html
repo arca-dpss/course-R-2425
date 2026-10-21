@@ -9,7 +9,7 @@
 <link href="3.3_apply_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
-  <title>3.3_apply</title>
+  <title>*apply family</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="3.3_apply_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="3.3_apply_files/libs/revealjs/dist/theme/quarto-61a84950594467f885fe7fd7ba14a2cd.css">
   <link rel="stylesheet" href="../slides.css">
   <link href="3.3_apply_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="3.3_apply_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -199,466 +199,458 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">3.3_apply</h1>
+  <h1 class="title">*apply family</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="apply-family" class="slide level2">
-<h2><code>*apply</code> family</h2>
-<p>Imagine you have a list of vectors and you want to apply the same function(s) to each element of the list:</p>
-<ul>
-<li><p>I apply the function manually, selecting the elements</p></li>
-<li><p>a <strong><code>for</code></strong> loop that iterates over the elements of the list and applies the function(s)</p>
-<p>…</p></li>
-</ul>
+<section id="the-problem" class="slide level2">
+<h2>The problem</h2>
+<p>We have the reaction times (in ms) of three participants, saved in a list:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb1-2"><a href="" aria-label="2"></a>    <span class="at">var1=</span><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb1-3"><a href="" aria-label="3"></a>    <span class="at">var2=</span><span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>),</span>
-<span id="cb1-4"><a href="" aria-label="4"></a>    <span class="at">var3=</span><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb1-5"><a href="" aria-label="5"></a>    <span class="at">var4=</span><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb1-6"><a href="" aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a>rts <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">anna =</span> <span class="fu">c</span>(<span class="dv">450</span>, <span class="dv">520</span>, <span class="dv">380</span>),</span>
+<span id="cb1-2"><a href="" aria-label="2"></a>            <span class="at">ben  =</span> <span class="fu">c</span>(<span class="dv">610</span>, <span class="dv">580</span>),</span>
+<span id="cb1-3"><a href="" aria-label="3"></a>            <span class="at">carl =</span> <span class="fu">c</span>(<span class="dv">400</span>, <span class="dv">430</span>, <span class="dv">470</span>, <span class="dv">500</span>))</span>
+<span id="cb1-4"><a href="" aria-label="4"></a>rts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$anna
+[1] 450 520 380
+
+$ben
+[1] 610 580
+
+$carl
+[1] 400 430 470 500</code></pre>
 </div>
+</div>
+<p>We want the <strong>mean of each participant</strong>: apply the <strong>same function</strong> (<code>mean</code>) to <strong>each element</strong> of the list.</p>
 </section>
-<section id="apply-family-1" class="slide level2">
-<h2><code>*apply</code> family</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>Let’s compute mean, median and std</p>
+<section id="solution-1-a-for-loop" class="slide level2">
+<h2>Solution 1: a <code>for</code> loop</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="" aria-label="1"></a><span class="co"># initialize the vectors with arbitrary numbers,</span></span>
-<span id="cb2-2"><a href="" aria-label="2"></a><span class="co"># but as many as we need</span></span>
-<span id="cb2-3"><a href="" aria-label="3"></a>means <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(my_list)</span>
-<span id="cb2-4"><a href="" aria-label="4"></a>medians <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(my_list)</span>
-<span id="cb2-5"><a href="" aria-label="5"></a>stds <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(my_list)</span>
-<span id="cb2-6"><a href="" aria-label="6"></a></span>
-<span id="cb2-7"><a href="" aria-label="7"></a><span class="co"># Loop</span></span>
-<span id="cb2-8"><a href="" aria-label="8"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(my_list)){</span>
-<span id="cb2-9"><a href="" aria-label="9"></a></span>
-<span id="cb2-10"><a href="" aria-label="10"></a>  means[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(my_list[[i]])</span>
-<span id="cb2-11"><a href="" aria-label="11"></a>  medians[i] <span class="ot">&lt;-</span> <span class="fu">median</span>(my_list[[i]])</span>
-<span id="cb2-12"><a href="" aria-label="12"></a>  stds[i] <span class="ot">&lt;-</span> <span class="fu">sd</span>(my_list[[i]])</span>
-<span id="cb2-13"><a href="" aria-label="13"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div><div class="column" style="width:40%;">
-<p>Result</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a>means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a>means <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(rts))   <span class="co"># empty vector to fill</span></span>
+<span id="cb3-2"><a href="" aria-label="2"></a></span>
+<span id="cb3-3"><a href="" aria-label="3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(rts)) {</span>
+<span id="cb3-4"><a href="" aria-label="4"></a>  means[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(rts[[i]])    <span class="co"># mean of the i-th element</span></span>
+<span id="cb3-5"><a href="" aria-label="5"></a>}</span>
+<span id="cb3-6"><a href="" aria-label="6"></a>means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.05671296  0.47225496 -0.22413846  0.07344355</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a>medians</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.08141012  0.45878207 -0.14936708  0.10168012</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-label="1"></a>stds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9991443 0.2837145 1.0871693 0.9811374</code></pre>
+<pre><code>[1] 450 595 450</code></pre>
 </div>
 </div>
-</div></div>
-</section>
-<section id="apply-family-2" class="slide level2">
-<h2><code>*apply</code> family</h2>
-<p>Everything works! but:</p>
+<p>It works, but:</p>
 <ul>
-<li><p>writing the for loop is laborious, with indices both for the list and for the vector we are filling</p></li>
-<li><p>we need to pre-allocate variables (for speed reasons)</p></li>
-<li><p>8 lines of code (for this simple example)</p></li>
+<li>we need to create the empty vector first</li>
+<li>we need to handle the index <code>i</code>, both for <code>rts</code> and for <code>means</code></li>
 </ul>
 </section>
-<section id="apply-family-3" class="slide level2">
-<h2><code>*apply</code> family</h2>
-<p>R has a family of apply functions such as <strong><code>lapply</code></strong>, <strong><code>sapply</code></strong>, etc. that let us get the same result in a more concise, fast and simple way:</p>
+<section id="solution-2-sapply" class="slide level2">
+<h2>Solution 2: <code>sapply()</code></h2>
+<p><strong><code>sapply(rts, mean)</code></strong>: apply <strong><code>mean</code></strong> to <strong>each element</strong> of <strong><code>rts</code></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="" aria-label="1"></a>means <span class="ot">&lt;-</span> <span class="fu">sapply</span>(my_list, mean)</span>
-<span id="cb9-2"><a href="" aria-label="2"></a>medians <span class="ot">&lt;-</span> <span class="fu">sapply</span>(my_list, median)</span>
-<span id="cb9-3"><a href="" aria-label="3"></a>stds <span class="ot">&lt;-</span> <span class="fu">sapply</span>(my_list, sd)</span>
-<span id="cb9-4"><a href="" aria-label="4"></a></span>
-<span id="cb9-5"><a href="" aria-label="5"></a>means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a><span class="fu">sapply</span>(rts, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       var1        var2        var3        var4 
- 0.05671296  0.47225496 -0.22413846  0.07344355 </code></pre>
+<pre><code>anna  ben carl 
+ 450  595  450 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="" aria-label="1"></a>medians</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p>It is exactly the same as writing, one by one:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-label="1"></a><span class="fu">c</span>(<span class="at">anna =</span> <span class="fu">mean</span>(rts<span class="sc">$</span>anna),</span>
+<span id="cb7-2"><a href="" aria-label="2"></a>  <span class="at">ben  =</span> <span class="fu">mean</span>(rts<span class="sc">$</span>ben),</span>
+<span id="cb7-3"><a href="" aria-label="3"></a>  <span class="at">carl =</span> <span class="fu">mean</span>(rts<span class="sc">$</span>carl))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       var1        var2        var3        var4 
--0.08141012  0.45878207 -0.14936708  0.10168012 </code></pre>
+<pre><code>anna  ben carl 
+ 450  595  450 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="" aria-label="1"></a>stds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     var1      var2      var3      var4 
-0.9991443 0.2837145 1.0871693 0.9811374 </code></pre>
 </div>
+<p>… but <code>sapply()</code> does it for us, for any number of elements, and keeps the names.</p>
 </div>
 </section>
-<section id="apply-family-4" class="slide level2">
-<h2><code>*apply</code> family</h2>
-<p><strong>apply( &lt; list &gt; , &lt; function &gt; )</strong></p>
+<section id="the-structure" class="slide level2">
+<h2>The structure</h2>
+<p><strong><code>sapply(X, FUN)</code></strong></p>
 <ul>
-<li>What can the <strong>list</strong> be?
+<li><strong><code>X</code></strong>: the object we go through, <strong>one element at a time</strong>
 <ul>
-<li><p>a list</p></li>
-<li><p>a dataframe</p></li>
-<li><p>a vector</p></li>
+<li>a list (each element), a vector (each value), a dataframe (each column)</li>
 </ul></li>
-<li>What can the <strong>function</strong> be?
+<li><strong><code>FUN</code></strong>: the function applied to <strong>each element</strong>
 <ul>
-<li><p>base or imported from a package</p></li>
-<li><p>custom</p></li>
-<li><p>anonymous</p></li>
+<li>a function of R or of a package (<code>mean</code>, <code>length</code>, …)</li>
+<li>a function we created</li>
+<li>an anonymous function, written on the spot</li>
 </ul></li>
 </ul>
 </section>
-<section id="apply-family-5" class="slide level2">
-<h2><code>*apply</code> family</h2>
-<p>Before analysing the <strong><code>*apply</code></strong> family, I think a further parallel with the for loop we have seen is useful. <strong><code>apply</code></strong> is nothing more than a slightly simplified <strong><code>for</code></strong> loop.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong><code>for</code></strong> loop</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="" aria-label="1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb15-2"><a href="" aria-label="2"></a><span class="cf">for</span>(i <span class="cf">in</span> vec){</span>
-<span id="cb15-3"><a href="" aria-label="3"></a>  <span class="fu">print</span>(i)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1
-[1] 2
-[1] 3
-[1] 4
-[1] 5</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<p><strong><code>sapply</code></strong></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="" aria-label="1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb17-2"><a href="" aria-label="2"></a>res <span class="ot">&lt;-</span> <span class="fu">sapply</span>(vec, print)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1
-[1] 2
-[1] 3
-[1] 4
-[1] 5</code></pre>
-</div>
-</div>
-</div></div>
-</section>
-<section id="apply-family---custom-function" class="slide level2">
-<h2><code>*apply</code> family - custom function</h2>
-<p>We can also use functions we created ourselves:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="" aria-label="1"></a>center_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb19-2"><a href="" aria-label="2"></a>  x <span class="sc">-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb19-3"><a href="" aria-label="3"></a>}</span>
-<span id="cb19-4"><a href="" aria-label="4"></a></span>
-<span id="cb19-5"><a href="" aria-label="5"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb19-6"><a href="" aria-label="6"></a>    <span class="at">vec1 =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">min  =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>),</span>
-<span id="cb19-7"><a href="" aria-label="7"></a>    <span class="at">vec2 =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">min  =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>),</span>
-<span id="cb19-8"><a href="" aria-label="8"></a>    <span class="at">vec3 =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">min  =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>)</span>
-<span id="cb19-9"><a href="" aria-label="9"></a>)</span>
-<span id="cb19-10"><a href="" aria-label="10"></a></span>
-<span id="cb19-11"><a href="" aria-label="11"></a><span class="fu">lapply</span>(my_list, center_var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$vec1
- [1]  0.35622590  0.40579508 -0.13355142 -0.26581224  0.11323090 -0.31519911
- [7] -0.31005045 -0.07008290  0.25763143 -0.03818719
-
-$vec2
- [1]  0.28614303  0.34409264  0.38747787 -0.53213280  0.14114328 -0.17051661
- [7] -0.39408174  0.07340621  0.27975540 -0.41528730
-
-$vec3
- [1] -0.36174658 -0.26790342 -0.21727041  0.38045510  0.18946385  0.21002124
- [7] -0.05050596 -0.20929304 -0.14993513  0.47671436</code></pre>
-</div>
-</div>
-</section>
-<section id="apply-family---implicit-vs.-explicit" class="slide level2">
-<h2><code>*apply</code> family - implicit vs.&nbsp;explicit</h2>
-<p>So, just as the <strong><code>for</code></strong> loop written as <strong>i</strong> in <strong>vec</strong> assigns to <strong>i</strong> one <strong>element</strong> of the <strong>vec</strong> object at a time, internally the <strong><code>*apply</code></strong> functions take the <strong>first element</strong> of the <strong>input</strong> object (list) and directly <strong>apply</strong> the function we have chosen.</p>
+<section id="like-a-for-loop" class="slide level2">
+<h2>Like a <code>for</code> loop</h2>
+<p><code>sapply()</code> is a compact <code>for</code> loop: the element of <code>X</code> plays the role of <code>i</code></p>
 <div class="columns">
 <div class="column" style="width:40%;">
-<p>implicit <strong><code>sapply</code></strong></p>
+<p><strong><code>for</code></strong> loop</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="" aria-label="1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb21-2"><a href="" aria-label="2"></a>res <span class="ot">&lt;-</span> <span class="fu">sapply</span>(vec, print)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="" aria-label="1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
+<span id="cb9-2"><a href="" aria-label="2"></a>  <span class="fu">print</span>(x <span class="sc">*</span> <span class="dv">10</span>)</span>
+<span id="cb9-3"><a href="" aria-label="3"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1
-[1] 2
-[1] 3
-[1] 4
-[1] 5</code></pre>
+<pre><code>[1] 10
+[1] 20
+[1] 30</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:60%;">
-<p>explicit <strong><code>sapply</code></strong></p>
+<p><strong><code>sapply</code></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="" aria-label="1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb23-2"><a href="" aria-label="2"></a>res <span class="ot">&lt;-</span> <span class="fu">sapply</span>(vec, <span class="cf">function</span>(i) <span class="fu">print</span>(i))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="" aria-label="1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(x) x <span class="sc">*</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1
-[1] 2
+<pre><code>[1] 10 20 30</code></pre>
+</div>
+</div>
+</div></div>
+<p>Both take <strong>1, then 2, then 3</strong> and multiply each by 10. <code>sapply()</code> collects the results in a vector.</p>
+</section>
+<section id="lapply-vs-sapply" class="slide level2">
+<h2><code>lapply()</code> vs <code>sapply()</code></h2>
+<p>Same input (<code>rts</code>), same function (<code>length</code>: how many trials each participant has)</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><code>lapply</code></strong>: always returns a <strong>list</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="" aria-label="1"></a><span class="fu">lapply</span>(rts, length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$anna
 [1] 3
-[1] 4
-[1] 5</code></pre>
+
+$ben
+[1] 2
+
+$carl
+[1] 4</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong><code>sapply</code></strong>: <strong>simplifies</strong> the result, here to a vector</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="" aria-label="1"></a><span class="fu">sapply</span>(rts, length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>anna  ben carl 
+   3    2    4 </code></pre>
 </div>
 </div>
 </div></div>
 </section>
-<section id="apply-family---anonymous-function" class="slide level2">
-<h2><code>*apply</code> family - anonymous function</h2>
-<p>An anonymous function is a function that is not saved in an object but written to be <strong>executed directly</strong>, inside other functions that allow it:</p>
+<section id="with-our-own-function" class="slide level2">
+<h2>With our own function</h2>
+<p>A function that converts milliseconds into seconds…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="" aria-label="1"></a><span class="fu">lapply</span>(my_list, <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">mean</span>(x))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="" aria-label="1"></a>to_seconds <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb17-2"><a href="" aria-label="2"></a><span class="fu">to_seconds</span>(rts<span class="sc">$</span>anna)   <span class="co"># on one element</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$vec1
- [1]  0.35622590  0.40579508 -0.13355142 -0.26581224  0.11323090 -0.31519911
- [7] -0.31005045 -0.07008290  0.25763143 -0.03818719
-
-$vec2
- [1]  0.28614303  0.34409264  0.38747787 -0.53213280  0.14114328 -0.17051661
- [7] -0.39408174  0.07340621  0.27975540 -0.41528730
-
-$vec3
- [1] -0.36174658 -0.26790342 -0.21727041  0.38045510  0.18946385  0.21002124
- [7] -0.05050596 -0.20929304 -0.14993513  0.47671436</code></pre>
+<pre><code>[1] 0.45 0.52 0.38</code></pre>
 </div>
 </div>
-<p><strong><code>x</code></strong> is just a <strong>placeholder</strong> (analogous to i) and can be any letter or name!</p>
+<div class="fragment">
+<p>… and apply it to <strong>each element</strong> of <strong><code>rts</code></strong>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="" aria-label="1"></a><span class="fu">lapply</span>(rts, to_seconds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$anna
+[1] 0.45 0.52 0.38
+
+$ben
+[1] 0.61 0.58
+
+$carl
+[1] 0.40 0.43 0.47 0.50</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="with-an-anonymous-function" class="slide level2">
+<h2>With an anonymous function</h2>
+<p>If we need the function only once, we can write it <strong>directly inside</strong> <code>sapply()</code>, without saving it:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="" aria-label="1"></a><span class="co"># range of each participant: maximum - minimum</span></span>
+<span id="cb21-2"><a href="" aria-label="2"></a><span class="fu">sapply</span>(rts, <span class="cf">function</span>(x) <span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>anna  ben carl 
+ 140   30  100 </code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><strong><code>x</code></strong> is a <strong>placeholder</strong> (like <code>i</code> in a <code>for</code> loop): it becomes each element of <code>rts</code>, one at a time</p>
+<ul>
+<li>first <code>x</code> is <code>rts$anna</code>: <code>520 - 380 = 140</code></li>
+<li>then <code>x</code> is <code>rts$ben</code>: <code>610 - 580 = 30</code></li>
+<li>then <code>x</code> is <code>rts$carl</code>: <code>500 - 400 = 100</code></li>
+</ul>
+</div>
 </section>
 <section id="all-the-types-of-apply" class="slide level2">
 <h2>All the types of <code>*apply</code></h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 45%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>function</th>
+<th>goes through …</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><code>lapply()</code></strong></td>
+<td>each element of a list/vector</td>
+<td>a list</td>
+</tr>
+<tr class="even">
+<td><strong><code>sapply()</code></strong></td>
+<td>each element of a list/vector</td>
+<td>a vector or matrix, if possible</td>
+</tr>
+<tr class="odd">
+<td><strong><code>apply()</code></strong></td>
+<td>each row or column of a matrix/dataframe</td>
+<td>a vector</td>
+</tr>
+<tr class="even">
+<td><strong><code>tapply()</code></strong></td>
+<td>each group of a vector, defined by a factor</td>
+<td>a vector</td>
+</tr>
+<tr class="odd">
+<td><strong><code>vapply()</code></strong></td>
+<td>like <code>sapply()</code>, but checks the type of the result</td>
+<td>a vector</td>
+</tr>
+<tr class="even">
+<td><strong><code>mapply()</code></strong></td>
+<td>several vectors/lists at the same time</td>
+<td>a vector or a list</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="apply-rows-or-columns" class="slide level2">
+<h2><code>apply()</code>: rows or columns</h2>
+<p>The scores of 3 students (rows) in 3 tests (columns):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="" aria-label="1"></a>scores <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">28</span>, <span class="dv">30</span>,</span>
+<span id="cb23-2"><a href="" aria-label="2"></a>                   <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>,</span>
+<span id="cb23-3"><a href="" aria-label="3"></a>                   <span class="dv">30</span>, <span class="dv">29</span>, <span class="dv">27</span>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb23-4"><a href="" aria-label="4"></a>                 <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"anna"</span>, <span class="st">"ben"</span>, <span class="st">"carl"</span>),</span>
+<span id="cb23-5"><a href="" aria-label="5"></a>                                 <span class="fu">c</span>(<span class="st">"test1"</span>, <span class="st">"test2"</span>, <span class="st">"test3"</span>)))</span>
+<span id="cb23-6"><a href="" aria-label="6"></a>scores</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     test1 test2 test3
+anna    24    28    30
+ben     18    22    25
+carl    30    29    27</code></pre>
+</div>
+</div>
+<p><strong><code>apply(X, MARGIN, FUN)</code></strong>: <code>MARGIN = 1</code> for the <strong>rows</strong>, <code>MARGIN = 2</code> for the <strong>columns</strong></p>
+</section>
+<section id="apply-rows-or-columns-1" class="slide level2">
+<h2><code>apply()</code>: rows or columns</h2>
+<p><code>MARGIN = 1</code>: <code>mean</code> of <strong>each row</strong>, one result per <strong>student</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="" aria-label="1"></a><span class="fu">apply</span>(scores, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    anna      ben     carl 
+27.33333 21.66667 28.66667 </code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><code>MARGIN = 2</code>: <code>max</code> of <strong>each column</strong>, one result per <strong>test</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="" aria-label="1"></a><span class="fu">apply</span>(scores, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> max)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>test1 test2 test3 
+   30    29    30 </code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>It also works on dataframes, e.g.&nbsp;on the numeric columns of <code>iris</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="" aria-label="1"></a><span class="fu">apply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+    5.843333     3.057333     3.758000     1.199333 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="tapply-by-group" class="slide level2">
+<h2><code>tapply()</code>: by group</h2>
+<p>Reaction times of 6 trials, in two conditions:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="" aria-label="1"></a>exp_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">rt =</span> <span class="fu">c</span>(<span class="dv">450</span>, <span class="dv">520</span>, <span class="dv">380</span>, <span class="dv">610</span>, <span class="dv">580</span>, <span class="dv">640</span>),</span>
+<span id="cb31-2"><a href="" aria-label="2"></a>  <span class="at">condition =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"easy"</span>, <span class="st">"hard"</span>), <span class="at">each =</span> <span class="dv">3</span>))</span>
+<span id="cb31-3"><a href="" aria-label="3"></a>exp_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   rt condition
+1 450      easy
+2 520      easy
+3 380      easy
+4 610      hard
+5 580      hard
+6 640      hard</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><strong><code>tapply(X, INDEX, FUN)</code></strong>: apply <strong><code>FUN</code></strong> to <strong><code>X</code></strong>, group by group (<strong><code>INDEX</code></strong>)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="" aria-label="1"></a><span class="fu">tapply</span>(exp_data<span class="sc">$</span>rt, <span class="at">INDEX =</span> exp_data<span class="sc">$</span>condition, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>easy hard 
+ 450  610 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="tapply-by-group-1" class="slide level2">
+<h2><code>tapply()</code>: by group</h2>
+<p>It is the same as selecting each group by hand:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="" aria-label="1"></a><span class="fu">mean</span>(exp_data<span class="sc">$</span>rt[exp_data<span class="sc">$</span>condition <span class="sc">==</span> <span class="st">"easy"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 450</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="" aria-label="1"></a><span class="fu">mean</span>(exp_data<span class="sc">$</span>rt[exp_data<span class="sc">$</span>condition <span class="sc">==</span> <span class="st">"hard"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 610</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>With <code>tapply()</code> we write it once, whatever the number of groups. For example, the mean <code>Petal.Length</code> of each species in <code>iris</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="" aria-label="1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Petal.Length, <span class="at">INDEX =</span> iris<span class="sc">$</span>Species, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    setosa versicolor  virginica 
+     1.462      4.260      5.552 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="vapply-checking-the-result" class="slide level2">
+<h2><code>vapply()</code>: checking the result</h2>
+<p>Like <code>sapply()</code>, but we declare <strong>in advance</strong> what each result must be (<code>FUN.VALUE</code>): here, <strong>one number</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="" aria-label="1"></a><span class="fu">vapply</span>(rts, <span class="at">FUN =</span> mean, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>anna  ben carl 
+ 450  595  450 </code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>If the function returns something different, <code>vapply()</code> stops with an error. <code>range()</code> returns <strong>two</strong> numbers:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="" aria-label="1"></a><span class="fu">vapply</span>(rts, <span class="at">FUN =</span> range, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `vapply()`:
+! values must be length 1,
+ but FUN(X[[1]]) result is length 2</code></pre>
+</div>
+</div>
+<p>Useful inside your own functions, to catch mistakes early.</p>
+</div>
+</section>
+<section id="mapply-several-vectors-at-once" class="slide level2">
+<h2><code>mapply()</code>: several vectors at once</h2>
+<p><strong><code>mapply(FUN, X1, X2)</code></strong>: apply <strong><code>FUN</code></strong> to the <strong>first</strong> elements of <code>X1</code> and <code>X2</code>, then to the <strong>second</strong> ones, and so on</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="" aria-label="1"></a><span class="fu">mapply</span>(rep, <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$a
+[1] "a" "a" "a"
+
+$b
+[1] "b" "b"
+
+$c
+[1] "c"</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>It is the same as writing:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-label="1"></a><span class="fu">list</span>(<span class="at">a =</span> <span class="fu">rep</span>(<span class="st">"a"</span>, <span class="dv">3</span>), <span class="at">b =</span> <span class="fu">rep</span>(<span class="st">"b"</span>, <span class="dv">2</span>), <span class="at">c =</span> <span class="fu">rep</span>(<span class="st">"c"</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>All the vectors must have the same length!</strong></p>
+</div>
+</section>
+<section id="mapply-simulating-data" class="slide level2">
+<h2><code>mapply()</code>: simulating data</h2>
+<p>Three samples of 3 values, each with its own mean and standard deviation:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb48-2"><a href="" aria-label="2"></a>mus <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<span id="cb48-3"><a href="" aria-label="3"></a>sigmas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span>
+<span id="cb48-4"><a href="" aria-label="4"></a><span class="fu">mapply</span>(<span class="cf">function</span>(m, s) <span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> m, <span class="at">sd =</span> s), mus, sigmas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]     [,2]     [,3]
+[1,]  9.373546 57.97640 104.8743
+[2,] 10.183643 51.64754 107.3832
+[3,]  9.164371 45.89766 105.7578</code></pre>
+</div>
+</div>
+<div class="fragment">
 <ul>
-<li><p><strong><code>lapply()</code></strong>: the basic function</p></li>
-<li><p><strong><code>sapply()</code></strong>: simplified-apply</p></li>
-<li><p><strong><code>tapply()</code></strong>: rarely used, useful with factors</p></li>
-<li><p><strong><code>apply()</code></strong>: useful for dataframes/matrices</p></li>
-<li><p><strong><code>mapply()</code></strong>: multivariate version, uses several lists at the same time</p></li>
-<li><p><strong><code>vapply()</code></strong>: used inside functions and packages</p></li>
+<li>one <strong>column</strong> per call: <code>m = 10, s = 1</code>, then <code>m = 50, s = 5</code>, then <code>m = 100, s = 10</code></li>
+<li>add <code>SIMPLIFY = FALSE</code> to get a list instead of a matrix</li>
 </ul>
+</div>
 </section>
-<section id="lapply" class="slide level2">
-<h2><code>lapply</code></h2>
-<p><strong><code>lapply</code></strong> stands for list-apply and always returns a list, applying the function to each element of the input list:</p>
+<section id="replicate-repeat-the-same-code" class="slide level2">
+<h2><code>replicate()</code>: repeat the same code</h2>
+<p><strong><code>replicate(n, expr)</code></strong>: run the code <strong><code>expr</code></strong> <strong><code>n</code></strong> times. There is no element to go through: the code is just repeated.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="" aria-label="1"></a>res <span class="ot">&lt;-</span> <span class="fu">lapply</span>(my_list, mean)</span>
-<span id="cb27-2"><a href="" aria-label="2"></a>res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb50-2"><a href="" aria-label="2"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">expr =</span> <span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">30</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$vec1
-[1] 0.5735488
-
-$vec2
-[1] 0.5850786
-
-$vec3
-[1] 0.514791</code></pre>
+<pre><code>[1] 102.47375 103.98324 103.30834 103.39998  90.09916</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="" aria-label="1"></a><span class="fu">class</span>(res)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "list"</code></pre>
 </div>
+<div class="fragment">
+<p>Each number is the mean of a <strong>new</strong> sample of 30 values: the means are all different, but close to 100.</p>
 </div>
 </section>
-<section id="sapply" class="slide level2">
-<h2><code>sapply</code></h2>
-<p><strong><code>sapply</code></strong> stands for simplified-apply and (tries to) return a simpler version of a list, applying the function to each element of the input list:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="" aria-label="1"></a>res <span class="ot">&lt;-</span> <span class="fu">sapply</span>(my_list, mean)</span>
-<span id="cb31-2"><a href="" aria-label="2"></a>res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     vec1      vec2      vec3 
-0.5735488 0.5850786 0.5147910 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="" aria-label="1"></a><span class="fu">class</span>(res)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "numeric"</code></pre>
-</div>
-</div>
-</section>
-<section id="apply" class="slide level2">
-<h2><code>apply</code></h2>
-<p><strong><code>apply</code></strong> works specifically on dataframes or matrices, applying a function to the rows or the columns:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="" aria-label="1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">5</span>,<span class="at">min =</span> <span class="dv">1</span>,<span class="at">max =</span> <span class="dv">10</span>),</span>
-<span id="cb35-2"><a href="" aria-label="2"></a>                  <span class="at">x2 =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">5</span>,<span class="at">min =</span> <span class="dv">3</span>,<span class="at">max =</span> <span class="dv">4</span>))</span>
-<span id="cb35-3"><a href="" aria-label="3"></a>my_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        x1       x2
-1 4.902174 3.639349
-2 1.068568 3.768333
-3 3.977162 3.767391
-4 5.668196 3.190103
-5 3.749397 3.377448</code></pre>
-</div>
-</div>
-</section>
-<section id="apply-1" class="slide level2">
-<h2><code>apply</code></h2>
-<p>Apply the mean function to all rows (1):</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="" aria-label="1"></a><span class="fu">apply</span>(my_df, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.270762 2.418450 3.872276 4.429150 3.563423</code></pre>
-</div>
-</div>
-<p>Apply the mean function to all columns (2):</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="" aria-label="1"></a><span class="fu">apply</span>(my_df, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      x1       x2 
-3.873099 3.548525 </code></pre>
-</div>
-</div>
-</section>
-<section id="tapply" class="slide level2">
-<h2><code>tapply</code></h2>
-<p><strong><code>tapply</code></strong> lets us apply a function to a vector, splitting the vector according to a categorical variable:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="" aria-label="1"></a>vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">75</span>)</span>
-<span id="cb41-2"><a href="" aria-label="2"></a></span>
-<span id="cb41-3"><a href="" aria-label="3"></a>index <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="at">each =</span> <span class="dv">25</span>)</span>
-<span id="cb41-4"><a href="" aria-label="4"></a></span>
-<span id="cb41-5"><a href="" aria-label="5"></a><span class="fu">tapply</span>(vec, <span class="at">INDEX =</span> index, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          a           b           c 
--0.06327193 -0.03021544 -0.17966927 </code></pre>
-</div>
-</div>
-<p>Here <em><code>INDEX</code></em> is a character vector or a factor.</p>
-</section>
-<section id="tapply-1" class="slide level2">
-<h2><code>tapply</code></h2>
-<p>In this case we compute the mean for each age category:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="" aria-label="1"></a>my_df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/mydf_2.csv"</span>)</span>
-<span id="cb43-2"><a href="" aria-label="2"></a><span class="fu">head</span>(my_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-     id   age age_cat      age_z
-  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;
-1     1    29 young      -0.188 
-2     2    18 adolescent -1.17  
-3     3    27 young      -0.366 
-4     4    40 adult       0.795 
-5     5    30 young      -0.0983
-6     6    38 adult       0.616 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="" aria-label="1"></a><span class="fu">tapply</span>(my_df<span class="sc">$</span>age, my_df<span class="sc">$</span>age_cat, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>adolescent      adult      young 
-  16.50000   40.86667   24.55556 </code></pre>
-</div>
-</div>
-</section>
-<section id="vapply" class="slide level2">
-<h2><code>vapply</code></h2>
-<p><strong><code>vapply</code></strong> is a more robust version of the previous ones from a programming point of view. In practice it lets (and requires) us to specify in advance the type of data we expect as a result:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-label="1"></a><span class="fu">vapply</span>(my_list, <span class="at">FUN =</span> mean, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="at">length =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     vec1      vec2      vec3 
-0.5735488 0.5850786 0.5147910 </code></pre>
-</div>
-</div>
-<p><em><code>FUN.VALUE = numeric(length = 1)</code></em>: indicates that each result is a single numeric value.</p>
-</section>
-<section id="mapply" class="slide level2">
-<h2><code>mapply</code></h2>
-<p><strong><code>mapply</code></strong> lets us handle <strong>several lists at the same time</strong> for more complex scenarios. For example, we want to use the <strong><code>rnorm()</code></strong> function to generate 4 samples combining different means and standard deviations:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="" aria-label="1"></a>mus <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb49-2"><a href="" aria-label="2"></a>stds <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb49-3"><a href="" aria-label="3"></a></span>
-<span id="cb49-4"><a href="" aria-label="4"></a><span class="fu">mapply</span>(<span class="cf">function</span>(x,y) <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> x, <span class="at">sd =</span> y),</span>
-<span id="cb49-5"><a href="" aria-label="5"></a>       mus, stds, <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] 10.500950 11.995598  8.955502  9.376923  8.577450
-
-[[2]]
-[1] 20.56899 18.50954 19.02368 22.09763 18.91090
-
-[[3]]
-[1] 28.21941 32.59818 30.05078 31.55771 28.69693
-
-[[4]]
-[1] 33.79673 40.84147 44.35516 40.30744 41.93724</code></pre>
-</div>
-</div>
-<p><strong>IMPORTANT</strong>: all the lists included must have the same length!</p>
-</section>
-<section id="mapply-1" class="slide level2 smaller">
-<h2><code>mapply</code></h2>
-<p><strong>mapply(function(x,y) rnorm(n = 5, mean = x, sd = y), mus, stds, SIMPLIFY = FALSE)</strong></p>
-<ul>
-<li><p><strong><code>function(...)</code></strong>: an anonymous function, as we saw before, which can have n elements</p></li>
-<li><p><strong><code>rnorm(n = 5, mean = x, sd = y)</code></strong>: the actual anonymous function, where we have the placeholders x and y</p></li>
-<li><p><strong><code>mus, stds</code></strong>: the lists corresponding, <strong>in order</strong>, to the placeholders, so x = mus and y = stds</p></li>
-<li><p><strong><code>SIMPLIFY = FALSE</code></strong>: simply says to return a list and not to try (like sapply) to simplify the result</p></li>
-</ul>
-</section>
-<section id="mapply-as-a-for" class="slide level2">
-<h2><code>mapply</code> as a <code>for</code></h2>
-<p>The same result (in a more verbose way) can be obtained with a <strong><code>for</code></strong> loop, using the iterator i several times:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="" aria-label="1"></a>mus <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
-<span id="cb51-2"><a href="" aria-label="2"></a>stds <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb51-3"><a href="" aria-label="3"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">length</span>(mus)) <span class="co"># empty list</span></span>
-<span id="cb51-4"><a href="" aria-label="4"></a></span>
-<span id="cb51-5"><a href="" aria-label="5"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(mus)){</span>
-<span id="cb51-6"><a href="" aria-label="6"></a>  res[[i]] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> mus[[i]], <span class="at">sd =</span> stds[[i]])</span>
-<span id="cb51-7"><a href="" aria-label="7"></a>}</span>
-<span id="cb51-8"><a href="" aria-label="8"></a>res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] 10.080162  9.749474 10.435478  9.733762  9.321152 10.788030
-
-[[2]]
-[1] 20.76959 19.95664 22.36724 16.88161 22.37280 20.24247
-
-[[3]]
-[1] 30.22561 27.78725 29.21119 24.91813 27.31852 28.30777</code></pre>
-</div>
-</div>
-</section>
-<section id="replicate" class="slide level2">
-<h2><code>replicate</code></h2>
-<p>This function lets us repeat an operation n times, without using an iterator or a placeholder.</p>
-<p><strong><code>replicate(n, expr)</code></strong></p>
-<ul>
-<li><p><strong><em><code>n</code></em></strong> is the number of repetitions</p></li>
-<li><p><strong><em><code>expr</code></em></strong> is the portion of code to repeat</p></li>
-</ul>
-</section>
-<section id="replicate-1" class="slide level2">
-<h2><code>replicate</code></h2>
-<p>We sample 1000 times from a normal distribution and compute the mean, AKA the sampling distribution of the mean</p>
+<section id="replicate-sampling-distribution" class="slide level2">
+<h2><code>replicate()</code>: sampling distribution</h2>
+<p>Repeating it 1000 times we get the <strong>sampling distribution of the mean</strong>:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="" aria-label="1"></a>nrep <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb53-2"><a href="" aria-label="2"></a></span>
-<span id="cb53-3"><a href="" aria-label="3"></a>nsample <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb53-4"><a href="" aria-label="4"></a></span>
-<span id="cb53-5"><a href="" aria-label="5"></a>mu <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb53-6"><a href="" aria-label="6"></a></span>
-<span id="cb53-7"><a href="" aria-label="7"></a>sd <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb53-8"><a href="" aria-label="8"></a></span>
-<span id="cb53-9"><a href="" aria-label="9"></a>means <span class="ot">&lt;-</span></span>
-<span id="cb53-10"><a href="" aria-label="10"></a>  <span class="fu">replicate</span>(</span>
-<span id="cb53-11"><a href="" aria-label="11"></a>    <span class="at">n =</span> nrep,</span>
-<span id="cb53-12"><a href="" aria-label="12"></a>    <span class="at">expr =</span> {<span class="fu">mean</span>(</span>
-<span id="cb53-13"><a href="" aria-label="13"></a>      <span class="fu">rnorm</span>(nsample, mu, sd))}</span>
-<span id="cb53-14"><a href="" aria-label="14"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb52-2"><a href="" aria-label="2"></a>means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(</span>
+<span id="cb52-3"><a href="" aria-label="3"></a>  <span class="at">n =</span> <span class="dv">1000</span>,</span>
+<span id="cb52-4"><a href="" aria-label="4"></a>  <span class="at">expr =</span> {</span>
+<span id="cb52-5"><a href="" aria-label="5"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">30</span>)</span>
+<span id="cb52-6"><a href="" aria-label="6"></a>    <span class="fu">mean</span>(x)</span>
+<span id="cb52-7"><a href="" aria-label="7"></a>  })</span>
+<span id="cb52-8"><a href="" aria-label="8"></a><span class="fu">mean</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 99.96828</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="" aria-label="1"></a><span class="fu">sd</span>(means)  <span class="co"># standard error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.220686</code></pre>
+</div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3.3_apply_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="3.3_apply_files/figure-revealjs/unnamed-chunk-27-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -857,7 +849,7 @@ $vec3
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 5.0e-2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',

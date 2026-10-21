@@ -14,15 +14,6 @@ editor: visual
 
 The concept of iteration underlies any operation in programming languages. In R many operations are vectorized. This makes the language more efficient and cleaner BUT hides the concept of iteration.
 
-For example, the **`sum()`** function lets us add up a vector of numbers.
-
-```{r, echo=TRUE}
-# add up the numbers from 1 to 10
-sum(1:10)
-```
-
-But what is hidden underneath?
-
 ------------------------------------------------------------------------
 
 Example: if I ask you to use the **`print()`** function to write "hello world" in the console 5 times, how would you do it?
@@ -38,7 +29,7 @@ print(msg)
 
 ------------------------------------------------------------------------
 
-What we are missing (and what the **`sum()`** function does) is a way to repeat a given operation without actually repeating the code manually.
+What we are missing is a way to repeat a given operation without actually repeating the code manually.
 
 There are several constructs that let us repeat operations; the most used are:
 
@@ -252,17 +243,11 @@ Let's put everything inside a function (i.e., I create a function that replicate
 
 ```{r, echo=TRUE}
 my_sum <- function(x){
-
   total <- 0 # initialize the total to 0
-
-  for(i in seq_along(x)){  # equivalent to 1:length(x)
-
+  for(i in 1:length(x)){  # equivalent to 1:length(x)
     total <- total + x[i]
-
     }
-
   return(total)
-
 }
 
 x <- rnorm(100, mean = 0, sd = 1)
@@ -276,9 +261,9 @@ sum(x)
 
 ## Iteration, applications
 
-The **`for`** loop is also useful, for example, to simulate data. Suppose we have a variable y (income) that depends on age:
+The **`for`** loop is also useful, for example, to simulate data and perfom a power analysis. Suppose we have a variable y (income) that depends on age:
 
-1. I load the dataset I created:
+1. Load the dataset:
 
 ```{r, echo=TRUE}
 mydf <- read.csv(file = "data/mydf_2.csv") # load the dataset
@@ -288,22 +273,30 @@ str(mydf)
 
 ------------------------------------------------------------------------
 
-2. With a **`for`** loop, I simulate the variable **y** (income) assuming it depends on **age_z** (age):
+2.  Simulate the variable **y** (income) assuming it depends on **age_z** (age), so we need to extract age_z and choose an effect size
 
 ```{r, echo=TRUE}
-set.seed(111) # for reproducibility
-
-niter <- 1000
-res_all <- rep(NA, niter)    # all estimated effects
-p_val <- rep(NA, niter)      # all p-values
-
 # Observed data
 age_z <- mydf$age_z
 eff_age <- .2 # age effect
-n_obs <- length(age_z)
+nobs <- nrow(mydf)
+```
+
+
+------------------------------------------------------------------------
+
+3.  Now the for loop ...
+
+```{r, echo=TRUE}
+set.seed(111) # for reproducibility
+#initialize the empity vectors
+niter <- 1000 # number of iterations
+res_all <- rep(NA, niter)    # all estimated effects
+p_val <- rep(NA, niter)      # all p-values
 
 for(i in 1:niter) {
-  y <- 0 + eff_age * age_z + rnorm(n_obs, 0, 1) # always add some noise
+  
+  y <- rnorm(nobs, mean = 0 + eff_age * age_z, sd = 1) 
 
   # linear model
   mod <- lm(y ~ 1 + age_z)
@@ -358,12 +351,6 @@ abline(v = eff_age, col = "red", lwd = 2, lty = 2)  # true effect
 ```
 
 
-------------------------------------------------------------------------
-
-
-It is precisely thanks to the for loop that we can run a ***power simulation***.
-
-To learn more, have a look at this [page](https://www.memoryandlearninglab.it/workshops-on-data-analysis/)! :)
 
 ## Nested `for` loops
 
@@ -371,83 +358,58 @@ Once you understand the iterative structure, you can easily extend it by putting
 
 ```{r, echo=TRUE}
 for(i in 1:3){ # level 1
-
   for(j in 1:3){ # level 2
-
       print(paste(i, j))
-
-  }
-
+    }
 }
 ```
 
 ------------------------------------------------------------------------
 
-Imagine we have two experimental groups (for example, a Control group and a Treatment group), each with 10 participants. We want to measure a variable (for example, reaction time) for each participant and record the results in a dataframe:
+Two groups, **Control** and **Treatment**, with 3 participants each: a nested loop goes through **every participant of every group**.
 
 ```{r, echo=TRUE}
-# Define the study parameters
-groups <- c("Control", "Treatment") # Group names
-n_subj <- 10                          # Number of subjects per group
-tot_subj <- n_subj * length(groups)
-
-# Create a data.frame to store the data
-res <- data.frame(
-
-  # Group factor
-  Group = factor(x = rep(groups, each = n_subj)),
-
-  # Subject factor
-  Subject = factor(x = 1:tot_subj),
-
-  # Reaction time: numeric vector with rt = 0
-  RT = numeric(tot_subj)
-)
-```
-
-------------------------------------------------------------------------
-```{r, echo=TRUE}
-head(res, 5) # look at the first observations of res
-tail(res, 5) # look at the last observations of res
-```
-
-------------------------------------------------------------------------
-
-```{r, echo=TRUE}
-# Nested loop to simulate data collection
-set.seed(42)  # For reproducibility of the simulated data
-
-k <- 1 # reaction time iterator
-
-# how many levels does Group have?
-for (i in 1:length(levels(res$Group))) {
-
-  # start with the first group, which is the control group
-  group <- levels(res$Group)[i]
-
-  for (j in 1:n_subj) { # n_subj for each group
-
-    # is it the control group?
-    RT <- ifelse(group == "Control",
-               yes = rlnorm(1, mean = log(.500), sd = .050),
-               no = rlnorm(1, mean = log(.450), sd = .050))
-
-    res$RT[k] <- RT
-    k <- k + 1
+groups <- c("Control", "Treatment")
+for (group in groups) {     # outer loop: groups
+  for (subj in 1:3) {       # inner loop: participants
+    print(paste("Group:", group, "- Participant:", subj))
   }
 }
 ```
 
+::: fragment
+For each group, the inner loop runs **completely**: 2 x 3 = 6 repetitions.
+:::
+
+------------------------------------------------------------------------
+
+Now let's **simulate** a reaction time (in ms) for each participant, and save it in a matrix: one **row** for each participant, one **column** for each group.
+
+```{r, echo=TRUE}
+rt <- data.frame(Control = c(NA,NA, NA),
+                 Treatment = c(NA,NA, NA))   # empty df
+rt
+```
+
+::: fragment
+The two indices of the loops are the **row** (`i`) and the **column** (`j`) of the cell to fill: `rt[i, j]`
+:::
+
 ------------------------------------------------------------------------
 
 ```{r, echo=TRUE}
-str(res)
-head(res, 3)
-tail(res, 3)
-mean(res$RT[res$Group == "Control"])
-mean(res$RT[res$Group == "Treatment"])
-```
+set.seed(42)           # reproducibility
+means <- c(500, 450)   # Control, Treatment
 
+for (j in 1:2) {       # columns: groups
+  for (i in 1:3) {     # rows: participants
+    rt[i, j] <- round(rnorm(1, mean = means[j], sd = 50))
+  }
+}
+
+rt
+colMeans(rt)           # mean RT of each group
+```
 
 ## Now let's practice! {style="text-align: center;"}
 

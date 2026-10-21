@@ -4,5 +4,5 @@
    Quarto's default is 0.55em of the text (about 17px). A fixed size keeps code the
    same in every deck; reveal.js scales the whole slide to the screen. */
 .reveal pre {
-  font-size: 28px;
+  font-size: 24px;
 }

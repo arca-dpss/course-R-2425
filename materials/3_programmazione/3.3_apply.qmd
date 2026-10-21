@@ -1,357 +1,335 @@
 ---
-title: "3.3_apply"
+title: "*apply family"
 format:
    revealjs:
      css: ../slides.css
-     margin: 0.1
+     margin: .05
+     fontsize: 1.9em
+     linestretch: 1.4
+     mainfont: Helvetica Neue
 editor: visual
 ---
 
-## `*apply` family
+## The problem
 
-Imagine you have a list of vectors and you want to apply the same function(s) to each element of the list:
-
--   I apply the function manually, selecting the elements
-
--   a **`for`** loop that iterates over the elements of the list and applies the function(s)
-
-    ...
+We have the reaction times (in ms) of three participants, saved in a list:
 
 ```{r, echo=TRUE}
-my_list <- list(
-    var1=rnorm(n = 100, mean = 0, sd = 1),
-    var2=runif(n = 100, min = 0, max = 1),
-    var3=rnorm(n = 100, mean = 0, sd = 1),
-    var4=rnorm(n = 100, mean = 0, sd = 1)
-)
+rts <- list(anna = c(450, 520, 380),
+            ben  = c(610, 580),
+            carl = c(400, 430, 470, 500))
+rts
 ```
 
-## `*apply` family
+We want the **mean of each participant**: apply the **same function** (`mean`) to **each element** of the list.
 
-::::: columns
-::: {.column width="60%"}
-Let's compute mean, median and std
+## Solution 1: a `for` loop
 
 ```{r, echo=TRUE}
-# initialize the vectors with arbitrary numbers,
-# but as many as we need
-means <- 1:length(my_list)
-medians <- 1:length(my_list)
-stds <- 1:length(my_list)
+means <- rep(NA, length(rts))   # empty vector to fill
 
-# Loop
-for(i in 1:length(my_list)){
-
-  means[i] <- mean(my_list[[i]])
-  medians[i] <- median(my_list[[i]])
-  stds[i] <- sd(my_list[[i]])
+for (i in 1:length(rts)) {
+  means[i] <- mean(rts[[i]])    # mean of the i-th element
 }
+means
 ```
-:::
 
-::: {.column width="40%"}
-Result
+It works, but:
+
+-   we need to create the empty vector first
+-   we need to handle the index `i`, both for `rts` and for `means`
+
+## Solution 2: `sapply()`
+
+**`sapply(rts, mean)`**: apply **`mean`** to **each element** of **`rts`**
 
 ```{r, echo=TRUE}
-means
-
-medians
-
-stds
+sapply(rts, mean)
 ```
-:::
-:::::
 
-## `*apply` family
-
-Everything works! but:
-
--   writing the for loop is laborious, with indices both for the list and for the vector we are filling
-
--   we need to pre-allocate variables (for speed reasons)
-
--   8 lines of code (for this simple example)
-
-## `*apply` family
-
-R has a family of apply functions such as **`lapply`**, **`sapply`**, etc. that let us get the same result in a more concise, fast and simple way:
+::: fragment
+It is exactly the same as writing, one by one:
 
 ```{r, echo=TRUE}
-means <- sapply(my_list, mean)
-medians <- sapply(my_list, median)
-stds <- sapply(my_list, sd)
-
-means
-medians
-stds
+c(anna = mean(rts$anna),
+  ben  = mean(rts$ben),
+  carl = mean(rts$carl))
 ```
 
-## `*apply` family
+... but `sapply()` does it for us, for any number of elements, and keeps the names.
+:::
 
-**apply( \< list \> , \< function \> )**
+## The structure
 
--   What can the **list** be?
-    -   a list
+**`sapply(X, FUN)`**
 
-    -   a dataframe
+-   **`X`**: the object we go through, **one element at a time**
+    -   a list (each element), a vector (each value), a dataframe (each column)
+-   **`FUN`**: the function applied to **each element**
+    -   a function of R or of a package (`mean`, `length`, ...)
+    -   a function we created
+    -   an anonymous function, written on the spot
 
-    -   a vector
--   What can the **function** be?
-    -   base or imported from a package
+## Like a `for` loop
 
-    -   custom
-
-    -   anonymous
-
-## `*apply` family
-
-Before analysing the **`*apply`** family, I think a further parallel with the for loop we have seen is useful. **`apply`** is nothing more than a slightly simplified **`for`** loop.
+`sapply()` is a compact `for` loop: the element of `X` plays the role of `i`
 
 ::::: columns
-::: {.column width="50%"}
+::: {.column width="40%"}
 **`for`** loop
 
 ```{r, echo=TRUE}
-vec <- 1:5
-for(i in vec){
-  print(i)}
-```
-:::
-
-::: {.column width="50%"}
-**`sapply`**
-
-```{r, echo=TRUE}
-vec <- 1:5
-res <- sapply(vec, print)
-```
-:::
-:::::
-
-## `*apply` family - custom function
-
-We can also use functions we created ourselves:
-
-```{r, echo=TRUE}
-center_var <- function(x){
-  x - mean(x)
+for (x in 1:3) {
+  print(x * 10)
 }
-
-my_list <- list(
-    vec1 = runif(n = 10, min  = 0, max = 1),
-    vec2 = runif(n = 10, min  = 0, max = 1),
-    vec3 = runif(n = 10, min  = 0, max = 1)
-)
-
-lapply(my_list, center_var)
-```
-
-## `*apply` family - implicit vs. explicit
-
-So, just as the **`for`** loop written as **i** in **vec** assigns to **i** one **element** of the **vec** object at a time, internally the **`*apply`** functions take the **first element** of the **input** object (list) and directly **apply** the function we have chosen.
-
-::::: columns
-::: {.column width="40%"}
-implicit **`sapply`**
-
-```{r, echo=TRUE}
-vec <- 1:5
-res <- sapply(vec, print)
 ```
 :::
 
 ::: {.column width="60%"}
-explicit **`sapply`**
+**`sapply`**
 
 ```{r, echo=TRUE}
-vec <- 1:5
-res <- sapply(vec, function(i) print(i))
+sapply(1:3, function(x) x * 10)
 ```
 :::
 :::::
 
-## `*apply` family - anonymous function
+Both take **1, then 2, then 3** and multiply each by 10. `sapply()` collects the results in a vector.
 
-An anonymous function is a function that is not saved in an object but written to be **executed directly**, inside other functions that allow it:
+## `lapply()` vs `sapply()`
+
+Same input (`rts`), same function (`length`: how many trials each participant has)
+
+::::: columns
+::: {.column width="50%"}
+**`lapply`**: always returns a **list**
 
 ```{r, echo=TRUE}
-lapply(my_list, function(x) x - mean(x))
+lapply(rts, length)
+```
+:::
+
+::: {.column width="50%"}
+**`sapply`**: **simplifies** the result, here to a vector
+
+```{r, echo=TRUE}
+sapply(rts, length)
+```
+:::
+:::::
+
+## With our own function
+
+A function that converts milliseconds into seconds...
+
+```{r, echo=TRUE}
+to_seconds <- function(x) x / 1000
+to_seconds(rts$anna)   # on one element
 ```
 
-**`x`** is just a **placeholder** (analogous to i) and can be any letter or name!
+::: fragment
+... and apply it to **each element** of **`rts`**:
+
+```{r, echo=TRUE}
+lapply(rts, to_seconds)
+```
+:::
+
+## With an anonymous function
+
+If we need the function only once, we can write it **directly inside** `sapply()`, without saving it:
+
+```{r, echo=TRUE}
+# range of each participant: maximum - minimum
+sapply(rts, function(x) max(x) - min(x))
+```
+
+::: fragment
+**`x`** is a **placeholder** (like `i` in a `for` loop): it becomes each element of `rts`, one at a time
+
+-   first `x` is `rts$anna`: `520 - 380 = 140`
+-   then `x` is `rts$ben`: `610 - 580 = 30`
+-   then `x` is `rts$carl`: `500 - 400 = 100`
+:::
 
 ## All the types of `*apply`
 
--   **`lapply()`**: the basic function
+| function      | goes through ...                    | returns                     |
+|---------------|-------------------------------------|-----------------------------|
+| **`lapply()`** | each element of a list/vector      | a list                      |
+| **`sapply()`** | each element of a list/vector      | a vector or matrix, if possible |
+| **`apply()`**  | each row or column of a matrix/dataframe | a vector               |
+| **`tapply()`** | each group of a vector, defined by a factor | a vector          |
+| **`vapply()`** | like `sapply()`, but checks the type of the result | a vector  |
+| **`mapply()`** | several vectors/lists at the same time | a vector or a list       |
 
--   **`sapply()`**: simplified-apply
+## `apply()`: rows or columns
 
--   **`tapply()`**: rarely used, useful with factors
-
--   **`apply()`**: useful for dataframes/matrices
-
--   **`mapply()`**: multivariate version, uses several lists at the same time
-
--   **`vapply()`**: used inside functions and packages
-
-## `lapply`
-
-**`lapply`** stands for list-apply and always returns a list, applying the function to each element of the input list:
+The scores of 3 students (rows) in 3 tests (columns):
 
 ```{r, echo=TRUE}
-res <- lapply(my_list, mean)
-res
-class(res)
+scores <- matrix(c(24, 28, 30,
+                   18, 22, 25,
+                   30, 29, 27), nrow = 3, byrow = TRUE,
+                 dimnames = list(c("anna", "ben", "carl"),
+                                 c("test1", "test2", "test3")))
+scores
 ```
 
-## `sapply`
+**`apply(X, MARGIN, FUN)`**: `MARGIN = 1` for the **rows**, `MARGIN = 2` for the **columns**
 
-**`sapply`** stands for simplified-apply and (tries to) return a simpler version of a list, applying the function to each element of the input list:
+## `apply()`: rows or columns
+
+`MARGIN = 1`: `mean` of **each row**, one result per **student**
 
 ```{r, echo=TRUE}
-res <- sapply(my_list, mean)
-res
-class(res)
+apply(scores, MARGIN = 1, FUN = mean)
 ```
 
-## `apply`
-
-**`apply`** works specifically on dataframes or matrices, applying a function to the rows or the columns:
+::: fragment
+`MARGIN = 2`: `max` of **each column**, one result per **test**
 
 ```{r, echo=TRUE}
-my_df <- data.frame(x1 = runif(n = 5,min = 1,max = 10),
-                  x2 = runif(n = 5,min = 3,max = 4))
-my_df
+apply(scores, MARGIN = 2, FUN = max)
 ```
+:::
 
-## `apply`
-
-Apply the mean function to all rows (1):
+::: fragment
+It also works on dataframes, e.g. on the numeric columns of `iris`:
 
 ```{r, echo=TRUE}
-apply(my_df, MARGIN = 1, FUN = mean)
+apply(iris[, 1:4], MARGIN = 2, FUN = mean)
 ```
+:::
 
-Apply the mean function to all columns (2):
+## `tapply()`: by group
+
+Reaction times of 6 trials, in two conditions:
 
 ```{r, echo=TRUE}
-apply(my_df, MARGIN = 2, FUN = mean)
+exp_data <- data.frame(rt = c(450, 520, 380, 610, 580, 640),
+  condition = rep(c("easy", "hard"), each = 3))
+exp_data
 ```
 
-## `tapply`
-
-**`tapply`** lets us apply a function to a vector, splitting the vector according to a categorical variable:
+::: fragment
+**`tapply(X, INDEX, FUN)`**: apply **`FUN`** to **`X`**, group by group (**`INDEX`**)
 
 ```{r, echo=TRUE}
-vec <- rnorm(75)
-
-index <- rep(c("a", "b", "c"), each = 25)
-
-tapply(vec, INDEX = index, mean)
+tapply(exp_data$rt, INDEX = exp_data$condition, FUN = mean)
 ```
+:::
 
-Here *`INDEX`* is a character vector or a factor.
+## `tapply()`: by group
 
-## `tapply`
-
-In this case we compute the mean for each age category:
-
-```{r, echo=TRUE, message=FALSE, warning=FALSE}
-my_df <- readr::read_csv("data/mydf_2.csv")
-head(my_df)
-tapply(my_df$age, my_df$age_cat, mean)
-```
-
-## `vapply`
-
-**`vapply`** is a more robust version of the previous ones from a programming point of view. In practice it lets (and requires) us to specify in advance the type of data we expect as a result:
+It is the same as selecting each group by hand:
 
 ```{r, echo=TRUE}
-vapply(my_list, FUN = mean, FUN.VALUE = numeric(length = 1))
+mean(exp_data$rt[exp_data$condition == "easy"])
+mean(exp_data$rt[exp_data$condition == "hard"])
 ```
 
-*`FUN.VALUE = numeric(length = 1)`*: indicates that each result is a single numeric value.
-
-## `mapply`
-
-**`mapply`** lets us handle **several lists at the same time** for more complex scenarios. For example, we want to use the **`rnorm()`** function to generate 4 samples combining different means and standard deviations:
+::: fragment
+With `tapply()` we write it once, whatever the number of groups. For example, the mean `Petal.Length` of each species in `iris`:
 
 ```{r, echo=TRUE}
-mus <- list(10, 20, 30, 40)
-stds <- list(1, 2, 3, 4)
-
-mapply(function(x,y) rnorm(n = 5, mean = x, sd = y),
-       mus, stds, SIMPLIFY = FALSE)
+tapply(iris$Petal.Length, INDEX = iris$Species, FUN = mean)
 ```
+:::
 
-**IMPORTANT**: all the lists included must have the same length!
+## `vapply()`: checking the result
 
-## `mapply` {.smaller}
-
-**mapply(function(x,y) rnorm(n = 5, mean = x, sd = y), mus, stds, SIMPLIFY = FALSE)**
-
--   **`function(...)`**: an anonymous function, as we saw before, which can have n elements
-
--   **`rnorm(n = 5, mean = x, sd = y)`**: the actual anonymous function, where we have the placeholders x and y
-
--   **`mus, stds`**: the lists corresponding, **in order**, to the placeholders, so x = mus and y = stds
-
--   **`SIMPLIFY = FALSE`**: simply says to return a list and not to try (like sapply) to simplify the result
-
-## `mapply` as a `for`
-
-The same result (in a more verbose way) can be obtained with a **`for`** loop, using the iterator i several times:
+Like `sapply()`, but we declare **in advance** what each result must be (`FUN.VALUE`): here, **one number**
 
 ```{r, echo=TRUE}
-mus <- list(10, 20, 30)
-stds <- list(1,2,3)
-res <- vector(mode = "list", length = length(mus)) # empty list
-
-for(i in 1:length(mus)){
-  res[[i]] <- rnorm(n = 6, mean = mus[[i]], sd = stds[[i]])
-}
-res
+vapply(rts, FUN = mean, FUN.VALUE = numeric(1))
 ```
 
-## `replicate`
+::: fragment
+If the function returns something different, `vapply()` stops with an error. `range()` returns **two** numbers:
 
-This function lets us repeat an operation n times, without using an iterator or a placeholder.
+```{r, echo=TRUE, error=TRUE}
+vapply(rts, FUN = range, FUN.VALUE = numeric(1))
+```
 
-**`replicate(n, expr)`**
+Useful inside your own functions, to catch mistakes early.
+:::
 
--   ***`n`*** is the number of repetitions
+## `mapply()`: several vectors at once
 
--   ***`expr`*** is the portion of code to repeat
+**`mapply(FUN, X1, X2)`**: apply **`FUN`** to the **first** elements of `X1` and `X2`, then to the **second** ones, and so on
 
-## `replicate`
+```{r, echo=TRUE}
+mapply(rep, c("a", "b", "c"), c(3, 2, 1))
+```
 
-We sample 1000 times from a normal distribution and compute the mean, AKA the sampling distribution of the mean
+::: fragment
+It is the same as writing:
+
+```{r, echo=TRUE, eval=FALSE}
+list(a = rep("a", 3), b = rep("b", 2), c = rep("c", 1))
+```
+
+**All the vectors must have the same length!**
+:::
+
+## `mapply()`: simulating data
+
+Three samples of 3 values, each with its own mean and standard deviation:
+
+```{r, echo=TRUE}
+set.seed(1)
+mus <- c(10, 50, 100)
+sigmas <- c(1, 5, 10)
+mapply(function(m, s) rnorm(3, mean = m, sd = s), mus, sigmas)
+```
+
+::: fragment
+-   one **column** per call: `m = 10, s = 1`, then `m = 50, s = 5`, then `m = 100, s = 10`
+-   add `SIMPLIFY = FALSE` to get a list instead of a matrix
+:::
+
+## `replicate()`: repeat the same code
+
+**`replicate(n, expr)`**: run the code **`expr`** **`n`** times. There is no element to go through: the code is just repeated.
+
+```{r, echo=TRUE}
+set.seed(1)
+replicate(n = 5, expr = mean(rnorm(30, mean = 100, sd = 30)))
+```
+
+::: fragment
+Each number is the mean of a **new** sample of 30 values: the means are all different, but close to 100.
+:::
+
+## `replicate()`: sampling distribution
+
+Repeating it 1000 times we get the **sampling distribution of the mean**:
 
 ::::: columns
 ::: {.column width="50%"}
 ```{r, echo=TRUE}
-nrep <- 1000
-
-nsample <- 30
-
-mu <- 100
-
-sd <- 30
-
-means <-
-  replicate(
-    n = nrep,
-    expr = {mean(
-      rnorm(nsample, mu, sd))}
-    )
+set.seed(1)
+means <- replicate(
+  n = 1000,
+  expr = {
+    x <- rnorm(30, 100, 30)
+    mean(x)
+  })
+mean(means)
+sd(means)  # standard error
 ```
 :::
 
 ::: {.column width="50%"}
 ```{r, echo=FALSE}
-hist(means, main = "Sampling distribution of the mean")
-abline(v = mean(means), col = "blue", lwd = 3, lty = 2)  # Estimated mean
-abline(v = c(mean(means) - sd(means), mean(means) + sd(means)), col = "red", lwd = 3, lty = 3)  # Standard error
+#| fig-width: 5
+#| fig-height: 5
+#| out-width: "100%"
+par(cex = 1.3, mar = c(4.5, 4.5, 3, 1))
+hist(means, breaks = 30, main = "Sampling distribution\nof the mean", xlab = "mean")
+abline(v = mean(means), col = "blue", lwd = 3, lty = 2)  # estimated mean
+abline(v = c(mean(means) - sd(means), mean(means) + sd(means)), col = "red", lwd = 3, lty = 3)  # standard error
 ```
 :::
 :::::

@@ -321,11 +321,11 @@ x_z = \frac{x - \mu_x}{\sigma_x}
 <span id="cb8-3"><a href="" aria-label="3"></a></span>
 <span id="cb8-4"><a href="" aria-label="4"></a><span class="fu">mean</span>(vect) <span class="co"># mean</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.535332</code></pre>
+<pre><code>[1] 5.372717</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="" aria-label="1"></a><span class="fu">sd</span>(vect)   <span class="co"># standard deviation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.434283</code></pre>
+<pre><code>[1] 2.801964</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="" aria-label="1"></a><span class="co"># standardize</span></span>
 <span id="cb12-2"><a href="" aria-label="2"></a>vec0 <span class="ot">&lt;-</span> <span class="fu">z_score</span>(vect) <span class="co"># by default na.rm is set to FALSE</span></span>
@@ -355,7 +355,7 @@ x_z = \frac{x - \mu_x}{\sigma_x}
 <span id="cb16-4"><a href="" aria-label="4"></a>}</span>
 <span id="cb16-5"><a href="" aria-label="5"></a><span class="fu">z_score1</span>(vect[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.7592374 -0.8987149 -0.3797088  0.5740498  1.4636113</code></pre>
+<pre><code>[1]  0.5501330  1.3113579 -0.2467597 -0.2536847 -1.3610466</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:58%;">
@@ -363,7 +363,7 @@ x_z = \frac{x - \mu_x}{\sigma_x}
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="" aria-label="1"></a>z_score2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
 <span id="cb18-2"><a href="" aria-label="2"></a><span class="fu">z_score2</span>(vect[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.7592374 -0.8987149 -0.3797088  0.5740498  1.4636113</code></pre>
+<pre><code>[1]  0.5501330  1.3113579 -0.2467597 -0.2536847 -1.3610466</code></pre>
 </div>
 </div>
 </div></div>
@@ -426,6 +426,24 @@ End of function</code></pre>
 </div>
 </div>
 </section>
+<section id="if-statement---stop-1" class="slide level2">
+<h2><strong><code>if</code></strong> statement - <strong><code>STOP</code></strong></h2>
+<p>There is a family of functions with the <strong><code>is.</code></strong> prefix that returns <strong><code>TRUE</code></strong> when the object type matches the requested one and <strong><code>FALSE</code></strong> otherwise.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="" aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>  <span class="co"># numeric vector</span></span>
+<span id="cb28-2"><a href="" aria-label="2"></a>y <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="co"># character vector</span></span>
+<span id="cb28-3"><a href="" aria-label="3"></a></span>
+<span id="cb28-4"><a href="" aria-label="4"></a><span class="fu">myfun_stop</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="" aria-label="1"></a><span class="fu">myfun_stop</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `myfun_stop()`:
+! the vector must be numeric</code></pre>
+</div>
+</div>
+</section>
 <section id="if...else" class="slide level2">
 <h2><strong><code>if...else</code></strong></h2>
 <p>Using a single <strong><code>if</code></strong> may not be enough in some situations. Above all because we can see the <strong><code>if</code></strong> as a <strong>temporary detour</strong> from the main script that is taken only if a condition is true; otherwise the script goes on.</p>
@@ -439,23 +457,38 @@ End of function</code></pre>
 <h2><strong><code>if...else</code></strong></h2>
 <p>Let’s see an example</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="" aria-label="1"></a>myfun_ifelse <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ <span class="co"># argument</span></span>
-<span id="cb28-2"><a href="" aria-label="2"></a></span>
-<span id="cb28-3"><a href="" aria-label="3"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
-<span id="cb28-4"><a href="" aria-label="4"></a>    <span class="fu">cat</span>(<span class="st">"The value is greater than 0</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb28-5"><a href="" aria-label="5"></a>  }</span>
-<span id="cb28-6"><a href="" aria-label="6"></a>  <span class="cf">else</span>{</span>
-<span id="cb28-7"><a href="" aria-label="7"></a>    <span class="fu">cat</span>(<span class="st">"The value is less than 0</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb28-8"><a href="" aria-label="8"></a>  }</span>
-<span id="cb28-9"><a href="" aria-label="9"></a>  <span class="fu">cat</span>(<span class="st">"End of function"</span>)</span>
-<span id="cb28-10"><a href="" aria-label="10"></a>}</span>
-<span id="cb28-11"><a href="" aria-label="11"></a></span>
-<span id="cb28-12"><a href="" aria-label="12"></a><span class="fu">myfun_ifelse</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="" aria-label="1"></a>myfun_ifelse <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ <span class="co"># argument</span></span>
+<span id="cb32-2"><a href="" aria-label="2"></a></span>
+<span id="cb32-3"><a href="" aria-label="3"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb32-4"><a href="" aria-label="4"></a>    <span class="fu">cat</span>(<span class="st">"The value is greater than 0</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb32-5"><a href="" aria-label="5"></a>  }</span>
+<span id="cb32-6"><a href="" aria-label="6"></a>  <span class="cf">else</span>{</span>
+<span id="cb32-7"><a href="" aria-label="7"></a>    <span class="fu">cat</span>(<span class="st">"The value is less than 0</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb32-8"><a href="" aria-label="8"></a>  }</span>
+<span id="cb32-9"><a href="" aria-label="9"></a>  <span class="fu">cat</span>(<span class="st">"End of function"</span>)</span>
+<span id="cb32-10"><a href="" aria-label="10"></a>}</span>
+<span id="cb32-11"><a href="" aria-label="11"></a></span>
+<span id="cb32-12"><a href="" aria-label="12"></a><span class="fu">myfun_ifelse</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The value is greater than 0
 End of function</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="" aria-label="1"></a><span class="fu">myfun_ifelse</span>(<span class="sc">-</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="if...else-3" class="slide level2">
+<h2><strong><code>if...else</code></strong></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="" aria-label="1"></a>myfun_ifelse <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ <span class="co"># argument</span></span>
+<span id="cb34-2"><a href="" aria-label="2"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb34-3"><a href="" aria-label="3"></a>    <span class="fu">cat</span>(<span class="st">"The value is greater than 0</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb34-4"><a href="" aria-label="4"></a>  }</span>
+<span id="cb34-5"><a href="" aria-label="5"></a>  <span class="cf">else</span>{</span>
+<span id="cb34-6"><a href="" aria-label="6"></a>    <span class="fu">cat</span>(<span class="st">"The value is less than 0</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb34-7"><a href="" aria-label="7"></a>  }</span>
+<span id="cb34-8"><a href="" aria-label="8"></a>  <span class="fu">cat</span>(<span class="st">"End of function"</span>)</span>
+<span id="cb34-9"><a href="" aria-label="9"></a>}</span>
+<span id="cb34-10"><a href="" aria-label="10"></a></span>
+<span id="cb34-11"><a href="" aria-label="11"></a><span class="fu">myfun_ifelse</span>(<span class="sc">-</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The value is less than 0
 End of function</code></pre>
@@ -465,27 +498,32 @@ End of function</code></pre>
 <section id="if...else---nested" class="slide level2">
 <h2><strong><code>if...else</code></strong> - nested</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="" aria-label="1"></a>myfun_ifelse <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ <span class="co"># argument</span></span>
-<span id="cb32-2"><a href="" aria-label="2"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">2</span>){</span>
-<span id="cb32-3"><a href="" aria-label="3"></a>    <span class="fu">cat</span>(<span class="st">"The value is greater than 2</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb32-4"><a href="" aria-label="4"></a>  }</span>
-<span id="cb32-5"><a href="" aria-label="5"></a>  <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> x <span class="sc">&gt;=</span> <span class="dv">0</span>){</span>
-<span id="cb32-6"><a href="" aria-label="6"></a>    <span class="fu">cat</span>(<span class="st">"The value is between 0 and 2</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb32-7"><a href="" aria-label="7"></a>  }</span>
-<span id="cb32-8"><a href="" aria-label="8"></a>  <span class="cf">else</span>{</span>
-<span id="cb32-9"><a href="" aria-label="9"></a>     <span class="fu">cat</span>(<span class="st">"The value is less than 0</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb32-10"><a href="" aria-label="10"></a>  }</span>
-<span id="cb32-11"><a href="" aria-label="11"></a>}</span>
-<span id="cb32-12"><a href="" aria-label="12"></a></span>
-<span id="cb32-13"><a href="" aria-label="13"></a><span class="fu">myfun_ifelse</span>(<span class="fl">2.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="" aria-label="1"></a>myfun_ifelse <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ <span class="co"># argument</span></span>
+<span id="cb36-2"><a href="" aria-label="2"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">2</span>){</span>
+<span id="cb36-3"><a href="" aria-label="3"></a>    <span class="fu">cat</span>(<span class="st">"The value is greater than 2</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb36-4"><a href="" aria-label="4"></a>  }</span>
+<span id="cb36-5"><a href="" aria-label="5"></a>  <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> x <span class="sc">&gt;=</span> <span class="dv">0</span>){</span>
+<span id="cb36-6"><a href="" aria-label="6"></a>    <span class="fu">cat</span>(<span class="st">"The value is between 0 and 2</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb36-7"><a href="" aria-label="7"></a>  }</span>
+<span id="cb36-8"><a href="" aria-label="8"></a>  <span class="cf">else</span>{</span>
+<span id="cb36-9"><a href="" aria-label="9"></a>     <span class="fu">cat</span>(<span class="st">"The value is less than 0</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb36-10"><a href="" aria-label="10"></a>  }</span>
+<span id="cb36-11"><a href="" aria-label="11"></a>}</span>
+<span id="cb36-12"><a href="" aria-label="12"></a></span>
+<span id="cb36-13"><a href="" aria-label="13"></a><span class="fu">myfun_ifelse</span>(<span class="fl">2.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The value is greater than 2</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="" aria-label="1"></a><span class="fu">myfun_ifelse</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="if...else---nested-1" class="slide level2">
+<h2><strong><code>if...else</code></strong> - nested</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="" aria-label="1"></a><span class="fu">myfun_ifelse</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The value is less than 0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="" aria-label="1"></a><span class="fu">myfun_ifelse</span>(<span class="fl">1.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="" aria-label="1"></a><span class="fu">myfun_ifelse</span>(<span class="fl">1.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The value is between 0 and 2</code></pre>
 </div>
@@ -499,32 +537,32 @@ End of function</code></pre>
 <h2>Conditional programming</h2>
 <p>Let’s write a function that returns the mean when the vector is numeric, and the frequency table otherwise.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="" aria-label="1"></a>my_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb38-2"><a href="" aria-label="2"></a></span>
-<span id="cb38-3"><a href="" aria-label="3"></a>    <span class="cf">if</span>(<span class="fu">is.numeric</span>(x)){</span>
-<span id="cb38-4"><a href="" aria-label="4"></a>      <span class="fu">return</span>(<span class="fu">mean</span>(x))</span>
-<span id="cb38-5"><a href="" aria-label="5"></a></span>
-<span id="cb38-6"><a href="" aria-label="6"></a>    }<span class="cf">else</span>{</span>
-<span id="cb38-7"><a href="" aria-label="7"></a>      <span class="fu">return</span>(<span class="fu">table</span>(x))</span>
-<span id="cb38-8"><a href="" aria-label="8"></a>      }</span>
-<span id="cb38-9"><a href="" aria-label="9"></a>  }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="" aria-label="1"></a>my_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb42-2"><a href="" aria-label="2"></a></span>
+<span id="cb42-3"><a href="" aria-label="3"></a>    <span class="cf">if</span>(<span class="fu">is.numeric</span>(x)){</span>
+<span id="cb42-4"><a href="" aria-label="4"></a>      <span class="fu">return</span>(<span class="fu">mean</span>(x))</span>
+<span id="cb42-5"><a href="" aria-label="5"></a></span>
+<span id="cb42-6"><a href="" aria-label="6"></a>    }<span class="cf">else</span>{</span>
+<span id="cb42-7"><a href="" aria-label="7"></a>      <span class="fu">return</span>(<span class="fu">table</span>(x))</span>
+<span id="cb42-8"><a href="" aria-label="8"></a>      }</span>
+<span id="cb42-9"><a href="" aria-label="9"></a>  }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="conditional-programming-2" class="slide level2">
 <h2>Conditional programming</h2>
 <p>Let’s test the function</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="" aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span></span>
-<span id="cb39-2"><a href="" aria-label="2"></a><span class="fu">my_summary</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="" aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>), <span class="dv">3</span>), <span class="st">"C"</span>)</span>
-<span id="cb41-2"><a href="" aria-label="2"></a><span class="fu">my_summary</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="" aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>), <span class="dv">3</span>), <span class="st">"C"</span>)</span>
+<span id="cb43-2"><a href="" aria-label="2"></a><span class="fu">my_summary</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x
 A B C 
 3 3 1 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="" aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span></span>
+<span id="cb45-2"><a href="" aria-label="2"></a><span class="fu">my_summary</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 </section>
@@ -536,7 +574,7 @@ A B C
 <h2>Conditional programming</h2>
 <p>If we wanted to use the <strong><code>myfun_if</code></strong> function …</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="" aria-label="1"></a><span class="fu">cat</span>(<span class="fu">deparse</span>(myfun_if), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-label="1"></a>myfun_if</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x) 
 {
@@ -544,14 +582,13 @@ A B C
         cat("The value is greater than 0\n")
     }
     cat("End of function")
-}</code></pre>
+}
+&lt;bytecode: 0x1454cf348&gt;</code></pre>
 </div>
 </div>
 <p>it would not work…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="" aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span></span>
-<span id="cb45-2"><a href="" aria-label="2"></a></span>
-<span id="cb45-3"><a href="" aria-label="3"></a><span class="fu">myfun_if</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="" aria-label="1"></a><span class="fu">myfun_if</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `if (x &gt; 0) ...`:
 ! the condition has length &gt; 1</code></pre>
@@ -562,15 +599,13 @@ A B C
 <h2>Conditional programming</h2>
 <p>The vectorized version is obtained with the <strong><code>ifelse()</code></strong> function, whose arguments are the condition to test, the output if the condition is <strong><code>TRUE</code></strong>, and the output if it is <strong><code>FALSE</code></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-label="1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="" aria-label="1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5 6 7</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="" aria-label="1"></a><span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">"x is less than 5"</span>, <span class="st">"x is greater than 5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="" aria-label="1"></a><span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">"x &lt; 5"</span>, <span class="st">"x &gt;= 5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "x is less than 5"    "x is less than 5"    "x is less than 5"   
-[4] "x is less than 5"    "x is greater than 5" "x is greater than 5"
-[7] "x is greater than 5"</code></pre>
+<pre><code>[1] "x &lt; 5"  "x &lt; 5"  "x &lt; 5"  "x &lt; 5"  "x &gt;= 5" "x &gt;= 5" "x &gt;= 5"</code></pre>
 </div>
 </div>
 </section>
@@ -578,18 +613,19 @@ A B C
 <h2>Conditional programming</h2>
 <p>When we need to test several alternatives we can create nested <strong><code>ifelse()</code></strong>. Imagine we have an <strong>age</strong> vector and want to create another vector where age is divided into <strong>3 groups</strong>: child, adult, elderly:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="" aria-label="1"></a>age <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">80</span>)) <span class="co"># sample from a uniform distribution from 3 to 80</span></span>
-<span id="cb51-2"><a href="" aria-label="2"></a>age</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="" aria-label="1"></a>age <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">80</span>)) <span class="co"># sample from a uniform distribution from 3 to 80</span></span>
+<span id="cb55-2"><a href="" aria-label="2"></a>age</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  8 56 21 35 63 60 15 46 33 38</code></pre>
+<pre><code> [1] 60 45 68 64 57 24 19 69 43 20</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="" aria-label="1"></a>age_ifelse <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(age <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
-<span id="cb53-2"><a href="" aria-label="2"></a>                    <span class="at">yes =</span> <span class="st">"child"</span>,</span>
-<span id="cb53-3"><a href="" aria-label="3"></a>                    <span class="at">no =</span> <span class="fu">ifelse</span>( age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="dv">60</span>, <span class="st">"adult"</span>, <span class="st">"elderly"</span>))</span>
-<span id="cb53-4"><a href="" aria-label="4"></a>age_ifelse</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="" aria-label="1"></a>age_ifelse <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(age <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
+<span id="cb57-2"><a href="" aria-label="2"></a>                    <span class="at">yes =</span> <span class="st">"child"</span>,</span>
+<span id="cb57-3"><a href="" aria-label="3"></a>                    <span class="at">no =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="dv">60</span>, </span>
+<span id="cb57-4"><a href="" aria-label="4"></a>                                <span class="st">"adult"</span>, <span class="st">"elderly"</span>))</span>
+<span id="cb57-5"><a href="" aria-label="5"></a>age_ifelse</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "child"   "adult"   "adult"   "adult"   "elderly" "elderly" "child"  
- [8] "adult"   "adult"   "adult"  </code></pre>
+<pre><code> [1] "elderly" "adult"   "elderly" "elderly" "adult"   "adult"   "adult"  
+ [8] "elderly" "adult"   "adult"  </code></pre>
 </div>
 </div>
 </section>
@@ -597,14 +633,14 @@ A B C
 <h2><strong><code>dplyr::case_when</code></strong></h2>
 <p>When there are many conditions to test (roughly &gt; 3), writing many nested ifelse() can be tedious. We can then use the <strong><code>dplyr::case_when()</code></strong> function from the <em><code>dplyr</code></em> package, which is a generalization of ifelse():</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="" aria-label="1"></a>age_case_when <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(age <span class="sc">&lt;</span> <span class="dv">18</span> <span class="sc">~</span> <span class="st">"child"</span>,</span>
-<span id="cb55-2"><a href="" aria-label="2"></a>                                 age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"adult"</span>,</span>
-<span id="cb55-3"><a href="" aria-label="3"></a>                                 <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"elderly"</span>)</span>
-<span id="cb55-4"><a href="" aria-label="4"></a><span class="co"># TRUE identifies "everything else"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="" aria-label="1"></a>age_case_when <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(age <span class="sc">&lt;</span> <span class="dv">18</span> <span class="sc">~</span> <span class="st">"child"</span>,</span>
+<span id="cb59-2"><a href="" aria-label="2"></a>                                 age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"adult"</span>,</span>
+<span id="cb59-3"><a href="" aria-label="3"></a>                                 <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"elderly"</span>)</span>
+<span id="cb59-4"><a href="" aria-label="4"></a><span class="co"># TRUE identifies "everything else"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>the results are identical…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="" aria-label="1"></a><span class="fu">all.equal</span>(age_case_when, age_ifelse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="" aria-label="1"></a><span class="fu">all.equal</span>(age_case_when, age_ifelse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -614,24 +650,23 @@ A B C
 <h2><strong><code>dplyr::case_when</code></strong></h2>
 <p>Recoding the values of a variable, for example reversing the items of a questionnaire, is easily done with <strong><code>dplyr::case_when()</code></strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="" aria-label="1"></a>item <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="co"># simulate 20 responses to an item</span></span>
-<span id="cb58-2"><a href="" aria-label="2"></a>item</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="" aria-label="1"></a>item <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="co"># simulate 20 responses to an item</span></span>
+<span id="cb62-2"><a href="" aria-label="2"></a>item</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 3 2 1 5 1 5 2 1 4 2 2 1 2 5 3 5 2 3 2 1</code></pre>
+<pre><code> [1] 2 2 4 3 4 2 3 5 3 5 3 2 5 4 5 1 1 1 1 3</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="" aria-label="1"></a><span class="fu">library</span>(dplyr) <span class="co"># load the package so we don't always have to write its name</span></span>
-<span id="cb60-2"><a href="" aria-label="2"></a></span>
-<span id="cb60-3"><a href="" aria-label="3"></a>item_rec <span class="ot">&lt;-</span> <span class="fu">case_when</span>( <span class="co"># recode with 1 = 5, 2 = 4, 3 = 3, 4 = 2, 5 = 1</span></span>
-<span id="cb60-4"><a href="" aria-label="4"></a>    item <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">5</span>,</span>
-<span id="cb60-5"><a href="" aria-label="5"></a>    item <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
-<span id="cb60-6"><a href="" aria-label="6"></a>    item <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb60-7"><a href="" aria-label="7"></a>    item <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb60-8"><a href="" aria-label="8"></a>    item <span class="sc">==</span> <span class="dv">5</span> <span class="sc">~</span> <span class="dv">1</span> )</span>
-<span id="cb60-9"><a href="" aria-label="9"></a>item_rec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="" aria-label="1"></a><span class="fu">library</span>(dplyr) <span class="co"># load the package so we don't always have to write its name</span></span>
+<span id="cb64-2"><a href="" aria-label="2"></a>item_rec <span class="ot">&lt;-</span> <span class="fu">case_when</span>( <span class="co"># recode with 1 = 5, 2 = 4, 3 = 3, 4 = 2, 5 = 1</span></span>
+<span id="cb64-3"><a href="" aria-label="3"></a>    item <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">5</span>,</span>
+<span id="cb64-4"><a href="" aria-label="4"></a>    item <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb64-5"><a href="" aria-label="5"></a>    item <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb64-6"><a href="" aria-label="6"></a>    item <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb64-7"><a href="" aria-label="7"></a>    item <span class="sc">==</span> <span class="dv">5</span> <span class="sc">~</span> <span class="dv">1</span> )</span>
+<span id="cb64-8"><a href="" aria-label="8"></a>item_rec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 3 4 5 1 5 1 4 5 2 4 4 5 4 1 3 1 4 3 4 5</code></pre>
+<pre><code> [1] 4 4 2 3 2 4 3 1 3 1 3 4 1 2 1 5 5 5 5 3</code></pre>
 </div>
 </div>
 </section>
@@ -639,22 +674,22 @@ A B C
 <h2><strong><code>dplyr::case_when</code></strong></h2>
 <p>These functions can also be applied to the variables in a dataframe:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="" aria-label="1"></a><span class="co"># create a dataframe with id and age variables</span></span>
-<span id="cb62-2"><a href="" aria-label="2"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>), <span class="at">age =</span> <span class="fu">sample</span>(<span class="dv">14</span><span class="sc">:</span><span class="dv">50</span>, <span class="dv">30</span>))</span>
-<span id="cb62-3"><a href="" aria-label="3"></a><span class="co"># save it for later</span></span>
-<span id="cb62-4"><a href="" aria-label="4"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(mydf, <span class="at">file =</span> <span class="st">"data/mydf.csv"</span>)</span>
-<span id="cb62-5"><a href="" aria-label="5"></a><span class="co"># create a third variable with "adolescent", "young", "adult"</span></span>
-<span id="cb62-6"><a href="" aria-label="6"></a>mydf<span class="sc">$</span>age_cat <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(mydf<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"adult"</span>,</span>
-<span id="cb62-7"><a href="" aria-label="7"></a>                                 mydf<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> mydf<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"young"</span>,</span>
-<span id="cb62-8"><a href="" aria-label="8"></a>                                 mydf<span class="sc">$</span>age <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"adolescent"</span>,</span>
-<span id="cb62-9"><a href="" aria-label="9"></a>                                 <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"error"</span> <span class="co"># check for coding errors</span></span>
-<span id="cb62-10"><a href="" aria-label="10"></a>                                    ))</span>
-<span id="cb62-11"><a href="" aria-label="11"></a><span class="fu">str</span>(mydf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="" aria-label="1"></a><span class="co"># create a dataframe with id and age variables</span></span>
+<span id="cb66-2"><a href="" aria-label="2"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>), <span class="at">age =</span> <span class="fu">sample</span>(<span class="dv">14</span><span class="sc">:</span><span class="dv">50</span>, <span class="dv">30</span>))</span>
+<span id="cb66-3"><a href="" aria-label="3"></a><span class="co"># save it for later</span></span>
+<span id="cb66-4"><a href="" aria-label="4"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(mydf, <span class="at">file =</span> <span class="st">"data/mydf.csv"</span>)</span>
+<span id="cb66-5"><a href="" aria-label="5"></a><span class="co"># create a third variable with "adolescent", "young", "adult"</span></span>
+<span id="cb66-6"><a href="" aria-label="6"></a>mydf<span class="sc">$</span>age_cat <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(mydf<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"adult"</span>,</span>
+<span id="cb66-7"><a href="" aria-label="7"></a>                                 mydf<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> mydf<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"young"</span>,</span>
+<span id="cb66-8"><a href="" aria-label="8"></a>                                 mydf<span class="sc">$</span>age <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"adolescent"</span>,</span>
+<span id="cb66-9"><a href="" aria-label="9"></a>                                 <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"error"</span> <span class="co"># check for coding errors</span></span>
+<span id="cb66-10"><a href="" aria-label="10"></a>                                    ))</span>
+<span id="cb66-11"><a href="" aria-label="11"></a><span class="fu">str</span>(mydf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   30 obs. of  3 variables:
  $ id     : Factor w/ 30 levels "1","2","3","4",..: 1 2 3 4 5 6 7 8 9 10 ...
- $ age    : int  29 18 27 40 30 38 42 36 22 45 ...
- $ age_cat: Factor w/ 3 levels "adolescent","adult",..: 3 1 3 2 3 2 2 2 3 2 ...</code></pre>
+ $ age    : int  36 29 37 49 33 50 16 24 48 46 ...
+ $ age_cat: Factor w/ 3 levels "adolescent","adult",..: 2 3 2 2 2 2 1 3 2 2 ...</code></pre>
 </div>
 </div>
 </section>
@@ -682,12 +717,12 @@ A B C
 <h2>Importing a function</h2>
 <p>In the second case it is enough to write the function, and it will be saved as an object in the main environment. For the first scenario, we can use the <strong><code>source("utl/script.R")</code></strong> function:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="" aria-label="1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># clear the environment</span></span>
-<span id="cb64-2"><a href="" aria-label="2"></a></span>
-<span id="cb64-3"><a href="" aria-label="3"></a><span class="co"># load the functions</span></span>
-<span id="cb64-4"><a href="" aria-label="4"></a><span class="fu">source</span>(<span class="st">"utl/myfun.R"</span>)</span>
-<span id="cb64-5"><a href="" aria-label="5"></a><span class="co"># now my functions are available and I can use them</span></span>
-<span id="cb64-6"><a href="" aria-label="6"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="" aria-label="1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># clear the environment</span></span>
+<span id="cb68-2"><a href="" aria-label="2"></a></span>
+<span id="cb68-3"><a href="" aria-label="3"></a><span class="co"># load the functions</span></span>
+<span id="cb68-4"><a href="" aria-label="4"></a><span class="fu">source</span>(<span class="st">"utl/myfun.R"</span>)</span>
+<span id="cb68-5"><a href="" aria-label="5"></a><span class="co"># now my functions are available and I can use them</span></span>
+<span id="cb68-6"><a href="" aria-label="6"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "my_summary"   "mydf_fun"     "myfun_ifelse" "myfun_stop"   "z_score"     </code></pre>
 </div>
@@ -697,27 +732,27 @@ A B C
 <h2>Importing and using a function</h2>
 <p>Now my functions are available as objects in my environment and I can use them:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="" aria-label="1"></a><span class="co"># load the dataframe saved earlier</span></span>
-<span id="cb66-2"><a href="" aria-label="2"></a>mydf_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/mydf.csv"</span>))</span>
-<span id="cb66-3"><a href="" aria-label="3"></a><span class="fu">str</span>(mydf_1) <span class="co"># check</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="" aria-label="1"></a><span class="co"># load the dataframe saved earlier</span></span>
+<span id="cb70-2"><a href="" aria-label="2"></a>mydf_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/mydf.csv"</span>))</span>
+<span id="cb70-3"><a href="" aria-label="3"></a><span class="fu">str</span>(mydf_1) <span class="co"># check</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   30 obs. of  2 variables:
  $ id : num  1 2 3 4 5 6 7 8 9 10 ...
- $ age: num  29 18 27 40 30 38 42 36 22 45 ...</code></pre>
+ $ age: num  36 29 37 49 33 50 16 24 48 46 ...</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="" aria-label="1"></a><span class="co"># apply the mydf_fun function</span></span>
-<span id="cb68-2"><a href="" aria-label="2"></a>mydf_2 <span class="ot">&lt;-</span> <span class="fu">mydf_fun</span>(mydf_1)</span>
-<span id="cb68-3"><a href="" aria-label="3"></a><span class="fu">head</span>(mydf_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="" aria-label="1"></a><span class="co"># apply the mydf_fun function</span></span>
+<span id="cb72-2"><a href="" aria-label="2"></a>mydf_2 <span class="ot">&lt;-</span> <span class="fu">mydf_fun</span>(mydf_1)</span>
+<span id="cb72-3"><a href="" aria-label="3"></a><span class="fu">head</span>(mydf_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id age    age_cat       age_z
-1  1  29      young -0.18757891
-2  2  18 adolescent -1.17013511
-3  3  27      young -0.36622549
-4  4  40      adult  0.79497729
-5  5  30      young -0.09825562
-6  6  38      adult  0.61633070</code></pre>
+<pre><code>  id age age_cat        age_z
+1  1  36   adult  0.272440521
+2  2  29   young -0.356268374
+3  3  37   adult  0.362256078
+4  4  49   adult  1.440042755
+5  5  33   adult  0.002993852
+6  6  50   adult  1.529858312</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="" aria-label="1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(mydf_2, <span class="at">file =</span> <span class="st">"data/mydf_2.csv"</span>) <span class="co"># save it for later</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="" aria-label="1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(mydf_2, <span class="at">file =</span> <span class="st">"data/mydf_2.csv"</span>) <span class="co"># save it for later</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="now-lets-practice" class="slide level2" style="text-align: center;">

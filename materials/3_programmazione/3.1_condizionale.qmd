@@ -225,6 +225,20 @@ myfun_stop(y)
 
 ```
 
+
+## **`if`** statement - **`STOP`**
+
+There is a family of functions with the **`is.`** prefix that returns **`TRUE`** when the object type matches the requested one and **`FALSE`** otherwise.
+
+```{r, echo=TRUE, error=TRUE}
+
+x <- 1:10  # numeric vector
+y <- letters[1:10] # character vector
+
+myfun_stop(x)
+myfun_stop(y)
+```
+
 ## **`if...else`**
 
 Using a single **`if`** may not be enough in some situations. Above all because we can see the **`if`** as a **temporary detour** from the main script that is taken only if a condition is true; otherwise the script goes on.
@@ -254,8 +268,24 @@ myfun_ifelse <- function(x){ # argument
 
 myfun_ifelse(10)
 
-myfun_ifelse(-10)
+```
 
+
+## **`if...else`**
+
+```{r, echo=TRUE}
+
+myfun_ifelse <- function(x){ # argument
+  if (x > 0){
+    cat("The value is greater than 0\n")
+  }
+  else{
+    cat("The value is less than 0\n")
+  }
+  cat("End of function")
+}
+
+myfun_ifelse(-10)
 ```
 
 ## **`if...else`** - nested
@@ -275,6 +305,13 @@ myfun_ifelse <- function(x){ # argument
 }
 
 myfun_ifelse(2.3)
+
+```
+
+## **`if...else`** - nested
+
+```{r, echo=TRUE}
+
 myfun_ifelse(-1)
 myfun_ifelse(1.4)
 
@@ -305,12 +342,11 @@ my_summary <- function(x){
 Let's test the function
 
 ```{r, echo=TRUE}
-x <- 1:7
-my_summary(x)
-
 x <- c(rep(c("A","B"), 3), "C")
 my_summary(x)
 
+x <- 1:7
+my_summary(x)
 ```
 
 ## Conditional programming
@@ -322,17 +358,13 @@ One limitation of **`if statements`** is that they only work on a **single value
 If we wanted to use the **`myfun_if`** function ...
 
 ```{r, echo=TRUE}
-cat(deparse(myfun_if), sep = "\n")
+myfun_if
 ```
 
 it would not work...
 
 ```{r, echo=TRUE, error=TRUE}
-
-x <- 1:7
-
 myfun_if(x)
-
 ```
 
 ## Conditional programming
@@ -342,7 +374,7 @@ The vectorized version is obtained with the **`ifelse()`** function, whose argum
 ```{r, echo=TRUE}
 x
 
-ifelse(x < 5, "x is less than 5", "x is greater than 5")
+ifelse(x < 5, "x < 5", "x >= 5")
 
 ```
 
@@ -357,7 +389,8 @@ age
 
 age_ifelse <- ifelse(age < 18,
                     yes = "child",
-                    no = ifelse( age >= 18 & age < 60, "adult", "elderly"))
+                    no = ifelse(age >= 18 & age < 60, 
+                                "adult", "elderly"))
 age_ifelse
 ```
 
@@ -389,7 +422,6 @@ item
 
 ```{r, echo=TRUE}
 library(dplyr) # load the package so we don't always have to write its name
-
 item_rec <- case_when( # recode with 1 = 5, 2 = 4, 3 = 3, 4 = 2, 5 = 1
     item == 1 ~ 5,
     item == 2 ~ 4,
