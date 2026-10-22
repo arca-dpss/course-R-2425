@@ -5,18 +5,48 @@
 #    and name its elements "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun".
 # 1.1 Extract the weekend (Sat and Sun) both by name and by position.
 
-
-
+steps <- c(8200, 10500, 6400, 12000, 9100, 4300, 11000)
+names(steps) <- c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
 # 2. On the steps vector:
 # 2.1 Compute mean, median, standard deviation and range (?range).
 # 2.2 Count the days with at least 10000 steps.
+steps >=10000
+
+sum(steps >=10000)
+
+steps[steps >=10000]
+
+length(steps[steps >=10000])
+
 # 2.3 Which days are they? (?which, ?names)
 
+steps_logi <- steps>=10000
 
-# 3. Create the vector odd_numbers with the odd numbers from 1 to 39 using seq().
+steps_new <- steps[steps_logi]
+steps_new
+
+names(steps_new)
+
+steps>=10000
+
+names(steps>=10000)
+
+# 3. Create the vector odd_numbers with the 
+# odd numbers from 1 to 39 using seq().
 # 3.1 How many elements does it have?
 # 3.2 Extract the last 3 elements, using length().
+odd_numbers <- seq(from = 1, to = 39, by = 2)
+odd_numbers
 
+length(odd_numbers)
+
+odd_numbers[c(length(odd_numbers)-2, length(odd_numbers)-1,
+              length(odd_numbers))]
+
+odd_numbers
+odd_numbers[odd_numbers> 36]
+
+odd_numbers[-c(1,2,3)]
 
 # 4. Given the vector
 scores <- c(18, 25, NA, 30, 22, NA, 27)
@@ -29,7 +59,9 @@ scores <- c(18, 25, NA, 30, 22, NA, 27)
 # 5. Create multiples_3, a vector containing the first 10 multiples of 3 (3 included).
 # ?seq
 
-
+multiples_3 <- seq(from = 3, to = 30, by = 3)
+multiples_3 <- seq(from = 3, to = 30, length.out = 10)
+multiples_3
 # 6. Create my_lett1 with geographic area labels
 # "NORTH","CENTRE","SOUTH" repeated 2 times each.
 # ?rep
@@ -68,5 +100,19 @@ names(projects) <- c("alice","bob","charlie","carlo") # student names
 #  and completed at least 2 projects,
 # "30" if they answered 24 quiz questions and completed at least 2 projects,
 # "below30" otherwise.
+
+quiz > 24 & projects >= 2
+quiz >= 24 & projects >= 2
+
+scores <- rep(x = "below30", times = length(quiz))
+names(scores) <- c("alice","bob","charlie","carlo") # student names
+
+scores[quiz > 24 & projects >= 2]  <- "30L"
+
+scores[quiz >= 24 & projects >= 2] <- "30"
+
+scores
+
+
 
 

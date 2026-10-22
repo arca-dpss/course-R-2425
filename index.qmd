@@ -121,6 +121,8 @@ Exercises and their solutions will be published here during the course, lesson b
 
 -   Introduction (1 to 3) - [Script with solutions](materials/esercizi/1.2_solution.R){download="1.2_solution.R"}
 
+-   Vectors - [Script with solutions](materials/esercizi/2.1_solution.R){download="2.1_solution.R"}
+
 :::
 
 <!--
