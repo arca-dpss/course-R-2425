@@ -128,6 +128,8 @@ Exercises and their solutions will be published here during the course, lesson b
 
 -   Lists and Matrices - [Script with solutions](materials/esercizi/2.3_solution.R){download="2.3_solution.R"}
 
+-   dataframe - [Script with solutions](materials/esercizidataframe_practice.R){download="dataframe_practice.R"}
+
 :::
 
 <!--
