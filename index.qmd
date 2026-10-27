@@ -123,6 +123,11 @@ Exercises and their solutions will be published here during the course, lesson b
 
 -   Vectors - [Script with solutions](materials/esercizi/2.1_solution.R){download="2.1_solution.R"}
 
+
+-   Factors - [Script with solutions](materials/esercizi/2.2_solution.R){download="2.2_solution.R"}
+
+-   Lists and Matrices - [Script with solutions](materials/esercizi/2.3_solution.R){download="2.3_solution.R"}
+
 :::
 
 <!--

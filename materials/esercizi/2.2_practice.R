@@ -63,13 +63,16 @@ droplevels(flowers)
 
 # 5. Create a factor departments with the categories "A", "B", "C", 
 # each repeated 4 times.
-departments <- factor(x = rep(c("A", "B", "C"), each = 4))
+departments <- factor(x = rep(c("A", "B", "C"), each = 4),
+                      levels = c("B", "C", "A"))    
 departments  
 # 5.1 Change the first 3 observations to "D" # what happens?
-departments[c(1,2,3)] <- "D" # wrong
-
+#departments[c(1,2,3)] <- "D" # wrong
+levels(departments)
 levels(departments) <- c(levels(departments), "D")
-departments[is.na(departments)] <- "D"
+departments[c(1,2,3)]
+departments[c(1,2,3)] <- c("D","A","B")
+departments
 
 # 5.2 Check the levels and, if unused levels remain, 
 # remove them with droplevels().
