@@ -115,8 +115,6 @@ Each lesson is available as interactive slides (HTML) and as a PDF to download.
 ## Exercises
 
 ::: callout-note
-## Coming soon
-
 Exercises and their solutions will be published here during the course, lesson by lesson.
 
 -   Introduction (1 to 3) - [Script with solutions](materials/esercizi/1.2_solution.R){download="1.2_solution.R"}
@@ -128,7 +126,8 @@ Exercises and their solutions will be published here during the course, lesson b
 
 -   Lists and Matrices - [Script with solutions](materials/esercizi/2.3_solution.R){download="2.3_solution.R"}
 
--   dataframe - [Script with solutions](materials/esercizidataframe_practice.R){download="dataframe_practice.R"}
+-   Dataframe 1 - [Script with solutions 1](materials/esercizi/dataframe_solution.R){download="dataframe_solution.R"}
+-   Dataframe 2 - [Script with solutions 2](materials/esercizi/2.4_solution.R){download="2.4_solution.R"}
 
 :::
 

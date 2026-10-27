@@ -2,12 +2,26 @@
 
 # 0. Write a function in R that takes a number as input and
 #    returns twice that number.
-
+myfun <- function(num){
+  twice <- num*2
+  return(twice)
+}
 
 # 1. Define a function that computes the area of a right triangle
 #    Area = (Base * Height) / 2
-#    both using the return function and { }
-#    and using a single line of code (without { } and return)
+
+area <- function(base, height){
+  a = (base * height) / 2
+  return(a)
+}
+
+r_area <- function(height, width){
+  r_a <- height*width
+  return(r_a)
+}
+
+r_area(4,4)
+area(4,4)
 
 
 # 2. Define a function that prints a personalized birthday message
@@ -17,6 +31,27 @@
 #    Congratulations on your [age] years!".
 #    Use the paste() and print() functions to format and print the message.
 
+birthday <- function(name){
+  mess <- paste("Happy birthday, ", name,"!", sep ="")
+  return(mess)
+}
+
+birthday(name = "Ece")
+  
+  
+birthday_age <- function(name, age){
+  print(paste("Happy birthday, ", name,"! ", sep = ""))
+  print(paste("Congratulations on your ", age, " years!",
+              sep =""))
+}
+birthday_age("Agata",21)
+
+birthday_age <- function(name, age){
+  mess <- paste("Happy birthday, ", name,"! ", 
+                "Congratulations on your ", age, " years!",
+                sep ="")
+  return(mess)
+}
 
 # 3. Define a function that computes the maximum and minimum value of a numeric vector "z".
 z <- c(4:19, NA, 3:8)
@@ -32,11 +67,49 @@ z <- c(4:19, NA, 3:8)
 #    "even" if the number is even,
 #    "odd" if the number is odd.  (?ifelse)
 
+parity_check <- function(x){
+  m <- ifelse(x%%2 == 0, "even", "odd")
+  return(m)
+}
+
+parity_check(x = c(3,4,6,9))
+
+x = c(3,4,6,9)
+ifelse(x%%2 == 0, "even", "odd")
+
+
+
+arca <- data.frame(name = c("ece","ilayda",
+                            "agata", "laura", "eva",
+                            "elisa", "maddalena",
+                            "matteo",  "chiara"),
+                   age = c(24, 27, 21, 21, 23, 25, 23, 23,
+                           26),
+                   degree = c("erasmus","erasmus", "bachelor",
+                              "bachelor","erasmus", "bachelor",
+                              "master", "master","intern"))
+
+arca$age>23
+
+arca$age_cat <- ifelse(arca$age>23, "old","young")
+arca
+
+library(dplyr)
+arca$age>23
+arca$age<= 23 & arca$age > 21
+
+arca$age_cat2 <- case_when(arca$age>23 ~ "old",
+                           arca$age<= 23 & arca$age > 21 ~ "young",
+                           arca$age == 21 ~ "baby",
+                           TRUE ~ "error")
+
+arca
 
 # 5. Define a function make_odd() that takes a number as input and
 #    returns a number:
 #    if the number is even, 1 must be added to it
 #    if the number is odd, it stays the same (ifelse)
+
 
 
 # 6. Define a function transform_num() that, given a number,
