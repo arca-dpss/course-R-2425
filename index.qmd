@@ -106,6 +106,7 @@ Each lesson is available as interactive slides (HTML) and as a PDF to download.
 ::: {.g-col-12 .g-col-md-6 .lesson-card}
 ### <i class="bi bi-stars"></i> Extra
 
+-   **Recap before the exam: from objects to dataframes** [[Slides](materials/4_extra/recap-exam.html){target="_blank"} [PDF](materials/4_extra/recap-exam.pdf){target="_blank"}]{.links}
 -   **Recap day 1: objects, operators and vectors** [[Slides](materials/4_extra/recap-day1.html){target="_blank"} [PDF](materials/4_extra/recap-day1.pdf){target="_blank"}]{.links}
 -   **Recap** [[Slides](materials/4_extra/recap.html){target="_blank"} [PDF](materials/4_extra/recap.pdf){target="_blank"}]{.links}
 -   **Loading files, visualizing data, saving** [[Slides](materials/4_extra/Extra.html){target="_blank"} [PDF](materials/4_extra/EXTRA.pdf){target="_blank"}]{.links}

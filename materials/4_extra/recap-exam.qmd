@@ -1,0 +1,1047 @@
+---
+title: "Recap before the exam"
+subtitle: "From objects to dataframes"
+format:
+   revealjs:
+     css: ../slides.css
+     margin: .05
+     fontsize: 1.9em
+     linestretch: 1.4
+     mainfont: Helvetica Neue
+editor: visual
+---
+
+# Objects
+
+## Creating and naming objects
+
+`name <- value`: **`<-`** creates objects
+
+```{r, echo=TRUE}
+age <- 25
+```
+
+::: fragment
+```{r, echo=TRUE}
+age <- age + 1          # overwrite
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+age_months <- age * 12  # use it to create a new object
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+age_months
+```
+:::
+
+::: incremental
+-   names **start with a letter**, no spaces: `my_data`, `x1` (not `1x`, `my data`)
+-   R is **case-sensitive**: `Name` and `name` are two different objects
+-   `rm(x)` removes one object, `rm(list = ls())` removes all
+:::
+
+## Data types
+
+```{r, echo=TRUE}
+class(3.14)      # numeric
+```
+
+::: fragment
+```{r, echo=TRUE}
+class(5L)        # integer
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+class("hello")   # character: always in quotes
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+class(TRUE)      # logical
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+class("5")       # in quotes: character
+```
+:::
+
+# Operators
+
+## Mathematical operators and functions
+
+| operator        | meaning                   | example     | result |
+|-----------------|---------------------------|-------------|--------|
+| `+` `-` `*` `/` | arithmetic                | `6 * 2 / 4` | `3`    |
+| `^`             | power                     | `2 ^ 3`     | `8`    |
+| `%%`            | remainder of the division | `9 %% 2`    | `1`    |
+
+```{r, echo=TRUE}
+(1 + 2) * 3                  # parentheses first
+```
+
+::: fragment
+```{r, echo=TRUE}
+sqrt(16); abs(-7); round(3.14159, 2)
+```
+:::
+
+## Relational and logical operators
+
+```{r, echo=TRUE}
+x <- 30
+```
+
+::: fragment
+```{r, echo=TRUE}
+x == 30; x != 30; x >= 18     # compare: TRUE or FALSE
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+x %in% c(10, 20, 30)          # is x one of these values?
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+x > 25 & x < 60               # AND: both TRUE
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+x < 18 | x > 60               # OR: at least one TRUE
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+!(x > 25)                     # NOT
+```
+:::
+
+## TRUE and FALSE are numbers
+
+`TRUE` counts as **1**, `FALSE` as **0**: `sum()` counts, `mean()` gives the proportion
+
+```{r, echo=TRUE}
+scores <- c(18, 25, 30, 22, 27)
+```
+
+::: fragment
+```{r, echo=TRUE}
+scores >= 25
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+sum(scores >= 25)       # how many?
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+mean(scores >= 25)      # which proportion?
+```
+:::
+
+# Vectors
+
+## Creating vectors
+
+One dimension, **all elements of the same type**
+
+```{r, echo=TRUE}
+num1 <- c(4, 8, 15); num1
+```
+
+::: fragment
+```{r, echo=TRUE}
+num2 <- 1:5; num2
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+num3 <- seq(from = 0, to = 10, by = 2); num3
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+ch1 <- rep(c("x", "y"), times = 2); ch1   # whole vector
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+ch2 <- rep(c("x", "y"), each = 2); ch2    # each element
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+ch3 <- rep(c("x", "y"), each = 2, times = 2); ch3
+```
+:::
+
+## Types: `is.` and `as.`
+
+Mixing types converts everything to **one type**:
+
+```{r, echo=TRUE}
+c(1, 2, "three")                     # all character
+```
+
+::: fragment
+```{r, echo=TRUE}
+c(1, 2, NA, 4)                       # NA keeps the type
+```
+:::
+
+::::: fragment
+`is.` tests the type, `as.` converts it:
+
+```{r, echo=TRUE, warning=TRUE}
+is.numeric(c(1, 0, 3))
+```
+
+::: fragment
+```{r, echo=TRUE, warning=TRUE}
+as.logical(c(1, 0, 3))               # 0 is FALSE, others TRUE
+```
+:::
+
+::: fragment
+```{r, echo=TRUE, warning=TRUE}
+as.numeric(c("1", "2", "three"))     # cannot convert: NA
+```
+:::
+:::::
+
+## Operations and missing values
+
+Operations work **element by element**, summary functions return **one value**
+
+```{r, echo=TRUE}
+temps <- c(12, 18, NA, 31, 7)
+```
+
+::: fragment
+```{r, echo=TRUE}
+temps * 2
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+mean(temps)                  # one NA makes the result NA
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+mean(temps, na.rm = TRUE)    # remove the NAs first
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+is.na(temps)
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+sum(is.na(temps))            # how many NAs?
+```
+:::
+
+## Indexing by position
+
+```{r, echo=TRUE}
+temps <- c(12, 18, 25, 31, 7)
+```
+
+::: fragment
+```{r, echo=TRUE}
+temps[2]                  # the second element
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+temps[c(1, 3)]            # the first and the third
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+temps[2:4]                # from the second to the fourth
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+temps[length(temps)]      # the last one
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+temps[-1]                 # all except the first
+```
+:::
+
+## Indexing: logical conditions and `which()`
+
+```{r, echo=TRUE}
+temps
+temps > 20                        # the condition
+```
+
+::: fragment
+```{r, echo=TRUE}
+temps[temps > 20]                 # keep where TRUE
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+temps[temps > 10 & temps < 30]
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+which(temps > 20)                 # the positions
+```
+:::
+
+## Modifying with indexing
+
+Indexing + `<-` **modifies** only the selected elements:
+
+```{r, echo=TRUE}
+scores <- c(18, NA, 30, 22, NA)
+```
+
+::: fragment
+```{r, echo=TRUE}
+scores[1] <- 20                   # by position
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+scores[is.na(scores)] <- 0        # by condition
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+scores[scores < 21] <- 21
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+scores
+```
+:::
+
+# Factors
+
+## Factors: codes + levels
+
+```{r, echo=TRUE}
+group <- factor(x = c("placebo", "caffeine", "nicotine",
+                  "placebo", "caffeine"))
+```
+
+::: fragment
+```{r, echo=TRUE}
+group
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+levels(group)
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+as.integer(group)  # caffeine=1, nicotine=2, placebo=3
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+table(group)
+```
+:::
+
+## Levels stay, even when unused
+
+```{r, echo=TRUE}
+no_placebo <- group[group != "placebo"]
+no_placebo # "placebo" is still a level
+```
+
+::: fragment
+```{r, echo=TRUE}
+no_placebo <- droplevels(no_placebo)
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+levels(no_placebo)
+```
+:::
+
+## Adding a new level
+
+To use a **new** value, first add it to the levels
+
+```{r, echo=TRUE}
+group
+levels(group) <- c(levels(group), "water")
+```
+
+::: fragment
+```{r, echo=TRUE}
+group[1] <- "water"
+group
+```
+:::
+
+## Reorder vs rename
+
+```{r, echo=TRUE}
+group <- factor(x = c("placebo", "caffeine", "nicotine",
+                  "placebo", "caffeine"))
+```
+
+::: fragment
+```{r, echo=TRUE}
+# REORDER: placebo first (reference category), same data
+group_ord <- factor( x = c("placebo", "caffeine", "nicotine",
+                  "placebo", "caffeine"),
+  levels = c("placebo", "caffeine", "nicotine"))
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+levels(group_ord)
+```
+:::
+
+:::: fragment
+```{r, echo=TRUE}
+# RENAME: by position, check levels() first!
+levels(group_ord) <- c("PLA", "CAF", "NIC")
+```
+
+::: fragment
+```{r, echo=TRUE}
+group_ord
+```
+:::
+::::
+
+## Reorder and rename in one step
+
+`factor()` with both arguments:
+
+-   **`levels`**: the existing values, in the order we want
+-   **`labels`**: their new names, in the same order
+
+```{r, echo=TRUE}
+group_new <- factor(x = c("placebo", "caffeine", "nicotine",
+                  "placebo", "caffeine"),
+  levels = c("placebo", "caffeine", "nicotine"),
+  labels = c("PLA", "CAF", "NIC"))
+```
+
+::: fragment
+```{r, echo=TRUE}
+group_new
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+levels(group_new)
+```
+:::
+
+## Ordered factors and numbers
+
+For **ordinal** categories (`<` and `>` make sense), set the order **and** `ordered = TRUE`
+
+```{r, echo=TRUE}
+freq <- factor(x = c("often", "never", "sometimes"),
+  levels = c("never", "sometimes", "often"), ordered = TRUE)
+```
+
+::: fragment
+```{r, echo=TRUE}
+freq > "never"
+```
+:::
+
+:::: fragment
+To get back numbers saved as a factor: first to text, then to numbers
+
+```{r, echo=TRUE}
+points_f <- factor(c(10, 30, 10, 20))
+```
+
+::: fragment
+```{r, echo=TRUE}
+as.numeric(as.character(points_f))
+```
+:::
+::::
+
+# Lists
+
+## Lists: different types and sizes
+
+```{r, echo=TRUE}
+participant <- list(name = "Anna",
+                    rts = c(450, 520, 380),
+                    passed = TRUE,
+                    other = list(mom_age = c(27, 34, 40, 18),
+                                 degree = c("bachelor")
+                    ))
+```
+
+::: fragment
+```{r, echo=TRUE}
+str(participant)
+```
+:::
+
+## Looking at a list
+
+```{r, echo=TRUE}
+length(participant)
+```
+
+::: fragment
+```{r, echo=TRUE}
+names(participant)
+```
+:::
+
+## `[ ]`, `[[ ]]` and `$`
+
+```{r, echo=TRUE}
+participant[2]          # [ ]: a smaller LIST
+```
+
+::: fragment
+```{r, echo=TRUE}
+participant[[2]]        # [[ ]]: the element itself
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+participant$rts         # $: the element, by name
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+participant$rts[3]      # then index inside it
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+class(participant[2]); class(participant[[2]])
+```
+:::
+
+## Modifying lists
+
+```{r, echo=TRUE}
+participant$age <- 24              # add an element
+```
+
+::: fragment
+```{r, echo=TRUE}
+participant$passed <- FALSE        # change an element
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+participant$rts[1] <- 455          # change inside an element
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+str(participant)
+```
+:::
+
+# Matrices and arrays
+
+## Matrices: two dimensions, one type
+
+```{r, echo=TRUE}
+m <- matrix(data = 1:6, nrow = 2, ncol = 3)   # by column
+```
+
+::: fragment
+```{r, echo=TRUE}
+m
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+# by row
+matrix(data = 1:6, nrow = 2, ncol = 3, byrow = TRUE)
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+dim(m); nrow(m); ncol(m)
+```
+:::
+
+## Indexing matrices: `[row, column]`
+
+```{r, echo=TRUE}
+m[2, 3]          # one element
+```
+
+::: fragment
+```{r, echo=TRUE}
+m[1, ]           # the whole first row
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+m[, 2]           # the whole second column
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+m[m > 3]         # logical condition
+```
+:::
+
+:::: fragment
+```{r, echo=TRUE}
+m[m > 3] <- 0    # modify
+```
+
+::: fragment
+```{r, echo=TRUE}
+m
+```
+:::
+::::
+
+## Joining matrices and vectors
+
+```{r, echo=TRUE}
+a <- 1:3
+```
+
+::: fragment
+```{r, echo=TRUE}
+b <- c(10, 20, 30)
+```
+:::
+
+::::::: columns
+:::: {.column width="50%"}
+::: fragment
+```{r, echo=TRUE}
+cbind(a, b)   # as columns
+```
+:::
+::::
+
+:::: {.column width="50%"}
+::: fragment
+```{r, echo=TRUE}
+rbind(a, b)   # as rows
+```
+:::
+::::
+:::::::
+
+::: fragment
+Still **one type only**: adding text turns everything into text
+
+```{r, echo=TRUE}
+cbind(a, c("x", "y", "z"))
+```
+:::
+
+# Dataframes
+
+## Dataframes: columns of different types
+
+Each column is a **vector** (all the same length): a list with a rectangular shape
+
+```{r, echo=TRUE}
+df <- data.frame(id = c("P1", "P2", "P3", "P4", "P5"),
+                 group = c("ctrl", "trt", "ctrl", "trt", "trt"),
+                 age = c(22, 27, 31, NA, 24),
+                 score = c(18, 25, 30, 22, 27))
+```
+
+::: fragment
+```{r, echo=TRUE}
+df
+```
+:::
+
+## Looking at a dataframe
+
+```{r, echo=TRUE}
+str(df)
+```
+
+::: fragment
+```{r, echo=TRUE}
+dim(df); names(df)
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+head(df, n = 2)
+```
+:::
+
+::: fragment
+`summary(df)` and `table(df$group)` are also useful checks
+:::
+
+## Extracting a column as a vector
+
+```{r, echo=TRUE}
+df$age               # a column: a vector
+```
+
+::: fragment
+```{r, echo=TRUE}
+df[["age"]]          # the same
+```
+:::
+
+## Extracting a column as a dataframe
+
+```{r, echo=TRUE}
+df["age"]            # a dataframe with one column
+```
+
+::: fragment
+```{r, echo=TRUE}
+df[3]                # the same, by position
+```
+:::
+
+## Extracting rows
+
+`df[rows, columns]`: leave a position **empty** to keep everything
+
+```{r, echo=TRUE}
+df
+```
+
+::: fragment
+```{r, echo=TRUE}
+df[2, ]              # the second row
+```
+:::
+
+## Extracting cells
+
+```{r, echo=TRUE}
+df[2, "score"]       # one cell: row 2, column score
+```
+
+::: fragment
+```{r, echo=TRUE}
+df[1:2, c("id", "score")]
+```
+:::
+
+## Selecting rows with conditions
+
+`df[rows, columns]`: the condition goes in the **rows** position
+
+```{r, echo=TRUE}
+df
+```
+
+::: fragment
+```{r, echo=TRUE}
+df[df$score > 20, ]
+```
+:::
+
+## Combining conditions
+
+```{r, echo=TRUE}
+df[df$group == "trt" & df$score > 22, c("id", "score")]
+```
+
+## Selecting rows with `subset()`
+
+Same result, without repeating `df$`:
+
+```{r, echo=TRUE}
+subset(df, subset = group == "trt" & score > 22,
+       select = c(id, score))
+```
+
+## Creating a new column
+
+`df$new_column <- value`: one value for each row
+
+```{r, echo=TRUE}
+df$passed <- df$score >= 25
+df
+```
+
+## A new column from another column
+
+```{r, echo=TRUE}
+df$score_100 <- df$score / 30 * 100
+df
+```
+
+## Creating a column with `ifelse()`
+
+A new column that depends on a **condition**
+
+```{r, echo=TRUE}
+df$level <- ifelse(df$score >= 25, "high", "low")
+df
+```
+
+## Changing the type of a column
+
+```{r, echo=TRUE}
+df$group <- as.factor(df$group)
+str(df)
+```
+
+## Changing one cell
+
+Select the cell with a condition, then assign the new value
+
+```{r, echo=TRUE}
+df$age[df$id == "P4"] <- 29
+df
+```
+
+## Removing a column
+
+Assign **`NULL`** to the column
+
+```{r, echo=TRUE}
+df$score_100 <- NULL
+df
+```
+
+## Counting
+
+```{r, echo=TRUE}
+table(df$group)                     # frequencies
+```
+
+::: fragment
+```{r, echo=TRUE}
+table(df$group, df$level)           # contingency table
+```
+:::
+
+## Sorting rows: `order()`
+
+`order()` gives the **positions** of the rows, from the lowest to the highest value
+
+```{r, echo=TRUE}
+df$score
+order(df$score)
+```
+
+::: fragment
+We use these positions to select the rows: the rows are now **sorted** by score
+
+```{r, echo=TRUE}
+df_sorted <- df[order(df$score), ]
+df_sorted
+```
+:::
+
+## Sorting from the highest
+
+`decreasing = TRUE`
+
+```{r, echo=TRUE}
+df_sorted <- df[order(df$score, decreasing = TRUE), ]
+df_sorted
+```
+
+## Missing values in a dataframe
+
+```{r, echo=TRUE}
+df$age[2] <- NA
+```
+
+::: fragment
+```{r, echo=TRUE}
+df$age
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+sum(is.na(df$age))                  # how many NAs?
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+mean(df$age, na.rm = TRUE)
+```
+:::
+
+::: fragment
+```{r, echo=TRUE}
+df[complete.cases(df), "id"]        # rows without any NA
+```
+:::
+
+## Adding rows: `rbind()`
+
+The new rows need the same number of columns and the **same column names**
+
+```{r, echo=TRUE}
+new <- data.frame(id = "P6", group = "ctrl", age = 25,
+                  score = 21, passed = FALSE, level = "low")
+new
+```
+
+## Adding rows: the result
+
+```{r, echo=TRUE}
+df2 <- rbind(df, new)
+df2
+```
+
+::: fragment
+```{r, echo=TRUE}
+nrow(df2)
+```
+:::
+
+## Adding columns: `merge()`
+
+Add the columns of another dataframe, matching the rows by a **key** (here `id`)
+
+```{r, echo=TRUE}
+sleep <- data.frame(id = c("P3", "P1", "P6", "P2", "P5", "P4"),
+                    hours = c(8, 7, 6, 6, 9, 7))
+sleep
+```
+
+## `merge()`: the result
+
+Each row of `df2` gets the `hours` of **its own** `id`, even if the order is different
+
+```{r, echo=TRUE}
+df3 <- merge(df2, sleep, by = "id")
+df3
+```
+
+## `merge()` when some ids are missing
+
+Here `sleep2` has only some of the ids of `df2`, and one more (`P7`)
+
+```{r, echo=TRUE}
+sleep2 <- data.frame(id = c("P1", "P2", "P7"),
+                     hours = c(7, 6, 8))
+sleep2
+```
+
+::: fragment
+```{r, echo=TRUE}
+# only the ids in both dataframes
+df4 <- merge(df2, sleep2, by = "id")
+df4
+```
+:::
+
+## Keeping all the rows: `all.x = TRUE`
+
+The rows of `df2` without a match get `NA`
+
+```{r, echo=TRUE}
+df5 <- merge(df2, sleep2, by = "id", all.x = TRUE)
+df5
+```
+
+# Before the exam
+
+## Remember
+
+::: incremental
+-   **`<-`** creates objects, **`==`** compares
+-   text always goes **in quotes**: `"hello"`, `"5"`
+-   with missing values: `mean(x, na.rm = TRUE)`
+-   vectors and matrices hold **one type** of data
+-   before renaming levels, look at **`levels(x)`**; to reorder and rename use `factor(x, levels, labels)`
+-   to use a new value in a factor, **add its level** first
+-   lists: **`[[ ]]`** or **`$`** to get an element
+-   dataframes: **`df[rows, columns]`**, e.g. `df[df$score > 20, ]`
+-   `rbind()`: **same column names**; `merge()`: a **common key**
+:::
+
+## Function summary {.smaller}
+
+| structure | dimensions | types | create | index |
+|----|----|----|----|----|
+| vector | 1 | one | `c()`, `seq()`, `rep()` | `x[i]` |
+| factor | 1 | categories | `factor()` | `x[i]`, `levels()` |
+| list | 1 (nested) | any | `list()` | `x[i]`, `x[[i]]`, `x$name` |
+| matrix | 2 | one | `matrix()`, `cbind()` | `x[row, col]` |
+| dataframe | 2 | one per column | `data.frame()` | `x$col`, `x[row, col]` |
+
+## Good luck! {style="text-align: center;"}
+
+<br/> During the exam you may use the material provided during the lessons.
+
+Other online material (or ChatGPT) is not allowed.

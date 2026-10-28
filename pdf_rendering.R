@@ -25,7 +25,8 @@ decks <- c(
   "materials/3_programmazione/3.3_apply.html",
   "materials/4_extra/Extra.html",
   "materials/4_extra/recap.html",
-  "materials/4_extra/recap-day1.html"
+  "materials/4_extra/recap-day1.html",
+  "materials/4_extra/recap-exam.html"
 )
 
 # PDF names that differ from the HTML name (the index links to EXTRA.pdf)
