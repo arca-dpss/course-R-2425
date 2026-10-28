@@ -12,9 +12,6 @@ editor: visual
 
 ## Iterative programming
 
-The concept of iteration underlies any operation in programming languages. In R many operations are vectorized. This makes the language more efficient and cleaner BUT hides the concept of iteration.
-
-------------------------------------------------------------------------
 
 Example: if I ask you to use the **`print()`** function to write "hello world" in the console 5 times, how would you do it?
 
@@ -62,11 +59,12 @@ If I want to print something 5 times, I can simply use a for loop:
 
 ```{r, echo=TRUE}
 for(i in 1:5){
-print(paste("hello world", i, sep = "_"))
+print("hello world")
 }
 ```
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
+
 
 ## Breaking down the **`for`** loop
 
@@ -77,6 +75,13 @@ print(paste("hello world", i, sep = "_"))
 -   **`in <values>`**: this indicates the values the iterator will take inside the loop
 
 -   **`{ # operations }`**: these are the operations the loop must perform
+
+
+```{r, echo=TRUE}
+for(i in 1:5){
+print(paste("hello world", i, sep = " "))
+}
+```
 
 ------------------------------------------------------------------------
 
@@ -93,25 +98,27 @@ for(i in 1:10){
 ## **`For`** with an index vs without
 
 ::::: columns
-::: {.column width="50%"}
+::: {.column width="60%"}
 **`i`** represents the index of the elements of the vector vec
 
 ```{r, echo=TRUE}
-vec <- 1:5
+vec <- c(1,3,5,8)
 
 for(i in 1:length(vec)){
-
-  print(vec[i])
+  
+  print(paste(i, vec[i], sep = " "))
 
   }
 ```
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
+
+::: fragment
 **`i`** directly represents each element of the vector vec
 
 ```{r, echo=TRUE}
-vec <- 1:5
+vec <- c(1,3,5,8)
 
 for(i in vec){
 
@@ -119,6 +126,7 @@ for(i in vec){
 
 }
 ```
+:::
 :::
 :::::
 
@@ -141,8 +149,6 @@ while (x < 15) {
 
 }
 ```
-
-
 
 ------------------------------------------------------------------------
 
@@ -263,7 +269,7 @@ sum(x)
 
 The **`for`** loop is also useful, for example, to simulate data and perfom a power analysis. Suppose we have a variable y (income) that depends on age:
 
-1. Load the dataset:
+1.  Load the dataset:
 
 ```{r, echo=TRUE}
 mydf <- read.csv(file = "data/mydf_2.csv") # load the dataset
@@ -281,7 +287,6 @@ age_z <- mydf$age_z
 eff_age <- .2 # age effect
 nobs <- nrow(mydf)
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -324,10 +329,7 @@ cat("Mean of all effects:", mean(res_all), "\n")
 cat("Mean of significant effects:", mean(res_sig), "\n")
 ```
 
-
-
 ------------------------------------------------------------------------
-
 
 ```{r}
 # Side-by-side plots with par(mfrow)
@@ -349,8 +351,6 @@ hist(res_sig,
      xlim = range(res_all))
 abline(v = eff_age, col = "red", lwd = 2, lty = 2)  # true effect
 ```
-
-
 
 ## Nested `for` loops
 

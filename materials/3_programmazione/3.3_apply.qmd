@@ -154,25 +154,23 @@ sapply(rts, function(x) max(x) - min(x))
 
 ## All the types of `*apply`
 
-| function      | goes through ...                    | returns                     |
-|---------------|-------------------------------------|-----------------------------|
-| **`lapply()`** | each element of a list/vector      | a list                      |
-| **`sapply()`** | each element of a list/vector      | a vector or matrix, if possible |
-| **`apply()`**  | each row or column of a matrix/dataframe | a vector               |
-| **`tapply()`** | each group of a vector, defined by a factor | a vector          |
-| **`vapply()`** | like `sapply()`, but checks the type of the result | a vector  |
-| **`mapply()`** | several vectors/lists at the same time | a vector or a list       |
+| function | goes through ... | returns |
+|-----------------|-------------------------------|------------------------|
+| **`lapply()`** | each element of a list/vector | a list |
+| **`sapply()`** | each element of a list/vector | a vector or matrix, if possible |
+| **`apply()`** | each row or column of a matrix/dataframe | a vector |
+| **`tapply()`** | each group of a vector, defined by a factor | a vector |
+| **`vapply()`** | like `sapply()`, but checks the type of the result | a vector |
+| **`mapply()`** | several vectors/lists at the same time | a vector or a list |
 
 ## `apply()`: rows or columns
 
-The scores of 3 students (rows) in 3 tests (columns):
+The scores of 3 students in 3 tests: one **row** for each student, one **column** for each test
 
 ```{r, echo=TRUE}
-scores <- matrix(c(24, 28, 30,
-                   18, 22, 25,
-                   30, 29, 27), nrow = 3, byrow = TRUE,
-                 dimnames = list(c("anna", "ben", "carl"),
-                                 c("test1", "test2", "test3")))
+scores <- data.frame(test1 = c(24, 18, 30),
+                     test2 = c(28, 22, 29),
+                     test3 = c(30, 25, 27))
 scores
 ```
 
@@ -180,14 +178,14 @@ scores
 
 ## `apply()`: rows or columns
 
-`MARGIN = 1`: `mean` of **each row**, one result per **student**
+`MARGIN = 1`: `mean` of **each row**, one result per **student** (first, second, third student)
 
 ```{r, echo=TRUE}
 apply(scores, MARGIN = 1, FUN = mean)
 ```
 
 ::: fragment
-`MARGIN = 2`: `max` of **each column**, one result per **test**
+`MARGIN = 2`: `max` of **each column**, one result per **test** (first, second, third test)
 
 ```{r, echo=TRUE}
 apply(scores, MARGIN = 2, FUN = max)
@@ -195,7 +193,7 @@ apply(scores, MARGIN = 2, FUN = max)
 :::
 
 ::: fragment
-It also works on dataframes, e.g. on the numeric columns of `iris`:
+Another example: the mean of each numeric column of `iris`
 
 ```{r, echo=TRUE}
 apply(iris[, 1:4], MARGIN = 2, FUN = mean)
@@ -255,23 +253,51 @@ vapply(rts, FUN = range, FUN.VALUE = numeric(1))
 Useful inside your own functions, to catch mistakes early.
 :::
 
-## `mapply()`: several vectors at once
+## `mapply()`: two vectors at the same time
 
-**`mapply(FUN, X1, X2)`**: apply **`FUN`** to the **first** elements of `X1` and `X2`, then to the **second** ones, and so on
+`sapply()` goes through **one** vector, `mapply()` goes through **two** (or more) vectors **together**
 
 ```{r, echo=TRUE}
-mapply(rep, c("a", "b", "c"), c(3, 2, 1))
+x <- c(1, 2, 3)
+y <- c(10, 20, 30)
+mapply(function(a, b) a + b, x, y)
 ```
 
 ::: fragment
-It is the same as writing:
+| step | `a` (from `x`) | `b` (from `y`) | `a + b` |
+|:----:|:--------------:|:--------------:|:-------:|
+| 1    | 1              | 10             | 11      |
+| 2    | 2              | 20             | 22      |
+| 3    | 3              | 30             | 33      |
 
-```{r, echo=TRUE, eval=FALSE}
-list(a = rep("a", 3), b = rep("b", 2), c = rep("c", 1))
-```
-
-**All the vectors must have the same length!**
+`x` and `y` must have the **same length**
 :::
+
+## `mapply()` with `rep()`
+
+Repeat each value a **different** number of times
+
+::::: columns
+::: {.column width="50%"}
+```{r, echo=TRUE}
+values <- c(5, 10, 15)
+n_rep <- c(3, 2, 1)
+mapply(rep, values, n_rep)
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+Step by step, `mapply()` runs:
+
+```{r, echo=TRUE}
+rep(5, 3)     # step 1
+rep(10, 2)    # step 2
+rep(15, 1)    # step 3
+```
+:::
+:::
+:::::
 
 ## `mapply()`: simulating data
 

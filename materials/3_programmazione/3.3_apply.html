@@ -393,9 +393,9 @@ $carl
 <h2>All the types of <code>*apply</code></h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 18%">
-<col style="width: 45%">
-<col style="width: 35%">
+<col style="width: 23%">
+<col style="width: 43%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -440,35 +440,32 @@ $carl
 </section>
 <section id="apply-rows-or-columns" class="slide level2">
 <h2><code>apply()</code>: rows or columns</h2>
-<p>The scores of 3 students (rows) in 3 tests (columns):</p>
+<p>The scores of 3 students in 3 tests: one <strong>row</strong> for each student, one <strong>column</strong> for each test</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="" aria-label="1"></a>scores <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">28</span>, <span class="dv">30</span>,</span>
-<span id="cb23-2"><a href="" aria-label="2"></a>                   <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>,</span>
-<span id="cb23-3"><a href="" aria-label="3"></a>                   <span class="dv">30</span>, <span class="dv">29</span>, <span class="dv">27</span>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb23-4"><a href="" aria-label="4"></a>                 <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"anna"</span>, <span class="st">"ben"</span>, <span class="st">"carl"</span>),</span>
-<span id="cb23-5"><a href="" aria-label="5"></a>                                 <span class="fu">c</span>(<span class="st">"test1"</span>, <span class="st">"test2"</span>, <span class="st">"test3"</span>)))</span>
-<span id="cb23-6"><a href="" aria-label="6"></a>scores</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="" aria-label="1"></a>scores <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">test1 =</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">18</span>, <span class="dv">30</span>),</span>
+<span id="cb23-2"><a href="" aria-label="2"></a>                     <span class="at">test2 =</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">22</span>, <span class="dv">29</span>),</span>
+<span id="cb23-3"><a href="" aria-label="3"></a>                     <span class="at">test3 =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">27</span>))</span>
+<span id="cb23-4"><a href="" aria-label="4"></a>scores</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     test1 test2 test3
-anna    24    28    30
-ben     18    22    25
-carl    30    29    27</code></pre>
+<pre><code>  test1 test2 test3
+1    24    28    30
+2    18    22    25
+3    30    29    27</code></pre>
 </div>
 </div>
 <p><strong><code>apply(X, MARGIN, FUN)</code></strong>: <code>MARGIN = 1</code> for the <strong>rows</strong>, <code>MARGIN = 2</code> for the <strong>columns</strong></p>
 </section>
 <section id="apply-rows-or-columns-1" class="slide level2">
 <h2><code>apply()</code>: rows or columns</h2>
-<p><code>MARGIN = 1</code>: <code>mean</code> of <strong>each row</strong>, one result per <strong>student</strong></p>
+<p><code>MARGIN = 1</code>: <code>mean</code> of <strong>each row</strong>, one result per <strong>student</strong> (first, second, third student)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="" aria-label="1"></a><span class="fu">apply</span>(scores, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    anna      ben     carl 
-27.33333 21.66667 28.66667 </code></pre>
+<pre><code>[1] 27.33333 21.66667 28.66667</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p><code>MARGIN = 2</code>: <code>max</code> of <strong>each column</strong>, one result per <strong>test</strong></p>
+<p><code>MARGIN = 2</code>: <code>max</code> of <strong>each column</strong>, one result per <strong>test</strong> (first, second, third test)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="" aria-label="1"></a><span class="fu">apply</span>(scores, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> max)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -478,7 +475,7 @@ carl    30    29    27</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p>It also works on dataframes, e.g.&nbsp;on the numeric columns of <code>iris</code>:</p>
+<p>Another example: the mean of each numeric column of <code>iris</code></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="" aria-label="1"></a><span class="fu">apply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -563,38 +560,99 @@ carl    30    29    27</code></pre>
 <p>Useful inside your own functions, to catch mistakes early.</p>
 </div>
 </section>
-<section id="mapply-several-vectors-at-once" class="slide level2">
-<h2><code>mapply()</code>: several vectors at once</h2>
-<p><strong><code>mapply(FUN, X1, X2)</code></strong>: apply <strong><code>FUN</code></strong> to the <strong>first</strong> elements of <code>X1</code> and <code>X2</code>, then to the <strong>second</strong> ones, and so on</p>
+<section id="mapply-two-vectors-at-the-same-time" class="slide level2">
+<h2><code>mapply()</code>: two vectors at the same time</h2>
+<p><code>sapply()</code> goes through <strong>one</strong> vector, <code>mapply()</code> goes through <strong>two</strong> (or more) vectors <strong>together</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="" aria-label="1"></a><span class="fu">mapply</span>(rep, <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="" aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb45-2"><a href="" aria-label="2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
+<span id="cb45-3"><a href="" aria-label="3"></a><span class="fu">mapply</span>(<span class="cf">function</span>(a, b) a <span class="sc">+</span> b, x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$a
-[1] "a" "a" "a"
-
-$b
-[1] "b" "b"
-
-$c
-[1] "c"</code></pre>
+<pre><code>[1] 11 22 33</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p>It is the same as writing:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">step</th>
+<th style="text-align: center;"><code>a</code> (from <code>x</code>)</th>
+<th style="text-align: center;"><code>b</code> (from <code>y</code>)</th>
+<th style="text-align: center;"><code>a + b</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">33</td>
+</tr>
+</tbody>
+</table>
+<p><code>x</code> and <code>y</code> must have the <strong>same length</strong></p>
+</div>
+</section>
+<section id="mapply-with-rep" class="slide level2">
+<h2><code>mapply()</code> with <code>rep()</code></h2>
+<p>Repeat each value a <strong>different</strong> number of times</p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-label="1"></a><span class="fu">list</span>(<span class="at">a =</span> <span class="fu">rep</span>(<span class="st">"a"</span>, <span class="dv">3</span>), <span class="at">b =</span> <span class="fu">rep</span>(<span class="st">"b"</span>, <span class="dv">2</span>), <span class="at">c =</span> <span class="fu">rep</span>(<span class="st">"c"</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-label="1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span>
+<span id="cb47-2"><a href="" aria-label="2"></a>n_rep <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb47-3"><a href="" aria-label="3"></a><span class="fu">mapply</span>(rep, values, n_rep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 5 5 5
+
+[[2]]
+[1] 10 10
+
+[[3]]
+[1] 15</code></pre>
 </div>
-<p><strong>All the vectors must have the same length!</strong></p>
 </div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p>Step by step, <code>mapply()</code> runs:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="" aria-label="1"></a><span class="fu">rep</span>(<span class="dv">5</span>, <span class="dv">3</span>)     <span class="co"># step 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 5 5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="" aria-label="1"></a><span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">2</span>)    <span class="co"># step 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10 10</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="" aria-label="1"></a><span class="fu">rep</span>(<span class="dv">15</span>, <span class="dv">1</span>)    <span class="co"># step 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="mapply-simulating-data" class="slide level2">
 <h2><code>mapply()</code>: simulating data</h2>
 <p>Three samples of 3 values, each with its own mean and standard deviation:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb48-2"><a href="" aria-label="2"></a>mus <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
-<span id="cb48-3"><a href="" aria-label="3"></a>sigmas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span>
-<span id="cb48-4"><a href="" aria-label="4"></a><span class="fu">mapply</span>(<span class="cf">function</span>(m, s) <span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> m, <span class="at">sd =</span> s), mus, sigmas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb55-2"><a href="" aria-label="2"></a>mus <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<span id="cb55-3"><a href="" aria-label="3"></a>sigmas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span>
+<span id="cb55-4"><a href="" aria-label="4"></a><span class="fu">mapply</span>(<span class="cf">function</span>(m, s) <span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> m, <span class="at">sd =</span> s), mus, sigmas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]     [,2]     [,3]
 [1,]  9.373546 57.97640 104.8743
@@ -613,8 +671,8 @@ $c
 <h2><code>replicate()</code>: repeat the same code</h2>
 <p><strong><code>replicate(n, expr)</code></strong>: run the code <strong><code>expr</code></strong> <strong><code>n</code></strong> times. There is no element to go through: the code is just repeated.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb50-2"><a href="" aria-label="2"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">expr =</span> <span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">30</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb57-2"><a href="" aria-label="2"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">expr =</span> <span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">30</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 102.47375 103.98324 103.30834 103.39998  90.09916</code></pre>
 </div>
@@ -629,18 +687,18 @@ $c
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb52-2"><a href="" aria-label="2"></a>means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(</span>
-<span id="cb52-3"><a href="" aria-label="3"></a>  <span class="at">n =</span> <span class="dv">1000</span>,</span>
-<span id="cb52-4"><a href="" aria-label="4"></a>  <span class="at">expr =</span> {</span>
-<span id="cb52-5"><a href="" aria-label="5"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">30</span>)</span>
-<span id="cb52-6"><a href="" aria-label="6"></a>    <span class="fu">mean</span>(x)</span>
-<span id="cb52-7"><a href="" aria-label="7"></a>  })</span>
-<span id="cb52-8"><a href="" aria-label="8"></a><span class="fu">mean</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb59-2"><a href="" aria-label="2"></a>means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(</span>
+<span id="cb59-3"><a href="" aria-label="3"></a>  <span class="at">n =</span> <span class="dv">1000</span>,</span>
+<span id="cb59-4"><a href="" aria-label="4"></a>  <span class="at">expr =</span> {</span>
+<span id="cb59-5"><a href="" aria-label="5"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">30</span>)</span>
+<span id="cb59-6"><a href="" aria-label="6"></a>    <span class="fu">mean</span>(x)</span>
+<span id="cb59-7"><a href="" aria-label="7"></a>  })</span>
+<span id="cb59-8"><a href="" aria-label="8"></a><span class="fu">mean</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 99.96828</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="" aria-label="1"></a><span class="fu">sd</span>(means)  <span class="co"># standard error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="" aria-label="1"></a><span class="fu">sd</span>(means)  <span class="co"># standard error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.220686</code></pre>
 </div>
@@ -650,7 +708,7 @@ $c
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3.3_apply_files/figure-revealjs/unnamed-chunk-27-1.png" style="width:100.0%"></p>
+<p><img data-src="3.3_apply_files/figure-revealjs/unnamed-chunk-28-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>

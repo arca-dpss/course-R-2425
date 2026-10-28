@@ -4,9 +4,18 @@
 #    Start from an object total equal to 0 and add one number at a time.
 #    Print the result at the end.
 
+total <- 0
+num <- 1:30
+
+for (i in 1:length(num)){
+  total <- total + num[i]
+  if (i == length(num)){
+    print(total)
+  }
+}
 
 # 1.1 Write a function vector_sum() that takes a numeric vector and returns
-#     the sum of its elements, using a for loop (without sum()).
+#     the sum of its elements, using a for loop (as above but inside a function).
 
 
 # 2. Write a function vector_mean() that computes the mean of a vector
